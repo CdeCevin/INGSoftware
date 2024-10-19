@@ -97,7 +97,7 @@ function ActualizarProducto() {
                                     name="input-nombre" 
                                     pattern="[0-9]+" 
                                     maxLength="50" 
-                                    required 
+                                    //required  //@dt-24 (Voy a seguir haciendo esto hasta que me digas q no sirva) se supone q esto no deberia ser extrictamente necesario
                                     value={nombre} 
                                     onChange={(e) => setNombre(e.target.value)} 
                                 />
@@ -109,7 +109,7 @@ function ActualizarProducto() {
                                     name="input-precio" 
                                     pattern="[0-9]+" 
                                     maxLength="10" 
-                                    required 
+                                    //required 
                                     value={precio} 
                                     onChange={(e) => setPrecio(e.target.value)} 
                                 />
@@ -121,7 +121,7 @@ function ActualizarProducto() {
                                     name="input-stock" 
                                     pattern="[0-9]+" 
                                     maxLength="4" 
-                                    required 
+                                    //required 
                                     value={stock} 
                                     onChange={(e) => setStock(e.target.value)} 
                                 />
@@ -132,7 +132,7 @@ function ActualizarProducto() {
                                     type="text" 
                                     name="input-stockmin" 
                                     maxLength="9" 
-                                    required 
+                                    //required 
                                     value={stockmin} 
                                     onChange={(e) => setStockmin(e.target.value)} 
                                 />
