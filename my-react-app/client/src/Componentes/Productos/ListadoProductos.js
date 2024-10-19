@@ -8,21 +8,32 @@ const ListadoProductos = () => {
     useEffect(() => {
         const obtenerProductos = async () => {
             try {
-                const response = await fetch('http://localhost:3001/api/products'); // Asegúrate de que esta URL sea correcta
+                const response = await fetch('http://localhost:3001/api/products');
                 if (!response.ok) {
                     throw new Error('Error en la red al obtener los productos');
                 }
                 const data = await response.json();
-                setProductos(data);
+                // Convertir array de arrays a array de objetos
+                const productosFormateados = data.map((producto) => ({
+                    Codigo_Producto: producto[0],
+                    Activo: producto[1],
+                    Stock: producto[2],
+                    Precio_Unitario: producto[3],
+                    Nombre_Producto: producto[4],
+                    Categoria: producto[5],
+                    Color_Producto: producto[6],
+                }));
+                setProductos(productosFormateados);
             } catch (error) {
                 setError(error.message);
             } finally {
                 setCargando(false);
             }
         };
-
+    
         obtenerProductos();
     }, []);
+    
 
     if (cargando) {
         return <div>Cargando productos...</div>;
