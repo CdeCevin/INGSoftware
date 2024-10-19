@@ -51,11 +51,4 @@ const updateProducto = async (req, res) => {
         }
     }
 };
-
-// Asegúrate de que esta ruta esté configurada correctamente
-const express = require('express');
-const router = express.Router();
-
-router.post('/api/up_producto', upload.none(), updateProducto); // Usar el middleware de multer
-
-module.exports = router;
+module.exports = {updateProducto};
