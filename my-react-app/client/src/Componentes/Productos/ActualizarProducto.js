@@ -6,10 +6,10 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root'); // Reemplaza '#root' con tu selector de raíz
 
 function ActualizarProducto() {
-    const [nombre, setNombre] = useState('');
+    const [nombre, setNombre] = useState(null);
     const [codigo, setCodigo] = useState('');
-    const [stock, setStock] = useState('');
-    const [precio, setPrecio] = useState('NULL');
+    const [stock, setStock] = useState(null);
+    const [precio, setPrecio] = useState(null);
     const [stockmin, setStockmin] = useState(null);
     const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
     const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
