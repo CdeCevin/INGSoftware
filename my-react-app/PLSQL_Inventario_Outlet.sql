@@ -794,7 +794,7 @@ BEGIN
         ORDER BY Total_Cantidad DESC, Total_Ventas DESC;
 END;
 
------------------------------------------------------------------------------- NUEVO NUEVO
+------------------------------------------------------------------------------  CORRER ESTE
 CREATE OR REPLACE PROCEDURE ObtenerTopProductos(
     p_FechaInicio IN DATE DEFAULT NULL,
     p_FechaFin IN DATE DEFAULT NULL,
@@ -854,7 +854,7 @@ BEGIN
         GROUP BY M.Nombre_Producto
         ORDER BY Total_Cantidad ASC, Total_Ventas ASC;
 END;
----------------------------------------------------------------------------- NUEVO NUEVO
+---------------------------------------------------------------------------- CORRER ESTE
 CREATE OR REPLACE PROCEDURE ObtenerProductosMenosVendidos(
     
     p_FechaInicio IN DATE DEFAULT NULL,
@@ -912,7 +912,7 @@ EXCEPTION
     WHEN NO_DATA_FOUND THEN
         total_ventas := 0;
 END;
--------------------------------------------------------------------------- NUEVO NUEVO
+-------------------------------------------------------------------------- CORRER ESTE
 CREATE OR REPLACE PROCEDURE ObtenerVentasMensuales(
     p_FechaInicio IN DATE DEFAULT NULL,
     p_FechaFin IN DATE DEFAULT NULL,
@@ -1110,8 +1110,8 @@ BEGIN
 END;    
 
 
-
-CREATE OR REPLACE TRIGGER Tri_Up_Producto
+------------------------------------------------------- CORRER ESTE
+CREATE OR REPLACE TRIGGER Tri_Up_Producto 
 BEFORE UPDATE ON OUTLET_PRODUCTO
 FOR EACH ROW
 BEGIN
@@ -1129,7 +1129,7 @@ BEGIN
         END IF;       
 
 END;   
-
+-------------------------------------------------------
 
 CREATE OR REPLACE TRIGGER Up_Stock
 BEFORE INSERT OR UPDATE ON OUTLET_PRODUCTO
