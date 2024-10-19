@@ -3,36 +3,41 @@ const { getConnection } = require('../db/connection');
 
 // Función para obtener las ventas mensuales
 const obtenerVentasMensuales = async (req, res) => {
-    let connection;
-    try {
-      connection = await getConnection();
-      
-      const { fechaInicio, fechaFin } = req.query;
-  
-      // Convertir las fechas a objetos de tipo Date, o dejarlas como null
-      const fechaInicioDate = fechaInicio ? new Date(fechaInicio) : null;
-      const fechaFinDate = fechaFin ? new Date(fechaFin) : null;
-      console.log(fechaInicio);
+  let connection;
+  try {
+    connection = await getConnection();
 
-  
-      const result = await connection.execute(
-        `BEGIN ObtenerVentasMensuales(:p_FechaInicio, :p_FechaFin, :total_ventas); END;`,
-        {
-          p_FechaInicio: fechaInicio ? new Date(fechaInicio) : null,
-          p_FechaFin: fechaFin ? new Date(fechaFin) : null,
-          total_ventas: { dir: oracledb.BIND_OUT, type: oracledb.NUMBER },
-        }
-      );
-      res.json({ totalVentas: result.outBinds.total_ventas });
-    } catch (err) {
-      console.error('Error:', err);
-      res.status(500).send('Error retrieving data');
-    } finally {
-      if (connection) {
-        await connection.close();
-      }
+    const { fechaInicio, fechaFin } = req.query;
+
+    // Prepara los parámetros condicionalmente, solo pasa las fechas si existen
+    const params = {
+      total_ventas: { dir: oracledb.BIND_OUT, type: oracledb.NUMBER }
+    };
+    
+    if (fechaInicio) {
+      params.p_FechaInicio = new Date(fechaInicio);
     }
-  };
+
+    if (fechaFin) {
+      params.p_FechaFin = new Date(fechaFin);
+    }
+
+    const result = await connection.execute(
+      `BEGIN ObtenerVentasMensuales(:p_FechaInicio, :p_FechaFin, :total_ventas); END;`,
+      params
+    );
+
+    res.json({ totalVentas: result.outBinds.total_ventas });
+  } catch (err) {
+    console.error('Error:', err);
+    res.status(500).send('Error retrieving data');
+  } finally {
+    if (connection) {
+      await connection.close();
+    }
+  }
+};
+
   
 // Función para obtener los productos más vendidos
 const obtenerTopProductos = async (req, res) => {
