@@ -936,8 +936,6 @@ BEGIN
     ELSE
         v_FechaFin := p_FechaFin;
     END IF;
-
-
     -- Consulta para sumar las ventas en el rango de fechas
     SELECT NVL(SUM(C.Precio_Total), 0)
     INTO total_ventas

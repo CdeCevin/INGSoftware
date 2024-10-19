@@ -12,6 +12,8 @@ const obtenerVentasMensuales = async (req, res) => {
       // Convertir las fechas a objetos de tipo Date, o dejarlas como null
       const fechaInicioDate = fechaInicio ? new Date(fechaInicio) : null;
       const fechaFinDate = fechaFin ? new Date(fechaFin) : null;
+      console.log(fechaInicio);
+      console.log(fechaInicioDate)
   
       const result = await connection.execute(
         `BEGIN ObtenerVentasMensuales(:p_FechaInicio, :p_FechaFin, :total_ventas); END;`,
@@ -21,7 +23,7 @@ const obtenerVentasMensuales = async (req, res) => {
           total_ventas: { dir: oracledb.BIND_OUT, type: oracledb.NUMBER },
         }
       );
-  
+      console.log(p_FechaInicio);
       res.json({ totalVentas: result.outBinds.total_ventas });
     } catch (err) {
       console.error('Error:', err);
