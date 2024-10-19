@@ -4,6 +4,7 @@ Documenteishon:
 	2. "Eliminar Producto" Formulario listo
 	3. "Actualizar Producto" Formulario listo
 	4. @CdeCevin "Buscar Producto" Formulario listo - Falta el retorno para ver la tabla
+	5. "Reporte" Listo!
 
 	FALTA:
 	2. "Historial Ventas" falta front :c 
@@ -24,3 +25,6 @@ npm install react-modal (para nuevas alertas, esta la hice directa c:)
 npm install multer      (para el manejo de archivos (creo) my-react-app/client/src)
 npm install concurrently --save-dev (para lo de iniciar el sv y la pagina al mismo tiempo my-react-app/client/src)
 	
+
+
+
