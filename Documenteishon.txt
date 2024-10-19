@@ -1,9 +1,19 @@
 Documenteishon:
-
+	LISTO:
 	1. "Agregar Producto" está listo! :D
+	2. "Eliminar Producto" Formulario listo
+	3. "Actualizar Producto" Formulario listo
+	4. "Buscar Producto" Formulario listo - Falta el retorno para ver la tabla
+
+	FALTA:
 	2. "Historial Ventas" falta front :c 
  	3. "Ventas Pendientes" falta front :c (está avanzando pq estuve peleando con una cosa de que no me mostraba los productos, al final es cosa solamente del front (asi que te deje muxa pega perdón) pq en la consola logré que me lo imprimera bien tonces si está funcionando dadfadsf)
 	4. "Reporte" Falta front y falta backend (Compras entre fechas, necesito ver de nuevo el tema de las tablas y esos para quitar lo que sea mensual y eso... voy a avanzar en esto ahora pero es pa q no se me olvide) 
+	
+	
+	
+	
+	Otros
 	5. Al "package.json" de /client hay que modificar el script "start" para que se inicie el server y la pagina al mismo tiempo, debería ser ' "start": "concurrently \"node ../server/server.js\" \"react-scripts start\"", ' sin las comillas simples ñejeje 
 	6. Modificar las Tablas (lo q te mandé al discord) 
 	7. Añadir la carpeta Outlet a "/client/public/", aquí van a ir las fotos asociadas a los productos :D
