@@ -86,6 +86,7 @@ const obtenerPendientes = async (req, res) => {
         //console.log('Productos para la venta:', JSON.stringify(productos, null, 2));
 
         console.log(JSON.stringify(ventasConDetalles, null, 2)); //PENDIENTE (JAJA)
+        console.log(ventasConDetalles);
         res.json(ventasConDetalles);
     } catch (error) {
         console.error('Error al obtener ventas pendientes:', error);
