@@ -10,51 +10,45 @@ function ReporteGral() {
   const [fechaFin, setFechaFin] = useState('');
 
   const obtenerReportes = async () => {
-    // Si no hay fecha seleccionada, asigna `null` a los parámetros
-    const fechaInicioParam = fechaInicio === '' ? null : fechaInicio;
-    const fechaFinParam = fechaFin === '' ? null : fechaFin;
-
     // Obtener ventas mensuales con intervalo de tiempo si existe
-    const responseVentas = await fetch(`http://localhost:3001/api/reportes/ventas-mensuales?fechaInicio=${fechaInicioParam}&fechaFin=${fechaFinParam}`);
+    const responseVentas = await fetch(`http://localhost:3001/api/reportes/ventas-mensuales?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
     const dataVentas = await responseVentas.json();
     setVentasMensuales(dataVentas.totalVentas);
 
     // Obtener top productos
-    const responseTop = await fetch(`http://localhost:3001/api/reportes/top-productos?fechaInicio=${fechaInicioParam}&fechaFin=${fechaFinParam}`);
+    const responseTop = await fetch(`http://localhost:3001/api/reportes/top-productos?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
     const dataTop = await responseTop.json();
     setTopProductos(dataTop);
 
     // Obtener productos menos vendidos
-    const responseMenos = await fetch(`http://localhost:3001/api/reportes/menos-vendidos?fechaInicio=${fechaInicioParam}&fechaFin=${fechaFinParam}`);
+    const responseMenos = await fetch(`http://localhost:3001/api/reportes/menos-vendidos?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
     const dataMenos = await responseMenos.json();
     setMenosVendidos(dataMenos);
   };
 
-  const handleBuscar = (e) => {
-    e.preventDefault(); // Prevenir la recarga de la página
+  const handleBuscar = (event) => {
+    event.preventDefault();
     obtenerReportes();
   };
 
-  // Cargar reporte inicial con fechas nulas al montar el componente
   useEffect(() => {
-    obtenerReportes(); // Llamar a obtenerReportes cuando el componente se monte
     document.title = 'Reporte';
-  }, []);
+}, []);
 
   return (
     <div style={{ marginLeft: '12%' }}>
       <div className="main-block">
-        <form onSubmit={handleBuscar} encType="multipart/form-data">
+        <form onSubmit={handleBuscar} encType="multipart/form-data"  style={{padding: '10px'}}>
           <h1>Reporte General</h1>
           <fieldset>
             <legend>
               <h3>Ventas Totales</h3>
             </legend>
-            <div className="account-details" style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <div style={{ flex: '1' }}>
-                <h2>${ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>
+            <div className="account-details" style={{ display: 'flex', justifyContent: 'space-between',alignItems: 'center' }}>
+              <div style={{ flex: '1', display: 'flex', alignItems: 'center',marginLeft: '50px'  }}>
+              <h2>${ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>
               </div>
-              <div style={{ flex: '1' }}>
+              <div style={{ flex: '1', display: 'flex', alignItems: 'center',marginTop: '20px' }}>
                 <label>Desde</label>
                 <input 
                   type="date" 
@@ -62,7 +56,7 @@ function ReporteGral() {
                   onChange={(e) => setFechaInicio(e.target.value)} 
                 />
               </div>
-              <div style={{ flex: '1'}}>
+              <div style={{ flex: '1', display: 'flex', alignItems: 'center',marginTop: '20px' }}>
                 <label>Hasta</label>
                 <input 
                   type="date" 
@@ -70,45 +64,66 @@ function ReporteGral() {
                   onChange={(e) => setFechaFin(e.target.value)} 
                 />
               </div>
-              <div style={{ flex: '1' , alignSelf: 'center'}} >
-                <button 
-                  type="submit" 
-                  style={{ width:'50px', padding: '5px 10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <i className="fa fa-search"></i>
-                </button>
-              </div>
+            
+            <div style={{ flex: '1', display: 'flex', alignItems: 'center',marginTop: '13px', marginLeft: '10px' }}>
+            <button onClick={handleBuscar} style={{ width:'50px', padding: '5px 10px', display: 'flex', alignItems: 'center', justifyContent: 'center', alignSelf: 'center', margin:'0px' }}><i className="fa fa-search"></i></button>
+            </div>
             </div>
           </fieldset>
         </form>
 
-        <fieldset>
+      
+        {/*<h2>Ventas Mensuales: {ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>*/}
+          <fieldset>
           <legend>
-            <h3>Top Productos</h3>
+          <h3>Top Productos</h3>
           </legend>
-          <ul>
-            {topProductos.map((producto, index) => (
-              <li key={index}>
-                <strong>Producto:</strong> {producto[0]} <br />
-                <strong>Cantidad Vendida:</strong> {producto[1]} <br />
-                <strong>Precio:</strong> ${producto[2]}
-              </li>
-            ))}
-          </ul>
-        </fieldset> 
+          <div>
+            <table class="tabla-productos">
+              <thead>
+                <tr>
+                  <th>Producto</th>
+                  <th>Cantidad</th>
+                  <th>Total Ventas</th>
+                </tr>
+              </thead>
+              <tbody>
+                {topProductos.map((producto, index) => (
+                  <tr key={index}>
+                    <td>{producto[0]}</td>
+                    <td>{producto[1]}</td>
+                    <td>${producto[2]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          </fieldset> 
 
-        <fieldset> 
-          <legend>
-            <h3>Productos Menos Vendidos</h3>
+         <fieldset> 
+         <legend>
+          <h3>Productos Menos Vendidos</h3>
           </legend>
-          <ul>
-            {menosVendidos.map((producto, index) => (
-              <li key={index}>
-                <strong>Producto:</strong> {producto[0]} <br />
-                <strong>Cantidad Vendida:</strong> {producto[1]} <br />
-                <strong>Precio:</strong> ${producto[2]}
-              </li>
-            ))}
-          </ul>
+          <div>
+            <table class="tabla-productos">
+              <thead>
+                <tr>
+                  <th>Producto</th>
+                  <th>Cantidad</th>
+                  <th>Total Ventas</th>
+                </tr>
+              </thead>
+              <tbody>
+                {menosVendidos.map((producto, index) => (
+                  <tr key={index}>
+                    <td>{producto[0]}</td>
+                    <td>{producto[1]}</td>
+                    <td>${producto[2]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </fieldset> 
       </div>
     </div>
