@@ -14,43 +14,43 @@ function ActualizarProducto() {
     const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
     const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        
-        // Agregar los datos del formulario a FormData
-        formData.append('input-nombre', nombre);  // Usar 'nombre' en lugar de 'inputnombre'
-        formData.append('input-cod', codigo);
-        formData.append('input-stock', stock);
-        formData.append('input-precio', precio);
-        formData.append('input-stockmin', stockmin);
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    
+    // Agregar los datos del formulario a FormData
+    formData.append('nombre', nombre); // Cambiado para que coincida con el backend
+    formData.append('input-cod', codigo);
+    formData.append('input-stock', stock);
+    formData.append('input-precio', precio);
+    formData.append('input-stockmin', stockmin);
+    
+    console.log('Datos del formulario:', {
+        nombre, codigo, stock, precio, stockmin // Asegúrate de imprimir todos los campos
+    });
 
-        console.log('Datos del formulario:', {
-            nombre, codigo, stock, precio, stockmin // Mostrar todos los campos
+    try {
+        const response = await fetch('http://localhost:3001/api/up_producto', {
+            method: 'POST',
+            body: formData,
         });
 
-        try {
-            // Enviar los datos al backend
-            const response = await fetch('http://localhost:3001/api/up_producto', {
-                method: 'POST',
-                body: formData,
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                setModalMessage(data.message); // Mostrar mensaje de éxito
-                resetForm();
-            } else {
-                const errorData = await response.json();
-                setModalMessage(errorData.message); // Mostrar mensaje de error
-            }
-        } catch (error) {
-            console.error('Error al enviar el formulario:', error);
-            setModalMessage('Error al enviar el formulario.'); // Mensaje de error genérico
-        } finally {
-            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
+        if (response.ok) {
+            const data = await response.json();
+            setModalMessage(data.message);
+            resetForm();
+        } else {
+            const errorData = await response.json();
+            setModalMessage(errorData.message);
         }
-    };
+    } catch (error) {
+        console.error('Error al enviar el formulario:', error);
+        setModalMessage('Error al enviar el formulario.');
+    } finally {
+        setModalIsOpen(true);
+    }
+};
+
 
     const resetForm = () => {
         setNombre('');
@@ -79,7 +79,7 @@ function ActualizarProducto() {
                                 <input 
                                     type="text" 
                                     name="input-cod" 
-                                    pattern="[0-9]+" 
+                                    pattern="[0-9]+"
                                     maxLength="4" 
                                     required 
                                     value={codigo} 
@@ -94,8 +94,10 @@ function ActualizarProducto() {
                                 <label>Nombre</label>
                                 <input 
                                     type="text" 
-                                    name="nombre" // Cambiado a 'nombre'
+                                    name="input-nombre" 
+                                    //pattern="[0-9]+" //esto no deberia ir aqui o si(??) 
                                     maxLength="50" 
+                                    //required  //@dt-24 (Voy a seguir haciendo esto hasta que me digas q no sirva) se supone q esto no deberia ser extrictamente necesario
                                     value={nombre} 
                                     onChange={(e) => setNombre(e.target.value)} 
                                 />
@@ -107,6 +109,7 @@ function ActualizarProducto() {
                                     name="input-precio" 
                                     pattern="[0-9]+" 
                                     maxLength="10" 
+                                    //required 
                                     value={precio} 
                                     onChange={(e) => setPrecio(e.target.value)} 
                                 />
@@ -118,6 +121,7 @@ function ActualizarProducto() {
                                     name="input-stock" 
                                     pattern="[0-9]+" 
                                     maxLength="4" 
+                                    //required 
                                     value={stock} 
                                     onChange={(e) => setStock(e.target.value)} 
                                 />
@@ -128,6 +132,7 @@ function ActualizarProducto() {
                                     type="text" 
                                     name="input-stockmin" 
                                     maxLength="9" 
+                                    //required 
                                     value={stockmin} 
                                     onChange={(e) => setStockmin(e.target.value)} 
                                 />

@@ -1,43 +1,26 @@
-const express = require('express');
 const oracledb = require('oracledb');
-const multer = require('multer');
-const upload = multer(); // Inicializar multer
-const { getConnection } = require('../db/connection'); // Ajusta esto según tu estructura
+const { getConnection } = require('../db/connection');
 
-const router = express.Router();
-
-router.post('/up_producto',upload.none(), async (req, res) => {
-    // Accediendo a los campos como los has definido en tu formulario
-    const { 
-        'input-nombre': nombre, 
-        'input-Cod': codigo, 
-        'input-Stock': stock, 
-        'input-Precio': precio, 
-        'input-Stockmin': stockmin 
-    } = req.body;
-
-    // Imprimir los valores para verificar
-    console.log('Valores recibidos:', {
-        nombre, codigo, stock, precio, stockmin
-    });
-
-    if (!nombre || !codigo || !stock || !precio || !stockmin) {
+const updateProducto = async (req, res) => {
+    const { inputNombre, inputCod, inputStock, inputPrecio, inputStockmin } = req.body;
+    
+    if (!input-Nombre || !input-Cod || !input-Stock || !input-Precio || !input-Stockmin) {
         return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
     }
 
     let connection;
     try {
         connection = await getConnection();
-
-        // Llama al procedimiento almacenado
+        
+        // Llamar al procedimiento almacenado
         const result = await connection.execute(
             `BEGIN OUTLET_Up_Producto(:codigo, :stock, :precio, :nombre, :stock_minimo); END;`,
             {
-                codigo: Number(codigo),      // Se asegura de que los tipos sean correctos
-                stock: Number(stock),
-                precio: Number(precio),
-                nombre: nombre,
-                stock_minimo: Number(stockmin),
+                codigo: Number(inputCod),
+                stock: Number(inputStock),
+                precio: Number(inputPrecio),
+                nombre: inputNombre,
+                stock_minimo: Number(inputStockmin),
             }
         );
 
@@ -54,6 +37,6 @@ router.post('/up_producto',upload.none(), async (req, res) => {
             }
         }
     }
-});
+};
 
-module.exports = router;
+module.exports = { updateProducto };
