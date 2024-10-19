@@ -3,7 +3,7 @@ const { getConnection } = require('../db/connection');
 
 const updateProducto = async (req, res) => {
     const { 'input-Nombre':inputNombre, 'input-Cod':inputCod, 'input-Stock':inputStock, 'input-Precio':inputPrecio, 'input-Stockmin':inputStockmin} = req.body;
-
+    console.log(inputNombre,inputCod,inputStock,inputPrecio,inputStockmin)
     if (!inputNombre || !inputCod || !inputStock || !inputPrecio || !inputStockmin) {
         return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
     }
