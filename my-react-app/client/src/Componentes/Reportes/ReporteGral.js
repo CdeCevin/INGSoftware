@@ -9,8 +9,12 @@ function ReporteGral() {
   const [fechaInicio, setFechaInicio] = useState('');
   const [fechaFin, setFechaFin] = useState('');
 
-  const obtenerReportes = async (fechaInicioParam = null, fechaFinParam = null) => {
-    // Obtener ventas mensuales
+  const obtenerReportes = async () => {
+    // Si no hay fecha seleccionada, asigna `null` a los parámetros
+    const fechaInicioParam = fechaInicio === '' ? null : fechaInicio;
+    const fechaFinParam = fechaFin === '' ? null : fechaFin;
+
+    // Obtener ventas mensuales con intervalo de tiempo si existe
     const responseVentas = await fetch(`http://localhost:3001/api/reportes/ventas-mensuales?fechaInicio=${fechaInicioParam}&fechaFin=${fechaFinParam}`);
     const dataVentas = await responseVentas.json();
     setVentasMensuales(dataVentas.totalVentas);
@@ -28,15 +32,12 @@ function ReporteGral() {
 
   const handleBuscar = (e) => {
     e.preventDefault(); // Prevenir la recarga de la página
-    // Si no se seleccionan fechas, se envían como null
-    const fechaInicioParam = fechaInicio === '' ? null : fechaInicio;
-    const fechaFinParam = fechaFin === '' ? null : fechaFin;
-    obtenerReportes(fechaInicioParam, fechaFinParam);
+    obtenerReportes();
   };
 
-  // Llamada automática al cargar el componente
+  // Cargar reporte inicial con fechas nulas al montar el componente
   useEffect(() => {
-    obtenerReportes(); // Llamar a obtenerReportes con valores nulos para mostrar el mes anterior
+    obtenerReportes(); // Llamar a obtenerReportes cuando el componente se monte
     document.title = 'Reporte';
   }, []);
 
