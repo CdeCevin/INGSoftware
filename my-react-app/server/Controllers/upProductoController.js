@@ -6,7 +6,7 @@ const { getConnection } = require('../db/connection'); // Ajusta esto según tu 
 
 const router = express.Router();
 
-router.post('/api/up_producto', upload.none(), async (req, res) => {
+router.post('/up_producto', upload.none(), async (req, res) => {
     // Accediendo a los campos como los has definido en tu formulario
     const { 
         'input-nombre': nombre, 
