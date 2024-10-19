@@ -1,7 +1,8 @@
-const oracledb = require('oracledb');
-const { getConnection } = require('../db/connection');
+const express = require('express');
+const router = express.Router();
 const multer = require('multer');
-const upload = multer(); // Inicializar multer
+const path = require('path');
+const { getConnection } = require('../db/connection'); // Importar la conexión
 
 const updateProducto = async (req, res) => {
     const { 
