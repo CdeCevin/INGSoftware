@@ -1,32 +1,34 @@
 const express = require('express');
 const cors = require('cors');
-const reportesRoutes = require('./Routes/reportes'); // Rutas de reportes
-const historialVentasRoutes = require('./Routes/historialVentas'); // Rutas de historial de Ventas
-const clientListRoutes = require('./Routes/clientList'); // Rutas de lista de clientes
-const pendientesRoutes = require('./Routes/pendientes'); // Rutas de pendientes
-const ingresarProductosRoutes = require('./Routes/IngresarProductos'); // Rutas de insertar productos
+const reportesRoutes = require('./Routes/reportes');
+const historialVentasRoutes = require('./Routes/historialVentas');
+const clientListRoutes = require('./Routes/clientList');
+const pendientesRoutes = require('./Routes/pendientes');
+const ingresarProductosRoutes = require('./Routes/IngresarProductos');
 const datosEmpresaRoutes = require('./Routes/datosEmpresa');
 const productListRoutes = require('./Routes/productList');
-
+const upProductoRoutes = require('./Routes/upProducto'); // Importar la nueva ruta
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // Para manejar datos de formularios
+app.use(express.urlencoded({ extended: true }));
 
 // Usar las rutas
 app.use('/api/reportes', reportesRoutes);
 app.use('/api/historialVentas', historialVentasRoutes);
-app.use('/api/clientes', clientListRoutes); // Agregar la ruta para los clientes
+app.use('/api/clientes', clientListRoutes);
 app.use('/api/pendientes', pendientesRoutes);
-app.use('/api/ingresar_productos', ingresarProductosRoutes); // Agregar la ruta para insertar productos
+app.use('/api/ingresar_productos', ingresarProductosRoutes);
 app.use('/api/datosEmpresa', datosEmpresaRoutes);
-app.use('/api/products', productListRoutes); // '/api/products' llamará a getProducts
+app.use('/api/products', productListRoutes);
+app.use('/api/up_producto', upProductoRoutes); // Agregar la ruta para actualizar productos
 
 const port = 3001;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+
 
 
 //gtffffffffffffffffffffffffffffffffff 
