@@ -58,6 +58,7 @@ html, body {
   width: 100%;
   align-items: center;
   margin-bottom: 10px;
+  align-self: center;
   }
   label {
   padding: 0 5px;
