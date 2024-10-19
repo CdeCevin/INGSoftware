@@ -1,56 +1,48 @@
 const oracledb = require('oracledb');
-const {getConnection} = require('../bd/connection');
+const connection = require('../db/connection'); // Importa tu conexión
 
-// Controlador para obtener la lista de productos activos
-async function getProductList(req, res) {
-  let connection;
+// Función para obtener la lista de productos activos
+const getProducts = async (req, res) => {
+    let conn;
+    try {
+        // Obtener conexión de la base de datos
+        conn = await connection.getConnection();
 
-  try {
-    connection = await getConnection();
+        // Preparar y ejecutar el procedimiento almacenado
+        const result = await conn.execute(
+            `BEGIN 
+                Outlet_ObtenerProductosActivos(:c_Productos); 
+            END;`,
+            {
+                c_Productos: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT }
+            }
+        );
 
-    // Llamada al procedimiento almacenado para obtener productos activos
-    const result = await connection.execute(
-      `BEGIN 
-         Outlet_ObtenerProductosActivos(:c_Productos); 
-       END;`,
-      {
-        c_Productos: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT }
-      }
-    );
+        // Obtener el cursor de resultados
+        const cursor = result.outBinds.c_Productos;
 
-    const resultSet = result.outBinds.c_Productos;
-    let productos = [];
-    let row;
+        // Obtener todas las filas del cursor
+        const products = await cursor.getRows();
 
-    // Leer todas las filas del cursor
-    while ((row = await resultSet.getRow())) {
-      productos.push({
-        Codigo_Producto: row[0],
-        Activo: row[1],
-        Stock: row[2],
-        Precio_Unitario: row[3],
-        Nombre_Producto: row[4],
-        Tipo_Producto: row[5],
-        Color_Producto: row[6],
-      });
+        // Cerrar el cursor
+        await cursor.close();
+
+        // Devolver los productos en formato JSON
+        res.json(products);
+    } catch (err) {
+        console.error('Error al obtener la lista de productos:', err);
+        res.status(500).send('Error al obtener la lista de productos');
+    } finally {
+        if (conn) {
+            try {
+                // Cerrar la conexión
+                await conn.close();
+            } catch (err) {
+                console.error('Error al cerrar la conexión:', err);
+            }
+        }
     }
+};
 
-    await resultSet.close();
-
-    // Enviar los productos como respuesta
-    res.json(productos);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Error al obtener los productos');
-  } finally {
-    if (connection) {
-      try {
-        await connection.close();
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }
-}
-
-module.exports = { getProductList };
+// Exportar la función para ser usada en otras partes del código
+module.exports = { getProducts };

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { getProductList } = require('../Controllers/productListController');
+const { getProducts } = require('../Controllers/productListController'); // Asegúrate de que esta línea sea correcta
 
-// Ruta para obtener la lista de productos
-router.get('/', getProductList);
+// Define la ruta para obtener los productos
+router.get('/products', getProducts); // Esta ruta llamará al controlador getProducts
 
 module.exports = router;

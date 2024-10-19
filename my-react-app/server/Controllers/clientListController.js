@@ -1,8 +1,8 @@
 const oracledb = require('oracledb');
 const connection = require('../db/connection'); // Importa tu conexión
 
-// Función para obtener la lista de productos activos
-const getActiveProducts = async (req, res) => {
+// Función para obtener la lista de clientes
+const getClients = async (req, res) => {
     let conn;
     try {
         // Obtener conexión de la base de datos
@@ -11,27 +11,28 @@ const getActiveProducts = async (req, res) => {
         // Preparar y ejecutar el procedimiento almacenado
         const result = await conn.execute(
             `BEGIN 
-                Outlet_ObtenerProductosActivos(:c_Productos); 
+                Outlet_FiltrarCliente(:c_Clientes); 
             END;`,
             {
-                c_Productos: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT }
+                c_Clientes: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT }
             }
         );
 
         // Obtener el cursor de resultados
-        const cursor = result.outBinds.c_Productos;
+        const cursor = result.outBinds.c_Clientes;
 
         // Obtener todas las filas del cursor
-        const products = await cursor.getRows();
+        const clients = await cursor.getRows();
 
         // Cerrar el cursor
         await cursor.close();
 
-        // Devolver los productos en formato JSON
-        res.json(products);
+        // Devolver los clientes en formato JSON
+
+        res.json(clients);
     } catch (err) {
-        console.error('Error al obtener la lista de productos:', err);
-        res.status(500).send('Error al obtener la lista de productos');
+        console.error('Error al obtener la lista de clientes:', err);
+        res.status(500).send('Error al obtener la lista de clientes');
     } finally {
         if (conn) {
             try {
@@ -45,4 +46,4 @@ const getActiveProducts = async (req, res) => {
 };
 
 // Exportar la función para ser usada en otras partes del código
-module.exports = { getActiveProducts };
+module.exports = { getClients };
