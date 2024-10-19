@@ -1,12 +1,12 @@
 const oracledb = require('oracledb');
-const dbConfig = require('../bd/connection');
+const {getConnection} = require('../bd/connection');
 
 // Controlador para obtener la lista de productos activos
 async function getProductList(req, res) {
   let connection;
 
   try {
-    connection = await oracledb.getConnection(dbConfig);
+    connection = await oracledb.getConnection();
 
     // Llamada al procedimiento almacenado para obtener productos activos
     const result = await connection.execute(
