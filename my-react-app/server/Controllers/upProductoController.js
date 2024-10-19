@@ -3,7 +3,7 @@ const { getConnection } = require('../db/connection');
 
 const updateProducto = async (req, res) => {
     const { inputNombre, inputCod, inputStock, inputPrecio, inputStockmin } = req.body;
-    console.log(inputNombre, inputCod, inputStock, inputPrecio, inputStockmin);//PIPIPI NO PARA DE TIRARME undefined undefined undefined undefined undefined
+    console.log((inputNombre), number(inputCod), number(inputStock), number(inputPrecio), number(inputStockmin));//PIPIPI NO PARA DE TIRARME undefined undefined undefined undefined undefined
     let connection;
     try {
         connection = await getConnection();
