@@ -19,11 +19,11 @@ function ActualizarProducto() {
         const formData = new FormData();
         
         // Agregar los datos del formulario a FormData
-        formData.append('input-nombre', nombre || null);
-        formData.append('input-cod', codigo);
-        formData.append('input-stock', stock || null);
-        formData.append('input-precio', precio || null);
-        formData.append('input-stockmin', stockmin || null);
+        formData.append('inputnombre', nombre || null);
+        formData.append('inputcod', codigo);
+        formData.append('inputstock', stock || null);
+        formData.append('inputprecio', precio || null);
+        formData.append('inputstockmin', stockmin || null);
         console.log('Datos del formulario:', {
             codigo, stock, precio, stockmin // Muestra solo los campos numéricos
         });
