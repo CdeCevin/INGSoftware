@@ -8,7 +8,7 @@ function Inicio() {
             <div class="bloqueprincipal">
             <div style={{ marginLeft: '5%' }}>
                 <div class="w3-container">
-                <h1>¡BIENVENIDO!</h1>
+                <h1>¡Bienvenido!</h1>
                 <h3>Bienvenido a la aplicación de registro web de Outlet A Tu Hogar.</h3>
                 <p>En el menú de su izquierda podrá encontrar las acciones disponibles para el manejo del negocio.
                 </p>
