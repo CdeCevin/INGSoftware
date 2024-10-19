@@ -20,10 +20,10 @@ function ActualizarProducto() {
         
         // Agregar los datos del formulario a FormData
         formData.append('input-nombre', nombre);
-        formData.append('input-cod', codigo);
-        formData.append('input-stock', stock);
-        formData.append('input-precio', precio);
-        formData.append('input-stockmin', stockmin);
+        formData.append('input-cod', codigo||NULL);
+        formData.append('input-stock', stock||NULL);
+        formData.append('input-precio', precio||NULL);
+        formData.append('input-stockmin', stockmin||NULL);
         console.log('Datos del formulario:', {
             codigo, stock, precio, stockmin // Muestra solo los campos numéricos
         });
