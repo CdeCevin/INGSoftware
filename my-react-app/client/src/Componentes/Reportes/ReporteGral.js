@@ -52,7 +52,7 @@ function ReporteGral() {
             </legend>
             <div className="account-details" style={{ display: 'flex', justifyContent: 'space-between' }}>
               <div style={{ flex: '1' }}>
-                <h2>{'$',ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>
+                <h2>${ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>
               </div>
               <div style={{ flex: '1' }}>
                 <label>Desde</label>
