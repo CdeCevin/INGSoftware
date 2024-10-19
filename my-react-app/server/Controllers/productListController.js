@@ -1,26 +1,28 @@
 const oracledb = require('oracledb');
-const dbConfig = require('../bd/connection');  // Aquí importas la conexión a la BD
+const dbConfig = require('../bd/connection');
 
-// Controlador para obtener productos activos
-const obtenerProductosActivos = async (req, res) => {
+// Controlador para obtener la lista de productos activos
+async function getProductList(req, res) {
   let connection;
 
   try {
     connection = await oracledb.getConnection(dbConfig);
 
+    // Llamada al procedimiento almacenado para obtener productos activos
     const result = await connection.execute(
-      `BEGIN
-         Outlet_ObtenerProductosActivos(:cursor);
+      `BEGIN 
+         Outlet_ObtenerProductosActivos(:c_Productos); 
        END;`,
       {
-        cursor: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT }
+        c_Productos: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT }
       }
     );
 
-    const resultSet = result.outBinds.cursor;
-    const productos = [];
-
+    const resultSet = result.outBinds.c_Productos;
+    let productos = [];
     let row;
+
+    // Leer todas las filas del cursor
     while ((row = await resultSet.getRow())) {
       productos.push({
         Codigo_Producto: row[0],
@@ -34,21 +36,21 @@ const obtenerProductosActivos = async (req, res) => {
     }
 
     await resultSet.close();
+
+    // Enviar los productos como respuesta
     res.json(productos);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error al obtener los productos.");
+    res.status(500).send('Error al obtener los productos');
   } finally {
     if (connection) {
       try {
         await connection.close();
-      } catch (err) {
-        console.error(err);
+      } catch (error) {
+        console.error(error);
       }
     }
   }
-};
+}
 
-module.exports = {
-  obtenerProductosActivos
-};
+module.exports = { getProductList };

@@ -8,7 +8,7 @@ const ListadoProductos = () => {
   // Función para obtener los productos desde el backend
   const fetchProductos = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/productList'); // Llama al endpoint del backend
+      const response = await fetch('/api/productos'); // Llama al endpoint del backend
       if (!response.ok) {
         throw new Error('Error al obtener los productos');
       }
