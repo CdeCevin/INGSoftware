@@ -92,7 +92,7 @@ function ActualizarProducto() {
                             <legend>
                             <h3>Detalles del Producto</h3>
                             </legend>
-                            <div>
+                            <div className="account-details">
                                 <label>Nombre</label>
                                 <input 
                                     type="text" 
