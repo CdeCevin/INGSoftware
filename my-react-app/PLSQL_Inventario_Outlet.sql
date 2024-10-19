@@ -806,7 +806,7 @@ IS
 BEGIN
     -- Si no se proporciona fecha de inicio, usamos hace 1 mes por defecto
     IF p_FechaInicio IS NULL THEN
-        v_FechaInicio := ADD_MONTHS(SYSDATE, -1);
+        v_FechaInicio := TO_DATE('2021-01-01', 'YYYY-MM-DD');
     ELSE
         v_FechaInicio := p_FechaInicio;
     END IF;
@@ -867,7 +867,7 @@ IS
 BEGIN
     -- Mismo proceso que en ObtenerTopProductos
     IF p_FechaInicio IS NULL THEN
-        v_FechaInicio := ADD_MONTHS(SYSDATE, -1);
+        v_FechaInicio := TO_DATE('2021-01-01', 'YYYY-MM-DD');
     ELSE
         v_FechaInicio := p_FechaInicio;
     END IF;
@@ -925,7 +925,7 @@ BEGIN
     -- Si no se proporciona un rango de fechas, calcular para el mes anterior
 |    -- Si no se proporciona fecha de inicio, usamos hace 1 mes por defecto
     IF p_FechaInicio IS NULL THEN
-        v_FechaInicio := ADD_MONTHS(SYSDATE, -1);
+        v_FechaInicio := TO_DATE('2021-01-01', 'YYYY-MM-DD');
     ELSE
         v_FechaInicio := p_FechaInicio;
     END IF;
