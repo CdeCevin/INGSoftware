@@ -9,29 +9,34 @@ function ReporteGral() {
   const [fechaInicio, setFechaInicio] = useState('');
   const [fechaFin, setFechaFin] = useState('');
 
-  const obtenerReportes = async () => {
-    // Obtener ventas mensuales con intervalo de tiempo si existe
-    const responseVentas = await fetch(`http://localhost:3001/api/reportes/ventas-mensuales?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
+  const obtenerReportes = async (fechaInicioParam = null, fechaFinParam = null) => {
+    // Obtener ventas mensuales
+    const responseVentas = await fetch(`http://localhost:3001/api/reportes/ventas-mensuales?fechaInicio=${fechaInicioParam}&fechaFin=${fechaFinParam}`);
     const dataVentas = await responseVentas.json();
     setVentasMensuales(dataVentas.totalVentas);
 
     // Obtener top productos
-    const responseTop = await fetch(`http://localhost:3001/api/reportes/top-productos?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
+    const responseTop = await fetch(`http://localhost:3001/api/reportes/top-productos?fechaInicio=${fechaInicioParam}&fechaFin=${fechaFinParam}`);
     const dataTop = await responseTop.json();
     setTopProductos(dataTop);
 
     // Obtener productos menos vendidos
-    const responseMenos = await fetch(`http://localhost:3001/api/reportes/menos-vendidos?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
+    const responseMenos = await fetch(`http://localhost:3001/api/reportes/menos-vendidos?fechaInicio=${fechaInicioParam}&fechaFin=${fechaFinParam}`);
     const dataMenos = await responseMenos.json();
     setMenosVendidos(dataMenos);
   };
 
   const handleBuscar = (e) => {
     e.preventDefault(); // Prevenir la recarga de la página
-    obtenerReportes();
+    // Si no se seleccionan fechas, se envían como null
+    const fechaInicioParam = fechaInicio === '' ? null : fechaInicio;
+    const fechaFinParam = fechaFin === '' ? null : fechaFin;
+    obtenerReportes(fechaInicioParam, fechaFinParam);
   };
 
+  // Llamada automática al cargar el componente
   useEffect(() => {
+    obtenerReportes(); // Llamar a obtenerReportes con valores nulos para mostrar el mes anterior
     document.title = 'Reporte';
   }, []);
 
@@ -66,7 +71,7 @@ function ReporteGral() {
               </div>
               <div style={{ flex: '1' , alignSelf: 'center'}} >
                 <button 
-                  type="submit" // Tipo submit si lo manejas en un formulario
+                  type="submit" 
                   style={{ width:'50px', padding: '5px 10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <i className="fa fa-search"></i>
                 </button>
