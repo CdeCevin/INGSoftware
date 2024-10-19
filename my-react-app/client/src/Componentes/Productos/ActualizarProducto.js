@@ -19,11 +19,11 @@ const handleSubmit = async (e) => {
     const formData = new FormData();
     
     // Agregar los datos del formulario a FormData
-    formData.append('nombre', nombre); // Cambiado para que coincida con el backend
-    formData.append('input-cod', codigo);
-    formData.append('input-stock', stock);
-    formData.append('input-precio', precio);
-    formData.append('input-stockmin', stockmin);
+    formData.append('inputnombre', nombre); // Cambiado para que coincida con el backend
+    formData.append('inputcod', codigo);
+    formData.append('inputstock', stock);
+    formData.append('inputprecio', precio);
+    formData.append('inputstockmin', stockmin);
     
     console.log('Datos del formulario:', {
         nombre, codigo, stock, precio, stockmin // Asegúrate de imprimir todos los campos
