@@ -16,29 +16,30 @@ function ActualizarProducto() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        
-        // Agregar los datos del formulario a FormData
-        formData.append('inputnombre', nombre || null);
-        formData.append('inputcod', codigo);
-        formData.append('inputstock', stock || null);
-        formData.append('inputprecio', precio || null);
-        formData.append('inputstockmin', stockmin || null);
-        console.log('Datos del formulario:', {
-            codigo, stock, precio, stockmin // Muestra solo los campos numéricos
-        });
+
+        // Preparar los datos en formato JSON
+        const formData = {
+            inputNombre: nombre || null,
+            inputCod: codigo,
+            inputStock: stock || null,
+            inputPrecio: precio || null,
+            inputStockmin: stockmin || null,
+        };
+        console.log('Datos del formulario:', formData);
 
         try {
             // Enviar los datos al backend
             const response = await fetch('http://localhost:3001/api/up_producto/', {
                 method: 'POST',
-                body: formData,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
             });
 
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message); // Mostrar mensaje de éxito
-                // Opcional: Reiniciar el formulario
                 resetForm();
             } else {
                 const errorData = await response.json();
@@ -71,7 +72,7 @@ function ActualizarProducto() {
     return (
         <div style={{ marginLeft: '12%' }}>
             <div className="main-block">
-                <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <form onSubmit={handleSubmit}>
                     <h1>Actualizar Producto</h1>
                     <fieldset>
                         <legend>
@@ -94,16 +95,15 @@ function ActualizarProducto() {
                     </fieldset>
                     <fieldset>   
                         <legend>
-                            <h3>Producto a Editar</h3>
+                            <h3>Detalles del Producto</h3>
                         </legend>
-                        <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }} >
+                        <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
                             <div>
                                 <label>Nombre</label>
                                 <input 
                                     type="text" 
                                     name="input-nombre" 
                                     maxLength="50" 
-                                     
                                     value={nombre} 
                                     onChange={(e) => setNombre(e.target.value)} 
                                 />
@@ -115,7 +115,6 @@ function ActualizarProducto() {
                                     name="input-precio" 
                                     pattern="[0-9]+" 
                                     maxLength="10" 
-                                     
                                     value={precio} 
                                     onChange={(e) => setPrecio(e.target.value)} 
                                 />
@@ -127,12 +126,10 @@ function ActualizarProducto() {
                                     name="input-stock" 
                                     pattern="[0-9]+" 
                                     maxLength="4" 
-                                    
                                     value={stock} 
                                     onChange={(e) => setStock(e.target.value)} 
                                 />
                             </div>
-                            
                             <div>
                                 <label>Stock Mínimo</label>
                                 <input 
@@ -141,15 +138,13 @@ function ActualizarProducto() {
                                     maxLength="9" 
                                     value={stockmin} 
                                     onChange={(e) => setStockmin(e.target.value)} 
-                                    
                                 />
                             </div>
-                                
-                        </div>     
+                        </div>
                     </fieldset>
                     <button type="submit">Actualizar</button>
                 </form>
-                </div>
+            </div>
             {/* Modal para mostrar mensajes */}
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
                 <h2>Mensaje</h2>

@@ -3,13 +3,13 @@ const { getConnection } = require('../db/connection');
 
 const updateProducto = async (req, res) => {
     const { inputNombre, inputCod, inputStock, inputPrecio, inputStockmin } = req.body;
-    console.log( inputNombre, inputCod, inputStock, inputPrecio, inputStockmin );
+    console.log(inputNombre, inputCod, inputStock, inputPrecio, inputStockmin);
 
     let connection;
     try {
         connection = await getConnection();
-        
-        // Convertir valores 'null' a null, excepto el código que no debe ser nulo
+
+        // Convertir valores a `null` cuando sea necesario
         const codigo = Number(inputCod);
         const stock = inputStock ? Number(inputStock) : null;
         const precio = inputPrecio ? Number(inputPrecio) : null;
