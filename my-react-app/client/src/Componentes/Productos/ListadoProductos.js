@@ -23,7 +23,7 @@ const ListadoProductos = () => {
                     Categoria: producto[5],
                     Color_Producto: producto[6],
                 }));
-                console.log(productosFormateados)
+                console.log(productosFormateados);
                 setProductos(productosFormateados);
             } catch (error) {
                 setError(error.message);
