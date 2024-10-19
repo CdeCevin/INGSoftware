@@ -6,27 +6,26 @@ const obtenerVentasMensuales = async (req, res) => {
   let connection;
   try {
     connection = await getConnection();
-
+    
     const { fechaInicio, fechaFin } = req.query;
 
-    // Prepara los parámetros condicionalmente, solo pasa las fechas si existen
-    const params = {
-      total_ventas: { dir: oracledb.BIND_OUT, type: oracledb.NUMBER }
-    };
-    
-    if (fechaInicio) {
-      params.p_FechaInicio = new Date(fechaInicio);
-    }
+    // Asignar null si las cadenas son "null"
+    const fechaInicioDate = fechaInicio === 'null' ? null : (fechaInicio ? new Date(fechaInicio) : null);
+    const fechaFinDate = fechaFin === 'null' ? null : (fechaFin ? new Date(fechaFin) : null);
 
-    if (fechaFin) {
-      params.p_FechaFin = new Date(fechaFin);
-    }
+    // Imprimir los parámetros para ver qué se está enviando
+    console.log('Parámetros enviados a ObtenerVentasMensuales:');
+    console.log('fechaInicio:', fechaInicioDate);
+    console.log('fechaFin:', fechaFinDate);
 
     const result = await connection.execute(
       `BEGIN ObtenerVentasMensuales(:p_FechaInicio, :p_FechaFin, :total_ventas); END;`,
-      params
+      {
+        p_FechaInicio: fechaInicioDate,
+        p_FechaFin: fechaFinDate,
+        total_ventas: { dir: oracledb.BIND_OUT, type: oracledb.NUMBER },
+      }
     );
-
     res.json({ totalVentas: result.outBinds.total_ventas });
   } catch (err) {
     console.error('Error:', err);
@@ -37,6 +36,7 @@ const obtenerVentasMensuales = async (req, res) => {
     }
   }
 };
+
 
   
 // Función para obtener los productos más vendidos
