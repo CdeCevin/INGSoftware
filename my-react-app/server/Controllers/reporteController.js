@@ -13,17 +13,16 @@ const obtenerVentasMensuales = async (req, res) => {
       const fechaInicioDate = fechaInicio ? new Date(fechaInicio) : null;
       const fechaFinDate = fechaFin ? new Date(fechaFin) : null;
       console.log(fechaInicio);
-      console.log(fechaInicioDate)
+
   
       const result = await connection.execute(
         `BEGIN ObtenerVentasMensuales(:p_FechaInicio, :p_FechaFin, :total_ventas); END;`,
         {
-          p_FechaInicio: fechaInicio ? new Date(fechaInicio) : null,
-          p_FechaFin: fechaFin ? new Date(fechaFin) : null,
+          p_FechaInicio: fechaInicio,
+          p_FechaFin: fechaFin,
           total_ventas: { dir: oracledb.BIND_OUT, type: oracledb.NUMBER },
         }
       );
-      console.log(p_FechaInicio);
       res.json({ totalVentas: result.outBinds.total_ventas });
     } catch (err) {
       console.error('Error:', err);
