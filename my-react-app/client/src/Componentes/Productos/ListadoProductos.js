@@ -8,7 +8,7 @@ const ListadoProductos = () => {
     useEffect(() => {
         const obtenerProductos = async () => {
             try {
-                const response = await fetch('/api/products'); // Asegúrate de que esta URL sea correcta
+                const response = await fetch('http://localhost:3001//api/products'); // Asegúrate de que esta URL sea correcta
                 if (!response.ok) {
                     throw new Error('Error en la red al obtener los productos');
                 }
