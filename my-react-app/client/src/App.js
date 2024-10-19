@@ -30,7 +30,7 @@ import VentaClienteNu from '../src/Componentes/Ventas/VentaClienteNu';
 
 function App() {
     return (
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'block' }}>
                 <Menu />
                 <div>
                     <Routes>
