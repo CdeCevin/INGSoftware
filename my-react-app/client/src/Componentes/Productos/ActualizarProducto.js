@@ -10,7 +10,7 @@ function ActualizarProducto() {
     const [codigo, setCodigo] = useState('');
     const [stock, setStock] = useState('');
     const [precio, setPrecio] = useState('');
-    const [stockmin, setStockmin] = useState(NULL);
+    const [stockmin, setStockmin] = useState();
     const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
     const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
 
