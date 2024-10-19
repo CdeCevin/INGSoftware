@@ -6,6 +6,7 @@ const clientListRoutes = require('./Routes/clientList'); // Rutas de lista de cl
 const pendientesRoutes = require('./Routes/pendientes'); // Rutas de pendientes
 const ingresarProductosRoutes = require('./Routes/IngresarProductos'); // Rutas de insertar productos
 const datosEmpresaRoutes = require('./Routes/datosEmpresa');
+const productListRoutes = require('./Routes/productList');
 
 
 const app = express();
@@ -20,6 +21,7 @@ app.use('/api/clientes', clientListRoutes); // Agregar la ruta para los clientes
 app.use('/api/pendientes', pendientesRoutes);
 app.use('/api/ingresar_productos', ingresarProductosRoutes); // Agregar la ruta para insertar productos
 app.use('/api/datosEmpresa', datosEmpresaRoutes);
+app.use('/api/productList', productListRoutes);
 
 const port = 3001;
 app.listen(port, () => {
