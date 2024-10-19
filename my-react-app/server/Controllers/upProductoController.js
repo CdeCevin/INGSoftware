@@ -16,11 +16,11 @@ const updateProducto = async (req, res) => {
         const result = await connection.execute(
             `BEGIN OUTLET_Up_Producto(:codigo, :stock, :precio, :nombre, :stock_minimo); END;`,
             {
-                codigo: inputCod,
-                stock: inputStock,
-                precio: inputPrecio,
+                codigo: Number(inputCod),
+                stock: Number(inputStock),
+                precio: Number(inputPrecio),
                 nombre: inputNombre,
-                stock_minimo: inputStockmin,
+                stock_minimo: Number(inputStockmin),
             }
         );
 
