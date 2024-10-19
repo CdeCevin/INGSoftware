@@ -11,6 +11,9 @@ function ReporteGral() {
 
   const obtenerReportes = async () => {
     // Obtener ventas mensuales con intervalo de tiempo si existe
+    const fechaInicioParam = fechaInicio === '' ? null : fechaInicio;
+    const fechaFinParam = fechaFin === '' ? null : fechaFin;
+
     const responseVentas = await fetch(`http://localhost:3001/api/reportes/ventas-mensuales?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
     const dataVentas = await responseVentas.json();
     setVentasMensuales(dataVentas.totalVentas);
