@@ -2,9 +2,13 @@ const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
 
 const updateProducto = async (req, res) => {
-    const { nombre, inputCod, inputStock, inputPrecio, 'input-Stockmin':inputStockmin} = req.body;
-    console.log(nombre, inputCod, inputStock, inputPrecio, 'input-Stockmin')
-    if (!input-Nombre || !input-Cod || !input-Stock || !input-Precio || !'inputStockmin') {
+    // Extrae los valores de req.body
+    const { nombre, 'input-cod': inputCod, 'input-stock': inputStock, 'input-precio': inputPrecio, 'input-stockmin': inputStockmin } = req.body;
+    
+    console.log(nombre, inputCod, inputStock, inputPrecio, inputStockmin); // Revisa la consola para ver los valores recibidos
+
+    // Verifica que todos los campos son obligatorios
+    if (!nombre || !inputCod || !inputStock || !inputPrecio || !inputStockmin) {
         return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
     }
 
@@ -12,14 +16,14 @@ const updateProducto = async (req, res) => {
     try {
         connection = await getConnection();
         
-        // Llamar al procedimiento almacenado
+        // Llama al procedimiento almacenado
         const result = await connection.execute(
             `BEGIN OUTLET_Up_Producto(:codigo, :stock, :precio, :nombre, :stock_minimo); END;`,
             {
                 codigo: Number(inputCod),
                 stock: Number(inputStock),
                 precio: Number(inputPrecio),
-                nombre: inputNombre,
+                nombre: nombre, // Aquí ya tienes el nombre bien referenciado
                 stock_minimo: Number(inputStockmin),
             }
         );
