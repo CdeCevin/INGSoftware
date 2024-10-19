@@ -22,9 +22,15 @@ const ListadoPendientes = () => {
         fetchPendientes();
     }, []);
 
+    useEffect(() => {
+        document.title = 'Pendientes';
+    }, []);
+
     return (
-        <div style={{ marginLeft: '10%' }}>
-            <h3>Ventas Pendientes</h3>
+        <div style={{ marginLeft: '13%' }}>
+            <div className="main-block">
+            <br></br>
+            <h1>Ventas Pendientes</h1><br></br>
             <table className="venta-table">
                 <thead>
                     <tr>
@@ -81,6 +87,7 @@ const ListadoPendientes = () => {
                     )}
                 </tbody>
             </table>
+            </div>
         </div>
     );
 };
