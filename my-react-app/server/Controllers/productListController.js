@@ -6,7 +6,7 @@ async function getProductList(req, res) {
   let connection;
 
   try {
-    connection = await oracledb.getConnection();
+    connection = await getConnection();
 
     // Llamada al procedimiento almacenado para obtener productos activos
     const result = await connection.execute(
