@@ -923,14 +923,20 @@ IS
     v_FechaFin DATE;
 BEGIN
     -- Si no se proporciona un rango de fechas, calcular para el mes anterior
-    IF p_FechaInicio IS NULL OR p_FechaFin IS NULL THEN
-        v_FechaInicio := TRUNC(ADD_MONTHS(SYSDATE, -1), 'MM'); -- Primer día del mes anterior
-        v_FechaFin := LAST_DAY(ADD_MONTHS(SYSDATE, -1)); -- Último día del mes anterior
+|    -- Si no se proporciona fecha de inicio, usamos hace 1 mes por defecto
+    IF p_FechaInicio IS NULL THEN
+        v_FechaInicio := ADD_MONTHS(SYSDATE, -1);
     ELSE
-        -- Si se proporcionan fechas, usarlas directamente
         v_FechaInicio := p_FechaInicio;
+    END IF;
+
+    -- Si no se proporciona fecha de fin, usamos SYSDATE (hoy)
+    IF p_FechaFin IS NULL THEN
+        v_FechaFin := SYSDATE;
+    ELSE
         v_FechaFin := p_FechaFin;
     END IF;
+
 
     -- Consulta para sumar las ventas en el rango de fechas
     SELECT NVL(SUM(C.Precio_Total), 0)
