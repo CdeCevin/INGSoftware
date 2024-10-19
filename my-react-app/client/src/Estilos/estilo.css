@@ -36,6 +36,10 @@ html, body {
   border-top: 1px solid #6b9787;
   width: 100%;
   margin-bottom: 20px;
+  padding: 20px;
+  margin: 0;
+  display: block;
+  unicode-bidi: isolate;
   }
   .account-details, .personal-details {
   display: flex;
@@ -287,7 +291,11 @@ border-radius: 8px;
 border: 1px solid #ccc;
 
 }
-
+.tabla-productos th, .tabla-productos td {
+width: 33%;
+padding: 0 15px;
+text-align: left; /* Centrar el texto horizontalmente */
+}
 
 
 /* Nueva hoja de estilo para la venta */
@@ -322,6 +330,18 @@ border: 1px solid #ccc;
   color: white;
   border: 1px solid #6b9787;
   border-radius: 3px;
+}
+
+.btn_Pendientes {
+background-color: transparent;
+color:#666;
+cursor: pointer;
+}
+
+.btn_Pendientes:hover {
+background-color: transparent;
+color: #969696;
+cursor: pointer;
 }
 
 .producto {
