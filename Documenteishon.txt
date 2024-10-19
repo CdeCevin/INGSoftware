@@ -8,9 +8,7 @@ Documenteishon:
 
 	FALTA:
 	2. "Historial Ventas" falta front :c 
- 	3. "Ventas Pendientes" falta front :c (está avanzando pq estuve peleando con una cosa de que no me mostraba los productos, al final es cosa solamente del front (asi que te deje muxa pega perdón) pq en la consola logré que me lo imprimera bien tonces si está funcionando dadfadsf)
-	4. "Reporte" Falta front y falta backend (Compras entre fechas, necesito ver de nuevo el tema de las tablas y esos para quitar lo que sea mensual y eso... voy a avanzar en esto ahora pero es pa q no se me olvide) 
-	5. @CdeCevin El reporte está a medias, pero a mi no me funciona lo de la busqueda?? cuando busco algo me manda pal menu	
+ 	3. "Ventas Pendientes" Esta listo el front, falta el realizado y el cancelar
 	
 	
 	Otros
