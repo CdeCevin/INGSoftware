@@ -1,13 +1,22 @@
 const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
+const multer = require('multer');
+const upload = multer(); // Inicializar multer
 
 const updateProducto = async (req, res) => {
-    // Extrae los valores de req.body
-    const { nombre, 'input-cod': inputCod, 'input-stock': inputStock, 'input-precio': inputPrecio, 'input-stockmin': inputStockmin } = req.body;
-    
-    console.log(nombre, inputCod, inputStock, inputPrecio, inputStockmin); // Revisa la consola para ver los valores recibidos
+    const { 
+        nombre, 
+        'input-cod': inputCod, 
+        'input-stock': inputStock, 
+        'input-precio': inputPrecio, 
+        'input-stockmin': inputStockmin 
+    } = req.body;
 
-    // Verifica que todos los campos son obligatorios
+    // Imprimir los valores para verificar
+    console.log('Valores recibidos:', {
+        nombre, inputCod, inputStock, inputPrecio, inputStockmin
+    });
+
     if (!nombre || !inputCod || !inputStock || !inputPrecio || !inputStockmin) {
         return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
     }
@@ -15,7 +24,7 @@ const updateProducto = async (req, res) => {
     let connection;
     try {
         connection = await getConnection();
-        
+
         // Llama al procedimiento almacenado
         const result = await connection.execute(
             `BEGIN OUTLET_Up_Producto(:codigo, :stock, :precio, :nombre, :stock_minimo); END;`,
@@ -43,4 +52,10 @@ const updateProducto = async (req, res) => {
     }
 };
 
-module.exports = { updateProducto };
+// Asegúrate de que esta ruta esté configurada correctamente
+const express = require('express');
+const router = express.Router();
+
+router.post('/api/up_producto', upload.none(), updateProducto); // Usar el middleware de multer
+
+module.exports = router;
