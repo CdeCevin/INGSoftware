@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
@@ -72,6 +72,10 @@ function IngresoProducto() {
     const closeModal = () => {
         setModalIsOpen(false);
     };
+
+    useEffect(() => {
+        document.title = 'Ingresar Producto';
+    }, []);
 
     return (
         <div style={{ marginLeft: '12%' }}>
