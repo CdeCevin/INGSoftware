@@ -28,6 +28,7 @@ const getProducts = async (req, res) => {
         await cursor.close();
 
         // Devolver los productos en formato JSON
+        console.log(products);
         res.json(products);
     } catch (err) {
         console.error('Error al obtener la lista de productos:', err);
