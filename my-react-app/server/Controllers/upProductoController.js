@@ -2,8 +2,8 @@ const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
 
 const updateProducto = async (req, res) => {
-    const { inputNombre, inputCod, inputStock, inputPrecio, 'input-Stockmin':inputStockmin} = req.body;
-    console.log(inputNombre, inputCod, inputStock, inputPrecio, 'input-Stockmin')
+    const { inputnombre, inputCod, inputStock, inputPrecio, 'input-Stockmin':inputStockmin} = req.body;
+    console.log(inputnombre, inputCod, inputStock, inputPrecio, 'input-Stockmin')
     if (!input-Nombre || !input-Cod || !input-Stock || !input-Precio || !'inputStockmin') {
         return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
     }
