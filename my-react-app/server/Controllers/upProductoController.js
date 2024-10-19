@@ -4,10 +4,6 @@ const { getConnection } = require('../db/connection');
 const updateProducto = async (req, res) => {
     const { inputNombre, inputCod, inputStock, inputPrecio, inputStockmin } = req.body;
     console.log(inputNombre, inputCod, inputStock, inputPrecio, inputStockmin);//PIPIPI NO PARA DE TIRARME undefined undefined undefined undefined undefined
-    if (!inputNombre || !inputCod || !inputStock || !inputPrecio || !inputStockmin) {
-        return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
-    }
-
     let connection;
     try {
         connection = await getConnection();
@@ -16,11 +12,11 @@ const updateProducto = async (req, res) => {
         const result = await connection.execute(
             `BEGIN OUTLET_Up_Producto(:codigo, :stock, :precio, :nombre, :stock_minimo); END;`,
             {
-                codigo: Number(inputCod),
-                stock: Number(inputStock),
-                precio: Number(inputPrecio),
+                codigo: (inputCod),
+                stock: (inputStock),
+                precio: (inputPrecio),
                 nombre: inputNombre,
-                stock_minimo: Number(inputStockmin),
+                stock_minimo: (inputStockmin),
             }
         );
 
