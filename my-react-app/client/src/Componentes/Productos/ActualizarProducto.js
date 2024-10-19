@@ -95,7 +95,7 @@ function ActualizarProducto() {
                                 <input 
                                     type="text" 
                                     name="input-nombre" 
-                                    pattern="[0-9]+" 
+                                    //pattern="[0-9]+" //esto no deberia ir aqui o si(??) 
                                     maxLength="50" 
                                     //required  //@dt-24 (Voy a seguir haciendo esto hasta que me digas q no sirva) se supone q esto no deberia ser extrictamente necesario
                                     value={nombre} 
