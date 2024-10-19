@@ -40,16 +40,27 @@ const obtenerVentasMensuales = async (req, res) => {
 
   
 // Función para obtener los productos más vendidos
+// Función para obtener los productos más vendidos
 const obtenerTopProductos = async (req, res) => {
   let connection;
   try {
     const { fechaInicio, fechaFin } = req.query; // Recibe las fechas desde el frontend
     connection = await getConnection();
+
+    // Asignar null si las cadenas son "null"
+    const fechaInicioDate = fechaInicio === 'null' ? null : (fechaInicio ? new Date(fechaInicio) : null);
+    const fechaFinDate = fechaFin === 'null' ? null : (fechaFin ? new Date(fechaFin) : null);
+
+    // Imprimir los parámetros para ver qué se está enviando
+    console.log('Parámetros enviados a ObtenerTopProductos:');
+    console.log('fechaInicio:', fechaInicioDate);
+    console.log('fechaFin:', fechaFinDate);
+
     const result = await connection.execute(
       `BEGIN ObtenerTopProductos(:p_FechaInicio, :p_FechaFin, :cursor_resultado); END;`,
       {
-        p_FechaInicio: fechaInicio ? new Date(fechaInicio) : null,
-        p_FechaFin: fechaFin ? new Date(fechaFin) : null,
+        p_FechaInicio: fechaInicioDate,
+        p_FechaFin: fechaFinDate,
         cursor_resultado: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT }
       }
     );
@@ -74,17 +85,29 @@ const obtenerTopProductos = async (req, res) => {
   }
 };
 
+
+// Función para obtener los productos menos vendidos
 // Función para obtener los productos menos vendidos
 const obtenerProductosMenosVendidos = async (req, res) => {
   let connection;
   try {
     const { fechaInicio, fechaFin } = req.query; // Recibe las fechas desde el frontend
     connection = await getConnection();
+
+    // Asignar null si las cadenas son "null"
+    const fechaInicioDate = fechaInicio === 'null' ? null : (fechaInicio ? new Date(fechaInicio) : null);
+    const fechaFinDate = fechaFin === 'null' ? null : (fechaFin ? new Date(fechaFin) : null);
+
+    // Imprimir los parámetros para ver qué se está enviando
+    console.log('Parámetros enviados a ObtenerProductosMenosVendidos:');
+    console.log('fechaInicio:', fechaInicioDate);
+    console.log('fechaFin:', fechaFinDate);
+
     const result = await connection.execute(
       `BEGIN ObtenerProductosMenosVendidos(:p_FechaInicio, :p_FechaFin, :cursor_resultado); END;`,
       {
-        p_FechaInicio: fechaInicio ? new Date(fechaInicio) : null,
-        p_FechaFin: fechaFin ? new Date(fechaFin) : null,
+        p_FechaInicio: fechaInicioDate,
+        p_FechaFin: fechaFinDate,
         cursor_resultado: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT }
       }
     );
@@ -108,6 +131,7 @@ const obtenerProductosMenosVendidos = async (req, res) => {
     }
   }
 };
+
 
 // Exportar las funciones
 module.exports = {
