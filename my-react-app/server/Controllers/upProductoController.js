@@ -1,24 +1,27 @@
 const express = require('express');
-const router = express.Router();
+const oracledb = require('oracledb');
 const multer = require('multer');
-const path = require('path');
-const { getConnection } = require('../db/connection'); // Importar la conexión
+const upload = multer(); // Inicializar multer
+const { getConnection } = require('../db/connection'); // Ajusta esto según tu estructura
 
-const updateProducto = async (req, res) => {
+const router = express.Router();
+
+router.post('/api/up_producto', upload.none(), async (req, res) => {
+    // Accediendo a los campos como los has definido en tu formulario
     const { 
-        nombre, 
-        inputCod, 
-        inputStock, 
-        inputPrecio, 
-        inputStockmin 
+        'input-nombre': nombre, 
+        'input-Cod': codigo, 
+        'input-Stock': stock, 
+        'input-Precio': precio, 
+        'input-Stockmin': stockmin 
     } = req.body;
 
     // Imprimir los valores para verificar
     console.log('Valores recibidos:', {
-        nombre, inputCod, inputStock, inputPrecio, inputStockmin
+        nombre, codigo, stock, precio, stockmin
     });
 
-    if (!nombre || !inputCod || !inputStock || !inputPrecio || !inputStockmin) {
+    if (!nombre || !codigo || !stock || !precio || !stockmin) {
         return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
     }
 
@@ -30,11 +33,11 @@ const updateProducto = async (req, res) => {
         const result = await connection.execute(
             `BEGIN OUTLET_Up_Producto(:codigo, :stock, :precio, :nombre, :stock_minimo); END;`,
             {
-                codigo: Number(inputCod),
-                stock: Number(inputStock),
-                precio: Number(inputPrecio),
-                nombre: nombre, // Aquí ya tienes el nombre bien referenciado
-                stock_minimo: Number(inputStockmin),
+                codigo: Number(codigo),      // Se asegura de que los tipos sean correctos
+                stock: Number(stock),
+                precio: Number(precio),
+                nombre: nombre,
+                stock_minimo: Number(stockmin),
             }
         );
 
@@ -51,5 +54,6 @@ const updateProducto = async (req, res) => {
             }
         }
     }
-};
-module.exports = {updateProducto};
+});
+
+module.exports = router;

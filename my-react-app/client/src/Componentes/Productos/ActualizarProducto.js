@@ -19,7 +19,7 @@ function ActualizarProducto() {
         const formData = new FormData();
         
         // Agregar los datos del formulario a FormData
-        formData.append('nombre', nombre);  // Usar 'nombre' en lugar de 'inputnombre'
+        formData.append('input-nombre', nombre);  // Usar 'nombre' en lugar de 'inputnombre'
         formData.append('input-cod', codigo);
         formData.append('input-stock', stock);
         formData.append('input-precio', precio);
