@@ -2,8 +2,8 @@ const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
 
 const updateProducto = async (req, res) => {
-    const { inputNombre, inputCod, inputStock, inputPrecio, inputStockmin } = req.body;
-    console.log(inputNombre, inputCod, inputStock, inputPrecio, inputStockmin);
+    const { nombre, codigo, stock, precio, stockmin } = req.body;
+    console.log(nombre, codigo, stock, precio, stockmin);//PIPIPI NO PARA DE TIRARME undefined undefined undefined undefined undefined
     if (!inputNombre || !inputCod || !inputStock || !inputPrecio || !inputStockmin) {
         return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
     }
