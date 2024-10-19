@@ -3,7 +3,7 @@ const { getConnection } = require('../db/connection');
 
 const updateProducto = async (req, res) => {
     const { inputNombre, inputCod, inputStock, inputPrecio, inputStockmin } = req.body;
-    console.log( inputNombre, inputCod, inputStock, inputPrecio, inputStockmin )
+    console.log( inputNombre, inputCod, inputStock, inputPrecio, inputStockmin );
 
     let connection;
     try {
