@@ -31,7 +31,7 @@ function ActualizarProducto() {
 
         try {
             // Enviar los datos al backend
-            const response = await fetch('http://localhost:3001/api/up_producto/up_producto', {
+            const response = await fetch('http://localhost:3001/api/up_producto', {
                 method: 'POST',
                 body: formData,
             });
