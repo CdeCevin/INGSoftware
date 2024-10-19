@@ -86,13 +86,11 @@ function ActualizarProducto() {
                                     onChange={(e) => setCodigo(e.target.value)} 
                                 />
                             </div>
-                            </div>
-                            </fieldset>
-                            <fieldset>
+                            
                             <legend>
                             <h3>Detalles del Producto</h3>
                             </legend>
-                            <div className="account-details">
+                            <div>
                                 <label>Nombre</label>
                                 <input 
                                     type="text" 
@@ -139,7 +137,7 @@ function ActualizarProducto() {
                                     onChange={(e) => setStockmin(e.target.value)} 
                                 />
                             </div>
-                        
+                        </div>
                     </fieldset>
                     <button type="submit">Actualizar</button>
                 </form>
