@@ -6,10 +6,10 @@ const upload = multer(); // Inicializar multer
 const updateProducto = async (req, res) => {
     const { 
         nombre, 
-        'input-cod': inputCod, 
-        'input-stock': inputStock, 
-        'input-precio': inputPrecio, 
-        'input-stockmin': inputStockmin 
+        inputCod, 
+        inputStock, 
+        inputPrecio, 
+        inputStockmin 
     } = req.body;
 
     // Imprimir los valores para verificar
