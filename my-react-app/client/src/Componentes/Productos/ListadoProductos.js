@@ -8,7 +8,7 @@ const ListadoProductos = () => {
     useEffect(() => {
         const obtenerProductos = async () => {
             try {
-                const response = await fetch('http://localhost:3001/api/products');
+                const response = await fetch('http://localhost:3001/api/products'); //@dt-24 (NO SE PA QUE SIRVE) Pero, se supone que el backend ta listo (tipo. si te metes a ese link entras y ves todos los productos, pero el front no supe como dejar pa q se vea el texto :c) 
                 if (!response.ok) {
                     throw new Error('Error en la red al obtener los productos');
                 }
