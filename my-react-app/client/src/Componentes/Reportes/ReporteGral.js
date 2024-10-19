@@ -4,8 +4,8 @@ import '../../Estilos/estilo.css';
 
 function ReporteGral() {
   const [ventasMensuales, setVentasMensuales] = useState(null);
-  const [topProductos, setTopProductos] = useState([]);
-  const [menosVendidos, setMenosVendidos] = useState([]);
+  const [topProductos, setTopProductos] = useState(null);
+  const [menosVendidos, setMenosVendidos] = useState(null);
   const [fechaInicio, setFechaInicio] = useState('');
   const [fechaFin, setFechaFin] = useState('');
 
