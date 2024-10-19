@@ -6,7 +6,7 @@ function StockCritico() {
     // Función para obtener productos con stock crítico
     const obtenerProductosBajoStock = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/reportes/stockCritico');
+            const response = await fetch('http://localhost:3001/api/stockCritico');
             const data = await response.json();
             setProductosBajoStock(data);
         } catch (error) {
