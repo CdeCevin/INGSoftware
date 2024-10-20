@@ -2,10 +2,14 @@ const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection'); // Asegúrate de que esta ruta sea correcta
 
 const buscarProducto = async (req, res) => {
-    // Obtener datos del cuerpo de la solicitud y asignar null si no se especifican
-    const { 'input-nombre': nombre = null, 'input-color': color = null } = req.body; 
-    console.log('Nombre:', nombre); // Log para depuración
-    console.log('Color:', color); // Log para depuración
+    const { 'input-nombre': nombre, 'input-color': color } = req.body;
+
+    // Asignar null si no hay valor
+    const palabraClave = nombre || null;
+    const colorParam = color || null;
+
+    console.log('Nombre:', palabraClave);
+    console.log('Color:', colorParam);
 
     let connection;
     try {
@@ -13,15 +17,16 @@ const buscarProducto = async (req, res) => {
         const cursor = await connection.execute(
             `BEGIN Outlet_FiltrarProducto(:p_PalabraClave, :p_colorp, :c_Productos); END;`,
             {
-                p_PalabraClave: nombre,
-                p_colorp: color,
+                p_PalabraClave: palabraClave,
+                p_colorp: colorParam,
                 c_Productos: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT },
             }
         );
 
         const resultCursor = cursor.outBinds.c_Productos;
-        const result = await connection.execute(resultCursor, [], { outFormat: oracledb.OUT_FORMAT_OBJECT });
+        const result = await connection.execute(resultCursor);
 
+        // Procesar resultados
         res.status(200).json({ message: 'Búsqueda exitosa', data: result.rows });
     } catch (err) {
         console.error('Error en la búsqueda de productos:', err);
@@ -32,5 +37,6 @@ const buscarProducto = async (req, res) => {
         }
     }
 };
+
 
 module.exports = { buscarProducto };
