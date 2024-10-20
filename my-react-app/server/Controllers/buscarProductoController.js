@@ -24,7 +24,7 @@ const buscarProducto = async (req, res) => {
         );
 
         const resultCursor = result.outBinds.c_Productos;
-
+        console.log(resultCursor);
         // Procesar los resultados del cursor
         const productos = [];
         let row;
