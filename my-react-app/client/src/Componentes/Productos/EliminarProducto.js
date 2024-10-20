@@ -21,8 +21,9 @@ function EliminarProducto() {
                 headers: {
                     'Content-Type': 'application/json', // Asegúrate de enviar JSON
                 },
+                
                 body: JSON.stringify({ codigo }) // Enviar el código del producto como JSON
-            });
+            });console.log("code:",codigo);
     
             if (response.ok) {
                 const data = await response.json();
