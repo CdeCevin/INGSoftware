@@ -107,6 +107,7 @@ const BuscarProducto = () => {
                             <tr>
                                 <th>CÓDIGO</th>
                                 <th>STOCK</th>
+                                <th>STOCK MINIMO</th>
                                 <th>PRECIO</th>
                                 <th>NOMBRE</th>
                                 <th>COLOR</th>
@@ -118,6 +119,7 @@ const BuscarProducto = () => {
                                 <tr key={producto.codigo_producto}>
                                     <td>{producto.codigo_producto}</td>
                                     <td>{producto.stock}</td>
+                                    <td>{producto.stock_minimo}</td>
                                     <td>{producto.precio_unitario}</td>
                                     <td>{producto.nombre_producto}</td>
                                     <td>{producto.color_producto}</td>

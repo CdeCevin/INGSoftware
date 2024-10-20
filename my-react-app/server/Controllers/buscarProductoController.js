@@ -37,6 +37,7 @@ const buscarProducto = async (req, res) => {
                 nombre_producto: row[4],
                 tipo_producto: row[5],
                 color_producto: row[6],
+                stock_minimo: row[7]
             });
         }
 
