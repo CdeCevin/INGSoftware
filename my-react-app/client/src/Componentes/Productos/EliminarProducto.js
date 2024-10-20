@@ -17,7 +17,7 @@ function EliminarProducto() {
         
         // Agregar los datos del formulario a FormData
         
-        formData.append('cod', codigo);
+        formData.append('inputcod', codigo);
         console.log('Datos del formulario:', {
             codigo // Muestra solo los campos numéricos
         });
@@ -72,11 +72,11 @@ function EliminarProducto() {
                                 <label>Código Mueble*</label>
                                 <input 
                                     type="NUMBER" //Tiene que ser number
-                                    name="cod" 
+                                    name="inputcod" 
                                     pattern="[0-9]+" 
                                     maxLength="4" 
                                     required 
-                                    value={codigo} 
+                                    value={inputcod} 
                                     onChange={(e) => setCodigo(e.target.value)} 
                                 />
                             </div>
