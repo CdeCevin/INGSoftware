@@ -1,25 +1,23 @@
-// Importa las dependencias necesarias
 const oracledb = require('oracledb');
-const connection = require('../db/connection'); // Asegúrate de tener tu archivo de conexión
+const dbConnection = require('../db/connection'); // Asegúrate de usar el nombre correcto
 
-// Controlador para eliminar un producto
 const eliminarProducto = async (req, res) => {
-    let connection;
+    let conn;
     try {
         const { codigo } = req.body; // Recibir el código del producto desde el frontend
 
         // Establecer la conexión
-        connection = await connection.getConnection();
+        conn = await dbConnection.getConnection(); // Llama a getConnection desde dbConnection
 
         // Ejecutar el procedimiento almacenado
-        await connection.execute(
+        await conn.execute(
             `BEGIN OUTLET_Elim_Producto(:p_codigo); END;`,
             {
                 p_codigo: parseInt(codigo) // Pasar el código como número
             }
         );
 
-        await connection.commit();
+        await conn.commit();
 
         // Respuesta exitosa
         res.status(200).json({ message: 'Producto eliminado correctamente.' });
@@ -27,11 +25,10 @@ const eliminarProducto = async (req, res) => {
         console.error('Error al eliminar producto:', err);
         res.status(500).json({ message: 'Error al eliminar el producto.' });
     } finally {
-        if (connection) {
-            await connection.close();
+        if (conn) {
+            await conn.close();
         }
     }
 };
 
-
-module.exports = {eliminarProducto};
+module.exports = { eliminarProducto };
