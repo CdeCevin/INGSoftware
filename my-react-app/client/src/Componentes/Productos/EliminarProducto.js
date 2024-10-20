@@ -7,7 +7,7 @@ Modal.setAppElement('#root'); // Reemplaza '#root' con tu selector de raíz
 
 function EliminarProducto() {
     
-    const [codigo, setCodigo] = useState('');
+    const [inputcod, setCodigo] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
     const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
 
