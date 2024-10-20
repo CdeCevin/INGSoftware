@@ -8,7 +8,7 @@ const eliminarProducto = async (req, res) => {
 
         // Establecer la conexión
         conn = await dbConnection.getConnection(); // Llama a getConnection desde dbConnection
-
+        console.log("Hola, este es el codigo: ", codigo);
         // Ejecutar el procedimiento almacenado
         await conn.execute(
             `BEGIN OUTLET_Elim_Producto(:p_codigo); END;`,
