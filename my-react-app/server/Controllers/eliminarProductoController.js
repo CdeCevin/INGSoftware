@@ -1,5 +1,5 @@
 const oracledb = require('oracledb');
-const connection = require('../db/connection'); // Asegúrate de usar el nombre correcto
+const dbConfig = require('../db/connection'); // Asegúrate de usar el nombre correcto
 
 const eliminarProducto = async (req, res) => {
     let connection;
@@ -9,7 +9,7 @@ const eliminarProducto = async (req, res) => {
         console.log("Código recibido desde el frontend:", codigo); // Verifica el valor que llega desde el frontend
 
         // Establecer la conexión
-        connection = await connection.getConnection();
+        connection = await oracledb.getConnection(dbConfig);
 
         // Ejecutar el procedimiento almacenado
         await connection.execute(
