@@ -1,37 +1,36 @@
 const oracledb = require('oracledb');
-const connection = require('../db/connection'); // Asegúrate de que la ruta sea correcta
-
+const { getConnection } = require('../db/connection'); // Importa correctamente
 
 const eliminarProducto = async (req, res) => {
-    let connection;
-    try {
-      const { codigo } = req.body;
-  
-      // Asegúrate de que el código no sea undefined
-      console.log('Código recibido desde el frontend:', codigo);
-      
-      // Establecer la conexión
-      connection = await connection.getConnection();
-  
-      // Ejecutar el procedimiento almacenado
-      await connection.execute(
-        `BEGIN OUTLET_Elim_Producto(:p_codigo); END;`,
-        {
-          p_codigo: parseInt(codigo)
-        }
-      );
-  
-      await connection.commit();
-  
-      res.status(200).json({ message: 'Producto eliminado correctamente.' });
-    } catch (err) {
-      console.error('Error al eliminar producto:', err);
-      res.status(500).json({ message: 'Error al eliminar el producto.' });
-    } finally {
-      if (connection) {
-        await connection.close();
+  let connection;
+  try {
+    const { codigo } = req.body;
+
+    // Verifica que el código no sea indefinido
+    console.log('Código recibido desde el frontend:', codigo);
+    
+    // Establece la conexión
+    connection = await getConnection(); // Llama a la función de conexión
+
+    // Ejecuta el procedimiento almacenado
+    await connection.execute(
+      `BEGIN OUTLET_Elim_Producto(:p_codigo); END;`,
+      {
+        p_codigo: parseInt(codigo) // Asegúrate de que el código sea un número
       }
+    );
+
+    await connection.commit();
+
+    res.status(200).json({ message: 'Producto eliminado correctamente.' });
+  } catch (err) {
+    console.error('Error al eliminar producto:', err);
+    res.status(500).json({ message: 'Error al eliminar el producto.' });
+  } finally {
+    if (connection) {
+      await connection.close();
     }
-  };
-  
+  }
+};
+
 module.exports = { eliminarProducto };
