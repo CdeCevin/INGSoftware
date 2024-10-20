@@ -13,20 +13,15 @@ function EliminarProducto() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        // En lugar de FormData, crear un objeto con los datos
-        const formData = {
-            codigo: codigo
-        };
     
         try {
             // Enviar los datos al backend como JSON
             const response = await fetch('http://localhost:3001/api/eliminarProducto', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json' // Especificar que estamos enviando JSON
+                    'Content-Type': 'application/json', // Asegúrate de enviar JSON
                 },
-                body: JSON.stringify(formData) // Convertir los datos a JSON
+                body: JSON.stringify({ codigo }) // Enviar el código del producto como JSON
             });
     
             if (response.ok) {
