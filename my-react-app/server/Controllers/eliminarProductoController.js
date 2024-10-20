@@ -17,7 +17,7 @@ const eliminarProducto = async (req, res) => {
         await connection.execute(
             `BEGIN OUTLET_Elim_Producto(:p_codigo); END;`,
             {
-                p_codigo: parseInt(codigo) // Pasar el código como número
+                p_codigo: parseInt(cod) // Pasar el código como número
             }
         );
 
