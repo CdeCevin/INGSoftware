@@ -39,7 +39,9 @@ const BuscarProducto = () => {
             console.error('Error al buscar productos:', error);
             setModalMessage('Error al buscar productos.');
         } finally {
-            setModalIsOpen(true); // Abre el modal después de buscar
+            if (data.data && data.data.length <= 0) {
+                setModalIsOpen(true); // Abre el modal después de buscar
+            } 
         }
     };
 
