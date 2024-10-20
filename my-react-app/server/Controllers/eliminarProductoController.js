@@ -1,5 +1,5 @@
 // Importa las dependencias necesarias
-const router = express.Router();
+const oracledb = require('oracledb');
 const getConnection = require('../db/connection'); // Asegúrate de tener tu archivo de conexión
 
 // Controlador para eliminar un producto
