@@ -1,25 +1,27 @@
 // Importa las dependencias necesarias
+const express = require('express');
 const oracledb = require('oracledb');
-const connection = require('../db/connection'); // Asegúrate de tener tu archivo de conexión
+const router = express.Router();
+const getConnection = require('./db/connection'); // Asegúrate de tener tu archivo de conexión
 
 // Controlador para eliminar un producto
 const eliminarProducto = async (req, res) => {
     let connection;
-    
     try {
-        const { inputcod } = req.body; // Recibir el código del producto desde el frontend
-        console.log("HOLAA",inputcod);
+        const { codigo } = req.body; // Recibir el código del producto desde el frontend
+
         // Establecer la conexión
-        conn = await connection.getConnection();
-        console.log('Codigo:',inputcod);
+        connection = await getConnection();
+
         // Ejecutar el procedimiento almacenado
-        await conn.execute(
+        await connection.execute(
             `BEGIN OUTLET_Elim_Producto(:p_codigo); END;`,
             {
-                p_codigo: Number(inputcod) // Pasar el código como número
+                p_codigo: parseInt(codigo) // Pasar el código como número
             }
         );
-        await conn.commit();
+
+        await connection.commit();
 
         // Respuesta exitosa
         res.status(200).json({ message: 'Producto eliminado correctamente.' });
@@ -33,6 +35,7 @@ const eliminarProducto = async (req, res) => {
     }
 };
 
+// Ruta para eliminar un producto
+router.post('/eliminarProducto', eliminarProducto);
 
-
-module.exports = {eliminarProducto};
+module.exports = router;

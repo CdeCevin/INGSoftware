@@ -7,32 +7,30 @@ Modal.setAppElement('#root'); // Reemplaza '#root' con tu selector de raíz
 
 function EliminarProducto() {
     
-    const [inputcod, setCodigo] = useState('');
+    const [codigo, setCodigo] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
     const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        
-        // Agregar los datos del formulario a FormData
-        
-        formData.append('inputcod', inputcod);
+
         console.log('Datos del formulario:', {
-            inputcod // Muestra solo los campos numéricos
+            codigo // Muestra solo los campos numéricos
         });
 
         try {
             // Enviar los datos al backend
             const response = await fetch('http://localhost:3001/api/eliminarProducto', {
                 method: 'POST',
-                body: formData,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ codigo }) // Enviar el código como JSON
             });
 
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message); // Mostrar mensaje de éxito
-                // Opcional: Reiniciar el formulario
                 resetForm();
             } else {
                 const errorData = await response.json();
@@ -61,7 +59,7 @@ function EliminarProducto() {
     return (
         <div style={{ marginLeft: '12%' }}>
             <div className="main-block">
-                <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <form onSubmit={handleSubmit}>
                     <h1>Eliminar Producto</h1>
                     <fieldset>
                         <legend>
@@ -69,14 +67,14 @@ function EliminarProducto() {
                         </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
-                                <label>Código Mueble*</label>
+                                <label>Código Producto*</label>
                                 <input 
-                                    type="NUMBER" //Tiene que ser number
-                                    name="inputcod" 
+                                    type="text" 
+                                    name="codigo" 
                                     pattern="[0-9]+" 
                                     maxLength="4" 
                                     required 
-                                    value={inputcod} 
+                                    value={codigo} 
                                     onChange={(e) => setCodigo(e.target.value)} 
                                 />
                             </div>
@@ -84,7 +82,7 @@ function EliminarProducto() {
                     </fieldset>
                     <button type="submit">Eliminar</button>
                 </form>
-                </div>
+            </div>
             {/* Modal para mostrar mensajes */}
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
                 <h2>Mensaje</h2>
