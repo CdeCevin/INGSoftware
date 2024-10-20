@@ -17,9 +17,9 @@ function EliminarProducto() {
         
         // Agregar los datos del formulario a FormData
         
-        formData.append('inputcod', codigo);
+        formData.append('inputcod', inputcod);
         console.log('Datos del formulario:', {
-            codigo // Muestra solo los campos numéricos
+            inputcod // Muestra solo los campos numéricos
         });
 
         try {
