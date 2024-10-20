@@ -61,7 +61,7 @@ const BuscarProducto = () => {
                         </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
-                                <label>Nombre del producto*</label>
+                                <label>Nombre*</label>
                                 <input
                                     type="text"
                                     name="input-nombre"
@@ -73,7 +73,7 @@ const BuscarProducto = () => {
                                 />
                             </div>
                             <div>
-                                <label>Color del producto*</label>
+                                <label>Color</label>
                                 <input
                                     type="text"
                                     name="input-color"
