@@ -15,7 +15,7 @@ const buscarProducto = async (req, res) => {
     try {
         connection = await getConnection();
         const cursor = await connection.execute(
-            `BEGIN Outlet_FiltrarProducto(:p_PalabraClave, :p_colorp, :c_Productos); END;`,
+            `BEGIN Outlet_FiltrarProducto(:p_PalabraClave, :p_colorp, :c_Products); END;`,
             {
                 p_PalabraClave: palabraClave,
                 p_colorp: colorParam,
