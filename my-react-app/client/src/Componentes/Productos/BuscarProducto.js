@@ -127,7 +127,7 @@ const BuscarProducto = () => {
                         </tbody>
                     </table>
                 ) : (
-                    <p>No se encontraron productos.</p>
+                    <p></p> //ASDFAF NO SE COMO SACAR ESTO
                 )}
             </div>
         </div>
