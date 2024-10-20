@@ -14,7 +14,7 @@ const BuscarProducto = () => {
 
     const buscarProductos = async (event) => {
         event.preventDefault();
-
+    
         try {
             const response = await fetch('http://localhost:3001/api/buscarProducto', {
                 method: 'POST',
@@ -26,24 +26,26 @@ const BuscarProducto = () => {
                     'input-color': color,
                 }),
             });
-
+    
             if (!response.ok) {
                 throw new Error('Error en la solicitud');
             }
-
+    
             const data = await response.json();
-            if (data.data && data.data.length <= 0) {
+    
+            if (data.data && data.data.length > 0) {
+                setProductos(data.data); // Si hay productos, actualiza el estado pero NO abre el modal
+            } else {
                 setModalMessage('No se encontraron productos.');
-            } 
+                setModalIsOpen(true); // Abre el modal si no se encuentran productos
+            }
         } catch (error) {
             console.error('Error al buscar productos:', error);
             setModalMessage('Error al buscar productos.');
-        } finally {
-            if (data.data && data.data.length <= 0) {
-                setModalIsOpen(true); // Abre el modal después de buscar
-            } 
+            setModalIsOpen(true); // Abre el modal si ocurre un error
         }
     };
+    
 
     const closeModal = () => {
         setModalIsOpen(false);
