@@ -9,6 +9,7 @@ const datosEmpresaRoutes = require('./Routes/datosEmpresa');
 const productListRoutes = require('./Routes/productList');
 const upProductoRoutes = require('./Routes/upProducto'); // Importar la nueva ruta
 const stockCriticoRoutes = require('./Routes/stockCritico');
+const eliminarProductoRoutes = require('./Routes/eliminarProducto');
 
 const app = express();
 app.use(cors());
@@ -25,6 +26,7 @@ app.use('/api/datosEmpresa', datosEmpresaRoutes);
 app.use('/api/products', productListRoutes);
 app.use('/api/up_producto', upProductoRoutes); // Agregar la ruta para actualizar productos
 app.use('/api/stockCritico', stockCriticoRoutes);
+app.use('/api/eliminarProducto',eliminarProductoRoutes);
 
 
 const port = 3001;

@@ -24,7 +24,7 @@ function EliminarProducto() {
 
         try {
             // Enviar los datos al backend
-            const response = await fetch('http://localhost:3001/api/ingresar_productos/insertar', {
+            const response = await fetch('http://localhost:3001/api/eliminarProducto', {
                 method: 'POST',
                 body: formData,
             });
