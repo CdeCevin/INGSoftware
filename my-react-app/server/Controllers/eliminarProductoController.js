@@ -12,7 +12,7 @@ const eliminarProducto = async (req, res) => {
         const { cod } = req.body; // Recibir el código del producto desde el frontend
 
         // Establecer la conexión
-        connection = await getConnection();
+        connection = await connection();
         console.log('Codigo:',cod);
         // Ejecutar el procedimiento almacenado
         await connection.execute(
