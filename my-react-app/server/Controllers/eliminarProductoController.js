@@ -2,7 +2,7 @@
 const express = require('express');
 const oracledb = require('oracledb');
 const router = express.Router();
-const getConnection = require('./bd/connection'); // Asegúrate de tener tu archivo de conexión
+const getConnection = require('../bd/connection'); // Asegúrate de tener tu archivo de conexión
 
 // Controlador para eliminar un producto
 const eliminarProducto = async (req, res) => {
