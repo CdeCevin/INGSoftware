@@ -34,4 +34,4 @@ const eliminarProducto = async (req, res) => {
 };
 
 
-module.exports = eliminarProducto;
+module.exports = {eliminarProducto};
