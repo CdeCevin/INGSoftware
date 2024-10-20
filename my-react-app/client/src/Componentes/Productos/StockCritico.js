@@ -28,7 +28,7 @@ function StockCritico() {
                             <strong>Producto:</strong> {producto[2]} <br />
                             <strong>Código:</strong> {producto[0]} <br />
                             <strong>Stock Actual:</strong> {producto[3]} <br />
-                            <strong>Stock Mínimo:</strong> {producto[7]} <br />
+                            <strong>Stock Mínimo:</strong> {producto[6]} <br />
                             <strong>Precio Unitario:</strong> ${producto[4]} <br />
                             <strong>Color:</strong> {producto[5]} <br />
                             <hr />
