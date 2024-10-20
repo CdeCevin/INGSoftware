@@ -12,7 +12,7 @@ const eliminarProducto = async (req, res) => {
 
         // Establecer la conexión
         connection = await getConnection();
-
+        console.log('Codigo:',cod);
         // Ejecutar el procedimiento almacenado
         await connection.execute(
             `BEGIN OUTLET_Elim_Producto(:p_codigo); END;`,
