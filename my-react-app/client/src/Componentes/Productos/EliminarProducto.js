@@ -13,21 +13,22 @@ function EliminarProducto() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        console.log('Datos del formulario:', {
-            codigo // Muestra solo los campos numéricos
-        });
-
+        
+        // En lugar de FormData, crear un objeto con los datos
+        const formData = {
+            codigo: codigo
+        };
+    
         try {
-            // Enviar los datos al backend
+            // Enviar los datos al backend como JSON
             const response = await fetch('http://localhost:3001/api/eliminarProducto', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json' // Especificar que estamos enviando JSON
                 },
-                body: JSON.stringify({ codigo }) // Enviar el código como JSON
+                body: JSON.stringify(formData) // Convertir los datos a JSON
             });
-
+    
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message); // Mostrar mensaje de éxito
@@ -38,11 +39,12 @@ function EliminarProducto() {
             }
         } catch (error) {
             console.error('Error al enviar el formulario:', error);
-            setModalMessage('Error al enviar el formulario.'); // Mensaje de error genérico
+            setModalMessage('Error al enviar el formulario.');
         } finally {
             setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
         }
     };
+    
 
     const resetForm = () => {
         setCodigo('');
