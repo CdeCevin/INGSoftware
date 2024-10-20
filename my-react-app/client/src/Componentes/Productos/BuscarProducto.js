@@ -13,24 +13,21 @@ function BuscarProducto() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        
-        // Agregar los datos del formulario a FormData
-        formData.append('input-nombre', nombre);
-        formData.append('input-color', color);
-        
 
         try {
             // Enviar los datos al backend
             const response = await fetch('http://localhost:3001/api/buscarProducto', {
                 method: 'POST',
-                body: formData,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 'input-nombre': nombre, 'input-color': color }), // Envía los datos como JSON
             });
 
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message); // Mostrar mensaje de éxito
-                // Opcional: Reiniciar el formulario
+                // Reiniciar el formulario
                 resetForm();
             } else {
                 const errorData = await response.json();
@@ -47,7 +44,6 @@ function BuscarProducto() {
     const resetForm = () => {
         setNombre('');
         setColor('');
-
     };
 
     const closeModal = () => {
@@ -61,13 +57,13 @@ function BuscarProducto() {
     return (
         <div style={{ marginLeft: '12%' }}>
             <div className="main-block">
-                <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <form onSubmit={handleSubmit}>
                     <h1>Buscar Producto</h1>
                     <fieldset>
                         <legend>
                             <h3>Detalles del Producto</h3>
                         </legend>
-                        <div className="account-details"  style={{ display: 'flex', flexDirection: 'column' }}>
+                        <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <label>Nombre*</label>
                                 <input 

@@ -1,10 +1,11 @@
-// Controllers/ProductoController.js
 const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection'); // Asegúrate de que esta ruta sea correcta
 
 const buscarProducto = async (req, res) => {
     const { 'input-nombre': nombre, 'input-color': color } = req.body; // Obtener datos del cuerpo de la solicitud
-    console.log(nombre);
+    console.log('Nombre:', nombre); // Log para depuración
+    console.log('Color:', color); // Log para depuración
+
     let connection;
     try {
         connection = await getConnection();
@@ -18,9 +19,8 @@ const buscarProducto = async (req, res) => {
         );
 
         const resultCursor = cursor.outBinds.c_Productos;
-        const result = await connection.execute(resultCursor);
+        const result = await connection.execute(resultCursor, [], { outFormat: oracledb.OUT_FORMAT_OBJECT });
 
-        // Aquí deberías procesar los resultados y devolver una respuesta
         res.status(200).json({ message: 'Búsqueda exitosa', data: result.rows });
     } catch (err) {
         console.error('Error en la búsqueda de productos:', err);
