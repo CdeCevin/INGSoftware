@@ -982,8 +982,7 @@ BEGIN
 END BuscarProductoPorNombre;
 
 
-
-CREATE OR REPLACE PROCEDURE Outlet_FiltrarProducto(
+CREATE OR REPLACE PROCEDURE Outlet_FiltrarProducto( --ACTUALZIAR (CORRER DE NUEVO)
     p_PalabraClave IN VARCHAR2,
     color IN VARCHAR2,
     c_Productos OUT SYS_REFCURSOR
@@ -995,7 +994,7 @@ BEGIN
               CONNECT BY REGEXP_SUBSTR(UPPER(p_PalabraClave), '[^ ]+', 1, LEVEL) IS NOT NULL)
     LOOP
         OPEN c_Productos FOR
-        SELECT Codigo_Producto, Activo, Stock, Precio_Unitario, Nombre_Producto, Tipo_Producto, Color_Producto
+        SELECT Codigo_Producto, Activo, Stock, Precio_Unitario, Nombre_Producto, Tipo_Producto, Color_Producto, STOCK_MINIMO
         FROM OUTLET_Producto
         WHERE (UPPER(COLOR_PRODUCTO) LIKE '%' || UPPER(color) || '%'
           AND (UPPER(Nombre_Producto) LIKE '%' || r.palabra || '%'

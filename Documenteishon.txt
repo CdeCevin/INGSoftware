@@ -1,8 +1,187 @@
 Documenteishon:
+
+NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR ASDKFAS SI TAMPOCO ME CONVENCE PERO AJÁ)
+				(EL ANTERIOR TA ABAJO POR SI LO QUIERES CAMBIAR)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|																						REQUERIMIENTOS                                                                                          |                                                                                                                      
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------
+|  CLIENTE  |
+-------------
+
+		Front: 
+	
+				Actualizar Cliente --> Falta
+
+				Buscar Cliente --> Falta
+
+				Eliminar Cliente --> Falta
+
+				Listado Clientes --> Falta
+
+	
+		Backend:
+	
+				Actualizar Cliente --> Falta
+
+				Buscar Cliente --> Falta 
+
+				Eliminar Cliente --> Falta
+
+				Listado Clientes --> Falta
+
+-------------	
+|  EMPRESA  |
+-------------
+
+		Front:
+
+			Visualizar Datos --> Falta
+				**Los datos se muestran, pero estan feos :c 
+
+			Actualizar Datos --> Falta
+
+
+		Backend:
+
+			
+			Visualizar Datos --> LISTO! :D
+
+			Actualizar Datos --> Falta
+
+
+----------------
+|  PENDIENTES  |
+----------------
+
+		Front:
+
+			Ventas Pendientes--> Listo? (lo unico que cambiara es que en vez de ver producto diga ocutlar producto cuando se esten mostrando)
+				
+
+		Backend:
+
+			Ventas Pendientes--> listo 50%	
+				** Faltan las acciones de los botones Realizado y Cancelar
+		
+
+---------------
+|  PRODUCTOS  | 
+---------------
+
+		Front:
+
+			Ingresar Producto --> LISTO! :D
+
+			Actualizar Producto --> LISTO! :D
+
+			Buscar Producto --> Listo 50%
+				**Los resultados falta dejarlos mas centrado o wonito y falta arreglar el tema de las imaganes (el front de mostrar la imagen supongo)
+
+			Eliminar Producto --> LISTO! :D
+
+			Listado Producto --> FALTA
+				** EN SERIO HAY QUE HACER UN PACTO CON EL DIABLO PARA QUE ESTO FUNCIONE SI DEBERIA ESTAR BIEN PERO NO NO
+
+			Stock Critico --> Falta
+				**Los datos se muestran, pero estan feos :c 
+			
+
+		Backend: 
+
+			Ingresar Producto --> LISTO! :D (90%)
+				**Solucionar las rutas de las imagenes
+
+			Actualizar Producto --> LISTO! :D
+
+			Buscar Producto --> Listo 40%
+				**Solucionar las rutas de las imagenes (si es que falta algo mas anoten)
+
+			Eliminar Producto --> LISTO! :D
+
+			Listado Producto --> LISTO!:D 
+				** Aun que falta ver si con el front queda bien porque igual el problem puede tar aqui???
+
+			Stock Critico --> LISTO!:D 
+			
+				
+-------------	
+|  REPORTE  |
+-------------
+
+		Front:
+		
+			Reporte --> LISTO! :D 
+
+
+		Backend:
+
+			Reporte --> LISTO :D
+
+
+------------
+|  VENTAS  |
+------------
+
+		Front:
+
+			Venta Cliente Nuevo --> Falta
+
+			Venta Cliente Antiguo --> Falta
+
+			Historial Venta --> Falta 
+				**Los datos se muestran, pero estan feos :c 
+
+		
+		Backend: 
+
+			
+			Venta Cliente Nuevo --> Falta
+
+			Venta Cliente Antiguo --> Falta
+
+			Historial Venta --> Listo! :D
+				**No se si eliminar esas ventas que se hacen por 0 pesos?? hay un par 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|																			   PROCEDIMIENTOS Y TRIGGERS                                                                                        |                                                                                                                      
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------
+|  ACTUALIZAR  |
+----------------
+		
+		Outlet_FiltrarProducto
+		**HAY OTROS MAS (Los anteriores) pero tengo tutito pa ponerlos todosJFDALAFD
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|																			         INSTALACIONES                                                                                               |                                                                                                                      
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------
+| INSTALAR  |
+-------------
+
+	npm install react-modal (para nuevas alertas, esta la hice directa c:) 
+	npm install multer      (para el manejo de archivos (creo) my-react-app/client/src)
+	npm install concurrently --save-dev (para lo de iniciar el sv y la pagina al mismo tiempo my-react-app/client/src)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
 	LISTO:
 	1. "Agregar Producto" está listo! :D
 	2. "Eliminar Producto" Formulario listo/Backend Listo! 
-	3. "Actualizar Producto" Formulario listo
+	3. "Actualizar Producto" listo! :D
 	4. @CdeCevin "Buscar Producto" Formulario listo - Falta el retorno para ver la tabla
 	5. "Reporte" Listo!
 	6. "Stock Critico" falta front
@@ -29,3 +208,10 @@ npm install concurrently --save-dev (para lo de iniciar el sv y la pagina al mis
 
 
 
+--------------------------------------------------------------
+Buscar Producto está listo en un 80%, lo unico que falta es el tema de las imagenes, porque tendria que acceder a mi github para encontrarlas pero no se como hacer eso (y la idea no es hacerlo local supongo)
+	con lo mismo de recien, tengo que cambiar lo de agregar imagenes (que lo habia hecho antes de empezar a trabajar en git, asi que se guarda en mi carpeta)
+
+Eliminar producto está listo :D
+
+Listado productos está listo pero no puedo accerder al front, o sea, de verdad que no llego al front ni si quieera que rabiaa
