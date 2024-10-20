@@ -5,8 +5,8 @@ const buscarProducto = async (req, res) => {
     const { 'input-nombre': nombre, 'input-color': color } = req.body;
 
     // Asignar null si no hay valor
-    const palabraClave = nombre && nombre.trim() ? nombre.trim() : null;
-    const colorParam = color && color.trim() ? color.trim() : null;
+    const palabraClave = nombre && nombre.trim() ? nombre.trim() : '';
+    const colorParam = color && color.trim() ? color.trim() : '';
 
     console.log('Nombre:', palabraClave);
     console.log('Color:', colorParam);
