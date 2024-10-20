@@ -2,7 +2,8 @@ const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection'); // Asegúrate de que esta ruta sea correcta
 
 const buscarProducto = async (req, res) => {
-    const { 'input-nombre': nombre, 'input-color': color } = req.body; // Obtener datos del cuerpo de la solicitud
+    // Obtener datos del cuerpo de la solicitud y asignar null si no se especifican
+    const { 'input-nombre': nombre = null, 'input-color': color = null } = req.body; 
     console.log('Nombre:', nombre); // Log para depuración
     console.log('Color:', color); // Log para depuración
 
