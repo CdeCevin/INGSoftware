@@ -19,7 +19,7 @@ const buscarProducto = async (req, res) => {
             {
                 p_PalabraClave: palabraClave,
                 p_colorp: colorParam,
-                c_Productos: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT },
+                c_Productos: { type: oracledb.CURSOR, dir: oracledb.SYS_REFCURSOR },
             }
         );
 
