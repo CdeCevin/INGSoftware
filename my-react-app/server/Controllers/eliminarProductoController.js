@@ -1,5 +1,5 @@
 const oracledb = require('oracledb');
-const dbConnection = require('../db/connection'); // Asegúrate de usar el nombre correcto
+const connection = require('../db/connection'); // Asegúrate de usar el nombre correcto
 
 const eliminarProducto = async (req, res) => {
     let connection;
