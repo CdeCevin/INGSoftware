@@ -12,16 +12,16 @@ const eliminarProducto = async (req, res) => {
         const { cod } = req.body; // Recibir el código del producto desde el frontend
 
         // Establecer la conexión
-        connection = await connection();
+        conn = await getConnection();
         console.log('Codigo:',cod);
         // Ejecutar el procedimiento almacenado
-        await connection.execute(
+        await conn.execute(
             `BEGIN OUTLET_Elim_Producto(:p_codigo); END;`,
             {
                 p_codigo: Number(cod) // Pasar el código como número
             }
         );
-        await connection.commit();
+        await conn.commit();
 
         // Respuesta exitosa
         res.status(200).json({ message: 'Producto eliminado correctamente.' });
