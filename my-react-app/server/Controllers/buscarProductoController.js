@@ -1,12 +1,12 @@
 const oracledb = require('oracledb');
-const { getConnection } = require('../db/connection'); // Asegúrate de que esta ruta sea correcta
+const { getConnection } = require('../db/connection');
 
 const buscarProducto = async (req, res) => {
     const { 'input-nombre': nombre, 'input-color': color } = req.body;
 
     // Asignar null si no hay valor
-    const palabraClave = nombre && nombre.trim() ? nombre.trim() : '';
-    const colorParam = color && color.trim() ? color.trim() : '';
+    const palabraClave = nombre && nombre.trim() ? nombre.trim() : null;
+    const colorParam = color && color.trim() ? color.trim() : null;
 
     console.log('Nombre:', palabraClave);
     console.log('Color:', colorParam);
@@ -15,15 +15,15 @@ const buscarProducto = async (req, res) => {
     try {
         connection = await getConnection();
         const cursor = await connection.execute(
-            `BEGIN Outlet_FiltrarProducto(:p_PalabraClave, :p_colorp, :c_Products); END;`,
+            `BEGIN Outlet_FiltrarProducto(:p_PalabraClave, :p_colorp, :c_Productos); END;`,
             {
-                p_PalabraClave: palabraClave,
+                p_PalabraClave: palabraClave, // Asegúrate de enviar null si no hay un valor
                 p_colorp: colorParam,
-                c_Products: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT },
+                c_Productos: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT },
             }
         );
 
-        const resultCursor = cursor.outBinds.c_Products;
+        const resultCursor = cursor.outBinds.c_Productos;
         const result = await connection.execute(resultCursor);
 
         // Procesar resultados
@@ -37,7 +37,5 @@ const buscarProducto = async (req, res) => {
         }
     }
 };
-
-
 
 module.exports = { buscarProducto };
