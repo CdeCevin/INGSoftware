@@ -49,7 +49,7 @@ const BuscarProducto = () => {
 
     // Función para manejar la visualización de la imagen
     const mostrarImagen = (codigo_producto) => {
-        const imageUrl = `http://localhost/Outlet/${codigo_producto}.jpg`; // Asegúrate de ajustar la URL según la ruta de tu imagen
+        const imageUrl = `http://localhost/client/Outlet/${codigo_producto}.jpg`; // Asegúrate de ajustar la URL según la ruta de tu imagen
         setSelectedImage(imageUrl); // Establecer la imagen seleccionada
     };
 
