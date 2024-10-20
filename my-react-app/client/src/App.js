@@ -19,7 +19,7 @@ import BuscarProducto from '../src/Componentes/Productos/BuscarProducto';
 import ActualizarProducto from '../src/Componentes/Productos/ActualizarProducto';
 import EliminarProducto from '../src/Componentes/Productos/EliminarProducto';
 import ListadoProductos from '../src/Componentes/Productos/ListadoProductos';
-import StockCritico from '../src/Componentes/Productos/StockCritico';
+import StockCritico from '../src/Componentes/Productos/StockCritico'; 
 //Reportes
 import ReporteGral from '../src/Componentes/Reportes/ReporteGral';
 //Ventas
