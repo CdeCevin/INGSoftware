@@ -1,8 +1,6 @@
 // Importa las dependencias necesarias
-const express = require('express');
-const oracledb = require('oracledb');
 const router = express.Router();
-const getConnection = require('./db/connection'); // Asegúrate de tener tu archivo de conexión
+const getConnection = require('../db/connection'); // Asegúrate de tener tu archivo de conexión
 
 // Controlador para eliminar un producto
 const eliminarProducto = async (req, res) => {
@@ -35,7 +33,5 @@ const eliminarProducto = async (req, res) => {
     }
 };
 
-// Ruta para eliminar un producto
-router.post('/eliminarProducto', eliminarProducto);
 
-module.exports = router;
+module.exports = eliminarProducto;
