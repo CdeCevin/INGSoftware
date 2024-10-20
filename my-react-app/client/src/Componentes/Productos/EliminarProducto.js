@@ -13,7 +13,9 @@ function EliminarProducto() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+        
+        console.log("Valor de código antes de enviar:", codigo); // Verifica si el valor se está capturando correctamente
+        
         try {
             // Enviar los datos al backend como JSON
             const response = await fetch('http://localhost:3001/api/eliminarProducto', {
@@ -21,16 +23,19 @@ function EliminarProducto() {
                 headers: {
                     'Content-Type': 'application/json', // Asegúrate de enviar JSON
                 },
-                
                 body: JSON.stringify({ codigo }) // Enviar el código del producto como JSON
-            });console.log("code:",codigo);
-    
+            });
+            
+            console.log("Código enviado al backend:", codigo); // Verifica qué valor estás enviando al backend
+        
             if (response.ok) {
                 const data = await response.json();
+                console.log("Respuesta exitosa del backend:", data); // Verifica la respuesta del backend
                 setModalMessage(data.message); // Mostrar mensaje de éxito
                 resetForm();
             } else {
                 const errorData = await response.json();
+                console.error("Error al eliminar el producto:", errorData); // Muestra detalles del error
                 setModalMessage(errorData.message); // Mostrar mensaje de error
             }
         } catch (error) {
@@ -40,6 +45,7 @@ function EliminarProducto() {
             setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
         }
     };
+    
     
 
     const resetForm = () => {

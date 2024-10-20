@@ -4,20 +4,18 @@ const dbConnection = require('../db/connection'); // Asegúrate de usar el nombr
 const eliminarProducto = async (req, res) => {
     let connection;
     try {
-        const { codigo } = req.body; // Verifica que el código venga en el cuerpo como JSON
-
-        if (!codigo) {
-            return res.status(400).json({ message: 'Código de producto no proporcionado.' });
-        }
+        const { codigo } = req.body;
+        
+        console.log("Código recibido desde el frontend:", codigo); // Verifica el valor que llega desde el frontend
 
         // Establecer la conexión
-        connection = await oracledb.getConnection();
+        connection = await connection.getConnection();
 
         // Ejecutar el procedimiento almacenado
         await connection.execute(
             `BEGIN OUTLET_Elim_Producto(:p_codigo); END;`,
             {
-                p_codigo: parseInt(codigo) // Asegúrate de que sea un número
+                p_codigo: parseInt(codigo) // Pasar el código como número
             }
         );
 
@@ -34,6 +32,7 @@ const eliminarProducto = async (req, res) => {
         }
     }
 };
+
 
 
 module.exports = { eliminarProducto };
