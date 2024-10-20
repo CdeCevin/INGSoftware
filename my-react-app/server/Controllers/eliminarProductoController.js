@@ -5,7 +5,7 @@ const connection = require('../db/connection'); // Asegúrate de tener tu archiv
 // Controlador para eliminar un producto
 const eliminarProducto = async (req, res) => {
     let connection;
-    console.log("HOLAA");
+    console.log("HOLAA",cod);
     try {
         const { cod } = req.body; // Recibir el código del producto desde el frontend
 
