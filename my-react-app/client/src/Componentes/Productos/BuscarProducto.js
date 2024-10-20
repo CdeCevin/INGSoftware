@@ -63,15 +63,15 @@ const BuscarProducto = () => {
                     </thead>
                     <tbody>
                         {productos.map((producto) => (
-                            <tr key={producto.CODIGO_PRODUCTO}>
-                                <td>{producto.CODIGO_PRODUCTO}</td>
-                                <td>{producto.STOCK}</td>
-                                <td>{producto.PRECIO_UNITARIO}</td>
-                                <td>{producto.NOMBRE_PRODUCTO}</td>
-                                <td>{producto.COLOR_PRODUCTO}</td>
+                            <tr key={producto.codigo_producto}>
+                                <td>{producto.codigo_producto}</td>
+                                <td>{producto.stock}</td>
+                                <td>{producto.precio_unitario}</td>
+                                <td>{producto.nombre_producto}</td>
+                                <td>{producto.color_producto}</td>
                                 <td>
                                     <form action="pagina_foto_producto.php" method="get">
-                                        <input type="hidden" name="id" value={producto.CODIGO_PRODUCTO} />
+                                        <input type="hidden" name="id" value={producto.codigo_producto} />
                                         <button type="submit">
                                             <i className="fa fa-eye"></i>
                                         </button>
