@@ -32,12 +32,9 @@ const BuscarProducto = () => {
             }
 
             const data = await response.json();
-            if (data.data && data.data.length > 0) {
-                setProductos(data.data); // Asumiendo que `data.data` contiene el array de productos
-                setModalMessage('Productos encontrados con éxito.');
-            } else {
+            if (data.data && data.data.length <= 0) {
                 setModalMessage('No se encontraron productos.');
-            }
+            } 
         } catch (error) {
             console.error('Error al buscar productos:', error);
             setModalMessage('Error al buscar productos.');
