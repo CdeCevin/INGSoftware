@@ -5,8 +5,8 @@ const buscarProducto = async (req, res) => {
     const { 'input-nombre': nombre, 'input-color': color } = req.body;
 
     // Asignar null si no hay valor
-    const palabraClave = nombre && nombre.trim() ? nombre.trim() : null;
-    const colorParam = color && color.trim() ? color.trim() : null;
+    const palabraClave = nombre && nombre.trim() ? nombre.trim() : '';
+    const colorParam = color && color.trim() ? color.trim() : '';
 
     console.log('Nombre:', palabraClave);
     console.log('Color:', colorParam);
@@ -14,20 +14,36 @@ const buscarProducto = async (req, res) => {
     let connection;
     try {
         connection = await getConnection();
-        const cursor = await connection.execute(
+        const result = await connection.execute(
             `BEGIN Outlet_FiltrarProducto(:p_PalabraClave, :p_colorp, :c_Productos); END;`,
             {
-                p_PalabraClave: palabraClave, // Asegúrate de enviar null si no hay un valor
+                p_PalabraClave: palabraClave,
                 p_colorp: colorParam,
                 c_Productos: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT },
             }
         );
 
-        const resultCursor = cursor.outBinds.c_Productos;
-        const result = await connection.execute(resultCursor);
+        const resultCursor = result.outBinds.c_Productos;
 
-        // Procesar resultados
-        res.status(200).json({ message: 'Búsqueda exitosa', data: result.rows });
+        // Procesar los resultados del cursor
+        const productos = [];
+        let row;
+        while ((row = await resultCursor.getRow())) {
+            productos.push({
+                codigo_producto: row[0],
+                activo: row[1],
+                stock: row[2],
+                precio_unitario: row[3],
+                nombre_producto: row[4],
+                tipo_producto: row[5],
+                color_producto: row[6],
+            });
+        }
+
+        await resultCursor.close(); // Cerrar el cursor después de procesar los datos
+
+        // Enviar los resultados como respuesta JSON
+        res.status(200).json({ message: 'Búsqueda exitosa', data: productos });
     } catch (err) {
         console.error('Error en la búsqueda de productos:', err);
         res.status(500).json({ message: 'Error al buscar el producto.' });

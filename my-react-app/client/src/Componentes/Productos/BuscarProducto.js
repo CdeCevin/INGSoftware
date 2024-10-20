@@ -1,103 +1,74 @@
-import React, { useState, useEffect } from 'react';
-import '../../Estilos/style_menu.css';
-import '../../Estilos/estilo.css';
-import Modal from 'react-modal';
+import React, { useState } from 'react';
+import axios from 'axios';
 
-Modal.setAppElement('#root'); // Reemplaza '#root' con tu selector de raíz
+const BuscarProducto = () => {
+  const [productos, setProductos] = useState([]);
+  const [nombre, setNombre] = useState('');
+  const [color, setColor] = useState('');
 
-function BuscarProducto() {
-    const [nombre, setNombre] = useState('');
-    const [color, setColor] = useState('');
-    const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
-    const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
+  const buscarProductos = async () => {
+    try {
+      const response = await axios.post('http://localhost:3001/api/buscarProducto', {
+        'input-nombre': nombre,
+        'input-color': color,
+      });
+      setProductos(response.data.data);
+    } catch (error) {
+      console.error('Error al buscar productos:', error);
+    }
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+  return (
+    <div className="main-content">
+      <h3>Resultados</h3>
+      <input
+        type="text"
+        placeholder="Nombre del producto"
+        value={nombre}
+        onChange={(e) => setNombre(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Color del producto"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+      />
+      <button onClick={buscarProductos}>Buscar</button>
 
-        try {
-            // Enviar los datos al backend
-            const response = await fetch('http://localhost:3001/api/buscarProducto', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ 'input-nombre': nombre, 'input-color': color }), // Envía los datos como JSON
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                setModalMessage(data.message); // Mostrar mensaje de éxito
-                // Reiniciar el formulario
-                resetForm();
-            } else {
-                const errorData = await response.json();
-                setModalMessage(errorData.message); // Mostrar mensaje de error
-            }
-        } catch (error) {
-            console.error('Error al enviar el formulario:', error);
-            setModalMessage('Error al enviar el formulario.'); // Mensaje de error genérico
-        } finally {
-            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
-        }
-    };
-
-    const resetForm = () => {
-        setNombre('');
-        setColor('');
-    };
-
-    const closeModal = () => {
-        setModalIsOpen(false);
-    };
-
-    useEffect(() => {
-        document.title = 'Buscar Producto';
-    }, []);
-
-    return (
-        <div style={{ marginLeft: '12%' }}>
-            <div className="main-block">
-                <form onSubmit={handleSubmit}>
-                    <h1>Buscar Producto</h1>
-                    <fieldset>
-                        <legend>
-                            <h3>Detalles del Producto</h3>
-                        </legend>
-                        <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
-                            <div>
-                                <label>Nombre*</label>
-                                <input 
-                                    type="text" 
-                                    name="input-nombre" 
-                                    maxLength="50" 
-                                    required 
-                                    value={nombre} 
-                                    onChange={(e) => setNombre(e.target.value)} 
-                                />
-                            </div>
-                            <div>
-                                <label>Color Producto*</label>
-                                <input 
-                                    type="text" 
-                                    name="input-color" 
-                                    value={color} 
-                                    onChange={(e) => setColor(e.target.value)} 
-                                />
-                            </div>
-                        </div>
-                    </fieldset>
-                    <button type="submit">Buscar</button>
-                </form>
-            </div>
-
-            {/* Modal para mostrar mensajes */}
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
-                <h2>Mensaje</h2>
-                <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
-            </Modal>
-        </div>
-    );
-}
+      {productos.length > 0 ? (
+        <table className="venta-table">
+          <thead>
+            <tr>
+              <th>CÓDIGO</th>
+              <th>STOCK</th>
+              <th>PRECIO</th>
+              <th>NOMBRE</th>
+              <th>COLOR</th>
+              <th>FOTO</th>
+            </tr>
+          </thead>
+          <tbody>
+            {productos.map((producto, index) => (
+              <tr key={index}>
+                <td>{producto.codigo_producto}</td>
+                <td>{producto.stock}</td>
+                <td>{producto.precio_unitario}</td>
+                <td>{producto.nombre_producto}</td>
+                <td>{producto.color_producto}</td>
+                <td>
+                  <form action={`/pagina_foto_producto/${producto.codigo_producto}`} method="get">
+                    <button type="submit">Ver foto</button>
+                  </form>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No se encontraron productos.</p>
+      )}
+    </div>
+  );
+};
 
 export default BuscarProducto;
