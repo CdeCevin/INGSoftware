@@ -19,11 +19,11 @@ const buscarProducto = async (req, res) => {
             {
                 p_PalabraClave: palabraClave,
                 p_colorp: colorParam,
-                c_Productos: { type: oracledb.CURSOR, dir: oracledb.SYS_REFCURSOR },
+                c_Products: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT },
             }
         );
 
-        const resultCursor = cursor.outBinds.c_Productos;
+        const resultCursor = cursor.outBinds.c_Products;
         const result = await connection.execute(resultCursor);
 
         // Procesar resultados
