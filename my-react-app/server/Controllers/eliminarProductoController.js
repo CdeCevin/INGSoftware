@@ -1,7 +1,5 @@
 // Importa las dependencias necesarias
-const express = require('express');
 const oracledb = require('oracledb');
-const router = express.Router();
 const connection = require('../db/connection'); // Asegúrate de tener tu archivo de conexión
 
 // Controlador para eliminar un producto
@@ -12,7 +10,7 @@ const eliminarProducto = async (req, res) => {
         const { cod } = req.body; // Recibir el código del producto desde el frontend
 
         // Establecer la conexión
-        conn = await getConnection();
+        conn = await connection.getConnection();
         console.log('Codigo:',cod);
         // Ejecutar el procedimiento almacenado
         await conn.execute(
