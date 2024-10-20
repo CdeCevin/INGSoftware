@@ -11,6 +11,7 @@ const BuscarProducto = () => {
     const [productos, setProductos] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [selectedImage, setSelectedImage] = useState(null); // Estado para manejar la imagen seleccionada
 
     const buscarProductos = async (event) => {
         event.preventDefault();
@@ -45,7 +46,12 @@ const BuscarProducto = () => {
             setModalIsOpen(true); // Abre el modal si ocurre un error
         }
     };
-    
+
+    // Función para manejar la visualización de la imagen
+    const mostrarImagen = (codigo_producto) => {
+        const imageUrl = `http://localhost/Outlet/${codigo_producto}.jpg`; // Asegúrate de ajustar la URL según la ruta de tu imagen
+        setSelectedImage(imageUrl); // Establecer la imagen seleccionada
+    };
 
     const closeModal = () => {
         setModalIsOpen(false);
@@ -116,19 +122,25 @@ const BuscarProducto = () => {
                                     <td>{producto.nombre_producto}</td>
                                     <td>{producto.color_producto}</td>
                                     <td>
-                                        <form action="pagina_foto_producto.php" method="get">
-                                            <input type="hidden" name="id" value={producto.codigo_producto} />
-                                            <button type="submit">
-                                                <i className="fa fa-eye"></i>
-                                            </button>
-                                        </form>
+                                        {/* Botón para ver la imagen */}
+                                        <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)}>
+                                            <i className="fa fa-eye"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 ) : (
-                    <p></p> //ASDFAF NO SE COMO SACAR ESTO
+                    <p></p>
+                )}
+
+                {/* Modal o contenedor para mostrar la imagen seleccionada */}
+                {selectedImage && (
+                    <div id="image-container" style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+                        <button onClick={() => setSelectedImage(null)}><i className="fa fa-arrow-left"></i> Volver</button>
+                        <img src={selectedImage} alt="Imagen del producto" style={{ maxWidth: '100%', height: 'auto' }} />
+                    </div>
                 )}
             </div>
         </div>
