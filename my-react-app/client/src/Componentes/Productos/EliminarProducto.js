@@ -71,8 +71,8 @@ function EliminarProducto() {
                             <div>
                                 <label>Código Mueble*</label>
                                 <input 
-                                    type="text" 
-                                    name="input-cod" 
+                                    type="NUMBER" //Tiene que ser number
+                                    name="cod" 
                                     pattern="[0-9]+" 
                                     maxLength="4" 
                                     required 

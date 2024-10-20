@@ -7,6 +7,7 @@ const getConnection = require('../db/connection'); // Asegúrate de tener tu arc
 // Controlador para eliminar un producto
 const eliminarProducto = async (req, res) => {
     let connection;
+    console.log("HOLAA");
     try {
         const { cod } = req.body; // Recibir el código del producto desde el frontend
 
@@ -17,10 +18,9 @@ const eliminarProducto = async (req, res) => {
         await connection.execute(
             `BEGIN OUTLET_Elim_Producto(:p_codigo); END;`,
             {
-                p_codigo: parseInt(cod) // Pasar el código como número
+                p_codigo: Number(cod) // Pasar el código como número
             }
         );
-
         await connection.commit();
 
         // Respuesta exitosa
