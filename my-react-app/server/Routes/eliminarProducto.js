@@ -2,7 +2,7 @@ const express = require('express');
 const { eliminarProducto } = require('../Controllers/eliminarProductoController');
 const router = express.Router();
 
-router.get('/', eliminarProducto);
+router.post('/', eliminarProducto);
 
 module.exports = router;
     
