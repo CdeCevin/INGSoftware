@@ -7,12 +7,16 @@ const ListadoProductos = () => {
 
     useEffect(() => {
         const obtenerProductos = async () => {
+            setCargando(true);
+            console.log("Iniciando la obtención de productos");
             try {
-                const response = await fetch('http://localhost:3001/api/products'); //@dt-24 (NO SE PA QUE SIRVE) Pero, se supone que el backend ta listo (tipo. si te metes a ese link entras y ves todos los productos, pero el front no supe como dejar pa q se vea el texto :c) 
+                const response = await fetch('http://localhost:3001/api/products');
+                console.log("Respuesta de la API:", response);
                 if (!response.ok) {
                     throw new Error('Error en la red al obtener los productos');
                 }
                 const data = await response.json();
+                console.log("Datos recibidos:", data);
                 // Convertir array de arrays a array de objetos
                 const productosFormateados = data.map((producto) => ({
                     Codigo_Producto: producto[0],
@@ -23,7 +27,6 @@ const ListadoProductos = () => {
                     Categoria: producto[5],
                     Color_Producto: producto[6],
                 }));
-                console.log(productosFormateados);
                 setProductos(productosFormateados);
             } catch (error) {
                 setError(error.message);
@@ -31,10 +34,9 @@ const ListadoProductos = () => {
                 setCargando(false);
             }
         };
-    
+
         obtenerProductos();
     }, []);
-    
 
     if (cargando) {
         return <div>Cargando productos...</div>;
