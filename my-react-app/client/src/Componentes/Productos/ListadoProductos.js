@@ -4,6 +4,7 @@ import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
 
 const ListadoProductos = () => {
+    console.log("HOLAA");
     const [productos, setProductos] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
