@@ -1,12 +1,9 @@
-const oracledb = require('oracledb');
-const { getConnection } = require('../db/connection'); // Asegúrate de que esta ruta sea correcta
-
 const buscarProducto = async (req, res) => {
     const { 'input-nombre': nombre, 'input-color': color } = req.body;
 
     // Asignar null si no hay valor
-    const palabraClave = nombre || null;
-    const colorParam = color || null;
+    const palabraClave = nombre && nombre.trim() ? nombre.trim() : null;
+    const colorParam = color && color.trim() ? color.trim() : null;
 
     console.log('Nombre:', palabraClave);
     console.log('Color:', colorParam);
@@ -37,6 +34,3 @@ const buscarProducto = async (req, res) => {
         }
     }
 };
-
-
-module.exports = { buscarProducto };
