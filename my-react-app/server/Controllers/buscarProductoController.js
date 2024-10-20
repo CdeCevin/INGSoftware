@@ -4,7 +4,7 @@ const { getConnection } = require('../db/connection'); // Asegúrate de que esta
 
 const buscarProducto = async (req, res) => {
     const { 'input-nombre': nombre, 'input-color': color } = req.body; // Obtener datos del cuerpo de la solicitud
-
+    console.log(nombre);
     let connection;
     try {
         connection = await getConnection();
