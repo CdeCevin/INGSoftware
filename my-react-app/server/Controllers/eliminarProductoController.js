@@ -8,7 +8,7 @@ const getConnection = require('./bd/connection'); // Asegúrate de tener tu arch
 const eliminarProducto = async (req, res) => {
     let connection;
     try {
-        const { codigo } = req.body; // Recibir el código del producto desde el frontend
+        const { cod } = req.body; // Recibir el código del producto desde el frontend
 
         // Establecer la conexión
         connection = await getConnection();
