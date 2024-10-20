@@ -2,7 +2,7 @@ const express = require('express');
 const { obtenerPendientes } = require('../Controllers/pendientesController');
 const router = express.Router();
 
-router.post('/', obtenerPendientes);
+router.get('/', obtenerPendientes);
 
 module.exports = router;
     
