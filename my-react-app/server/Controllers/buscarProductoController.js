@@ -1,4 +1,5 @@
 // Controllers/ProductoController.js
+const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection'); // Asegúrate de que esta ruta sea correcta
 
 const buscarProducto = async (req, res) => {
