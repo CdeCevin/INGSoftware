@@ -51,7 +51,7 @@ function App() {
                         <Route path="/BuscarProducto" element={<BuscarProducto />} />
                         <Route path="/ActualizarProducto" element={<ActualizarProducto />} />
                         <Route path="/EliminarProducto" element={<EliminarProducto />} />
-                        <Route path="/ListadoProductos" element={<ListadoProductos />} />
+                        <Route path="/ListadoProducto" element={<ListadoProductos />} />
                         <Route path="/StockCritico" element={<StockCritico />} />
                         {/*Reporte*/}
                         <Route path="/ReporteGral" element={<ReporteGral />} />
