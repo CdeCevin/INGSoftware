@@ -125,8 +125,8 @@ const BuscarProducto = () => {
                                     <td>{producto.nombre_producto}</td>
                                     <td>{producto.color_producto}</td>
                                     <td>
-                                        {/* Botón para ver la imagen */}
-                                        <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)}>
+                                        {/* Botón para ver la imagen / mostrarImagen(producto.codigo_producto) */}
+                                        <button type="button" onClick={() => console.log("Función llamada!")}> 
                                             <i className="fa fa-eye"></i>
                                         </button>
                                     </td>
