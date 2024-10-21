@@ -49,7 +49,7 @@ const BuscarProducto = () => {
 
     // Función para manejar la visualización de la imagen
     const mostrarImagen = (codigo_producto) => {
-        console.log("El codigo de producto es:",codigo_producto);
+        console.log("El codigo:",codigo_producto);
         const imageUrl = `C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`; // Asegúrate de ajustar la URL según la ruta de tu imagen
         setSelectedImage(imageUrl); // Establecer la imagen seleccionada
     };
@@ -126,7 +126,7 @@ const BuscarProducto = () => {
                                     <td>{producto.color_producto}</td>
                                     <td>
                                         {/* Botón para ver la imagen */}
-                                        <button type="button" onClick={ mostrarImagen(producto.codigo_producto)}>
+                                        <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)}>
                                             <i className="fa fa-eye"></i>
                                         </button>
                                     </td>
