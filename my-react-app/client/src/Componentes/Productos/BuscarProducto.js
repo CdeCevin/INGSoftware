@@ -51,7 +51,7 @@ const BuscarProducto = () => {
     const mostrarImagen = (codigo_producto) => {
         console.log("El codigo:",codigo_producto);
         const imageUrl = `C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`; // Asegúrate de ajustar la URL según la ruta de tu imagen
-        setSelectedImage(imageUrl); // Establecer la imagen seleccionada
+        //setSelectedImage(imageUrl); // Establecer la imagen seleccionada
     };
 
     const closeModal = () => {
