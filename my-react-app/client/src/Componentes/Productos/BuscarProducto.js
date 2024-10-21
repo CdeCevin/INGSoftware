@@ -45,9 +45,9 @@ const BuscarProducto = () => {
         }
     };
 
-    // Función para manejar la visualización de la imagen images/Outlet/
+    // Función para manejar la visualización de la imagen
     const mostrarImagen = (codigo_producto) => {
-        const imageUrl = `C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`; // Usamos una ruta relativa
+        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Usamos una ruta relativa
         setSelectedImage(imageUrl); // Establecer la URL de la imagen seleccionada
         setModalIsOpen(true); // Abrir el modal con la imagen
     };
