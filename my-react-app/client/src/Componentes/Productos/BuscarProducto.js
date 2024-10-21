@@ -51,7 +51,7 @@ const BuscarProducto = () => {
     // Función para manejar la visualización de la imagen
     const mostrarImagen = (codigo_producto) => {
         console.log("El codigo:",codigo_producto);
-        //const imageUrl = `C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`; // Asegúrate de ajustar la URL según la ruta de tu imagen
+        const imageUrl = `C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`; // Asegúrate de ajustar la URL según la ruta de tu imagen
         setModalMessage(); // Establecer la imagen seleccionada
         setModalIsOpen(true);
     };
@@ -97,10 +97,14 @@ const BuscarProducto = () => {
                     <button type="submit">Buscar</button>
                 </form>
 
-                {/* Modal para mostrar mensajes */}
-                <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
-                    <h2>Mensaje</h2>
-                    <img> src={"C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/310.jpg"} alt="Imagen del producto" style={{ maxWidth: '100%', height: 'auto' }}</img>
+   {/* Modal para mostrar la imagen seleccionada */}
+                <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
+                    <h2>Imagen del Producto</h2>
+                    {selectedImage ? (
+                        <img src={"C:/Users/Koliv/Desktop/todo/Nueva%20carpeta/Outlet/1.jpg "} alt="Imagen del producto" />
+                    ) : (
+                        <p>No hay imagen disponible.</p>
+                    )}
                     <button onClick={closeModal}>Cerrar</button>
                 </Modal>
 
