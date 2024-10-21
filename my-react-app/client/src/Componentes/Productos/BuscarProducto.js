@@ -103,7 +103,7 @@ const BuscarProducto = () => {
                     {selectedImage ? (
                         <img src={"C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/1.jpg "} alt="Imagen del producto" />
                     ) : (
-                        <p>No hay imagen disponible.</p>
+                        <p></p>
                     )}
                     <button onClick={closeModal}>Cerrar</button>
                 </Modal>
