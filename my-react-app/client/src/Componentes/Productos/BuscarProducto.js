@@ -101,7 +101,7 @@ const BuscarProducto = () => {
                 <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
                     <h2>Imagen del Producto</h2>
                     {selectedImage ? (
-                        <img src={"C:/Users/Koliv/Desktop/todo/Nueva%20carpeta/Outlet/1.jpg "} alt="Imagen del producto" />
+                        <img src={"C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/1.jpg "} alt="Imagen del producto" />
                     ) : (
                         <p>No hay imagen disponible.</p>
                     )}
