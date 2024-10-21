@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
-import img from 'C:/Users/Koliv/INGSoftware/my-react-app/client/src/Outlet/1.jpg'; //ver esto 
 
 Modal.setAppElement('#root'); // Asegúrate de reemplazar '#root' con tu selector de raíz
 
@@ -45,20 +44,21 @@ const BuscarProducto = () => {
             console.error('Error al buscar productos:', error);
             setModalMessage('Error al buscar productos.');
             setModalIsOpen(true); // Abre el modal si ocurre un error
-        
         }
     };
 
     // Función para manejar la visualización de la imagen
     const mostrarImagen = (codigo_producto) => {
-        console.log("El codigo:",codigo_producto);
-        //const imageUrl = `C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`; // Asegúrate de ajustar la URL según la ruta de tu imagen
-        setModalMessage(); // Establecer la imagen seleccionada
-        setModalIsOpen(true);
+        console.log("El codigo:", codigo_producto);
+        // Construye la ruta de la imagen usando el código del producto
+        const imageUrl = `C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`;
+        setSelectedImage(imageUrl); // Establecer la imagen seleccionada
+        setModalIsOpen(true); // Abre el modal
     };
 
     const closeModal = () => {
         setModalIsOpen(false);
+        setSelectedImage(null); // Limpia la imagen seleccionada al cerrar el modal
     };
 
     return (
@@ -98,13 +98,16 @@ const BuscarProducto = () => {
                     <button type="submit">Buscar</button>
                 </form>
 
-                {/* Modal para mostrar mensajes */}
-                <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
-                    <h2>Mensaje</h2>
-                    <img src={img} alt="Imagen del producto" />
+                {/* Modal para mostrar la imagen seleccionada */}
+                <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
+                    <h2>Imagen del Producto</h2>
+                    {selectedImage ? (
+                        <img src={selectedImage} alt="Imagen del producto" style={{ maxWidth: '100%', height: 'auto' }} />
+                    ) : (
+                        <p>No hay imagen disponible.</p>
+                    )}
                     <button onClick={closeModal}>Cerrar</button>
                 </Modal>
-
 
                 {productos.length > 0 ? (
                     <table className="venta-table">
@@ -139,15 +142,7 @@ const BuscarProducto = () => {
                         </tbody>
                     </table>
                 ) : (
-                    <p></p>
-                )}
-
-                {/* Modal o contenedor para mostrar la imagen seleccionada */}
-                {selectedImage && (
-                    <div id="image-container" style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-                        <button onClick={() => setSelectedImage(null)}><i className="fa fa-arrow-left"></i> Volver</button>
-                        <img src={selectedImage} alt="Imagen del producto" style={{ maxWidth: '100%', height: 'auto' }} />
-                    </div>
+                    <p>No hay productos disponibles</p>
                 )}
             </div>
         </div>
