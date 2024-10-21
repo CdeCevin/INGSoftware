@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
+import img from 'C:/Users/Koliv/INGSoftware/my-react-app/client/public/Outlet/1.jpg'; //ver esto 
 
 Modal.setAppElement('#root'); // Asegúrate de reemplazar '#root' con tu selector de raíz
 
@@ -10,11 +11,12 @@ const BuscarProducto = () => {
     const [color, setColor] = useState('');
     const [productos, setProductos] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
     const [selectedImage, setSelectedImage] = useState(null); // Estado para manejar la imagen seleccionada
 
     const buscarProductos = async (event) => {
         event.preventDefault();
-
+    
         try {
             const response = await fetch('http://localhost:3001/api/buscarProducto', {
                 method: 'POST',
@@ -26,37 +28,37 @@ const BuscarProducto = () => {
                     'input-color': color,
                 }),
             });
-
+    
             if (!response.ok) {
                 throw new Error('Error en la solicitud');
             }
-
+    
             const data = await response.json();
-
+    
             if (data.data && data.data.length > 0) {
                 setProductos(data.data); // Si hay productos, actualiza el estado pero NO abre el modal
             } else {
+                setModalMessage('No se encontraron productos.');
                 setModalIsOpen(true); // Abre el modal si no se encuentran productos
-                setSelectedImage(null); // Limpia cualquier imagen seleccionada
             }
         } catch (error) {
             console.error('Error al buscar productos:', error);
+            setModalMessage('Error al buscar productos.');
             setModalIsOpen(true); // Abre el modal si ocurre un error
-            setSelectedImage(null);
+        
         }
     };
 
     // Función para manejar la visualización de la imagen
     const mostrarImagen = (codigo_producto) => {
-        const imageUrl = `C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`; // Ruta relativa desde 'public'
-        console.log("Mostrando imagen:", imageUrl); // Verifica que la URL sea correcta
-        setSelectedImage(imageUrl); 
+        console.log("El codigo:",codigo_producto);
+        //const imageUrl = `C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`; // Asegúrate de ajustar la URL según la ruta de tu imagen
+        setModalMessage(); // Establecer la imagen seleccionada
         setModalIsOpen(true);
     };
 
     const closeModal = () => {
         setModalIsOpen(false);
-        setSelectedImage(null); // Resetea la imagen seleccionada al cerrar el modal
     };
 
     return (
@@ -96,16 +98,13 @@ const BuscarProducto = () => {
                     <button type="submit">Buscar</button>
                 </form>
 
-                {/* Modal para mostrar la imagen */}
+                {/* Modal para mostrar mensajes */}
                 <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
                     <h2>Mensaje</h2>
-                    {selectedImage ? (
-                        <img src={selectedImage} alt="Imagen del producto" style={{ maxWidth: '100%', height: 'auto' }} />
-                    ) : (
-                        <p>No se encontró imagen.</p>
-                    )}
+                    <img src={img} alt="Imagen del producto" />
                     <button onClick={closeModal}>Cerrar</button>
                 </Modal>
+
 
                 {productos.length > 0 ? (
                     <table className="venta-table">
@@ -140,7 +139,15 @@ const BuscarProducto = () => {
                         </tbody>
                     </table>
                 ) : (
-                    <p>No se encontraron productos.</p>
+                    <p></p>
+                )}
+
+                {/* Modal o contenedor para mostrar la imagen seleccionada */}
+                {selectedImage && (
+                    <div id="image-container" style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+                        <button onClick={() => setSelectedImage(null)}><i className="fa fa-arrow-left"></i> Volver</button>
+                        <img src={selectedImage} alt="Imagen del producto" style={{ maxWidth: '100%', height: 'auto' }} />
+                    </div>
                 )}
             </div>
         </div>
