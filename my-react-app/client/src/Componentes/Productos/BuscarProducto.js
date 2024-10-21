@@ -49,6 +49,7 @@ const BuscarProducto = () => {
 
     // Función para manejar la visualización de la imagen
     const mostrarImagen = (codigo_producto) => {
+        console.log("El codigo de producto es:",codigo_producto);
         const imageUrl = `C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`; // Asegúrate de ajustar la URL según la ruta de tu imagen
         setSelectedImage(imageUrl); // Establecer la imagen seleccionada
     };
