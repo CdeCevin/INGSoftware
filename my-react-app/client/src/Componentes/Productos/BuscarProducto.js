@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
+import img from 'CdeCevin/INGSoftware/my-react-app/client/public/Outlet/1.jpg';
 
 Modal.setAppElement('#root'); // Asegúrate de reemplazar '#root' con tu selector de raíz
 
@@ -100,7 +101,7 @@ const BuscarProducto = () => {
                 {/* Modal para mostrar mensajes */}
                 <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
                     <h2>Mensaje</h2>
-                    <img src={"C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/310.jpg"} alt="Imagen del producto" />
+                    <img src={img} alt="Imagen del producto" />
                     <button onClick={closeModal}>Cerrar</button>
                 </Modal>
 
