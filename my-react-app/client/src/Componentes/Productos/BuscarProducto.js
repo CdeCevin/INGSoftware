@@ -10,12 +10,11 @@ const BuscarProducto = () => {
     const [color, setColor] = useState('');
     const [productos, setProductos] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [modalMessage, setModalMessage] = useState('');
     const [selectedImage, setSelectedImage] = useState(null); // Estado para manejar la imagen seleccionada
 
     const buscarProductos = async (event) => {
         event.preventDefault();
-    
+
         try {
             const response = await fetch('http://localhost:3001/api/buscarProducto', {
                 method: 'POST',
@@ -27,33 +26,30 @@ const BuscarProducto = () => {
                     'input-color': color,
                 }),
             });
-    
+
             if (!response.ok) {
                 throw new Error('Error en la solicitud');
             }
-    
+
             const data = await response.json();
-    
+
             if (data.data && data.data.length > 0) {
                 setProductos(data.data); // Si hay productos, actualiza el estado pero NO abre el modal
             } else {
-                setModalMessage('No se encontraron productos.');
+                setSelectedImage(null); // Asegurarse de que no haya imagen seleccionada
                 setModalIsOpen(true); // Abre el modal si no se encuentran productos
             }
         } catch (error) {
             console.error('Error al buscar productos:', error);
-            setModalMessage('Error al buscar productos.');
             setModalIsOpen(true); // Abre el modal si ocurre un error
-        
         }
     };
 
     // Función para manejar la visualización de la imagen
     const mostrarImagen = (codigo_producto) => {
-        console.log("El codigo:",codigo_producto);
-        const imageUrl = `C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`; // Asegúrate de ajustar la URL según la ruta de tu imagen
-        setModalMessage(); // Establecer la imagen seleccionada
-        setModalIsOpen(true);
+        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Usamos una ruta relativa
+        setSelectedImage(imageUrl); // Establecer la URL de la imagen seleccionada
+        setModalIsOpen(true); // Abrir el modal con la imagen
     };
 
     const closeModal = () => {
@@ -97,10 +93,14 @@ const BuscarProducto = () => {
                     <button type="submit">Buscar</button>
                 </form>
 
-   {/* Modal para mostrar la imagen seleccionada */}
+                {/* Modal para mostrar la imagen seleccionada */}
                 <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
                     <h2>Imagen del Producto</h2>
-                        <img src={"CdeCevin/INGSoftware/my-react-app/client/src/Outlet/1.jpg"} alt="Imagen del producto" />
+                    {selectedImage ? (
+                        <img src={selectedImage} alt="Imagen del producto" style={{ maxWidth: '100%', height: 'auto' }} />
+                    ) : (
+                        <p>No se ha seleccionado una imagen.</p>
+                    )}
                     <button onClick={closeModal}>Cerrar</button>
                 </Modal>
 
@@ -138,14 +138,6 @@ const BuscarProducto = () => {
                     </table>
                 ) : (
                     <p></p>
-                )}
-
-                {/* Modal o contenedor para mostrar la imagen seleccionada */}
-                {selectedImage && (
-                    <div id="image-container" style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-                        <button onClick={() => setSelectedImage(null)}><i className="fa fa-arrow-left"></i> Volver</button>
-                        <img src={selectedImage} alt="Imagen del producto" style={{ maxWidth: '100%', height: 'auto' }} />
-                    </div>
                 )}
             </div>
         </div>
