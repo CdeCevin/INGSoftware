@@ -44,6 +44,7 @@ const BuscarProducto = () => {
             console.error('Error al buscar productos:', error);
             setModalMessage('Error al buscar productos.');
             setModalIsOpen(true); // Abre el modal si ocurre un error
+        
         }
     };
 
@@ -51,7 +52,7 @@ const BuscarProducto = () => {
     const mostrarImagen = (codigo_producto) => {
         console.log("El codigo:",codigo_producto);
         const imageUrl = `C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`; // Asegúrate de ajustar la URL según la ruta de tu imagen
-        setModalMessage(imageUrl); // Establecer la imagen seleccionada
+        setModalMessage(); // Establecer la imagen seleccionada
         setModalIsOpen(true);
     };
 
@@ -99,7 +100,7 @@ const BuscarProducto = () => {
                 {/* Modal para mostrar mensajes */}
                 <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
                     <h2>Mensaje</h2>
-                    <p>{modalMessage}</p>
+                    <p><img>src={modalMessage}</img></p>
                     <button onClick={closeModal}>Cerrar</button>
                 </Modal>
 
