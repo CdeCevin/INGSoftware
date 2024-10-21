@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
-import img from 'CdeCevin/INGSoftware/my-react-app/client/public/Outlet/1.jpg';
+import img from '../client/public/Outlet/1.jpg';
 
 Modal.setAppElement('#root'); // Asegúrate de reemplazar '#root' con tu selector de raíz
 
