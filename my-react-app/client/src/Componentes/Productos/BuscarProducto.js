@@ -97,7 +97,7 @@ const BuscarProducto = () => {
                 <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
                     <h2>Imagen del Producto</h2>
                     {selectedImage ? (
-                        <img src={selectedImage} alt="Imagen del producto" style={{ maxWidth: '100%', maxHeight: '100%' }} />
+                        <img src={selectedImage} alt="Imagen del producto" style={{ maxWidth: '100%', maxHeight: 'auto' }} />
                     ) : (
                         <p>No se ha seleccionado una imagen.</p>
                     )}
