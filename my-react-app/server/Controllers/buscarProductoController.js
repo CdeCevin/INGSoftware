@@ -42,7 +42,7 @@ const buscarProducto = async (req, res) => {
         }
 
         await resultCursor.close(); // Cerrar el cursor después de procesar los datos
-        console.log(productos);
+        //console.log(productos);
         // Enviar los resultados como respuesta JSON
         res.status(200).json({ message: 'Búsqueda exitosa', data: productos });
     } catch (err) {
