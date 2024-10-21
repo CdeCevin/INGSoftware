@@ -52,6 +52,7 @@ const BuscarProducto = () => {
         console.log("El codigo:", codigo_producto);
         // Construye la ruta de la imagen usando el código del producto
         const imageUrl = `C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`;
+        console.log(imageUrl);
         setSelectedImage(imageUrl); // Establecer la imagen seleccionada
         setModalIsOpen(true); // Abre el modal
     };
