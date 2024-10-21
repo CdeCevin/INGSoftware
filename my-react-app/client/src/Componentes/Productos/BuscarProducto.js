@@ -100,7 +100,7 @@ const BuscarProducto = () => {
                 {/* Modal para mostrar mensajes */}
                 <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
                     <h2>Mensaje</h2>
-                    <p><img>src={"C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/310.jpg"}</img></p>
+                    <img>src={"C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/310.jpg"}</img>
                     <button onClick={closeModal}>Cerrar</button>
                 </Modal>
 
