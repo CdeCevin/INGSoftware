@@ -81,9 +81,8 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 			Eliminar Producto --> LISTO! :D
 
-			Listado Producto --> FALTA
-				** EN SERIO HAY QUE HACER UN PACTO CON EL DIABLO PARA QUE ESTO FUNCIONE SI DEBERIA ESTAR BIEN PERO NO NO
-
+			Listado Producto --> medio q medio
+				**AHORA SE MUESTRA! Falta dejarlo bonito!!
 			Stock Critico --> Falta
 				**Los datos se muestran, pero estan feos :c 
 			
@@ -101,7 +100,6 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 			Eliminar Producto --> LISTO! :D
 
 			Listado Producto --> LISTO!:D 
-				** Aun que falta ver si con el front queda bien porque igual el problem puede tar aqui???
 
 			Stock Critico --> LISTO!:D 
 			

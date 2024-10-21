@@ -1,70 +1,133 @@
-    import React, { useEffect, useState } from 'react';
-    import '../../Estilos/style_menu.css';
-    import '../../Estilos/estilo.css';
-    import Modal from 'react-modal';
+const ListadoPendientes = () => {
+    const [pendientes, setPendientes] = useState([]);
+    const [visibleTables, setVisibleTables] = useState({});
 
-    const ListadoProductos = () => {
-        console.log("HOLAA");
-        const [productos, setProductos] = useState([]);
-        const [cargando, setCargando] = useState(true);
-        const [error, setError] = useState(null);
-
-        useEffect(() => {
-            const obtenerProductos = async () => {
-                setCargando(true);
-                console.log("Iniciando la obtención de productos");
-                try {
-                    const response = await fetch('http://localhost:3001/api/products');
-                    console.log("Respuesta de la API:", response);
-                    if (!response.ok) {
-                        throw new Error('Error en la red al obtener los productos');
-                    }
-                    const data = await response.json();
-                    console.log("Datos recibidos:", data);
-                    // Convertir array de arrays a array de objetos
-                    const productosFormateados = data.map((producto) => ({
-                        Codigo_Producto: producto[0],
-                        Activo: producto[1],
-                        Stock: producto[2],
-                        Precio_Unitario: producto[3],
-                        Nombre_Producto: producto[4],
-                        Categoria: producto[5],
-                        Color_Producto: producto[6],
-                    }));
-                    setProductos(productosFormateados);
-                } catch (error) {
-                    setError(error.message);
-                } finally {
-                    setCargando(false);
-                }
-            };
-
-            obtenerProductos();
-        }, []);
-
-        if (cargando) {
-            return <div>Cargando productos...</div>;
-        }
-
-        if (error) {
-            return <div>Error: {error}</div>;
-        }
-
-        return (
-            <div>
-                <h2>Listado de Productos</h2>
-                <ul>
-                    {productos.map((producto) => (
-                        <li key={producto.Codigo_Producto}>
-                            <h3>{producto.Nombre_Producto}</h3>
-                            <p>Precio: ${producto.Precio_Unitario}</p>
-                            <p>Stock: {producto.Stock}</p>
-                            <p>Color: {producto.Color_Producto}</p>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        );
+    const handleButtonClick = (idVenta) => {
+        setVisibleTables((prevState) => ({
+            ...prevState,
+            [idVenta]: !prevState[idVenta],
+        }));
     };
 
-    export default ListadoProductos;
+    const cancelarVenta = async (idVenta) => {
+        try {
+            const response = await fetch(`http://localhost:3001/api/pendientes/cancelar/${idVenta}`, {
+                method: 'DELETE',
+            });
+            if (response.ok) {
+                // Actualizar el estado de las ventas pendientes
+                setPendientes(prev => prev.filter(venta => venta.idVenta !== idVenta));
+            } else {
+                throw new Error('Error al cancelar la venta');
+            }
+        } catch (error) {
+            console.error('Error al cancelar la venta pendiente:', error);
+        }
+    };
+
+    const realizarVenta = async (idVenta) => {
+        try {
+            const response = await fetch(`http://localhost:3001/api/pendientes/realizar/${idVenta}`, {
+                method: 'PUT',
+            });
+            if (response.ok) {
+                // Actualizar el estado de las ventas pendientes
+                setPendientes(prev => prev.filter(venta => venta.idVenta !== idVenta));
+            } else {
+                throw new Error('Error al realizar la venta');
+            }
+        } catch (error) {
+            console.error('Error al realizar la venta pendiente:', error);
+        }
+    };
+
+    useEffect(() => {
+        const fetchPendientes = async () => {
+            try {
+                const response = await fetch('http://localhost:3001/api/pendientes');
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta de la API');
+                }
+                const data = await response.json();
+                setPendientes(data);
+            } catch (error) {
+                console.error('Error al obtener la lista de pendientes:', error);
+            }
+        };
+
+        fetchPendientes();
+    }, []);
+
+    return (
+        <div style={{ marginLeft: '13%' }}>
+            <div className="main-block">
+                <br />
+                <h1>Ventas Pendientes</h1>
+                <br />
+                {pendientes.length > 0 ? (
+                    pendientes.map((venta) => (
+                        <div key={venta.idVenta} className="venta-block">
+                            <table className="venta-table">
+                                <thead>
+                                    <tr>
+                                        <th>Código Venta</th>
+                                        <th>Fecha</th>
+                                        <th>Cliente</th>
+                                        <th>Dirección</th>
+                                        <th>Productos</th>
+                                        <th>Total</th>
+                                        <th>Realizado</th>
+                                        <th>Cancelar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td className="venta-cell">{venta.idVenta}</td>
+                                        <td className="venta-cell">{new Date(venta.fecha).toLocaleDateString()}</td>
+                                        <td className="venta-cell">{venta.cliente}</td>
+                                        <td className="venta-cell">{venta.direccion}</td>
+                                        <td className="venta-cell">
+                                            <button className='btn_Pendientes' onClick={() => handleButtonClick(venta.idVenta)}>Ver Productos</button>
+                                            {visibleTables[venta.idVenta] && (
+                                                <table style={{ borderCollapse: 'collapse' }}>
+                                                    <tbody>
+                                                        {venta.productos && venta.productos.length > 0 ? (
+                                                            venta.productos.map((producto, index) => (
+                                                                <tr key={index}>
+                                                                    <td style={{ border: 'none' }}> - {producto.nombre},{producto.cantidad},{producto.color}</td>
+                                                                </tr>
+                                                            ))
+                                                        ) : (
+                                                            <tr>
+                                                                <td colSpan="3" style={{ border: 'none' }}>No hay productos disponibles</td>
+                                                            </tr>
+                                                        )}
+                                                    </tbody>
+                                                </table>
+                                            )}
+                                        </td>
+                                        <td className="venta-cell">${venta.precioTotal}</td>
+                                        <td className="venta-cell">
+                                            <button onClick={() => realizarVenta(venta.idVenta)} className="btn">
+                                                <i className="fa fa-check" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                        <td className="venta-cell">
+                                            <button onClick={() => cancelarVenta(venta.idVenta)} className="btn">
+                                                <i className="fa fa-times" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    ))
+                ) : (
+                    <p>No hay ventas pendientes.</p>
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default ListadoPendientes;
