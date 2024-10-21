@@ -51,7 +51,7 @@ const BuscarProducto = () => {
     // Función para manejar la visualización de la imagen
     const mostrarImagen = (codigo_producto) => {
         console.log("El codigo:",codigo_producto);
-        const imageUrl = `C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`; // Asegúrate de ajustar la URL según la ruta de tu imagen
+        //const imageUrl = `C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`; // Asegúrate de ajustar la URL según la ruta de tu imagen
         setModalMessage(); // Establecer la imagen seleccionada
         setModalIsOpen(true);
     };
@@ -100,7 +100,7 @@ const BuscarProducto = () => {
                 {/* Modal para mostrar mensajes */}
                 <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
                     <h2>Mensaje</h2>
-                    <p><img>src={modalMessage}</img></p>
+                    <p><img>`C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/${codigo_producto}.jpg`</img></p>
                     <button onClick={closeModal}>Cerrar</button>
                 </Modal>
 
