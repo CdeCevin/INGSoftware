@@ -100,11 +100,7 @@ const BuscarProducto = () => {
    {/* Modal para mostrar la imagen seleccionada */}
                 <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
                     <h2>Imagen del Producto</h2>
-                    {selectedImage ? (
                         <img src={"C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/1.jpg "} alt="Imagen del producto" />
-                    ) : (
-                        <p></p>
-                    )}
                     <button onClick={closeModal}>Cerrar</button>
                 </Modal>
 
