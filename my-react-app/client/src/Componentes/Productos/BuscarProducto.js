@@ -100,7 +100,7 @@ const BuscarProducto = () => {
    {/* Modal para mostrar la imagen seleccionada */}
                 <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
                     <h2>Imagen del Producto</h2>
-                        <img src={"C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet/1.jpg "} alt="Imagen del producto" />
+                        <img src={"CdeCevin/INGSoftware/my-react-app/client/src/Outlet/1.jpg"} alt="Imagen del producto" />
                     <button onClick={closeModal}>Cerrar</button>
                 </Modal>
 
