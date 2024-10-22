@@ -3,7 +3,7 @@ const router = express.Router();
 const { obtenerPendientes, cancelarPendiente, realizarPendiente } = require('../Controllers/pendientesController');
 
 // Ruta para obtener las ventas pendientes
-router.get('/pendientes', obtenerPendientes);
+router.get('/', obtenerPendientes);
 
 // Ruta para cancelar una venta pendiente
 router.delete('/cancelar/:idVenta', cancelarPendiente);
