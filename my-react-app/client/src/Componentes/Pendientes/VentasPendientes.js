@@ -14,7 +14,7 @@ const ListadoPendientes = () => {
 
     const marcarRealizado = async (idVenta) => {
         try {
-            const response = await fetch(`http://localhost:3001/api/realizado/${idVenta}`, {
+            const response = await fetch(`http://localhost:3001/api/pendientes/realizado/${idVenta}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ const ListadoPendientes = () => {
 
     const cancelarVenta = async (idVenta) => {
         try {
-            const response = await fetch(`http://localhost:3001/api/cancelar/${idVenta}`, {
+            const response = await fetch(`http://localhost:3001/api/pendientes/cancelar/${idVenta}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
