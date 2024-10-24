@@ -62,8 +62,8 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 		Backend:
 
-			Ventas Pendientes--> listo 50%	
-				** Faltan las acciones de los botones Realizado y Cancelar
+			Ventas Pendientes--> listo 90%	
+				** Solo falta que al momento de hacer una accion, se reinicie en la pagina y no en el menu como se está haciendo ahora
 		
 
 ---------------
