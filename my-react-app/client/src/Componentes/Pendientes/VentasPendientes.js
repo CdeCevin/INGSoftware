@@ -51,7 +51,7 @@ const ListadoPendientes = () => {
     };
 
     const cancelarVenta = async (idVenta) => {
-        idVenta.preventDefault();
+        
         
         console.log("Valor de código antes de enviar:", idVenta); // Verifica si el valor se está capturando correctamente
         
