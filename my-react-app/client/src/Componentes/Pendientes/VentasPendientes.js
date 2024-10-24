@@ -31,7 +31,7 @@ const ListadoPendientes = () => {
         }
     };
 
-    const cancelarVenta = async (idVenta) => {
+    const cancelarVenta2 = async (idVenta) => {
         try {
             const response = await fetch(`http://localhost:3001/api/pendientes/cancelar/${idVenta}`, {
                 method: 'POST',  
@@ -47,6 +47,41 @@ const ListadoPendientes = () => {
             }
         } catch (error) {
             console.error('Error en la solicitud:', error);
+        }
+    };
+
+    const cancelarVenta = async (idVenta) => {
+        idVenta.preventDefault();
+        
+        console.log("Valor de código antes de enviar:", idVenta); // Verifica si el valor se está capturando correctamente
+        
+        try {
+            // Enviar los datos al backend como JSON
+            const response = await fetch('http://localhost:3001/api/pendientes/cancelar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', // Asegúrate de enviar JSON
+                },
+                body: JSON.stringify({ idVenta }) // Enviar el código del producto como JSON
+            });
+            
+            console.log("Código enviado al backend:", idVenta); // Verifica qué valor estás enviando al backend
+        
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Respuesta exitosa del backend:", data); // Verifica la respuesta del backend
+                setModalMessage(data.message); // Mostrar mensaje de éxito
+                resetForm();
+            } else {
+                const errorData = await response.json();
+                console.error("Error al eliminar el producto:", errorData); // Muestra detalles del error
+                setModalMessage(errorData.message); // Mostrar mensaje de error
+            }
+        } catch (error) {
+            console.error('Error al enviar el formulario:', error);
+            setModalMessage('Error al enviar el formulario.');
+        } finally {
+            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
         }
     };
 

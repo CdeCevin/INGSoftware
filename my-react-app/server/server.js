@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/reportes', reportesRoutes);
 app.use('/api/historialVentas', historialVentasRoutes);
 app.use('/api/clientes', clientListRoutes);
-app.use('/api/pendientes', pendientesRoutes);
+app.use('/api/ventasPendientes', pendientesRoutes);
 app.use('/api/ingresar_productos', ingresarProductosRoutes);
 app.use('/api/datosEmpresa', datosEmpresaRoutes);
 app.use('/api/products', productListRoutes);

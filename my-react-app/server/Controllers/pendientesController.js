@@ -102,7 +102,7 @@ const obtenerPendientes = async (req, res) => {
         }
     }
 };
-const cancelarPendiente = async (req, res) => {
+const cancelarPendiente2 = async (req, res) => {
     console.log("Entrando en Cancelar");
     let connection;
     const { idVenta } = req.params;  // El id de la venta vendrá desde el frontend
@@ -128,6 +128,38 @@ const cancelarPendiente = async (req, res) => {
         }
     }
 };
+
+const cancelarPendiente = async (req, res) => {
+    let connection;
+    try {
+      const { codigo } = req.body;
+  
+      // Verifica que el código no sea indefinido
+      console.log('Código recibido desde el frontend:', idVenta);
+      
+      // Establece la conexión
+      connection = await getConnection(); // Llama a la función de conexión
+  
+      // Ejecuta el procedimiento almacenado
+      await connection.execute(
+        `BEGIN OUTLET_Cancel_Pendiente(:idVenta); END;`,
+        {
+          p_codigo: parseInt(codigo) // Asegúrate de que el código sea un número
+        }
+      );
+  
+      await connection.commit();
+  
+      res.status(200).json({ message: 'Venta cancelada correctamente.' });
+    } catch (err) {
+      console.error('Error al eliminar producto:', err);
+      res.status(500).json({ message: 'Error al cancelar venta' });
+    } finally {
+      if (connection) {
+        await connection.close();
+      }
+    }
+  };
 
 const realizarPendiente = async (req, res) => {
     console.log("Entrando en Realizar");
