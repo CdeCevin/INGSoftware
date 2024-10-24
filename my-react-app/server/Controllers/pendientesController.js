@@ -190,6 +190,7 @@ const realizarPendiente2 = async (req, res) => {
         }
     }
 };
+
 const realizarPendiente = async (req, res) => {
     let connection;
     try {
@@ -203,7 +204,7 @@ const realizarPendiente = async (req, res) => {
   
       // Ejecuta el procedimiento almacenado
       await connection.execute(
-        `BEGIN OUTLET_Elim_Pendiente(:idVenta); ENDD;`,
+        `BEGIN OUTLET_Elim_Pendiente(:p_idVenta); ENDD;`,
         {
           p_idVenta: (idVenta) // Asegúrate de que el código sea un número
 
