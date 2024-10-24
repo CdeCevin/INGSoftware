@@ -102,7 +102,7 @@ const obtenerPendientes = async (req, res) => {
         }
     }
 };
-const cancelarPendiente2 = async (req, res) => {
+const cancelarPendiente = async (req, res) => {
     console.log("Entrando en Cancelar");
     let connection;
     const { idVenta } = req.params;  // El id de la venta vendrá desde el frontend
@@ -129,7 +129,7 @@ const cancelarPendiente2 = async (req, res) => {
     }
 };
 
-const cancelarPendiente = async (req, res) => {
+const cancelarPendiente2 = async (req, res) => {
     let connection;
     try {
       const { idVenta } = req.body;
@@ -144,7 +144,9 @@ const cancelarPendiente = async (req, res) => {
       await connection.execute(
         `BEGIN OUTLET_Cancel_Pendiente(:p_idVenta); END;`,
         {
+            
           p_idVenta: parseInt(idVenta) // Asegúrate de que el código sea un número
+
         }
       );
   
