@@ -7,15 +7,15 @@ const ListadoPendientes = () => {
 
     const handleButtonClick = (idVenta) => {
         setVisibleTables((prevState) => ({
-          ...prevState,
-          [idVenta]: !prevState[idVenta],
+            ...prevState,
+            [idVenta]: !prevState[idVenta],
         }));
     };
 
-    const marcarRealizado = async (idVenta) => {
+    const realizarVenta = async (idVenta) => {
         try {
             const response = await fetch(`http://localhost:3001/api/pendientes/realizado/${idVenta}`, {
-                method: 'POST',
+                method: 'POST',  // Cambiado a PUT
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -34,7 +34,7 @@ const ListadoPendientes = () => {
     const cancelarVenta = async (idVenta) => {
         try {
             const response = await fetch(`http://localhost:3001/api/pendientes/cancelar/${idVenta}`, {
-                method: 'POST',
+                method: 'POST',  
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -79,66 +79,67 @@ const ListadoPendientes = () => {
                 <h1>Ventas Pendientes</h1>
                 <br />
                 {pendientes.length > 0 ? (
-                pendientes.map((venta) => (
-                    <div key={venta.idVenta} className="venta-block">
-                    <table className="venta-table">
-                        <thead>
-                        <tr>
-                            <th>Código Venta</th>
-                            <th>Fecha</th>
-                            <th>Cliente</th>
-                            <th>Dirección</th>
-                            <th>Productos</th>
-                            <th>Total</th>
-                            <th>Realizado</th>
-                            <th>Cancelar</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td className="venta-cell">{venta.idVenta}</td>
-                            <td className="venta-cell">{new Date(venta.fecha).toLocaleDateString()}</td>
-                            <td className="venta-cell">{venta.cliente}</td>
-                            <td className="venta-cell">{venta.direccion}</td>
-                            <td className="venta-cell">
-                            <button className='btn_Pendientes' onClick={() => handleButtonClick(venta.idVenta)}>Ver Productos</button>
-                            {visibleTables[venta.idVenta] && (
-                            <table style={{borderCollapse: 'collapse'}}>
-                                <tbody>
-                                {venta.productos && venta.productos.length > 0 ? (
-                                    venta.productos.map((producto, index) => (
-                                    <tr key={index}>
-                                        <td style={{border: 'none'}}> - {producto.nombre},{producto.cantidad},{producto.color}</td>
-                                    </tr>
-                                    ))
-                                ) : (
+                    pendientes.map((venta) => (
+                        <div key={venta.idVenta} className="venta-block">
+                            <table className="venta-table">
+                                <thead>
                                     <tr>
-                                    <td colSpan="3" style={{border: 'none'}}>No hay productos disponibles</td>
+                                        <th>Código Venta</th>
+                                        <th>Fecha</th>
+                                        <th>Cliente</th>
+                                        <th>Dirección</th>
+                                        <th>Productos</th>
+                                        <th>Total</th>
+                                        <th>Realizado</th>
+                                        <th>Cancelar</th>
                                     </tr>
-                                )}
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td className="venta-cell">{venta.idVenta}</td>
+                                        <td className="venta-cell">{new Date(venta.fecha).toLocaleDateString()}</td>
+                                        <td className="venta-cell">{venta.cliente}</td>
+                                        <td className="venta-cell">{venta.direccion}</td>
+                                        <td className="venta-cell">
+                                            <button className='btn_Pendientes' onClick={() => handleButtonClick(venta.idVenta)}>Ver Productos</button>
+                                            {visibleTables[venta.idVenta] && (
+                                                <table style={{ borderCollapse: 'collapse' }}>
+                                                    <tbody>
+                                                        {venta.productos && venta.productos.length > 0 ? (
+                                                            venta.productos.map((producto, index) => (
+                                                                <tr key={index}>
+                                                                    <td style={{ border: 'none' }}> - {producto.nombre}, {producto.cantidad}, {producto.color}</td>
+                                                                </tr>
+                                                            ))
+                                                        ) : (
+                                                            <tr>
+                                                                <td colSpan="3" style={{ border: 'none' }}>No hay productos disponibles</td>
+                                                            </tr>
+                                                        )}
+                                                    </tbody>
+                                                </table>
+                                            )}
+                                        </td>
+                                        <td className="venta-cell">${venta.precioTotal}</td>
+                                        <td className="venta-cell">
+                                            {/* Llamada a la función de marcar como realizado */}
+                                            <button className="btn" onClick={() => realizarVenta(venta.idVenta)}>
+                                                <i className="fa fa-check" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                        <td className="venta-cell">
+                                            {/* Llamada a la función de cancelar venta */}
+                                            <button className="btn" onClick={() => cancelarVenta(venta.idVenta)}>
+                                                <i className="fa fa-times" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
                                 </tbody>
-                            </table>)}
-                            </td>
-                            <td className="venta-cell">${venta.precioTotal}</td>
-                            <td className="venta-cell">
-                            {/* Llamada a la función de marcar como realizado */}
-                            <button className="btn" onClick={() => marcarRealizado(venta.idVenta)}>
-                                <i className="fa fa-check" aria-hidden="true"></i>
-                            </button>
-                            </td>
-                            <td className="venta-cell">
-                            {/* Llamada a la función de cancelar venta */}
-                            <button className="btn" onClick={() => cancelarVenta(venta.idVenta)}>
-                                <i className="fa fa-times" aria-hidden="true"></i>
-                            </button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    </div>
-                ))
+                            </table>
+                        </div>
+                    ))
                 ) : (
-                <p>No hay ventas pendientes.</p>
+                    <p>No hay ventas pendientes.</p>
                 )}
             </div>
         </div>
@@ -146,9 +147,6 @@ const ListadoPendientes = () => {
 };
 
 export default ListadoPendientes;
-
-
-
 
 
 

@@ -6,9 +6,9 @@ const { obtenerPendientes, cancelarPendiente, realizarPendiente } = require('../
 router.get('/', obtenerPendientes);
 
 // Ruta para cancelar una venta pendiente
-router.post('/cancelar', cancelarPendiente);
+router.post('/cancelar/:idVenta', cancelarPendiente);
 
 // Ruta para realizar una venta pendiente
-router.post('/realizar', realizarPendiente);
+router.post('/realizar/:idVenta', realizarPendiente);
 
 module.exports = router;
