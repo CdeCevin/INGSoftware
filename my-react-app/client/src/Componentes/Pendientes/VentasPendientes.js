@@ -12,43 +12,39 @@ const ListadoPendientes = () => {
         }));
     };
 
+
     const realizarVenta = async (idVenta) => {
+        
+        
+        console.log("Valor de código antes de enviar:", idVenta); // Verifica si el valor se está capturando correctamente
+        
         try {
-            const response = await fetch(`http://localhost:3001/api/pendientes/realizado/${idVenta}`, {
-                method: 'POST',  // Cambiado a PUT
+            // Enviar los datos al backend como JSON
+            const response = await fetch('http://localhost:3001/api/ventasPendientes/realizar', {
+                method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json', // Asegúrate de enviar JSON
                 },
+                body: JSON.stringify({ idVenta }) // Enviar el código del producto como JSON
             });
+            
+            console.log("Código enviado al backend:", idVenta); // Verifica qué valor estás enviando al backend
+        
             if (response.ok) {
-                // Remover la venta realizada de la lista de pendientes
-                setPendientes((prevPendientes) => prevPendientes.filter((venta) => venta.idVenta !== idVenta));
+                const data = await response.json();
+                console.log("Respuesta exitosa del backend:", data); // Verifica la respuesta del backend
+
             } else {
-                console.error('Error al marcar como realizado:', response.statusText);
-            }
+                const errorData = await response.json();
+                console.error("Error al eliminar el producto:", errorData); // Muestra detalles del error
+           }
         } catch (error) {
-            console.error('Error en la solicitud:', error);
+            console.error('Error al enviar el formulario:', error);
+        } finally {
+           
         }
     };
 
-    const cancelarVenta2 = async (idVenta) => {
-        try {
-            const response = await fetch(`http://localhost:3001/api/pendientes/cancelar/${idVenta}`, {
-                method: 'POST',  
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            if (response.ok) {
-                // Remover la venta cancelada de la lista de pendientes
-                setPendientes((prevPendientes) => prevPendientes.filter((venta) => venta.idVenta !== idVenta));
-            } else {
-                console.error('Error al cancelar la venta:', response.statusText);
-            }
-        } catch (error) {
-            console.error('Error en la solicitud:', error);
-        }
-    };
 
     const cancelarVenta = async (idVenta) => {
         
