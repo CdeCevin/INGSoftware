@@ -1,5 +1,6 @@
 const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
+const { Console } = require('console');
 
 const obtenerPendientes = async (req, res) => {
     let connection;
@@ -102,6 +103,7 @@ const obtenerPendientes = async (req, res) => {
     }
 };
 const cancelarPendiente = async (req, res) => {
+    console.log("Entrando en Cancelar");
     let connection;
     const { idVenta } = req.params;  // El id de la venta vendrá desde el frontend
 
@@ -128,6 +130,7 @@ const cancelarPendiente = async (req, res) => {
 };
 
 const realizarPendiente = async (req, res) => {
+    console.log("Entrando en Realizar");
     let connection;
     const { idVenta } = req.params;
 
