@@ -20,7 +20,8 @@ const ListadoPendientes = () => {
 
     const refreshPage = () => {
         // Guardar el estado en localStorage antes de refrescar
-        export default ListadoPendientes;
+        localStorage.setItem('visibleTables', JSON.stringify(visibleTables));
+        window.location.reload();
     };
 
     const realizarVenta = async (idVenta) => {
