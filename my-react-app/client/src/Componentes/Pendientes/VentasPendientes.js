@@ -8,8 +8,8 @@ Modal.setAppElement('#root'); // Reemplaza '#root' con tu selector de raíz
 const ListadoPendientes = () => {
     const [pendientes, setPendientes] = useState([]);
     const [visibleTables, setVisibleTables] = useState({});
-    const [modalIsOpen, setModalIsOpen] = useState(false); // Estado del modal
-    const [modalMessage, setModalMessage] = useState(''); // Mensaje del modal
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
 
     const handleButtonClick = (idVenta) => {
         setVisibleTables((prevState) => ({
@@ -18,46 +18,21 @@ const ListadoPendientes = () => {
         }));
     };
 
+    const refreshPage = () => {
+        // Refrescar la página
+        window.location.reload();
+    };
+
     const realizarVenta = async (idVenta) => {
         console.log("Valor de código antes de enviar:", idVenta); // Verifica si el valor se está capturando correctamente
         
         try {
-            // Enviar los datos al backend como JSON
             const response = await fetch('http://localhost:3001/api/ventasPendientes/realizar', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json', // Asegúrate de enviar JSON
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ idVenta }) // Enviar el código del producto como JSON
-            });
-            
-            console.log("Código enviado al backend:", idVenta); // Verifica qué valor estás enviando al backend
-        
-            if (response.ok) {
-                const data = await response.json();
-                console.log("Respuesta exitosa del backend:", data); // Verifica la respuesta del backend
-                // Aquí puedes hacer algo después de realizar la venta, como refrescar los datos.
-                await fetchPendientes(); // Refresca la lista de pendientes
-            } else {
-                const errorData = await response.json();
-                console.error("Error al eliminar el producto:", errorData); // Muestra detalles del error
-           }
-        } catch (error) {
-            console.error('Error al enviar el formulario:', error);
-        }
-    };
-
-    const cancelarVenta = async (idVenta) => {
-        console.log("Valor de código antes de enviar:", idVenta); // Verifica si el valor se está capturando correctamente
-        
-        try {
-            // Enviar los datos al backend como JSON
-            const response = await fetch('http://localhost:3001/api/ventasPendientes/cancelar', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json', // Asegúrate de enviar JSON
-                },
-                body: JSON.stringify({ idVenta }) // Enviar el código del producto como JSON
+                body: JSON.stringify({ idVenta })
             });
             
             console.log("Código enviado al backend:", idVenta); // Verifica qué valor estás enviando al backend
@@ -66,10 +41,9 @@ const ListadoPendientes = () => {
                 const data = await response.json();
                 console.log("Respuesta exitosa del backend:", data); // Verifica la respuesta del backend
                 setModalMessage(data.message); // Mostrar mensaje de éxito
-                await fetchPendientes(); // Refresca la lista de pendientes
             } else {
                 const errorData = await response.json();
-                console.error("Error al cancelar la venta:", errorData); // Muestra detalles del error
+                console.error("Error al eliminar el producto:", errorData); // Muestra detalles del error
                 setModalMessage(errorData.message); // Mostrar mensaje de error
             }    
         } catch (error) {
@@ -77,25 +51,58 @@ const ListadoPendientes = () => {
             setModalMessage('Error al enviar el formulario.');
         } finally {
             setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
+            setTimeout(refreshPage, 2000); // Refrescar la página después de 2 segundos
         }
     };
 
-    const fetchPendientes = async () => {
+    const cancelarVenta = async (idVenta) => {
+        console.log("Valor de código antes de enviar:", idVenta); // Verifica si el valor se está capturando correctamente
+        
         try {
-            const response = await fetch('http://localhost:3001/api/ventasPendientes');
-            if (!response.ok) {
-                throw new Error('Error en la respuesta de la API');
-            }
-            const data = await response.json();
-            console.log('Datos obtenidos de la API:', data); // Verifica los datos
-            setPendientes(data);
+            const response = await fetch('http://localhost:3001/api/ventasPendientes/cancelar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ idVenta })
+            });
+            
+            console.log("Código enviado al backend:", idVenta); // Verifica qué valor estás enviando al backend
+        
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Respuesta exitosa del backend:", data); // Verifica la respuesta del backend
+                setModalMessage(data.message); // Mostrar mensaje de éxito
+            } else {
+                const errorData = await response.json();
+                console.error("Error al eliminar el producto:", errorData); // Muestra detalles del error
+                setModalMessage(errorData.message); // Mostrar mensaje de error
+            }    
         } catch (error) {
-            console.error('Error al obtener la lista de pendientes:', error);
+            console.error('Error al enviar el formulario:', error);
+            setModalMessage('Error al enviar el formulario.');
+        } finally {
+            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
+            setTimeout(refreshPage, 2000); // Refrescar la página después de 2 segundos
         }
     };
 
     useEffect(() => {
-        fetchPendientes(); // Cargar pendientes al montar el componente
+        const fetchPendientes = async () => {
+            try {
+                const response = await fetch('http://localhost:3001/api/ventasPendientes');
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta de la API');
+                }
+                const data = await response.json();
+                console.log('Datos obtenidos de la API:', data); // Verifica los datos
+                setPendientes(data);
+            } catch (error) {
+                console.error('Error al obtener la lista de pendientes:', error);
+            }
+        };
+
+        fetchPendientes();
     }, []);
 
     const closeModal = () => {
@@ -156,13 +163,11 @@ const ListadoPendientes = () => {
                                         </td>
                                         <td className="venta-cell">${venta.precioTotal}</td>
                                         <td className="venta-cell">
-                                            {/* Llamada a la función de marcar como realizado */}
                                             <button className="btn" onClick={() => realizarVenta(venta.idVenta)}>
                                                 <i className="fa fa-check" aria-hidden="true"></i>
                                             </button>
                                         </td>
                                         <td className="venta-cell">
-                                            {/* Llamada a la función de cancelar venta */}
                                             <button className="btn" onClick={() => cancelarVenta(venta.idVenta)}>
                                                 <i className="fa fa-times" aria-hidden="true"></i>
                                             </button>
@@ -176,7 +181,7 @@ const ListadoPendientes = () => {
                     <p>No hay ventas pendientes.</p>
                 )}
             </div>
-            {/* Modal para mostrar mensajes */}
+
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
@@ -187,9 +192,6 @@ const ListadoPendientes = () => {
 };
 
 export default ListadoPendientes;
-
-
-
 
 
 /* 
