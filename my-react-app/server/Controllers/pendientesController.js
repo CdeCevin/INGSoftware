@@ -145,7 +145,7 @@ const cancelarPendiente = async (req, res) => {
         `BEGIN OUTLET_Cancel_Pendiente(:p_idVenta); END;`,
         {
             
-          p_idVenta: NUMBER(idVenta) // Asegúrate de que el código sea un número
+          p_idVenta: oracledb.NUMBER(idVenta) // Asegúrate de que el código sea un número
 
         }
       );
