@@ -28,6 +28,10 @@ app.use('/api/up_producto', upProductoRoutes); // Agregar la ruta para actualiza
 app.use('/api/stockCritico', stockCriticoRoutes);
 app.use('/api/eliminarProducto',eliminarProductoRoutes);
 app.use('/api/buscarProducto',buscarProductoRoutes)
+app.post('/api/pendientes/realizado/:idVenta', (req, res) => {
+    const idVenta = req.params.idVenta;
+    // Lógica para marcar como realizado
+});
 
 
 const port = 3001;
