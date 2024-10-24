@@ -111,8 +111,8 @@ const cancelarPendiente = async (req, res) => {
         connection = await getConnection();
         
         // Ejecutar el procedimiento almacenado para cancelar
-        const query = `BEGIN OUTLET_Cancel_Pendiente(:idVenta); END;`;
-        await connection.execute(query, { idVenta: { val: Number(idVenta), dir: oracledb.BIND_IN } });
+        const query = `BEGIN OUTLET_Cancel_Pendiente(:aidVenta); END;`;
+        await connection.execute(query, { aidVenta: { val: Number(idVenta), dir: oracledb.BIND_IN } });
         
         res.status(200).send('Venta pendiente cancelada con éxito');
     } catch (error) {
