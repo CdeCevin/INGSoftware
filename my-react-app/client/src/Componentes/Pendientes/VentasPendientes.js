@@ -85,7 +85,7 @@ const ListadoPendientes = () => {
     useEffect(() => {
         const fetchPendientes = async () => {
             try {
-                const response = await fetch('http://localhost:3001/api/pendientes');
+                const response = await fetch('http://localhost:3001/api/ventasPendientes');
                 if (!response.ok) {
                     throw new Error('Error en la respuesta de la API');
                 }
