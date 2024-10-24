@@ -102,7 +102,7 @@ const obtenerPendientes = async (req, res) => {
         }
     }
 };
-const cancelarPendiente = async (req, res) => {
+const cancelarPendiente2 = async (req, res) => {
     console.log("Entrando en Cancelar");
     let connection;
     const { idVenta } = req.params;  // El id de la venta vendrá desde el frontend
@@ -111,8 +111,8 @@ const cancelarPendiente = async (req, res) => {
         connection = await getConnection();
         
         // Ejecutar el procedimiento almacenado para cancelar
-        const query = `BEGIN OUTLET_Cancel_Pendiente(:aidVenta); END;`;
-        await connection.execute(query, { aidVenta: { val: Number(idVenta), dir: oracledb.BIND_IN } });
+        const query = `BEGIN OUTLET_Cancel_Pendiente(:idVenta); END;`;
+        await connection.execute(query, { idVenta: { val: Number(idVenta), dir: oracledb.BIND_IN } });
         
         res.status(200).send('Venta pendiente cancelada con éxito');
     } catch (error) {
@@ -129,7 +129,7 @@ const cancelarPendiente = async (req, res) => {
     }
 };
 
-const cancelarPendiente2 = async (req, res) => {
+const cancelarPendiente = async (req, res) => {
     let connection;
     try {
       const { idVenta } = req.body;
@@ -145,7 +145,7 @@ const cancelarPendiente2 = async (req, res) => {
         `BEGIN OUTLET_Cancel_Pendiente(:p_idVenta); END;`,
         {
             
-          p_idVenta: parseInt(idVenta) // Asegúrate de que el código sea un número
+          p_idVenta: NUMBER(idVenta) // Asegúrate de que el código sea un número
 
         }
       );
