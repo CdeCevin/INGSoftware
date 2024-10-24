@@ -70,18 +70,15 @@ const ListadoPendientes = () => {
             if (response.ok) {
                 const data = await response.json();
                 console.log("Respuesta exitosa del backend:", data); // Verifica la respuesta del backend
-                setModalMessage(data.message); // Mostrar mensaje de éxito
-                resetForm();
+
             } else {
                 const errorData = await response.json();
                 console.error("Error al eliminar el producto:", errorData); // Muestra detalles del error
-                setModalMessage(errorData.message); // Mostrar mensaje de error
-            }
+           }
         } catch (error) {
             console.error('Error al enviar el formulario:', error);
-            setModalMessage('Error al enviar el formulario.');
         } finally {
-            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
+           
         }
     };
 
