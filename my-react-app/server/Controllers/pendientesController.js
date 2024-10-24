@@ -164,33 +164,6 @@ const cancelarPendiente = async (req, res) => {
 
 
 
-const realizarPendiente2 = async (req, res) => {
-    console.log("Entrando en Realizar");
-    let connection;
-    const { idVenta } = req.params;
-
-    try {
-        connection = await getConnection();
-
-        // Ejecutar el procedimiento almacenado para marcar como realizado
-        const query = `BEGIN OUTLET_Elim_Pendiente(:idVenta); END;`;
-        await connection.execute(query, { idVenta: { val: Number(idVenta), dir: oracledb.BIND_IN } });
-
-        res.status(200).send('Venta pendiente realizada con éxito');
-    } catch (error) {
-        console.error('Error al realizar la venta pendiente:', error);
-        res.status(500).send('Error al realizar la venta pendiente');
-    } finally {
-        if (connection) {
-            try {
-                await connection.close();
-            } catch (err) {
-                console.error('Error al cerrar la conexión:', err);
-            }
-        }
-    }
-};
-
 const realizarPendiente = async (req, res) => {
     let connection;
     try {
@@ -204,7 +177,7 @@ const realizarPendiente = async (req, res) => {
   
       // Ejecuta el procedimiento almacenado
       await connection.execute(
-        `BEGIN OUTLET_Elim_Pendiente(:p_idVenta); ENDD;`,
+        `BEGIN OUTLET_Elim_Pendiente(:p_idVenta); END;`,
         {
           p_idVenta: (idVenta) // Asegúrate de que el código sea un número
 
