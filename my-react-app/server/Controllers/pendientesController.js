@@ -132,7 +132,7 @@ const cancelarPendiente2 = async (req, res) => {
 const cancelarPendiente = async (req, res) => {
     let connection;
     try {
-      const { codigo } = req.body;
+      const { idVenta } = req.body;
   
       // Verifica que el código no sea indefinido
       console.log('Código recibido desde el frontend:', idVenta);
@@ -142,9 +142,9 @@ const cancelarPendiente = async (req, res) => {
   
       // Ejecuta el procedimiento almacenado
       await connection.execute(
-        `BEGIN OUTLET_Cancel_Pendiente(:idVenta); END;`,
+        `BEGIN OUTLET_Cancel_Pendiente(:p_idVenta); END;`,
         {
-          p_codigo: parseInt(codigo) // Asegúrate de que el código sea un número
+          p_idVenta: parseInt(idVenta) // Asegúrate de que el código sea un número
         }
       );
   
