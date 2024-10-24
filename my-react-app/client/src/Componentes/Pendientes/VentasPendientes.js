@@ -57,7 +57,7 @@ const ListadoPendientes = () => {
         
         try {
             // Enviar los datos al backend como JSON
-            const response = await fetch('http://localhost:3001/api/pendientes/cancelar', {
+            const response = await fetch('http://localhost:3001/api/ventasPendientes/cancelar', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', // Asegúrate de enviar JSON
