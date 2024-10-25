@@ -1,6 +1,6 @@
 const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
-
+/*
 const insertCabecera = async (req, res) => {
     let connection;
     try {
@@ -29,3 +29,4 @@ const insertCabecera = async (req, res) => {
 };
 
 module.exports = { insertCabecera };
+*/

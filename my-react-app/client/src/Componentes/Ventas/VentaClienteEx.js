@@ -1,5 +1,5 @@
 import React from 'react';
-
+/*
 function VentaClienteEx() {
     const [codigo, setCodigo] = useState('');
 
@@ -70,7 +70,7 @@ function VentaClienteEx() {
                     <button type="submit">Buscar</button>
                 </form>
             </div>
-            {/* Modal para mostrar mensajes */}
+            //{ Modal para mostrar mensajes}
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
@@ -84,3 +84,4 @@ function VentaClienteEx() {
 
 
 export default VentaClienteEx;
+*/
