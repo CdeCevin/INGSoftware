@@ -33,7 +33,6 @@ app.use('/api/stockCritico', stockCriticoRoutes);
 app.use('/api/eliminarProducto',eliminarProductoRoutes);
 app.use('/api/buscarProducto',buscarProductoRoutes)
 app.use('/api/insertCabecera',insertCabeceraRoutes);
-app.use('/api/buscarCliente',buscarClienteRoutes);
 
 const port = 3001;
 app.listen(port, () => {
