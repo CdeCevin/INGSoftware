@@ -1,4 +1,13 @@
 import React from 'react';
+
+function VentaClienteEx() {
+    return (
+        <div>
+        </div>
+            
+    );
+}
+
 /*
 function VentaClienteEx() {
     const [codigo, setCodigo] = useState('');
