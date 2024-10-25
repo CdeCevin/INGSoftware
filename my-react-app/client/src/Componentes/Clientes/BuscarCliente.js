@@ -1,24 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from 'react-modal';
 
-function buscarCliente() {
+function BuscarCliente() {
     const [codigo, setCodigo] = useState('');
-
+    const [clienteData, setClienteData] = useState(null);
+    const [modalMessage, setModalMessage] = useState('');
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // Preparar los datos en formato JSON
-        const formData = {
-            inputNombre: nombre || null,
-            inputCod: codigo,
-            inputStock: stock || null,
-            inputPrecio: precio || null,
-            inputStockmin: stockmin || null,
-        };
-        console.log('Datos del formulario:', formData);
+        const formData = { inputCod: codigo };
 
         try {
-            // Enviar los datos al backend
             const response = await fetch('http://localhost:3001/api/buscarCliente', {
                 method: 'POST',
                 headers: {
@@ -29,19 +22,22 @@ function buscarCliente() {
 
             if (response.ok) {
                 const data = await response.json();
-                setModalMessage(data.message); // Mostrar mensaje de éxito
-                resetForm();
+                setClienteData(data);  // Guarda los datos del cliente en el estado
+                setModalMessage('Cliente encontrado');
             } else {
                 const errorData = await response.json();
-                setModalMessage(errorData.message); // Mostrar mensaje de error
+                setModalMessage(errorData.message);
+                setClienteData(null); // Limpia los datos si no se encuentra el cliente
             }
         } catch (error) {
-            console.error('Error al enviar el formulario:', error);
-            setModalMessage('Error al enviar el formulario.'); // Mensaje de error genérico
+            console.error('Error al buscar cliente:', error);
+            setModalMessage('Error al buscar cliente.');
         } finally {
-            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
+            setModalIsOpen(true);
         }
     };
+
+    const closeModal = () => setModalIsOpen(false);
 
     return (
         <div style={{ marginLeft: '12%' }}>
@@ -66,8 +62,17 @@ function buscarCliente() {
                     </fieldset>
                     <button type="submit">Buscar</button>
                 </form>
+
+                {clienteData && (
+                    <div className="client-details">
+                        <h2>Detalles del Cliente</h2>
+                        <p><strong>Nombre:</strong> {clienteData.nombres}</p>
+                        <p><strong>Teléfono:</strong> {clienteData.telefono}</p>
+                        <p><strong>Dirección:</strong> {clienteData.direccion}</p>
+                    </div>
+                )}
             </div>
-            {/* Modal para mostrar mensajes */}
+
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
@@ -77,7 +82,4 @@ function buscarCliente() {
     );
 }
 
-
-
-
-export default buscarCliente;
+export default BuscarCliente;
