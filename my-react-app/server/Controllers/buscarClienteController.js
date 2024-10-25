@@ -4,7 +4,7 @@ const { getConnection } = require('../db/connection');
 const buscarCliente = async (req, res) => {
   let connection;
   try {
-      const { inputCod } = req.body;
+      const { codigo } = req.body;
       console.log('Código del cliente recibido:', inputCod);
 
       connection = await getConnection();
@@ -13,7 +13,7 @@ const buscarCliente = async (req, res) => {
       const result = await connection.execute(
           `BEGIN ObtenerInformacionCliente(:p_cod, :p_Activo, :o_Telefono, :o_Nombres, :o_NombreCalle, :o_NumeroDireccion, :o_NombreCiudad, :o_NombreRegion); END;`,
           {
-              p_cod: inputCod,
+              p_cod: codigo,
               p_Activo: { dir: oracledb.BIND_OUT, type: oracledb.NUMBER },
               o_Telefono: { dir: oracledb.BIND_OUT, type: oracledb.STRING, maxSize: 255 },
               o_Nombres: { dir: oracledb.BIND_OUT, type: oracledb.STRING, maxSize: 255 },
