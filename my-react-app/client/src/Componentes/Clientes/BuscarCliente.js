@@ -19,7 +19,7 @@ function buscarCliente() {
 
         try {
             // Enviar los datos al backend
-            const response = await fetch('http://localhost:3001/api/up_producto/', {
+            const response = await fetch('http://localhost:3001/api/buscarCliente', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
