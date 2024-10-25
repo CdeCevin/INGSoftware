@@ -12,7 +12,7 @@ const upProductoRoutes = require('./Routes/upProducto'); // Importar la nueva ru
 const stockCriticoRoutes = require('./Routes/stockCritico');
 const eliminarProductoRoutes = require('./Routes/eliminarProducto');
 const buscarProductoRoutes = require('./Routes/buscarProducto');
-const insertCabeceraRoutes = require('./Routes/insertCabecera');
+//const insertCabeceraRoutes = require('./Routes/insertCabecera');
 const buscarClienteRoutes = require('./Routes/buscarCliente');
 
 const app = express();
@@ -49,7 +49,7 @@ app.use('/api/reportes', reportesRoutes);
 
 //Ventas
 app.use('/api/historialVentas', historialVentasRoutes);
-app.use('/api/insertCabecera',insertCabeceraRoutes);
+//app.use('/api/insertCabecera',insertCabeceraRoutes);
 
 
 
