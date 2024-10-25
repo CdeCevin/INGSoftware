@@ -10,7 +10,7 @@ function BuscarCliente() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log("El kodigo es>", codigo);
+            console.log("El código es:", codigo);
             const response = await fetch(`http://localhost:3001/api/buscarCliente`, {
                 method: 'POST',
                 headers: {
@@ -18,24 +18,25 @@ function BuscarCliente() {
                 },
                 body: JSON.stringify({ codigo }) // Enviar el código en el cuerpo
             });
-            
     
             if (response.ok) {
                 const data = await response.json();
                 setClienteData(data);
                 setModalMessage('Cliente encontrado');
+                setModalIsOpen(false); // Mantener el modal cerrado si el cliente se encuentra
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
                 setClienteData(null);
+                setModalIsOpen(true); // Abrir el modal si el cliente no se encuentra
             }
         } catch (error) {
             console.error('Error al buscar cliente:', error);
             setModalMessage('Error al buscar cliente.');
-        } finally {
-            setModalIsOpen(true);
+            setModalIsOpen(true); // Abrir el modal en caso de error
         }
     };
+    
     
 
     const closeModal = () => setModalIsOpen(false);
