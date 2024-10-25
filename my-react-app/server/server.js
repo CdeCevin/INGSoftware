@@ -12,7 +12,7 @@ const stockCriticoRoutes = require('./Routes/stockCritico');
 const eliminarProductoRoutes = require('./Routes/eliminarProducto');
 const buscarProductoRoutes = require('./Routes/buscarProducto');
 const insertCabeceraRoutes = require('./Routes/insertCabecera');
-const buscarClienteRoutes = require('./Routes/BuscarCliente');
+const buscarClienteRoutes = require('./Routes/buscarCliente');
 
 const app = express();
 
