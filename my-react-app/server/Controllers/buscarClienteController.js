@@ -5,8 +5,8 @@ const buscarCliente = async (req, res) => {
   let connection;
   try {
     const { codigo } = req.query; // código como parámetro de consulta
-
-    // Conexión con la base de datos
+    console.log('codigo');
+    // Conexión con la base de datos  
     connection = await getConnection();
     cconsole.log("tamos dentro");
     // Parámetros de salida
