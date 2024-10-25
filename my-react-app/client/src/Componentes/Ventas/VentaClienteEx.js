@@ -82,6 +82,5 @@ function VentaClienteEx() {
 
 
 
-
-export default VentaClienteEx;
 */
+export default VentaClienteEx;
