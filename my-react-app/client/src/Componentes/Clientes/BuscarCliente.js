@@ -11,6 +11,7 @@ function BuscarCliente() {
         e.preventDefault();
         console.log("hola muxaxos");
         const formData = { inputCod: codigo };
+        console.log(formData);
 
         try {
             const response = await fetch('http://localhost:3001/api/buscarCliente', {
