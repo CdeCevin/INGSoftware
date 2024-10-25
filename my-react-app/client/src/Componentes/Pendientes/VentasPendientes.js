@@ -25,8 +25,8 @@ const ListadoPendientes = () => {
     };
 
     const realizarVenta = async (idVenta) => {
-        console.log("Valor de código antes de enviar:", idVenta); // Verifica si el valor se está capturando correctamente
-        
+        console.log("Valor de código antes de enviar:", idVenta);
+    
         try {
             const response = await fetch('http://localhost:3001/api/ventasPendientes/realizar', {
                 method: 'POST',
@@ -35,30 +35,32 @@ const ListadoPendientes = () => {
                 },
                 body: JSON.stringify({ idVenta })
             });
-            
-            console.log("Código enviado al backend:", idVenta); // Verifica qué valor estás enviando al backend
-        
+    
+            console.log("Código enviado al backend:", idVenta);
+    
             if (response.ok) {
                 const data = await response.json();
-                console.log("Respuesta exitosa del backend:", data); // Verifica la respuesta del backend
+                console.log("Respuesta exitosa del backend:", data);
                 setModalMessage(data.message); // Mostrar mensaje de éxito
+    
+                // Filtrar la venta realizada del estado
+                setPendientes((prevPendientes) => prevPendientes.filter(venta => venta.idVenta !== idVenta));
             } else {
                 const errorData = await response.json();
-                console.error("Error al eliminar el producto:", errorData); // Muestra detalles del error
+                console.error("Error al realizar la venta:", errorData);
                 setModalMessage(errorData.message); // Mostrar mensaje de error
             }    
         } catch (error) {
             console.error('Error al enviar el formulario:', error);
             setModalMessage('Error al enviar el formulario.');
         } finally {
-            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
-            setTimeout(refreshPage, 2000); // Refrescar la página después de 2 segundos
+            setModalIsOpen(true);
         }
     };
-
+    
     const cancelarVenta = async (idVenta) => {
-        console.log("Valor de código antes de enviar:", idVenta); // Verifica si el valor se está capturando correctamente
-        
+        console.log("Valor de código antes de enviar:", idVenta);
+    
         try {
             const response = await fetch('http://localhost:3001/api/ventasPendientes/cancelar', {
                 method: 'POST',
@@ -67,26 +69,29 @@ const ListadoPendientes = () => {
                 },
                 body: JSON.stringify({ idVenta })
             });
-            
-            console.log("Código enviado al backend:", idVenta); // Verifica qué valor estás enviando al backend
-        
+    
+            console.log("Código enviado al backend:", idVenta);
+    
             if (response.ok) {
                 const data = await response.json();
-                console.log("Respuesta exitosa del backend:", data); // Verifica la respuesta del backend
+                console.log("Respuesta exitosa del backend:", data);
                 setModalMessage(data.message); // Mostrar mensaje de éxito
+    
+                // Filtrar la venta cancelada del estado
+                setPendientes((prevPendientes) => prevPendientes.filter(venta => venta.idVenta !== idVenta));
             } else {
                 const errorData = await response.json();
-                console.error("Error al eliminar el producto:", errorData); // Muestra detalles del error
+                console.error("Error al cancelar la venta:", errorData);
                 setModalMessage(errorData.message); // Mostrar mensaje de error
             }    
         } catch (error) {
             console.error('Error al enviar el formulario:', error);
             setModalMessage('Error al enviar el formulario.');
         } finally {
-            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
-            setTimeout(refreshPage, 2000); // Refrescar la página después de 2 segundos
+            setModalIsOpen(true);
         }
     };
+    
 
     useEffect(() => {
         const fetchPendientes = async () => {
