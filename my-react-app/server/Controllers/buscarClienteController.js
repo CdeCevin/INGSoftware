@@ -2,6 +2,7 @@ const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
 
 const buscarCliente = async (req, res) => {
+  console.log('Hola hola holaaa');
   let connection;
   try {
     const { codigo } = req.query; // código como parámetro de consulta
