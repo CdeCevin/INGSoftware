@@ -12,7 +12,7 @@ function BuscarCliente() {
         const formData = { inputCod: codigo };
 
         try {
-            const response = await fetch('http://localhost:3001/api/buscarCliente', {
+            const response = await fetch('http://localhost:3001/api/buscarCliente/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
