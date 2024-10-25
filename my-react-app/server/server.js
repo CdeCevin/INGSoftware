@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+
 const reportesRoutes = require('./Routes/reportes');
 const historialVentasRoutes = require('./Routes/historialVentas');
 const clientListRoutes = require('./Routes/clientList');
@@ -33,6 +34,8 @@ app.use('/api/stockCritico', stockCriticoRoutes);
 app.use('/api/eliminarProducto',eliminarProductoRoutes);
 app.use('/api/buscarProducto',buscarProductoRoutes)
 app.use('/api/insertCabecera',insertCabeceraRoutes);
+app.use('/api/buscarCliente',buscarClienteRoutes);
+
 
 const port = 3001;
 app.listen(port, () => {
