@@ -14,7 +14,8 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 	
 				Actualizar Cliente --> Falta
 
-				Buscar Cliente --> Falta
+				Buscar Cliente --> 50%
+					*está hecho el formulario, pero falta dejar lindo el como se reciben los datos y eso :D
 
 				Eliminar Cliente --> Falta
 
@@ -25,7 +26,7 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 	
 				Actualizar Cliente --> Falta
 
-				Buscar Cliente --> Falta 
+				Buscar Cliente --> LISTO!
 
 				Eliminar Cliente --> Falta
 
