@@ -15,7 +15,7 @@ function BuscarCliente() {
 
         try {
             const response = await fetch('http://localhost:3001/api/buscarCliente', {
-                method: 'get',
+                method: 'post',
                 headers: {
                     'Content-Type': 'application/json',
                 },
