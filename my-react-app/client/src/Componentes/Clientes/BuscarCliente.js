@@ -11,7 +11,14 @@ function BuscarCliente() {
         e.preventDefault();
         try {
             console.log("El kodigo es>", codigo);
-            const response = await fetch(`http://localhost:3001/api/buscarCliente?codigo=${codigo}`, { method: 'POST' });
+            const response = await fetch(`http://localhost:3001/api/buscarCliente`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ codigo }) // Enviar el código en el cuerpo
+            });
+            
     
             if (response.ok) {
                 const data = await response.json();
