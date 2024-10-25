@@ -10,7 +10,7 @@ function BuscarCliente() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:3001/api/buscarCliente?codigo=${codigo}`, { method: 'GET' });
+            const response = await fetch(`http://localhost:3001/api/buscarCliente?codigo=${codigo}`, { method: 'POST' });
     
             if (response.ok) {
                 const data = await response.json();
