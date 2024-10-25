@@ -10,6 +10,7 @@ function BuscarCliente() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            console.log("El kodigo es>", codigo);
             const response = await fetch(`http://localhost:3001/api/buscarCliente?codigo=${codigo}`, { method: 'POST' });
     
             if (response.ok) {
