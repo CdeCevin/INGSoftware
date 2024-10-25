@@ -9,11 +9,12 @@ function BuscarCliente() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("hola muxaxos");
         const formData = { inputCod: codigo };
 
         try {
             const response = await fetch('http://localhost:3001/api/buscarCliente', {
-                method: 'POST',
+                method: 'get',
                 headers: {
                     'Content-Type': 'application/json',
                 },
