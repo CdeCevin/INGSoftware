@@ -5,7 +5,7 @@ const buscarCliente = async (req, res) => {
   let connection;
   try {
       const { codigo } = req.body;
-      console.log('Código del cliente recibido:', inputCod);
+      console.log('Código del cliente recibido:', codigo);
 
       connection = await getConnection();
       console.log("Conexión exitosa a la base de datos");
