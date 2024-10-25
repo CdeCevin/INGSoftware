@@ -9,27 +9,17 @@ function BuscarCliente() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("hola muxaxos");
-        const formData = { inputCod: codigo };
-        console.log(formData);
-
         try {
-            const response = await fetch('http://localhost:3001/api/buscarCliente', {
-                method: 'post',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
+            const response = await fetch(`http://localhost:3001/api/buscarCliente?codigo=${codigo}`, { method: 'GET' });
+    
             if (response.ok) {
                 const data = await response.json();
-                setClienteData(data);  // Guarda los datos del cliente en el estado
+                setClienteData(data);
                 setModalMessage('Cliente encontrado');
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
-                setClienteData(null); // Limpia los datos si no se encuentra el cliente
+                setClienteData(null);
             }
         } catch (error) {
             console.error('Error al buscar cliente:', error);
@@ -38,6 +28,7 @@ function BuscarCliente() {
             setModalIsOpen(true);
         }
     };
+    
 
     const closeModal = () => setModalIsOpen(false);
 

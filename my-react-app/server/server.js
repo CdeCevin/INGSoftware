@@ -22,19 +22,37 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Usar las rutas
-app.use('/api/reportes', reportesRoutes);
-app.use('/api/historialVentas', historialVentasRoutes);
+
+
+
+
+
+//Clientes
 app.use('/api/clientes', clientListRoutes);
-app.use('/api/ventasPendientes', pendientesRoutes);
-app.use('/api/ingresar_productos', ingresarProductosRoutes);
+app.use('/api/buscarCliente',buscarClienteRoutes);
+//Empresa
 app.use('/api/datosEmpresa', datosEmpresaRoutes);
+
+//Pendientes
+app.use('/api/ventasPendientes', pendientesRoutes);
+
+//Productos
+app.use('/api/ingresar_productos', ingresarProductosRoutes);
 app.use('/api/products', productListRoutes);
-app.use('/api/up_producto', upProductoRoutes); // Agregar la ruta para actualizar productos
+app.use('/api/up_producto', upProductoRoutes);
 app.use('/api/stockCritico', stockCriticoRoutes);
 app.use('/api/eliminarProducto',eliminarProductoRoutes);
-app.use('/api/buscarProducto',buscarProductoRoutes)
+app.use('/api/buscarProducto',buscarProductoRoutes);
+
+//Reportes
+app.use('/api/reportes', reportesRoutes);
+
+//Ventas
+app.use('/api/historialVentas', historialVentasRoutes);
 app.use('/api/insertCabecera',insertCabeceraRoutes);
-app.use('/api/buscarCliente',buscarClienteRoutes);
+
+
+
 
 
 const port = 3001;
