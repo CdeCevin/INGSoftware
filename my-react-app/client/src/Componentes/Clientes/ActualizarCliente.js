@@ -8,12 +8,12 @@ Modal.setAppElement('#root'); // Asegúrate de que el selector de raíz sea corr
 
 function ActualizarCliente() {
     const [cod, setCod] = useState('');
-    const [nombre, setNombre] = useState('');
-    const [telefono, setTelefono] = useState('');
-    const [region, setRegion] = useState('');
-    const [ciudad, setCiudad] = useState('');
-    const [calle, setCalle] = useState('');
-    const [numero, setNumero] = useState('');
+    const [INnombre, setNombre] = useState('');
+    const [INtelefono, setTelefono] = useState('');
+    const [INregion, setRegion] = useState('');
+    const [INciudad, setCiudad] = useState('');
+    const [INcalle, setCalle] = useState('');
+    const [INnumero, setNumero] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
     const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
 
