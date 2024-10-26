@@ -1,10 +1,169 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import '../../Estilos/style_menu.css';
+import '../../Estilos/estilo.css';
+import optionSets from '../../Estilos/regiones'; // Importa el archivo con regiones y ciudades
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root'); // Asegúrate de que el selector de raíz sea correcto
 
 function ActualizarCliente() {
+    const [nombre, setNombre] = useState('');
+    const [rut, setRut] = useState('');
+    const [region, setRegion] = useState('');
+    const [ciudad, setCiudad] = useState('');
+    const [direccion, setDireccion] = useState('');
+    const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
+    const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Preparar los datos en formato JSON
+        const formData = {
+            nombre: nombre || null,
+            rut: rut,
+            region: region || null,
+            ciudad: ciudad || null,
+            direccion: direccion || null,
+        };
+        console.log('Datos del formulario:', formData);
+
+        try {
+            // Enviar los datos al backend
+            const response = await fetch('http://localhost:3001/api/up_cliente/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setModalMessage(data.message); // Mostrar mensaje de éxito
+                resetForm();
+            } else {
+                const errorData = await response.json();
+                setModalMessage(errorData.message); // Mostrar mensaje de error
+            }
+        } catch (error) {
+            console.error('Error al enviar el formulario:', error);
+            setModalMessage('Error al enviar el formulario.'); // Mensaje de error genérico
+        } finally {
+            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
+        }
+    };
+
+    const resetForm = () => {
+        setNombre('');
+        setRut('');
+        setRegion('');
+        setCiudad('');
+        setDireccion('');
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
+
+    useEffect(() => {
+        document.title = 'Actualizar Cliente';
+    }, []);
+
+    // Manejar cambio en la selección de región
+    const handleRegionChange = (e) => {
+        setRegion(e.target.value);
+        setCiudad(''); // Reiniciar la ciudad al cambiar de región
+    };
+
     return (
-        <div>
+        <div style={{ marginLeft: '12%' }}>
+            <div className="main-block">
+                <form onSubmit={handleSubmit}>
+                    <h1>Actualizar Cliente</h1>
+                    <fieldset>
+                        <legend>
+                            <h3>Datos del Cliente</h3>
+                        </legend>
+                        <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
+                            <div>
+                                <label>RUT*</label>
+                                <input 
+                                    type="text" 
+                                    name="input-rut" 
+                                    pattern="[0-9]+" 
+                                    maxLength="9" 
+                                    required 
+                                    value={rut} 
+                                    onChange={(e) => setRut(e.target.value)} 
+                                />
+                            </div>
+                            <div>
+                                <label>Nombre</label>
+                                <input 
+                                    type="text" 
+                                    name="input-nombre" 
+                                    maxLength="50" 
+                                    value={nombre} 
+                                    onChange={(e) => setNombre(e.target.value)} 
+                                />
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>   
+                        <legend>
+                            <h3>Dirección del Cliente</h3>
+                        </legend>
+                        <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
+                            <div>
+                                <label>Región</label>
+                                <select 
+                                    value={region} 
+                                    onChange={handleRegionChange}
+                                    required
+                                >
+                                    <option value="">Selecciona una región</option>
+                                    {Object.keys(optionSets).map((regionName) => (
+                                        <option key={regionName} value={regionName}>{regionName}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div>
+                                <label>Ciudad</label>
+                                <select 
+                                    value={ciudad} 
+                                    onChange={(e) => setCiudad(e.target.value)} 
+                                    required
+                                    disabled={!region}
+                                >
+                                    <option value="">Selecciona una ciudad</option>
+                                    {region && optionSets[region].map((city) => (
+                                        <option key={city} value={city}>{city}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div>
+                                <label>Dirección</label>
+                                <input 
+                                    type="text" 
+                                    name="input-direccion" 
+                                    maxLength="100" 
+                                    value={direccion} 
+                                    onChange={(e) => setDireccion(e.target.value)} 
+                                />
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button type="submit">Actualizar</button>
+                </form>
+            </div>
+            {/* Modal para mostrar mensajes */}
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
+                <h2>Mensaje</h2>
+                <p>{modalMessage}</p>
+                <button onClick={closeModal}>Cerrar</button>
+            </Modal>
         </div>
-            
     );
 }
 
