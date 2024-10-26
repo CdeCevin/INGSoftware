@@ -78,8 +78,18 @@ function VentaClienteEx() {
     };
 
     const añadirAlCarrito = (producto) => {
-        setCarrito([...carrito, { ...producto, cantidad: 1 }]); // Añade el producto con cantidad inicial de 1
-    };
+        const cantidadSeleccionada = cantidad[producto.codigo_producto] || 1; // Obtiene la cantidad seleccionada o 1 por defecto
+        setCarrito((prevCarrito) => {
+            const existente = prevCarrito.find(p => p.codigo_producto === producto.codigo_producto);
+            if (existente) {
+                return prevCarrito.map(p =>
+                    p.codigo_producto === producto.codigo_producto
+                        ? { ...p, cantidad: p.cantidad + cantidadSeleccionada }
+                        : p
+                );
+            }
+            return [...prevCarrito, { ...producto, cantidad: cantidadSeleccionada }];
+        });
 
     const finalizarVenta = () => {
         // Aquí puedes hacer el proceso de finalizar la venta (como enviarlo al backend)
