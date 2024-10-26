@@ -165,6 +165,9 @@ function VentaClienteEx() {
                                     <th>STOCK</th>
                                     <th>PRECIO</th>
                                     <th>NOMBRE</th>
+                                    <th>COLOR</th>
+                                    <th>FOTO</th>
+                                    <th>CANTIDAD</th>
                                     <th>AÑADIR</th>
                                 </tr>
                             </thead>
@@ -174,6 +177,9 @@ function VentaClienteEx() {
                                         <td>{producto.codigo_producto}</td>
                                         <td>{producto.stock}</td>
                                         <td>{producto.precio_unitario}</td>
+                                        <td>{producto.nombre_producto}</td>
+                                        <td>{producto.nombre_producto}</td>
+                                        <td>{producto.nombre_producto}</td>
                                         <td>{producto.nombre_producto}</td>
                                         <td>
                                             <button onClick={() => añadirAlCarrito(producto)}>Añadir al Carrito</button>
