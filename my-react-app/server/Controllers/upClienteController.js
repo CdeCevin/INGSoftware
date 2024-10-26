@@ -4,7 +4,7 @@ const { getConnection } = require('../db/connection');
 const updateCliente = async (req, res) => {
     console.log("Entrando al updateClient");
     const { cod, INnombre, INtelefono, INregion, INciudad, INcalle, INnumero} = req.body;
-    console.log(cod, INnombre, telefono, region, ciudad, calle,numero);
+    console.log(cod, INnombre, INtelefono, INregion, INciudad, INcalle,INnumero);
 
     let connection;
     try {
