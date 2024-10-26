@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 
-function BuscarCliente() {
+function AñadirCabecera() {
     const [codigo, setCodigo] = useState('');
     const [clienteData, setClienteData] = useState(null);
     const [modalMessage, setModalMessage] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [paginaActual, setPaginaActual] = useState('buscarCliente'); // Estado para controlar la página actual
+    const [paginaActual, setPaginaActual] = useState('insertCabecera'); // Estado para controlar la página actual
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -98,4 +98,4 @@ function BuscarCliente() {
     );
 }
 
-export default BuscarCliente;
+export default AñadirCabecera;
