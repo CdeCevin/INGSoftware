@@ -187,12 +187,13 @@ function VentaClienteEx() {
                                         <td>{producto.precio_unitario}</td>
                                         <td>{producto.nombre_producto}</td>
                                         <td>{producto.color_producto}</td>
+                                        <td>{'FOTO :D'}</td>
                                         <td>
                                             <input
                                                 type="number"
                                                 min="1"
                                                 style={{ width: '50px' }}
-                                                value={cantidad[producto.codigo_producto] || 1}
+                                                value={cantidad[producto.codigo_producto] || 0}
                                                 onChange={(e) => handleCantidadChange(producto.codigo_producto, parseInt(e.target.value))}
                                             />
                                         </td>
