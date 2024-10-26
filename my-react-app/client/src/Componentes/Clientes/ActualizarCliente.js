@@ -95,8 +95,8 @@ function ActualizarCliente() {
                                     pattern="[0-9]+" 
                                     maxLength="9" 
                                     required 
-                                    value={rut} 
-                                    onChange={(e) => setRut(e.target.value)} 
+                                    value={cod} 
+                                    onChange={(e) => setCod( e.target.value)} 
                                 />
                             </div>
                             
