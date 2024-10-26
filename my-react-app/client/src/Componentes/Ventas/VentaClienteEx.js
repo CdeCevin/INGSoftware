@@ -1,66 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from 'react-modal';
 
-function VentaClienteEx() {
-    return (
-        <div>
-        </div>
-            
-    );
-}
-
-/*
-function VentaClienteEx() {
+function BuscarCliente() {
     const [codigo, setCodigo] = useState('');
-
+    const [clienteData, setClienteData] = useState(null);
+    const [modalMessage, setModalMessage] = useState('');
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // Preparar los datos en formato JSON
-        const formData = {
-            inputNombre: nombre || null,
-            inputCod: codigo,
-            inputStock: stock || null,
-            inputPrecio: precio || null,
-            inputStockmin: stockmin || null,
-        };
-        console.log('Datos del formulario:', formData);
-
         try {
-            // Enviar los datos al backend
-            const response = await fetch('http://localhost:3001/api/up_producto/', {
+            console.log("El código es:", codigo);
+            const response = await fetch(`http://localhost:3001/api/buscarCliente`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({ codigo }) // Enviar el código en el cuerpo
             });
-
+    
             if (response.ok) {
                 const data = await response.json();
-                setModalMessage(data.message); // Mostrar mensaje de éxito
-                resetForm();
+                setClienteData(data);
+                setModalMessage('Cliente encontrado');
+                setModalIsOpen(false); // Mantener el modal cerrado si el cliente se encuentra
             } else {
                 const errorData = await response.json();
-                setModalMessage(errorData.message); // Mostrar mensaje de error
+                setModalMessage(errorData.message);
+                setClienteData(null);
+                setModalIsOpen(true); // Abrir el modal si el cliente no se encuentra
             }
         } catch (error) {
-            console.error('Error al enviar el formulario:', error);
-            setModalMessage('Error al enviar el formulario.'); // Mensaje de error genérico
-        } finally {
-            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
+            console.error('Error al buscar cliente:', error);
+            setModalMessage('Error al buscar cliente.');
+            setModalIsOpen(true); // Abrir el modal en caso de error
         }
-    };
+    };      
+    
+    
+
+    const closeModal = () => setModalIsOpen(false);
 
     return (
         <div style={{ marginLeft: '12%' }}>
             <div className="main-block">
                 <form onSubmit={handleSubmit}>
-                    <h1>Actualizar Producto</h1>
+                    <h1>Venta Producto</h1>
                     <fieldset>
-                        <legend>
-                            <h3>Producto a Editar</h3>
-                        </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <label>Código cliente*</label>
@@ -79,7 +65,7 @@ function VentaClienteEx() {
                     <button type="submit">Buscar</button>
                 </form>
             </div>
-            //{ Modal para mostrar mensajes}
+
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
@@ -89,7 +75,5 @@ function VentaClienteEx() {
     );
 }
 
+export default BuscarCliente;
 
-
-*/
-export default VentaClienteEx;
