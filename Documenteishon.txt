@@ -12,9 +12,10 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 		Front: 
 	
-				Actualizar Cliente --> Falta
+				Actualizar Cliente --> LISTO! 
+					** Fijarse por si hay algo mal escrito o detalles y eso
 
-				Buscar Cliente --> 50%
+				Buscar Cliente --> 80%
 					*está hecho el formulario, pero falta dejar lindo el como se reciben los datos y eso :D
 
 				Eliminar Cliente --> LISTO!
@@ -26,7 +27,7 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 	
 		Backend:
 	
-				Actualizar Cliente --> Falta
+				Actualizar Cliente --> LISTO! 
 
 				Buscar Cliente --> LISTO!
 
@@ -65,8 +66,8 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 		Backend:
 
-			Ventas Pendientes--> listo 90%	
-				** Solo falta que al momento de hacer una accion, se reinicie en la pagina y no en el menu como se está haciendo ahora
+			Ventas Pendientes--> LISTO!
+				
 		
 
 ---------------
