@@ -1,0 +1,46 @@
+const oracledb = require('oracledb');
+const { getConnection } = require('../db/connection');
+
+const updateCliente = async (req, res) => {
+    const { cod, nombre, telefono, region, ciudad,direccion} = req.body;
+    console.log(cod, nombre, telefono, region, ciudad, direccion);
+
+    let connection;
+    try {
+        connection = await getConnection();
+
+        // Convertir valores a `null` cuando sea necesario
+        const codigo = Number(inputCod);
+        const stock = inputStock ? Number(inputStock) : null;
+        const precio = inputPrecio ? Number(inputPrecio) : null;
+        const stock_minimo = inputStockmin ? Number(inputStockmin) : null;
+        const stock = inputStock ? (inputStock) : null;
+
+        // Llamar al procedimiento almacenado
+        const result = await connection.execute(
+            `BEGIN OUTLET_Up_Producto(:codigo, :stock, :precio, :nombre, :stock_minimo); END;`,
+            {
+                codigo,
+                stock,
+                precio,
+                nombre: inputNombre,
+                stock_minimo,
+            }
+        );
+
+        res.status(200).json({ message: 'Producto actualizado con éxito.' });
+    } catch (error) {
+        console.error('Error al actualizar el producto:', error);
+        res.status(500).json({ message: 'Error interno del servidor.' });
+    } finally {
+        if (connection) {
+            try {
+                await connection.close();
+            } catch (err) {
+                console.error('Error cerrando la conexión:', err);
+            }
+        }
+    }
+};
+
+module.exports = { updateCliente };
