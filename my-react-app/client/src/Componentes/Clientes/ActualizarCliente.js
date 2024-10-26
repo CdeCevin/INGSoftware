@@ -27,7 +27,8 @@ function ActualizarCliente() {
             cod: cod,
             region: region || null,
             ciudad: ciudad || null,
-            direccion: direccion || null,
+            calle: calle || null,
+            numero: numero || null,
         };
         console.log('Datos del formulario:', formData);
 
