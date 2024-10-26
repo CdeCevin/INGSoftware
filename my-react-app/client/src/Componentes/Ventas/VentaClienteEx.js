@@ -67,7 +67,7 @@ function VentaClienteEx() {
             if (data.data && data.data.length > 0) {
                 setProductos(data.data); // Si hay productos, actualiza el estado pero NO abre el modal
             } else {
-                setSelectedImage(null); // Asegurarse de que no haya imagen seleccionada
+                //setSelectedImage(null); // Asegurarse de que no haya imagen seleccionada
                 setModalIsOpen(true); // Abre el modal si no se encuentran productos
             }
         } catch (error) {
