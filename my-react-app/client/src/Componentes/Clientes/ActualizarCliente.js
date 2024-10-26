@@ -136,7 +136,7 @@ function ActualizarCliente() {
                                 <select 
                                     value={region} 
                                     onChange={handleRegionChange}
-                                    required
+                                    
                                 >
                                     <option value="">Selecciona una región</option>
                                     {Object.keys(optionSets).map((regionName) => (
@@ -149,7 +149,7 @@ function ActualizarCliente() {
                                 <select 
                                     value={ciudad} 
                                     onChange={(e) => setCiudad(e.target.value)} 
-                                    required
+                                    
                                     disabled={!region}
                                 >
                                     <option value="">Selecciona una comuna</option>
