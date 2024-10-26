@@ -22,7 +22,8 @@ function ActualizarCliente() {
         // Preparar los datos en formato JSON
         const formData = {
             nombre: nombre || null,
-            rut: rut,
+            telefono: telefono || null,
+            cod: cod,
             region: region || null,
             ciudad: ciudad || null,
             direccion: direccion || null,
@@ -57,7 +58,7 @@ function ActualizarCliente() {
 
     const resetForm = () => {
         setNombre('');
-        setRut('');
+        setCod('');
         setRegion('');
         setCiudad('');
         setDireccion('');
