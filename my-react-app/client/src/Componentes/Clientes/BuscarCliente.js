@@ -35,7 +35,7 @@ function BuscarCliente() {
             setModalMessage('Error al buscar cliente.');
             setModalIsOpen(true); // Abrir el modal en caso de error
         }
-    };
+    };      
     
     
 

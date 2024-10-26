@@ -1,19 +1,50 @@
 const express = require('express');
 const cors = require('cors');
 
-const reportesRoutes = require('./Routes/reportes');
-const historialVentasRoutes = require('./Routes/historialVentas');
+
+
+
+
+
+
+
+
+
+
+
+    //Clientes
+const buscarClienteRoutes = require('./Routes/buscarCliente');
+const eliminarClienteRoutes = require('./Routes/eliminarCliente');
 const clientListRoutes = require('./Routes/clientList');
-const pendientesRoutes = require('./Routes/pendientes');
-const ingresarProductosRoutes = require('./Routes/IngresarProductos');
+
+    //Empresa
 const datosEmpresaRoutes = require('./Routes/datosEmpresa');
+
+    //Pendientes
+const pendientesRoutes = require('./Routes/pendientes');
+
+    //Productos
+const ingresarProductosRoutes = require('./Routes/IngresarProductos');
 const productListRoutes = require('./Routes/productList');
-const upProductoRoutes = require('./Routes/upProducto'); // Importar la nueva ruta
+const upProductoRoutes = require('./Routes/upProducto'); 
 const stockCriticoRoutes = require('./Routes/stockCritico');
 const eliminarProductoRoutes = require('./Routes/eliminarProducto');
 const buscarProductoRoutes = require('./Routes/buscarProducto');
+
+    //Reportes
+const reportesRoutes = require('./Routes/reportes');
+
+    //Ventas
+const historialVentasRoutes = require('./Routes/historialVentas');
+
+
+
+
+
+
 //const insertCabeceraRoutes = require('./Routes/insertCabecera');
-const buscarClienteRoutes = require('./Routes/buscarCliente');
+
+
 
 const app = express();
 
@@ -24,12 +55,11 @@ app.use(express.urlencoded({ extended: true }));
 // Usar las rutas
 
 
-
-
-
 //Clientes
 app.use('/api/clientes', clientListRoutes);
 app.use('/api/buscarCliente',buscarClienteRoutes);
+app.use('/api/eliminarCliente',eliminarClienteRoutes);
+
 //Empresa
 app.use('/api/datosEmpresa', datosEmpresaRoutes);
 
