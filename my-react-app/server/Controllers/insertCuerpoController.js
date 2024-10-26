@@ -1,54 +1,36 @@
 const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
 
-// Búsqueda de productos con filtro
 const insertCuerpo = async (req, res) => {
-    const { 'input-nombre': nombre, 'input-color': color } = req.body;
-
-    // Asignar null si no hay valor
-    const palabraClave = nombre && nombre.trim() ? nombre.trim() : '';
-    const colorParam = color && color.trim() ? color.trim() : '';
-
-    console.log('Nombre:', palabraClave);
-    console.log('Color:', colorParam);
-
     let connection;
     try {
-        connection = await getConnection();
-        const result = await connection.execute(
-            `BEGIN Outlet_FiltrarProducto(:p_PalabraClave, :p_colorp, :c_Productos); END;`,
-            {
-                p_PalabraClave: palabraClave,
-                p_colorp: colorParam,
-                c_Productos: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT },
-            }
-        );
+        const { productos } = req.body; // Suponiendo que productos es un array de objetos
 
-        const resultCursor = result.outBinds.c_Productos;
-        
-        // Procesar los resultados del cursor
-        const productos = [];
-        let row;
-        while ((row = await resultCursor.getRow())) {
-            productos.push({
-                codigo_producto: row[0],
-                activo: row[1],
-                stock: row[2],
-                precio_unitario: row[3],
-                nombre_producto: row[4],
-                tipo_producto: row[5],
-                color_producto: row[6],
-                stock_minimo: row[7]
-            });
+        // Verifica que haya productos en el carrito
+        if (!productos || productos.length === 0) {
+            return res.status(400).json({ message: 'No se han proporcionado productos.' });
         }
 
-        await resultCursor.close(); // Cerrar el cursor después de procesar los datos
-        //console.log(productos);
-        // Enviar los resultados como respuesta JSON
-        res.status(200).json({ message: 'Búsqueda exitosa', data: productos });
+        connection = await getConnection();
+
+        for (const producto of productos) {
+            const { codigo, cantidad } = producto;
+
+            // Preparar y ejecutar la consulta para cada producto
+            const query_cuerpo = `BEGIN OUTLET_Insert_Cuerpo(:codigo, :cantidad); END;`;
+
+            const result = await connection.execute(query_cuerpo, {
+                codigo: codigo,
+                cantidad: cantidad,
+            });
+
+            // Aquí puedes agregar lógica para manejar el resultado de la inserción
+        }
+
+        res.status(200).json({ message: 'Productos añadidos al carrito.' });
     } catch (err) {
-        console.error('Error en la búsqueda de productos:', err);
-        res.status(500).json({ message: 'Error al buscar el producto.' });
+        console.error('Error:', err);
+        res.status(500).json({ message: 'Error al añadir productos al carrito.' });
     } finally {
         if (connection) {
             await connection.close();

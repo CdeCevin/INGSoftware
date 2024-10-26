@@ -68,7 +68,6 @@ function VentaClienteEx() {
             if (data.data && data.data.length > 0) {
                 setProductos(data.data); // Si hay productos, actualiza el estado pero NO abre el modal
             } else {
-                //setSelectedImage(null); // Asegurarse de que no haya imagen seleccionada
                 setModalIsOpen(true); // Abre el modal si no se encuentran productos
             }
         } catch (error) {
@@ -78,7 +77,7 @@ function VentaClienteEx() {
     };
 
     const añadirAlCarrito = (producto) => {
-        const cantidadSeleccionada = cantidad[producto.codigo_producto] || 0; // Usa la cantidad seleccionada o 1 por defecto
+        const cantidadSeleccionada = cantidad[producto.codigo_producto] || 0; // Usa la cantidad seleccionada
         setCarrito((prevCarrito) => {
             // Verifica si el producto ya está en el carrito
             const existente = prevCarrito.find(p => p.codigo_producto === producto.codigo_producto);
@@ -93,17 +92,42 @@ function VentaClienteEx() {
             // Si no está en el carrito, añádelo con la cantidad seleccionada
             return [...prevCarrito, { ...producto, cantidad: cantidadSeleccionada }];
         });
-        // Reinicia la cantidad a 1 después de añadir al carrito
-        setCantidad(prevState => ({ ...prevState, [producto.codigo_producto]: 1 }));
+        // Reinicia la cantidad a 0 después de añadir al carrito
+        setCantidad(prevState => ({ ...prevState, [producto.codigo_producto]: 0 }));
     };
 
-    const finalizarVenta = () => {
-        // Aquí puedes hacer el proceso de finalizar la venta (como enviarlo al backend)
-        console.log("Venta finalizada:", carrito);
-        setModalMessage("Venta finalizada exitosamente");
-        setModalIsOpen(true);
-        setCarrito([]); // Limpia el carrito al finalizar la venta
-        setPaginaActual('insertCabecera'); // Regresa al formulario inicial
+    const finalizarVenta = async () => {
+        const productosVenta = carrito.map(producto => ({
+            codigo: producto.codigo_producto,
+            cantidad: producto.cantidad
+        }));
+
+        try {
+            const response = await fetch('http://localhost:3001/api/insertCuerpo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ productos: productosVenta }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Respuesta de la API:', data);
+                setModalMessage("Venta finalizada exitosamente");
+                setModalIsOpen(true);
+                setCarrito([]); // Limpia el carrito al finalizar la venta
+                setPaginaActual('insertCabecera'); // Regresa al formulario inicial
+            } else {
+                const errorData = await response.json();
+                setModalMessage(errorData.message);
+                setModalIsOpen(true);
+            }
+        } catch (error) {
+            console.error('Error al finalizar la venta:', error);
+            setModalMessage('Error al finalizar la venta.');
+            setModalIsOpen(true);
+        }
     };
     
     const handleCantidadChange = (codigoProducto, value) => {
@@ -154,29 +178,29 @@ function VentaClienteEx() {
                                 <h3>Detalles del Producto</h3>
                             </legend>
                             <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
-                            <div>
-                                <label>Nombre*</label>
-                                <input
-                                    type="text"
-                                    name="input-nombre"
-                                    maxLength="50"
-                                    required
-                                    value={nombre}
-                                    onChange={(e) => setNombre(e.target.value)}
-                                    placeholder="Nombre del producto"
-                                />
+                                <div>
+                                    <label>Nombre*</label>
+                                    <input
+                                        type="text"
+                                        name="input-nombre"
+                                        maxLength="50"
+                                        required
+                                        value={nombre}
+                                        onChange={(e) => setNombre(e.target.value)}
+                                        placeholder="Nombre del producto"
+                                    />
+                                </div>
+                                <div>
+                                    <label>Color</label>
+                                    <input
+                                        type="text"
+                                        name="input-color"
+                                        value={color}
+                                        onChange={(e) => setColor(e.target.value)}
+                                        placeholder="Color del producto"
+                                    />
+                                </div>
                             </div>
-                            <div>
-                                <label>Color</label>
-                                <input
-                                    type="text"
-                                    name="input-color"
-                                    value={color}
-                                    onChange={(e) => setColor(e.target.value)}
-                                    placeholder="Color del producto"
-                                />
-                            </div>
-                        </div>
                         </fieldset>
                         <button type="submit">Buscar Producto</button>
                     </form>
@@ -207,10 +231,10 @@ function VentaClienteEx() {
                                         <td>
                                             <input
                                                 type="number"
-                                                min="0"
+                                                min="1" // Cambia a 1 para evitar cantidades cero
                                                 style={{ width: '50px' }}
                                                 value={cantidad[producto.codigo_producto] || 0}
-                                                onChange={(e) => handleCantidadChange(producto.codigo_producto, parseInt(e.target.value))}
+                                                onChange={(e) => handleCantidadChange(producto.codigo_producto, parseInt(e.target.value) || 0)} // Asegura que la cantidad sea un número
                                             />
                                         </td>
                                         <td>
@@ -240,7 +264,7 @@ function VentaClienteEx() {
                 </div>
             )}
 
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
                 <button onClick={closeModal}>Cerrar</button>
@@ -250,141 +274,3 @@ function VentaClienteEx() {
 }
 
 export default VentaClienteEx;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/** import React, { useState } from 'react';
-import Modal from 'react-modal';
-
-function VentaClienteEx() {
-    const [codigo, setCodigo] = useState('');
-    const [clienteData, setClienteData] = useState(null);
-    const [modalMessage, setModalMessage] = useState('');
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [paginaActual, setPaginaActual] = useState('insertCabecera'); // Estado para controlar la página actual
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            console.log("El código es:", codigo);
-            const response = await fetch(`http://localhost:3001/api/insertCabecera`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ codigo })
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                setClienteData(data);
-                setModalMessage('Cliente encontrado');
-                setModalIsOpen(false);
-                setPaginaActual('nuevaBusqueda'); // Cambia la página al nuevo formulario
-            } else {
-                const errorData = await response.json();
-                setModalMessage(errorData.message);
-                setClienteData(null);
-                setModalIsOpen(true);
-            }
-        } catch (error) {
-            console.error('Error al buscar cliente:', error);
-            setModalMessage('Error al buscar cliente.');
-            setModalIsOpen(true);
-        }
-    };
-
-    const closeModal = () => setModalIsOpen(false);
-
-    return (
-        <div style={{ marginLeft: '12%' }}>
-            {paginaActual === 'insertCabecera' ? (
-                <div className="main-block">
-                    <form onSubmit={handleSubmit}>
-                        <h1>Venta Producto</h1>
-                        <fieldset>
-                        <legend>
-                            <h3>Cliente Antiguo</h3>
-                        </legend>
-                            <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
-                                <div>
-                                    <label>Código cliente*</label>
-                                    <input 
-                                        type="text" 
-                                        name="input-cod" 
-                                        pattern="[0-9]+" 
-                                        maxLength="4" 
-                                        required 
-                                        value={codigo} 
-                                        onChange={(e) => setCodigo(e.target.value)} 
-                                    />
-                                </div>
-                            </div>
-                        </fieldset>
-                        <button type="submit">Buscar</button>
-                    </form>
-                </div>
-            ) : (
-                <div className="main-block">
-                    <h1>Nueva Búsqueda</h1>
-                    <form>
-                        <fieldset>
-                        <legend>
-                            <h3>Formulario de Ejemplo</h3>
-                        </legend>
-                            <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
-                                <div>
-                                    <label>Parámetro de búsqueda*</label>
-                                    <input type="text" name="input-param" required />
-                                </div>
-                            </div>
-                        </fieldset>
-                        <button type="submit">Buscar</button>
-                    </form>
-                </div>
-            )}
-
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
-                <h2>Mensaje</h2>
-                <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
-            </Modal>
-        </div>
-    );
-}
-
-export default VentaClienteEx;
- */
