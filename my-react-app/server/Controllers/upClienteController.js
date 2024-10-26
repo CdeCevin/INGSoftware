@@ -3,7 +3,7 @@ const { getConnection } = require('../db/connection');
 
 const updateCliente = async (req, res) => {
     console.log("Entrando al updateClient");
-    const { cod, INnombre, telefono, region, ciudad,calle,numero} = req.body;
+    const { cod, INnombre, INtelefono, INregion, INciudad, INcalle, INnumero} = req.body;
     console.log(cod, INnombre, telefono, region, ciudad, calle,numero);
 
     let connection;
@@ -13,11 +13,11 @@ const updateCliente = async (req, res) => {
         // Convertir valores a `null` cuando sea necesario
         const codigo = (cod);
         const nombre = INnombre ? (INnombre) : null;
-        const telefono = (telefono) ? (telefono) : null;
-        const region = region ? (region) : null;
-        const ciudad = ciudad ? (ciudad) : null;
-        const calle = calle ? (calle) : null;
-        const numero = numero ? (numero) : null;
+        const telefono = (INtelefono) ? (INtelefono) : null;
+        const region = INregion ? (INregion) : null;
+        const ciudad = INciudad ? (INciudad) : null;
+        const calle = INcalle ? (INcalle) : null;
+        const numero = INnumero ? (INnumero) : null;
 
         // Llamar al procedimiento almacenado
         const result = await connection.execute(
