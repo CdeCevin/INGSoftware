@@ -19,7 +19,7 @@ const insertCabecera = async (req, res) => {
         
         await connection.commit();
         
-        res.status(200).json({ message: 'Cabecera insertada', data: productos });
+        res.status(200).json({ message: 'Cabecera insertada', data: codigo });
     } catch (err) {
         console.error('Error al ingresar cabecera:', err);
         res.status(500).json({ message: 'Error al ingresar cabecera.' });
