@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 
-function BuscarCliente() {
+function VentaClienteEx() {
     const [codigo, setCodigo] = useState('');
     const [clienteData, setClienteData] = useState(null);
     const [modalMessage, setModalMessage] = useState('');
@@ -43,7 +43,7 @@ function BuscarCliente() {
 
     return (
         <div style={{ marginLeft: '12%' }}>
-            {paginaActual === 'buscarCliente' ? (
+            {paginaActual === 'insertCabecera' ? (
                 <div className="main-block">
                     <form onSubmit={handleSubmit}>
                         <h1>Venta Producto</h1>
@@ -98,4 +98,4 @@ function BuscarCliente() {
     );
 }
 
-export default BuscarCliente;
+export default VentaClienteEx;
