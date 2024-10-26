@@ -47,6 +47,9 @@ function BuscarCliente() {
                 <form onSubmit={handleSubmit}>
                     <h1>Venta Producto</h1>
                     <fieldset>
+                    <legend>
+                        <h3>Cliente Antiguo</h3>
+                      </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <label>Código cliente*</label>
