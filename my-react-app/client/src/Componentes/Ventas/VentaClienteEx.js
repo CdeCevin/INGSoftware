@@ -8,7 +8,7 @@ function VentaClienteEx() {
     const [carrito, setCarrito] = useState([]);
     const [modalMessage, setModalMessage] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [paginaActual, setPaginaActual] = useState('insertCabecera'); // Controla la página actual
+    const [paginaActual, setPaginaActual] = useState('Cabecera'); // Controla la página actual
 
     const handleSubmitCliente = async (e) => {
         e.preventDefault();
@@ -77,14 +77,14 @@ function VentaClienteEx() {
         setModalMessage("Venta finalizada exitosamente");
         setModalIsOpen(true);
         setCarrito([]); // Limpia el carrito al finalizar la venta
-        setPaginaActual('insertCabecera'); // Regresa al formulario inicial
+        setPaginaActual('Cabecera'); // Regresa al formulario inicial
     };
 
     const closeModal = () => setModalIsOpen(false);
 
     return (
         <div style={{ marginLeft: '12%' }}>
-            {paginaActual === 'insertCabecera' && (
+            {paginaActual === 'Cabecera' && (
                 <div className="main-block">
                     <form onSubmit={handleSubmitCliente}>
                         <h1>Venta Producto</h1>
