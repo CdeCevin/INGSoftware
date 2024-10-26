@@ -7,7 +7,7 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root'); // Asegúrate de que el selector de raíz sea correcto
 
 function ActualizarCliente() {
-    const [cod, setcod] = useState('');
+    const [cod, setCod] = useState('');
     const [nombre, setNombre] = useState('');
     const [telefono, setTelefono] = useState('');
     const [region, setRegion] = useState('');
