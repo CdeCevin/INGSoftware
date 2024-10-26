@@ -7,8 +7,9 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root'); // Asegúrate de que el selector de raíz sea correcto
 
 function ActualizarCliente() {
+    const [cod, setcod] = useState('');
     const [nombre, setNombre] = useState('');
-    const [rut, setRut] = useState('');
+    const [telefono, setTelefono] = useState('');
     const [region, setRegion] = useState('');
     const [ciudad, setCiudad] = useState('');
     const [direccion, setDireccion] = useState('');
@@ -87,10 +88,10 @@ function ActualizarCliente() {
                         </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
-                                <label>RUT*</label>
+                                <label>Codigo*</label>
                                 <input 
                                     type="text" 
-                                    name="input-rut" 
+                                    name="input-cod" 
                                     pattern="[0-9]+" 
                                     maxLength="9" 
                                     required 
@@ -98,6 +99,14 @@ function ActualizarCliente() {
                                     onChange={(e) => setRut(e.target.value)} 
                                 />
                             </div>
+                            
+                        </div>
+                    </fieldset>
+                    <fieldset>   
+                        <legend>
+                            <h3>Datos a editar</h3>
+                        </legend>
+                        <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
                             <div>
                                 <label>Nombre</label>
                                 <input 
@@ -108,13 +117,16 @@ function ActualizarCliente() {
                                     onChange={(e) => setNombre(e.target.value)} 
                                 />
                             </div>
-                        </div>
-                    </fieldset>
-                    <fieldset>   
-                        <legend>
-                            <h3>Dirección del Cliente</h3>
-                        </legend>
-                        <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
+                            <div>
+                                <label>Telefono</label>
+                                <input 
+                                    type="text" 
+                                    name="input-teléfono" 
+                                    maxLength="50" 
+                                    value={telefono} 
+                                    onChange={(e) => setTelefono(e.target.value)} 
+                                />
+                            </div>
                             <div>
                                 <label>Región</label>
                                 <select 
