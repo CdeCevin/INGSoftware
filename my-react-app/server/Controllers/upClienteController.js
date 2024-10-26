@@ -14,8 +14,8 @@ const updateCliente = async (req, res) => {
         const codigo = Number(cod);
         const nombre = INnombre ? (INnombre) : null;
         const telefono = Number(INtelefono) ? (INtelefono) : null;
-        const region = INregion ? (INregion) : null;
-        const ciudad = INciudad ? (INciudad) : null;
+        const region = INregion ? (INregion) : 'Select';
+        const ciudad = INciudad ? (INciudad) : 'Select';
         const calle = INcalle ? (INcalle) : null;
         const numero = INnumero ? (INnumero) : null;
 
