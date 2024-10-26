@@ -22,9 +22,9 @@ function ActualizarCliente() {
 
         // Preparar los datos en formato JSON
         const formData = {
+            cod: cod,
             nombre: nombre || null,
             telefono: telefono || null,
-            cod: cod,
             region: region || null,
             ciudad: ciudad || null,
             calle: calle || null,
