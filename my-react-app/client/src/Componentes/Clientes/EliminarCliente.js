@@ -22,7 +22,7 @@ function EliminarCliente() {
             if (response.ok) {
                 const data = await response.json();
                 setClienteData(data);
-                setModalMessage('Cliente encontrado');
+                setModalMessage('Cliente eliminar');
                 setModalIsOpen(true); 
             } else {
                 const errorData = await response.json();
@@ -31,8 +31,8 @@ function EliminarCliente() {
                 setModalIsOpen(true);
             }
         } catch (error) {
-            console.error('Error al buscar cliente:', error);
-            setModalMessage('Error al buscar cliente.');
+            console.error('Error al eliminar cliente:', error);
+            setModalMessage('Error al eliminar cliente.');
             setModalIsOpen(true); // Abrir el modal en caso de error
         }
     };      
@@ -45,7 +45,7 @@ function EliminarCliente() {
         <div style={{ marginLeft: '12%' }}>
             <div className="main-block">
                 <form onSubmit={handleSubmit}>
-                    <h1>Buscar Cliente</h1>
+                    <h1>Eliminar Cliente</h1>
                     <fieldset>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
@@ -62,17 +62,8 @@ function EliminarCliente() {
                             </div>
                         </div>
                     </fieldset>
-                    <button type="submit">Buscar</button>
+                    <button type="submit">Eliminar</button>
                 </form>
-
-                {clienteData && (
-                    <div className="client-details">
-                        <h2>Detalles del Cliente</h2>
-                        <p><strong>Nombre:</strong> {clienteData.nombres}</p>
-                        <p><strong>Teléfono:</strong> {clienteData.telefono}</p>
-                        <p><strong>Dirección:</strong> {clienteData.direccion}</p>
-                    </div>
-                )}
             </div>
 
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
