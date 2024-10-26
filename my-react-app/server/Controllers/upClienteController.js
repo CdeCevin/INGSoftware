@@ -11,7 +11,7 @@ const updateCliente = async (req, res) => {
         connection = await getConnection();
 
         // Convertir valores a `null` cuando sea necesario
-        const codigo = (cod);
+        const codigo = NUMBER(cod);
         const nombre = nombre ? (nombre) : null;
         const telefono = telefono ? (telefono) : null;
         const region = region ? (region) : null;
