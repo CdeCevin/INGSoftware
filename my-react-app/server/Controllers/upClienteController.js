@@ -21,7 +21,7 @@ const updateCliente = async (req, res) => {
 
         // Llamar al procedimiento almacenado
         const result = await connection.execute(
-            `BEGIN OUTLET_Up_Producto(:calle, :numero, :ciudad, :nombre, :cod, :telefono); END;`,
+            `BEGIN OUTLET_Up_Client(:calle, :numero, :ciudad, :nombre, :cod, :telefono); END;`,
             {
 
                 calle,
