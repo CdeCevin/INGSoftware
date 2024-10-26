@@ -13,7 +13,7 @@ const updateCliente = async (req, res) => {
         // Convertir valores a `null` cuando sea necesario
         const codigo = NUMBER(cod);
         const nombre = nombre ? (nombre) : null;
-        const telefono = telefono ? (telefono) : null;
+        const telefono = NUMBER(telefono) ? (telefono) : null;
         const region = region ? (region) : null;
         const ciudad = ciudad ? (ciudad) : null;
         const calle = calle ? (calle) : null;
