@@ -121,11 +121,29 @@ function VentaClienteEx() {
                                 <h3>Detalles del Producto</h3>
                             </legend>
                             <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
-                                <div>
-                                    <label>Código producto*</label>
-                                    <input type="text" name="input-producto" required />
-                                </div>
+                            <div>
+                                <label>Nombre*</label>
+                                <input
+                                    type="text"
+                                    name="input-nombre"
+                                    maxLength="50"
+                                    required
+                                    value={nombre}
+                                    onChange={(e) => setNombre(e.target.value)}
+                                    placeholder="Nombre del producto"
+                                />
                             </div>
+                            <div>
+                                <label>Color</label>
+                                <input
+                                    type="text"
+                                    name="input-color"
+                                    value={color}
+                                    onChange={(e) => setColor(e.target.value)}
+                                    placeholder="Color del producto"
+                                />
+                            </div>
+                        </div>
                         </fieldset>
                         <button type="submit">Buscar Producto</button>
                     </form>
