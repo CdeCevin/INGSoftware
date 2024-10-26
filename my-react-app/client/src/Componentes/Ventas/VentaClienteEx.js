@@ -10,6 +10,7 @@ function VentaClienteEx() {
     const [carrito, setCarrito] = useState([]);
     const [modalMessage, setModalMessage] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [cantidad, setCantidad] = useState({}); // Estado para almacenar cantidades de cada producto
     const [paginaActual, setPaginaActual] = useState('insertCabecera'); // Controla la página actual
 
     const handleSubmitCliente = async (e) => {
@@ -87,6 +88,13 @@ function VentaClienteEx() {
         setModalIsOpen(true);
         setCarrito([]); // Limpia el carrito al finalizar la venta
         setPaginaActual('insertCabecera'); // Regresa al formulario inicial
+    };
+    
+    const handleCantidadChange = (codigoProducto, value) => {
+        setCantidad(prevState => ({
+            ...prevState,
+            [codigoProducto]: value // Almacena la cantidad específica para cada producto
+        }));
     };
 
     const closeModal = () => setModalIsOpen(false);
