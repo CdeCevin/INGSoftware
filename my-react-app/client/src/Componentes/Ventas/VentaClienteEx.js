@@ -179,10 +179,19 @@ function VentaClienteEx() {
                                         <td>{producto.precio_unitario}</td>
                                         <td>{producto.nombre_producto}</td>
                                         <td>{producto.color_producto}</td>
-                                        <td>{producto.nombre_producto}</td>
-                                        <td>{producto.nombre_producto}</td>
                                         <td>
-                                            <button onClick={() => añadirAlCarrito(producto)}>Añadir al Carrito</button>
+                                            <input
+                                                type="number"
+                                                min="1"
+                                                style={{ width: '50px' }}
+                                                value={cantidad[producto.codigo_producto] || 1}
+                                                onChange={(e) => handleCantidadChange(producto.codigo_producto, parseInt(e.target.value))}
+                                            />
+                                        </td>
+                                        <td>
+                                            <button onClick={() => añadirAlCarrito(producto)}>
+                                                <i className="fa fa-shopping-cart"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}
