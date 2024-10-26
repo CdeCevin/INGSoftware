@@ -22,7 +22,7 @@ function EliminarCliente() {
             if (response.ok) {
                 const data = await response.json();
                 setClienteData(data);
-                setModalMessage('Cliente eliminar');
+                setModalMessage('Cliente eliminado');
                 setModalIsOpen(true); 
             } else {
                 const errorData = await response.json();
