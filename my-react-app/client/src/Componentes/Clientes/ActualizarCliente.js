@@ -8,12 +8,12 @@ Modal.setAppElement('#root'); // Asegúrate de que el selector de raíz sea corr
 
 function ActualizarCliente() {
     const [cod, setCod] = useState('');
-    const [INnombre, setNombre] = useState('');
-    const [INtelefono, setTelefono] = useState('');
-    const [INregion, setRegion] = useState('');
-    const [INciudad, setCiudad] = useState('');
-    const [INcalle, setCalle] = useState('');
-    const [INnumero, setNumero] = useState('');
+    const [nombre, setNombre] = useState('');
+    const [telefono, setTelefono] = useState('');
+    const [region, setRegion] = useState('');
+    const [ciudad, setCiudad] = useState('');
+    const [calle, setCalle] = useState('');
+    const [numero, setNumero] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
     const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
 
@@ -23,12 +23,12 @@ function ActualizarCliente() {
         // Preparar los datos en formato JSON
         const formData = {
             cod: cod,
-            nombre: nombre || null,
-            telefono: telefono || null,
-            region: region || null,
-            ciudad: ciudad || null,
-            calle: calle || null,
-            numero: numero || null,
+            INnombre: nombre || null,
+            INtelefono: telefono || null,
+            INregion: region || null,
+            INciudad: ciudad || null,
+            INcalle: calle || null,
+            INnumero: numero || null,
         };
         console.log('Datos del formulario:', formData);
 
