@@ -27,7 +27,7 @@ function VentaClienteEx() {
                 setClienteData(data);
                 setModalMessage('Cliente encontrado');
                 setModalIsOpen(false);
-                setPaginaActual('buscarProducto'); // Cambia a la página de búsqueda de productos
+                setPaginaActual('carrito'); // Cambia a la página de búsqueda de productos
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
@@ -112,7 +112,7 @@ function VentaClienteEx() {
                 </div>
             )}
 
-            {paginaActual === 'buscarProducto' && (
+            {paginaActual === 'carrito' && (
                 <div className="main-block">
                     <h1>Buscar Producto</h1>
                     <form onSubmit={buscarProductos}>
