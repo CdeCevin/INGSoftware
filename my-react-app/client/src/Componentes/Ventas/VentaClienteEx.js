@@ -43,7 +43,7 @@ function AñadirCabecera() {
 
     return (
         <div style={{ marginLeft: '12%' }}>
-            {paginaActual === 'buscarCliente' ? (
+            {paginaActual === 'insertCabecera' ? (
                 <div className="main-block">
                     <form onSubmit={handleSubmit}>
                         <h1>Venta Producto</h1>
