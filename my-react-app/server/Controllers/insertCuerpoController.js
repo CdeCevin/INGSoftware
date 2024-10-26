@@ -2,26 +2,53 @@ const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
 
 // Búsqueda de productos con filtro
-const buscarProductos = async (req, res) => {
+const insertCuerpo = async (req, res) => {
+    const { 'input-nombre': nombre, 'input-color': color } = req.body;
+
+    // Asignar null si no hay valor
+    const palabraClave = nombre && nombre.trim() ? nombre.trim() : '';
+    const colorParam = color && color.trim() ? color.trim() : '';
+
+    console.log('Nombre:', palabraClave);
+    console.log('Color:', colorParam);
+
     let connection;
     try {
-        const { codigo, color } = req.query; // parámetros de búsqueda
         connection = await getConnection();
-
-        const cursor = await connection.execute(
+        const result = await connection.execute(
             `BEGIN Outlet_FiltrarProducto(:p_PalabraClave, :p_colorp, :c_Productos); END;`,
             {
-                p_PalabraClave: codigo,
-                p_colorp: color,
-                c_Productos: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT }
+                p_PalabraClave: palabraClave,
+                p_colorp: colorParam,
+                c_Productos: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT },
             }
         );
 
-        const result = await cursor.outBinds.c_Productos.getRows();
-        res.status(200).json({ productos: result });
-    } catch (error) {
-        console.error('Error al buscar productos:', error);
-        res.status(500).json({ message: 'Error al buscar productos.' });
+        const resultCursor = result.outBinds.c_Productos;
+        
+        // Procesar los resultados del cursor
+        const productos = [];
+        let row;
+        while ((row = await resultCursor.getRow())) {
+            productos.push({
+                codigo_producto: row[0],
+                activo: row[1],
+                stock: row[2],
+                precio_unitario: row[3],
+                nombre_producto: row[4],
+                tipo_producto: row[5],
+                color_producto: row[6],
+                stock_minimo: row[7]
+            });
+        }
+
+        await resultCursor.close(); // Cerrar el cursor después de procesar los datos
+        //console.log(productos);
+        // Enviar los resultados como respuesta JSON
+        res.status(200).json({ message: 'Búsqueda exitosa', data: productos });
+    } catch (err) {
+        console.error('Error en la búsqueda de productos:', err);
+        res.status(500).json({ message: 'Error al buscar el producto.' });
     } finally {
         if (connection) {
             await connection.close();
@@ -29,4 +56,4 @@ const buscarProductos = async (req, res) => {
     }
 };
 
-module.exports = { buscarProductos};
+module.exports = { insertCuerpo };

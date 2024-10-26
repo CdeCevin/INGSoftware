@@ -45,27 +45,34 @@ function VentaClienteEx() {
 
     const buscarProductos = async (event) => {
         event.preventDefault();
+
         try {
-            const response = await fetch('http://localhost:3001/api/insertCuerpo', {
+            const response = await fetch('http://localhost:3001/api/buscarProducto', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ codigo }) // Cambia este parámetro según lo que necesites para buscar productos
+                body: JSON.stringify({
+                    'input-nombre': nombre,
+                    'input-color': color,
+                }),
             });
 
-            if (!response.ok) throw new Error('Error en la solicitud');
+            if (!response.ok) {
+                throw new Error('Error en la solicitud');
+            }
+
             const data = await response.json();
+
             if (data.data && data.data.length > 0) {
-                setProductos(data.data);
+                setProductos(data.data); // Si hay productos, actualiza el estado pero NO abre el modal
             } else {
-                setModalMessage("No se encontraron productos");
-                setModalIsOpen(true);
+                setSelectedImage(null); // Asegurarse de que no haya imagen seleccionada
+                setModalIsOpen(true); // Abre el modal si no se encuentran productos
             }
         } catch (error) {
             console.error('Error al buscar productos:', error);
-            setModalMessage('Error al buscar productos.');
-            setModalIsOpen(true);
+            setModalIsOpen(true); // Abre el modal si ocurre un error
         }
     };
 
