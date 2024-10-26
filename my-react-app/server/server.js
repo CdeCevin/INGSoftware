@@ -26,13 +26,7 @@ const reportesRoutes = require('./Routes/reportes');
 
     //Ventas
 const historialVentasRoutes = require('./Routes/historialVentas');
-
-
-
-
-
-
-//const insertCabeceraRoutes = require('./Routes/insertCabecera');
+const insertCabeceraRoutes = require('./Routes/insertCabecera');
 
 
 
@@ -70,7 +64,7 @@ app.use('/api/reportes', reportesRoutes);
 
 //Ventas
 app.use('/api/historialVentas', historialVentasRoutes);
-//app.use('/api/insertCabecera',insertCabeceraRoutes);
+app.use('/api/insertCabecera',insertCabeceraRoutes);
 
 
 

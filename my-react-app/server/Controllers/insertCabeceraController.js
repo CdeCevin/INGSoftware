@@ -1,17 +1,19 @@
 const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
-/*
+
+
+
 const insertCabecera = async (req, res) => {
     let connection;
     try {
         
-        const { 'codigo': cod } = req.body;
-        console.log("Hemos llevao chavales.",cod);
+        const { codigo } = req.body;
+        console.log("Hemos llevao chavales.",codigo);
         connection = await getConnection();
         const result = await connection.execute(
             `BEGIN OUTLET_Insert_Cabecera(:c_Clientes);END;`,
             {
-                c_Clientes: (cod)
+                c_Clientes: (codigo)
             }
         );
         
@@ -28,5 +30,5 @@ const insertCabecera = async (req, res) => {
     }
 };
 
+
 module.exports = { insertCabecera };
-*/
