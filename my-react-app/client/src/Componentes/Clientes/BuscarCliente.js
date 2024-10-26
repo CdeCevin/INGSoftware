@@ -86,7 +86,7 @@ function BuscarCliente() {
 
 export default BuscarCliente;
 
-
+/*
 
 <div style="margin-left:10%">
 
@@ -220,4 +220,4 @@ window.location.href = '../Funcionamiento/Cerrar_Sesion.php';
 } else {
 }
 }
-</script>
+</script>*/
