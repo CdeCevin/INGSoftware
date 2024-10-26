@@ -178,7 +178,7 @@ function VentaClienteEx() {
                                         <td>{producto.stock}</td>
                                         <td>{producto.precio_unitario}</td>
                                         <td>{producto.nombre_producto}</td>
-                                        <td>{producto.nombre_producto}</td>
+                                        <td>{producto.color_producto}</td>
                                         <td>{producto.nombre_producto}</td>
                                         <td>{producto.nombre_producto}</td>
                                         <td>
