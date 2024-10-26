@@ -3,7 +3,7 @@ const { getConnection } = require('../db/connection');
 
 const updateCliente = async (req, res) => {
     console.log("Entrando al updateClient");
-    const { cod, nombre, telefono, region, ciudad,calle,numero} = req.body;
+    const { cod, INnombre, telefono, region, ciudad,calle,numero} = req.body;
     console.log(cod, nombre, telefono, region, ciudad, calle,numero);
 
     let connection;
@@ -12,7 +12,7 @@ const updateCliente = async (req, res) => {
 
         // Convertir valores a `null` cuando sea necesario
         const codigo = (cod);
-        const nombre = nombre ? (nombre) : null;
+        const nombre = INnombre ? (INnombre) : null;
         const telefono = (telefono) ? (telefono) : null;
         const region = region ? (region) : null;
         const ciudad = ciudad ? (ciudad) : null;
