@@ -12,7 +12,8 @@ function ActualizarCliente() {
     const [telefono, setTelefono] = useState('');
     const [region, setRegion] = useState('');
     const [ciudad, setCiudad] = useState('');
-    const [direccion, setDireccion] = useState('');
+    const [calle, setCalle] = useState('');
+    const [numero, setNumero] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
     const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
 
@@ -32,7 +33,7 @@ function ActualizarCliente() {
 
         try {
             // Enviar los datos al backend
-            const response = await fetch('http://localhost:3001/api/up_cliente/', {
+            const response = await fetch('http://localhost:3001/api/upCliente', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -61,7 +62,8 @@ function ActualizarCliente() {
         setCod('');
         setRegion('');
         setCiudad('');
-        setDireccion('');
+        setCalle('');
+        setNumero('');
     };
 
     const closeModal = () => {
@@ -142,27 +144,37 @@ function ActualizarCliente() {
                                 </select>
                             </div>
                             <div>
-                                <label>Ciudad</label>
+                                <label>Comuna</label>
                                 <select 
                                     value={ciudad} 
                                     onChange={(e) => setCiudad(e.target.value)} 
                                     required
                                     disabled={!region}
                                 >
-                                    <option value="">Selecciona una ciudad</option>
+                                    <option value="">Selecciona una comuna</option>
                                     {region && optionSets[region].map((city) => (
                                         <option key={city} value={city}>{city}</option>
                                     ))}
                                 </select>
                             </div>
                             <div>
-                                <label>Dirección</label>
+                                <label>Calle</label>
                                 <input 
                                     type="text" 
-                                    name="input-direccion" 
+                                    name="input-calle" 
                                     maxLength="100" 
-                                    value={direccion} 
-                                    onChange={(e) => setDireccion(e.target.value)} 
+                                    value={calle} 
+                                    onChange={(e) => setCalle(e.target.value)} 
+                                />
+                            </div>
+                            <div>
+                                <label>Número</label>
+                                <input 
+                                    type="text" 
+                                    name="input-numero" 
+                                    maxLength="100" 
+                                    value={numero} 
+                                    onChange={(e) => setNumero(e.target.value)} 
                                 />
                             </div>
                         </div>

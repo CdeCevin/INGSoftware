@@ -1,21 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 
-
-
-
-
-
-
-
-
-
-
-
     //Clientes
 const buscarClienteRoutes = require('./Routes/buscarCliente');
 const eliminarClienteRoutes = require('./Routes/eliminarCliente');
 const clientListRoutes = require('./Routes/clientList');
+const upClientesRoutes = require('./Routes/upCliente');
 
     //Empresa
 const datosEmpresaRoutes = require('./Routes/datosEmpresa');
@@ -59,6 +49,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/clientes', clientListRoutes);
 app.use('/api/buscarCliente',buscarClienteRoutes);
 app.use('/api/eliminarCliente',eliminarClienteRoutes);
+app.use('/api/upCliente',upClientesRoutes);
 
 //Empresa
 app.use('/api/datosEmpresa', datosEmpresaRoutes);

@@ -2,29 +2,34 @@ const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
 
 const updateCliente = async (req, res) => {
-    const { cod, nombre, telefono, region, ciudad,direccion} = req.body;
-    console.log(cod, nombre, telefono, region, ciudad, direccion);
+    console.log("Entrando al updateClient");
+    const { cod, nombre, telefono, region, ciudad,calle,numero} = req.body;
+    console.log(cod, nombre, telefono, region, ciudad, calle,numero);
 
     let connection;
     try {
         connection = await getConnection();
 
         // Convertir valores a `null` cuando sea necesario
-        const codigo = Number(inputCod);
-        const stock = inputStock ? Number(inputStock) : null;
-        const precio = inputPrecio ? Number(inputPrecio) : null;
-        const stock_minimo = inputStockmin ? Number(inputStockmin) : null;
-        const stock = inputStock ? (inputStock) : null;
+        const codigo = (cod);
+        const nombre = nombre ? (nombre) : null;
+        const telefono = telefono ? (telefono) : null;
+        const region = region ? (region) : null;
+        const ciudad = ciudad ? (ciudad) : null;
+        const calle = calle ? (calle) : null;
+        const numero = numero ? (numero) : null;
 
         // Llamar al procedimiento almacenado
         const result = await connection.execute(
-            `BEGIN OUTLET_Up_Producto(:codigo, :stock, :precio, :nombre, :stock_minimo); END;`,
+            `BEGIN OUTLET_Up_Producto(:calle, :numero, :ciudad, :nombre, :cod, :telefono); END;`,
             {
-                codigo,
-                stock,
-                precio,
-                nombre: inputNombre,
-                stock_minimo,
+
+                calle,
+                numero,
+                ciudad,
+                nombre,
+                cod,
+                telefono,
             }
         );
 
