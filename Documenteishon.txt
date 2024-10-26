@@ -17,9 +17,11 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 				Buscar Cliente --> 50%
 					*está hecho el formulario, pero falta dejar lindo el como se reciben los datos y eso :D
 
-				Eliminar Cliente --> Falta
+				Eliminar Cliente --> LISTO!
 
 				Listado Clientes --> Falta
+					**El menu de la izquierda está como tirado pa abajo???? no sé klfjdalk
+					**No está centrado ni tan wonito parece 
 
 	
 		Backend:
@@ -28,7 +30,7 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 				Buscar Cliente --> LISTO!
 
-				Eliminar Cliente --> Falta
+				Eliminar Cliente --> LISTO!
 
 				Listado Clientes --> LISTO!
 
