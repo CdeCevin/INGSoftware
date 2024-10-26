@@ -132,7 +132,7 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 			Venta Cliente Antiguo --> Falta
 
-			Historial Venta --> Falta 
+			Historial Venta --> listo 50% 
 				**Los datos se muestran, pero estan feos :c 
 
 		
