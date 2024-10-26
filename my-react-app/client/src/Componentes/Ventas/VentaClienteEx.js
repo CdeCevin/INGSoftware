@@ -4,6 +4,8 @@ import Modal from 'react-modal';
 function VentaClienteEx() {
     const [codigo, setCodigo] = useState('');
     const [clienteData, setClienteData] = useState(null);
+    const [nombre, setNombre] = useState('');
+    const [color, setColor] = useState('');
     const [productos, setProductos] = useState([]);
     const [carrito, setCarrito] = useState([]);
     const [modalMessage, setModalMessage] = useState('');
