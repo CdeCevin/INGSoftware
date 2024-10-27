@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import MostrarBoleta from './MostrarBoleta'; // Asegúrate de importar el nuevo componente
 
 function VentaClienteEx() {
     const [codigo, setCodigo] = useState('');
@@ -10,8 +11,8 @@ function VentaClienteEx() {
     const [carrito, setCarrito] = useState([]);
     const [modalMessage, setModalMessage] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [cantidad, setCantidad] = useState({}); // Estado para almacenar cantidades de cada producto
-    const [paginaActual, setPaginaActual] = useState('insertCabecera'); // Controla la página actual
+    const [cantidad, setCantidad] = useState({});
+    const [paginaActual, setPaginaActual] = useState('insertCabecera');
 
     const handleSubmitCliente = async (e) => {
         e.preventDefault();
@@ -30,7 +31,7 @@ function VentaClienteEx() {
                 setClienteData(data);
                 setModalMessage('Cliente encontrado');
                 setModalIsOpen(false);
-                setPaginaActual('buscarProducto'); // Cambia a la página de búsqueda de productos
+                setPaginaActual('buscarProducto');
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
@@ -66,33 +67,29 @@ function VentaClienteEx() {
             const data = await response.json();
 
             if (data.data && data.data.length > 0) {
-                setProductos(data.data); // Si hay productos, actualiza el estado pero NO abre el modal
+                setProductos(data.data);
             } else {
-                setModalIsOpen(true); // Abre el modal si no se encuentran productos
+                setModalIsOpen(true);
             }
         } catch (error) {
             console.error('Error al buscar productos:', error);
-            setModalIsOpen(true); // Abre el modal si ocurre un error
+            setModalIsOpen(true);
         }
     };
 
     const añadirAlCarrito = (producto) => {
-        const cantidadSeleccionada = cantidad[producto.codigo_producto] || 0; // Usa la cantidad seleccionada
+        const cantidadSeleccionada = cantidad[producto.codigo_producto] || 0;
         setCarrito((prevCarrito) => {
-            // Verifica si el producto ya está en el carrito
             const existente = prevCarrito.find(p => p.codigo_producto === producto.codigo_producto);
             if (existente) {
-                // Si ya está en el carrito, actualiza la cantidad sumando la cantidad seleccionada
                 return prevCarrito.map(p =>
                     p.codigo_producto === producto.codigo_producto
                         ? { ...p, cantidad: p.cantidad + cantidadSeleccionada }
                         : p
                 );
             }
-            // Si no está en el carrito, añádelo con la cantidad seleccionada
             return [...prevCarrito, { ...producto, cantidad: cantidadSeleccionada }];
         });
-        // Reinicia la cantidad a 0 después de añadir al carrito
         setCantidad(prevState => ({ ...prevState, [producto.codigo_producto]: 0 }));
     };
 
@@ -116,8 +113,8 @@ function VentaClienteEx() {
                 console.log('Respuesta de la API:', data);
                 setModalMessage("Venta finalizada exitosamente");
                 setModalIsOpen(true);
-                setCarrito([]); // Limpia el carrito al finalizar la venta
-                setPaginaActual('insertCabecera'); // Regresa al formulario inicial
+                setCarrito([]);
+                setPaginaActual('mostrarBoleta'); // Cambia a la página de la boleta
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
@@ -133,7 +130,7 @@ function VentaClienteEx() {
     const handleCantidadChange = (codigoProducto, value) => {
         setCantidad(prevState => ({
             ...prevState,
-            [codigoProducto]: value // Almacena la cantidad específica para cada producto
+            [codigoProducto]: value
         }));
     };
 
@@ -231,10 +228,10 @@ function VentaClienteEx() {
                                         <td>
                                             <input
                                                 type="number"
-                                                min="1" // Cambia a 1 para evitar cantidades cero
+                                                min="1"
                                                 style={{ width: '50px' }}
                                                 value={cantidad[producto.codigo_producto] || 0}
-                                                onChange={(e) => handleCantidadChange(producto.codigo_producto, parseInt(e.target.value) || 0)} // Asegura que la cantidad sea un número
+                                                onChange={(e) => handleCantidadChange(producto.codigo_producto, parseInt(e.target.value) || 0)}
                                             />
                                         </td>
                                         <td>
@@ -262,6 +259,10 @@ function VentaClienteEx() {
                         </div>
                     )}
                 </div>
+            )}
+
+            {paginaActual === 'mostrarBoleta' && (
+                <MostrarBoleta />
             )}
 
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}>
