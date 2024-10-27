@@ -16,7 +16,8 @@ async function boleta(req, res) {
         const cursorCabecera = {};
         const cursorCuerpo = {};
         
-        await connection.execute(
+        // Preparar y ejecutar el procedimiento almacenado para obtener la boleta
+        const result = await connection.execute(
             `BEGIN ObtenerBoleta(:CodigoCabecera, :cursor_cabecera, :cursor_cuerpo); END;`,
             {
                 CodigoCabecera: { val: codigoCabecera, dir: oracledb.BIND_IN },
@@ -25,17 +26,22 @@ async function boleta(req, res) {
             }
         );
 
+        // Obtener los cursores
+        const cursorCabecera = result.outBinds.cursor_cabecera;
+        const cursorCuerpo = result.outBinds.cursor_cuerpo;
+
         // Obtener los datos de la cabecera
-        const cabeceraResult = await cursorCabecera.getData();
-        const cabecera = cabeceraResult.rows[0];
+        const cabeceraRows = await cursorCabecera.getRows();
+        const cabecera = cabeceraRows[0]; // Asumiendo que solo necesitas la primera fila
 
         // Obtener los datos del cuerpo
-        const cuerpoResult = await cursorCuerpo.getData();
-        const productos = cuerpoResult.rows;
+        const cuerpoRows = await cursorCuerpo.getRows();
+        const productos = cuerpoRows;
 
         // Cerrar cursores
         await cursorCabecera.close();
-        await cursorCuerpo.close();
+await cursorCuerpo.close();
+
 
         // Registrar la venta pendiente
         await connection.execute(
