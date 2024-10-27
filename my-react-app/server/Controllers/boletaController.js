@@ -12,10 +12,7 @@ async function boleta(req, res) {
         const resultSeq = await connection.execute("SELECT last_number FROM user_sequences WHERE sequence_name = 'SEC_COD_CABECERA'");
         const codigoCabecera = resultSeq.rows[0][0] - 1; // Restar 1
 
-        // Preparar y ejecutar el procedimiento almacenado para obtener la boleta
-        const cursorCabecera = {};
-        const cursorCuerpo = {};
-        
+
         // Preparar y ejecutar el procedimiento almacenado para obtener la boleta
         const result = await connection.execute(
             `BEGIN ObtenerBoleta(:CodigoCabecera, :cursor_cabecera, :cursor_cuerpo); END;`,
