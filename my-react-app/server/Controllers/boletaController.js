@@ -7,7 +7,7 @@ async function boleta(req, res) {
     try {
         // Conectar a la base de datos
         connection = await getConnection();
-
+        console.log("hola toi aca");
         // Obtener el último número de la secuencia
         const resultSeq = await connection.execute("SELECT last_number FROM user_sequences WHERE sequence_name = 'SEC_COD_CABECERA'");
         const codigoCabecera = resultSeq.rows[0][0] - 1; // Restar 1
@@ -71,6 +71,10 @@ async function boleta(req, res) {
         await connection.close();
 
         // Construir la respuesta
+        console.log(cabecera,
+            productos,
+            direccionDetails,
+            codigoCabecera);
         res.json({
             cabecera,
             productos,
