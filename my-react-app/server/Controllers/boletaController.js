@@ -54,7 +54,7 @@ await cursorCuerpo.close();
             `SELECT Codigo_Direccion FROM OUTLET_CLIENTE WHERE Codigo_Cliente = :CodC`,
             { CodC: { val: codigoCliente, dir: oracledb.BIND_IN } }
         );
-
+        console.log(direccionResult);
         const p_CodigoDireccion = direccionResult.rows[0][0];
 
         // Obtener detalles de la dirección
