@@ -26,7 +26,6 @@ function VentaClienteNu() {
 
         // Preparar los datos en formato JSON
         const formData = {
-            cod: cod,
             INnombre: nombre,
             INtelefono: telefono, 
             INregion: region,
@@ -65,7 +64,6 @@ function VentaClienteNu() {
 
     const resetForm = () => {
         setNombre('');
-        setCod('');
         setRegion('');
         setCiudad('');
         setCalle('');
