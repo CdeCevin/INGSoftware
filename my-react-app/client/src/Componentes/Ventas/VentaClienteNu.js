@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import MostrarBoleta from './MostrarBoleta'; // Asegúrate de importar el nuevo componente
-
+import optionSets from '../../Estilos/regiones';
+Modal.setAppElement('#root');
 function VentaClienteNu() {
     const [cod, setCod] = useState('');
     const [nombreC, setNombreC] = useState('');
@@ -84,7 +85,7 @@ function VentaClienteNu() {
 
 
 
-    const handleSubmitCliente = async (e) => {
+    /*const handleSubmitCliente = async (e) => {
         e.preventDefault();
         try {
             console.log("El código es:", codigo);
@@ -113,7 +114,7 @@ function VentaClienteNu() {
             setModalMessage('Error al buscar producto.');
             setModalIsOpen(true);
         }
-    };
+    };*/
 
     const buscarProductos = async (event) => {
         event.preventDefault();
