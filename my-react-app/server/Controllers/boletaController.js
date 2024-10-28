@@ -11,7 +11,7 @@ async function boleta(req, res) {
 
     try {
         connection = await oracledb.getConnection(dbConfig);
-        console.log('toi dentro');
+        console.log('Conexión establecida con la base de datos.');
 
         // 1. Obtener el último número de la secuencia `SEC_COD_CABECERA`
         const codigoResult = await connection.execute(
@@ -38,28 +38,29 @@ async function boleta(req, res) {
         await cursorCabecera.close();
         await cursorCuerpo.close();
 
-        // Obtener el código del cliente de la cabecera
-        const codigoCliente = cabeceraRows[0].CODIGO_CLIENTE;
+        const codigoCliente = cabeceraRows[0].CODIGO_CLIENTE; 
 
-        // 3. Obtener el nombre del cliente usando OUTLET_Fun_Nombre
-        const nombreResult = await connection.execute(
-            `BEGIN :nombre := OUTLET_Fun_Nombre(:codigoCliente); END;`,
+        // 3. Llamar a las funciones de Oracle para obtener el nombre y teléfono del cliente
+        const nombreClienteResult = await connection.execute(
+            `BEGIN :result := OUTLET_Fun_Nombre(:codigo); END;`,
             {
-                nombre: { type: oracledb.STRING, dir: oracledb.BIND_OUT, maxSize: 200 },
-                codigoCliente: { val: codigoCliente, dir: oracledb.BIND_IN }
+                codigo: { val: codigoCliente, dir: oracledb.BIND_IN },
+                result: { type: oracledb.STRING, dir: oracledb.BIND_OUT, maxSize: 130 }
             }
         );
 
-        // 4. Obtener el teléfono del cliente usando OUTLET_Fun_Telefono
-        const telefonoResult = await connection.execute(
-            `BEGIN :telefono := OUTLET_Fun_Telefono(:codigoCliente); END;`,
+        const telefonoClienteResult = await connection.execute(
+            `BEGIN :telefono := OUTLET_Fun_Telefono(:codigo); END;`,
             {
-                telefono: { type: oracledb.STRING, dir: oracledb.BIND_OUT, maxSize: 32 },
-                codigoCliente: { val: codigoCliente, dir: oracledb.BIND_IN }
+                codigo: { val: codigoCliente, dir: oracledb.BIND_IN },
+                telefono: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT }
             }
         );
 
-        // 5. Obtener la dirección del cliente
+        const nombreCliente = nombreClienteResult.outBinds.result;
+        const telefonoCliente = telefonoClienteResult.outBinds.telefono;
+
+        // 4. Obtener detalles adicionales de cliente (Dirección)
         const clienteResult = await connection.execute(
             `SELECT Codigo_Direccion FROM OUTLET_CLIENTE WHERE Codigo_Cliente = :CodC`,
             { CodC: { val: codigoCliente, dir: oracledb.BIND_IN } }
@@ -90,20 +91,21 @@ async function boleta(req, res) {
             );
         }
 
-        // 6. Armar la respuesta con los detalles de la cabecera, productos y dirección
+        // 5. Construir la cabecera de la respuesta
         const cabecera = {
-            NOMBRE_CLIENTE: nombreResult.outBinds.nombre,
-            TELEFONO: telefonoResult.outBinds.telefono,
+            NOMBRE_CLIENTE: nombreCliente,
+            TELEFONO: telefonoCliente,
             FECHA: cabeceraRows[0].FECHA
         };
 
-        console.log('Cabecera:', cabecera, 'Cuerpo:', cuerpoRows, 'Direccion:', direccionDetails, 'Codigo:', codigoCabecera);
+        console.log('Cabecera: ', cabecera, 'Cuerpo: ', cuerpoRows, 'Direccion: ', direccionDetails, 'Codigo: ', codigoCabecera);
 
+        // 6. Responder con un JSON
         res.json({
             cabecera,
             productos: cuerpoRows,
             direccion: direccionDetails,
-            codigoCabecera: codigoCabecera
+            codigoCabecera
         });
 
     } catch (err) {
