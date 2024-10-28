@@ -76,6 +76,7 @@ async function boleta(req, res) {
             FECHA: cabeceraRows[0][2]
         };
         console.log( 'Cabecera: ',cabecera, 'Cuerpo: ',cuerpoRows, 'Direccion: ',direccionDetails, 'Codigo: ',codigoCabecera);
+        console.log(cabeceraRows);
         res.json({
             cabecera,
             productos: cuerpoRows,
