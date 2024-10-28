@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 function Boleta() {
     const [boleta, setBoleta] = useState(null);
 
-
     useEffect(() => {
         const fetchBoleta = async () => {
             try {
@@ -18,7 +17,7 @@ function Boleta() {
                 console.error('Error al hacer la solicitud:', error);
             }
         };
-    
+
         fetchBoleta();
     }, []);
 
@@ -46,18 +45,18 @@ function Boleta() {
                 <tbody>
                     {boleta.productos.map((producto, index) => (
                         <tr key={index}>
-                            <td>{producto.NOMBRE_PRODUCTO}</td>
-                            <td>{producto.COLOR_PRODUCTO}</td>
-                            <td>{producto.CODIGO_PRODUCTO}</td>
-                            <td>{producto.CANTIDAD}</td>
-                            <td>{producto.PRECIO_TOTAL}</td>
+                            <td>{producto[0]}</td> // Nombre del producto
+                            <td>{producto[1]}</td> // Color del producto
+                            <td>{producto[4]}</td> // Código del producto
+                            <td>{producto[2]}</td> // Cantidad
+                            <td>{producto[3]}</td> // Precio
                         </tr>
                     ))}
                 </tbody>
                 <tfoot>
                     <tr>
                         <td colSpan="3" style={{ textAlign: 'right' }}><strong>Total a pagar:</strong></td>
-                        <td>{boleta.productos.reduce((acc, producto) => acc + producto.PRECIO_TOTAL, 0)}</td>
+                        <td>{boleta.productos.reduce((acc, producto) => acc + producto[3], 0)}</td> {/* Precio Total */}
                     </tr>
                 </tfoot>
             </table>
@@ -66,9 +65,3 @@ function Boleta() {
 }
 
 export default Boleta;
-
-
-
-
-
-
