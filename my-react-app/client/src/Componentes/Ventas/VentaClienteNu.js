@@ -3,8 +3,13 @@ import Modal from 'react-modal';
 import MostrarBoleta from './MostrarBoleta'; // Asegúrate de importar el nuevo componente
 
 function VentaClienteNu() {
-    const [codigo, setCodigo] = useState('');
-    const [clienteData, setClienteData] = useState(null);
+    const [cod, setCod] = useState('');
+    const [nombre, setNombre] = useState('');
+    const [telefono, setTelefono] = useState('');
+    const [region, setRegion] = useState('');
+    const [ciudad, setCiudad] = useState('');
+    const [calle, setCalle] = useState('');
+    const [numero, setNumero] = useState('');
     const [nombre, setNombre] = useState('');
     const [color, setColor] = useState('');
     const [productos, setProductos] = useState([]);
