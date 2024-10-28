@@ -37,9 +37,10 @@ async function boleta(req, res) {
 
         await cursorCabecera.close();
         await cursorCuerpo.close();
-        console.log('Contenido de cabeceraRows:', JSON.stringify(cabeceraRows, null, 2));
-        const codigoCliente = cabeceraRows[0][1]; 
-        console.log('El codigo del cliente es: ',codigoCliente);
+
+        const codigoCliente = cabeceraRows[0][1]; // Asegúrate de que el índice sea correcto
+        console.log('El codigo del cliente es: ', codigoCliente);
+
         // 3. Llamar a las funciones de Oracle para obtener el nombre y teléfono del cliente
         const nombreClienteResult = await connection.execute(
             `BEGIN :result := OUTLET_Fun_Nombre(:codigo); END;`,
@@ -71,27 +72,26 @@ async function boleta(req, res) {
             const p_CodigoDireccion = clienteResult.rows[0][0];
             console.log('El codigo de dirrecion es:', p_CodigoDireccion);
 
-            await connection.execute(
+            // Llamada al procedimiento para obtener la dirección
+            const direccionResult = await connection.execute(
                 `BEGIN ObtenerDireccion(:p_CodigoDireccion, :o_NombreCalle, :o_NumeroDireccion, :o_NombreCiudad, :o_NombreRegion); END;`,
                 {
                     p_CodigoDireccion: { val: p_CodigoDireccion, dir: oracledb.BIND_IN },
-                    o_NombreCalle: { type: oracledb.STRING, dir: oracledb.BIND_OUT },
+                    o_NombreCalle: { type: oracledb.STRING, dir: oracledb.BIND_OUT, maxSize: 130 },
                     o_NumeroDireccion: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
-                    o_NombreCiudad: { type: oracledb.STRING, dir: oracledb.BIND_OUT },
-                    o_NombreRegion: { type: oracledb.STRING, dir: oracledb.BIND_OUT }
-                },
-                (err, result) => {
-                    if (err) throw err;
-                    direccionDetails = {
-                        
-                        nombreCalle: result.outBinds.o_NombreCalle,
-                        numeroDireccion: result.outBinds.o_NumeroDireccion,
-                        nombreCiudad: result.outBinds.o_NombreCiudad,
-                        nombreRegion: result.outBinds.o_NombreRegion
-                    };
+                    o_NombreCiudad: { type: oracledb.STRING, dir: oracledb.BIND_OUT, maxSize: 100 },
+                    o_NombreRegion: { type: oracledb.STRING, dir: oracledb.BIND_OUT, maxSize: 100 }
                 }
             );
+
+            direccionDetails = {
+                nombreCalle: direccionResult.outBinds.o_NombreCalle,
+                numeroDireccion: direccionResult.outBinds.o_NumeroDireccion,
+                nombreCiudad: direccionResult.outBinds.o_NombreCiudad,
+                nombreRegion: direccionResult.outBinds.o_NombreRegion
+            };
         }
+
         // 5. Construir la cabecera de la respuesta
         const cabecera = {
             NOMBRE_CLIENTE: nombreCliente,
