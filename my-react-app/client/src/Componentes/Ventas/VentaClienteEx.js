@@ -112,7 +112,7 @@ function VentaClienteEx() {
                 const data = await response.json();
                 console.log('Respuesta de la API:', data);
                 setModalMessage("Venta finalizada exitosamente");
-                setModalIsOpen(true);
+                setModalIsOpen(false);
                 setCarrito([]);
                 setPaginaActual('mostrarBoleta'); // Cambia a la página de la boleta
             } else {
