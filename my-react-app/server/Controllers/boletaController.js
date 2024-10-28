@@ -1,16 +1,11 @@
 const oracledb = require('oracledb');
+const { getConnection } = require('../db/connection');
 
 async function boleta(req, res) {
-    const dbConfig = {
-        user: 'Cevin',
-        password: '213233963Y',
-        connectString: 'localhost:1521/XE'
-    };
-
     let connection;
 
     try {
-        connection = await oracledb.getConnection(dbConfig);
+        connection = await getConnection();
         console.log('Conexión establecida con la base de datos.');
 
         // 1. Obtener el último número de la secuencia `SEC_COD_CABECERA`
