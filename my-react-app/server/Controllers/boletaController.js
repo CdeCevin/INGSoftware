@@ -92,7 +92,6 @@ async function boleta(req, res) {
                 }
             );
         }
-        console.log(o_NombreCalle);
         // 5. Construir la cabecera de la respuesta
         const cabecera = {
             NOMBRE_CLIENTE: nombreCliente,
