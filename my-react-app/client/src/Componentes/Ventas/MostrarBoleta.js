@@ -45,11 +45,11 @@ function Boleta() {
                 <tbody>
                     {boleta.productos.map((producto, index) => (
                         <tr key={index}>
-                            <td>{producto[0]}</td> // Nombre del producto
-                            <td>{producto[1]}</td> // Color del producto
-                            <td>{producto[4]}</td> // Código del producto
-                            <td>{producto[2]}</td> // Cantidad
-                            <td>{producto[3]}</td> // Precio
+                            <td>{producto[0]}</td>
+                            <td>{producto[1]}</td> 
+                            <td>{producto[4]}</td> 
+                            <td>{producto[2]}</td> 
+                            <td>{producto[3]}</td> 
                         </tr>
                     ))}
                 </tbody>

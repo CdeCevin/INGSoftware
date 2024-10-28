@@ -29,7 +29,7 @@ function VentaClienteEx() {
             if (response.ok) {
                 const data = await response.json();
                 setClienteData(data);
-                setModalMessage('Cliente encontrado');
+                setModalMessage('Producto encontrado');
                 setModalIsOpen(false);
                 setPaginaActual('buscarProducto');
             } else {
@@ -39,8 +39,8 @@ function VentaClienteEx() {
                 setModalIsOpen(true);
             }
         } catch (error) {
-            console.error('Error al buscar cliente:', error);
-            setModalMessage('Error al buscar cliente.');
+            console.error('Error al buscar producto:', error);
+            setModalMessage('Error al buscar producto.');
             setModalIsOpen(true);
         }
     };
