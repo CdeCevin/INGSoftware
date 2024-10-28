@@ -69,10 +69,15 @@ async function boleta(req, res) {
         }
 
         // 4. Responder con un JSON
-        console.log( 'Cabecera: ',cabeceraRows[0], 'Cuerpo: ',cuerpoRows, 'Direccion: ',direccionDetails, 'Codigo: ',codigoCabecera);
-
+        
+        const cabecera = {
+            NOMBRE_CLIENTE: cabeceraRows[0][0], // Asume el primer índice para el nombre
+            TELEFONO: cabeceraRows[0][1],       // Ajusta estos índices según el orden correcto
+            FECHA: cabeceraRows[0][2]
+        };
+        console.log( 'Cabecera: ',cabecera, 'Cuerpo: ',cuerpoRows, 'Direccion: ',direccionDetails, 'Codigo: ',codigoCabecera);
         res.json({
-            cabecera: cabeceraRows[0],
+            cabecera,
             productos: cuerpoRows,
             direccion: direccionDetails,
             codigoCabecera: codigoCabecera
