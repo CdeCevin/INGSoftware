@@ -70,7 +70,7 @@ async function boleta(req, res) {
         let direccionDetails = {};
         if (clienteResult.rows.length > 0) {
             const p_CodigoDireccion = clienteResult.rows[0][0];
-            console.log('El codigo de dirrecion es:', p_CodigoDireccion);
+            console.log('El codigo de direccion es:', p_CodigoDireccion);
 
             // Llamada al procedimiento para obtener la dirección
             const direccionResult = await connection.execute(
@@ -103,9 +103,15 @@ async function boleta(req, res) {
 
         // 6. Registrar la venta pendiente
         const registrarPendienteQuery = 'BEGIN RegistrarVentaPendiente(:cod); END;';
-        await connection.execute(registrarPendienteQuery, {
-            cod: { val: NUMBER(codigoCabecera), dir: oracledb.BIND_IN }
-        });
+        try {
+            await connection.execute(registrarPendienteQuery, {
+                cod: { val: codigoCabecera, dir: oracledb.BIND_IN }
+            });
+            await connection.commit(); // Asegúrate de realizar un commit si es necesario
+            console.log('Registro de venta pendiente ejecutado para CodigoCabecera:', codigoCabecera);
+        } catch (err) {
+            console.error('Error al registrar la venta pendiente:', err);
+        }
 
         // 7. Responder con un JSON
         res.json({
