@@ -29,7 +29,7 @@ const historialVentasRoutes = require('./Routes/historialVentas');
 const insertCabeceraRoutes = require('./Routes/insertCabecera');
 const insertCuerpoRoutes = require('./Routes/insertCuerpo');
 const boletaRoutes = require('./Routes/boleta');
-
+const anClienteRoutes = require('./Routes/anCliente');
 
 
 const app = express();
@@ -69,10 +69,7 @@ app.use('/api/historialVentas', historialVentasRoutes);
 app.use('/api/insertCabecera',insertCabeceraRoutes);
 app.use('/api/insertCuerpo',insertCuerpoRoutes);
 app.use('/api/boleta',boletaRoutes);
-
-
-
-
+app.use('/api/anCliente',anClienteRoutes);
 
 const port = 3001;
 app.listen(port, () => {

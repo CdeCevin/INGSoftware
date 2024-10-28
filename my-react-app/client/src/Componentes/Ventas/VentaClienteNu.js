@@ -4,7 +4,6 @@ import MostrarBoleta from './MostrarBoleta'; // Asegúrate de importar el nuevo 
 import optionSets from '../../Estilos/regiones';
 Modal.setAppElement('#root');
 function VentaClienteNu() {
-    const [cod, setCod] = useState('');
     const [nombreC, setNombreC] = useState('');
     const [telefono, setTelefono] = useState('');
     const [region, setRegion] = useState('');
@@ -28,18 +27,18 @@ function VentaClienteNu() {
         // Preparar los datos en formato JSON
         const formData = {
             cod: cod,
-            INnombre: nombre || null,
-            INtelefono: telefono || null,
-            INregion: region || null,
-            INciudad: ciudad || null,
-            INcalle: calle || null,
-            INnumero: numero || null,
+            INnombre: nombre,
+            INtelefono: telefono, 
+            INregion: region,
+            INciudad: ciudad,
+            INcalle: calle, 
+            INnumero: numero,
         };
         console.log('Datos del formulario:', formData);
 
         try {
             // Enviar los datos al backend
-            const response = await fetch('http://localhost:3001/api/upCliente', {
+            const response = await fetch('http://localhost:3001/api/anCliente', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -213,26 +212,7 @@ function VentaClienteNu() {
             <div style={{ marginLeft: '12%' }}>
             <div className="main-block">
                 <form onSubmit={handleSubmit}>
-                    <h1>Actualizar Cliente</h1>
-                    <fieldset>
-                        <legend>
-                            <h3>Datos del Cliente</h3>
-                        </legend>
-                        <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
-                            <div>
-                                <label>Codigo*</label>
-                                <input 
-                                    type="text" 
-                                    name="input-cod" 
-                                    pattern="[0-9]+" 
-                                    maxLength="9" 
-                                    required 
-                                    value={cod} 
-                                    onChange={(e) => setCod( e.target.value)} 
-                                />
-                            </div>
-                        </div>
-                    </fieldset>
+                    <h1>Cabecera Venta</h1>
                     <fieldset>   
                         <legend>
                             <h3>Detalles del Cliente</h3>
