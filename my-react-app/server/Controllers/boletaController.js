@@ -83,6 +83,7 @@ async function boleta(req, res) {
                 (err, result) => {
                     if (err) throw err;
                     direccionDetails = {
+                        
                         nombreCalle: result.outBinds.o_NombreCalle,
                         numeroDireccion: result.outBinds.o_NumeroDireccion,
                         nombreCiudad: result.outBinds.o_NombreCiudad,
@@ -91,7 +92,8 @@ async function boleta(req, res) {
                 }
             );
         }
-
+        console.log(direccionDetails[0]);
+        console.log(direccionDetails[0][0]);
         // 5. Construir la cabecera de la respuesta
         const cabecera = {
             NOMBRE_CLIENTE: nombreCliente,
