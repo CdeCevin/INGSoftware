@@ -66,9 +66,11 @@ async function boleta(req, res) {
             { CodC: { val: codigoCliente, dir: oracledb.BIND_IN } }
         );
 
+        console.log('Contenido de cabeceraRows:', JSON.stringify(clienteResult, null, 2));
+
         let direccionDetails = {};
         if (clienteResult.rows.length > 0) {
-            const p_CodigoDireccion = clienteResult.rows[0][0];
+            const p_CodigoDireccion = clienteResult.rows[0][1];
 
             await connection.execute(
                 `BEGIN ObtenerDireccion(:p_CodigoDireccion, :o_NombreCalle, :o_NumeroDireccion, :o_NombreCiudad, :o_NombreRegion); END;`,
@@ -95,7 +97,7 @@ async function boleta(req, res) {
         const cabecera = {
             NOMBRE_CLIENTE: nombreCliente,
             TELEFONO: telefonoCliente,
-            FECHA: cabeceraRows[0].FECHA
+            FECHA: cabeceraRows[0][0]
         };
 
         console.log('Cabecera: ', cabecera, 'Cuerpo: ', cuerpoRows, 'Direccion: ', direccionDetails, 'Codigo: ', codigoCabecera);
