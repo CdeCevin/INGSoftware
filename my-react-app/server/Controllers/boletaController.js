@@ -68,8 +68,8 @@ async function boleta(req, res) {
 
         let direccionDetails = {};
         if (clienteResult.rows.length > 0) {
-            const p_CodigoDireccion = clienteResult.rows;
-            console.log('El codigo de dirrecion es:', p_CodigoDireccion[0][0]);
+            const p_CodigoDireccion = clienteResult.rows[0][0];
+            console.log('El codigo de dirrecion es:', p_CodigoDireccion);
 
             await connection.execute(
                 `BEGIN ObtenerDireccion(:p_CodigoDireccion, :o_NombreCalle, :o_NumeroDireccion, :o_NombreCiudad, :o_NombreRegion); END;`,
