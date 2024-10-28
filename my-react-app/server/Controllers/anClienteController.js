@@ -3,7 +3,8 @@ const { getConnection } = require('../db/connection');
 
 const insertCliente = async (req, res) => {
     const { INnombre, INtelefono, INregion, INciudad, INcalle, INnumero } = req.body;
-
+    console.log(INnombre, INtelefono, INregion, INciudad, INcalle, INnumero);
+    
     let connection;
     try {
         connection = await getConnection();
