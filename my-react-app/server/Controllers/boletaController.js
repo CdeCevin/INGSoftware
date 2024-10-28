@@ -11,7 +11,7 @@ async function boleta(req, res) {
 
     try {
         connection = await oracledb.getConnection(dbConfig);
-
+        console.log('toi dentro');
         // 1. Obtener el último número de la secuencia `SEC_COD_CABECERA`
         const codigoResult = await connection.execute(
             `SELECT last_number FROM user_sequences WHERE sequence_name = 'SEC_COD_CABECERA'`
