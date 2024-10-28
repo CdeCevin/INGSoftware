@@ -222,7 +222,8 @@ function VentaClienteNu() {
                                     type="text" 
                                     name="input-nombre" 
                                     maxLength="50" 
-                                    value={nombre} 
+                                    value={nombreC} 
+                                    required
                                     onChange={(e) => setNombreC(e.target.value)} 
                                 />
                             </div>
@@ -233,6 +234,7 @@ function VentaClienteNu() {
                                     name="input-teléfono" 
                                     maxLength="50" 
                                     value={telefono} 
+                                    required
                                     onChange={(e) => setTelefono(e.target.value)} 
                                 />
                             </div>
@@ -243,6 +245,7 @@ function VentaClienteNu() {
                                 <label>Región</label>
                                 <select 
                                     value={region} 
+                                    required
                                     onChange={handleRegionChange}
                                     
                                 >
@@ -256,6 +259,7 @@ function VentaClienteNu() {
                                 <label>Comuna</label>
                                 <select 
                                     value={ciudad} 
+                                    required
                                     onChange={(e) => setCiudad(e.target.value)} 
                                     
                                     disabled={!region}
@@ -272,6 +276,7 @@ function VentaClienteNu() {
                                     type="text" 
                                     name="input-calle" 
                                     maxLength="100" 
+                                    required
                                     value={calle} 
                                     onChange={(e) => setCalle(e.target.value)} 
                                 />
@@ -282,6 +287,7 @@ function VentaClienteNu() {
                                     type="text" 
                                     name="input-numero" 
                                     maxLength="100" 
+                                    required
                                     value={numero} 
                                     onChange={(e) => setNumero(e.target.value)} 
                                 />
