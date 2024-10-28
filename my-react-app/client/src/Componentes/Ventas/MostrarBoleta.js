@@ -4,7 +4,9 @@ function MostrarBoleta() {
     const [boleta, setBoleta] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/boleta')
+        fetch('http://localhost:3000/api/boleta', {
+            method: 'GET'
+        })
             .then(response => response.json())
             .then(data => setBoleta(data))
             .catch(error => console.error('Error al obtener la boleta:', error));
