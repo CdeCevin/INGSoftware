@@ -131,6 +131,8 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 			Venta Cliente Nuevo --> Falta
 
 			Venta Cliente Antiguo --> Falta
+				**Lo de mostrar boleta ta en otro .js llamado MostrarBoleta,,,
+				**tambien añadi una parte donde se va viendo que hay en  el carrito, pero no taba en el anterior tonces hay que ver si lo ponemos o no
 
 			Historial Venta --> listo 50% 
 				**Los datos se muestran, pero estan feos :c 
@@ -141,7 +143,8 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 			
 			Venta Cliente Nuevo --> Falta
 
-			Venta Cliente Antiguo --> Falta
+			Venta Cliente Antiguo --> LISTO 99%
+				**Falta solo afinar detalles y ver si puedo optimizar todo KDFJSADSF
 
 			Historial Venta --> Listo! :D
 				**No se si eliminar esas ventas que se hacen por 0 pesos?? hay un par 
