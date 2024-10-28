@@ -130,7 +130,7 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 			Venta Cliente Nuevo --> Falta
 
-			Venta Cliente Antiguo --> Falta
+			Venta Cliente Antiguo --> listo 50% 
 				**Lo de mostrar boleta ta en otro .js llamado MostrarBoleta,,,
 				**tambien añadi una parte donde se va viendo que hay en  el carrito, pero no taba en el anterior tonces hay que ver si lo ponemos o no
 
