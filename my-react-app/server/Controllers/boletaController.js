@@ -1,6 +1,6 @@
 const oracledb = require('oracledb');
 
-async function obtenerBoleta(req, res) {
+async function boleta(req, res) {
     const dbConfig = {
         user: 'Cevin',
         password: '213233963Y',
@@ -90,4 +90,4 @@ async function obtenerBoleta(req, res) {
     }
 }
 
-module.exports = { obtenerBoleta };
+module.exports = { boleta };
