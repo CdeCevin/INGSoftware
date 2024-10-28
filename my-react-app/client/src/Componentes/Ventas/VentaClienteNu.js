@@ -4,7 +4,7 @@ import MostrarBoleta from './MostrarBoleta'; // Asegúrate de importar el nuevo 
 
 function VentaClienteNu() {
     const [cod, setCod] = useState('');
-    const [nombre, setNombre] = useState('');
+    const [nombreC, setNombreC] = useState('');
     const [telefono, setTelefono] = useState('');
     const [region, setRegion] = useState('');
     const [ciudad, setCiudad] = useState('');
@@ -125,7 +125,7 @@ function VentaClienteNu() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    'input-nombre': nombre,
+                    'input-nombre': nombreC,
                     'input-color': color,
                 }),
             });
@@ -244,7 +244,7 @@ function VentaClienteNu() {
                                     name="input-nombre" 
                                     maxLength="50" 
                                     value={nombre} 
-                                    onChange={(e) => setNombre(e.target.value)} 
+                                    onChange={(e) => setNombreC(e.target.value)} 
                                 />
                             </div>
                             <div>
