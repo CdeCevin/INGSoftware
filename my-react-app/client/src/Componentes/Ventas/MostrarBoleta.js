@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
-function MostrarBoleta() {
+function Boleta() {
     const [boleta, setBoleta] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/boleta', {
-            method: 'GET'
-        })
+        fetch('http://localhost:3000/api/boleta')
             .then(response => response.json())
-            .then(data => {
-                console.log("Datos recibidos:", data); // Verifica la estructura aquí
-                setBoleta(data);
-            })
+            .then(data => setBoleta(data))
             .catch(error => console.error('Error al obtener la boleta:', error));
     }, []);
-    
+
     if (!boleta) return <div>Cargando boleta...</div>;
 
     return (
@@ -58,4 +53,4 @@ function MostrarBoleta() {
     );
 }
 
-export default MostrarBoleta;
+export default Boleta;
