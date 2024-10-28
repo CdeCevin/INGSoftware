@@ -26,6 +26,7 @@ const insertCliente = async (req, res) => {
             `SELECT last_number FROM user_sequences WHERE sequence_name = 'SEC_COD_CLIENTES'`
         );
         const codigoCliente = resultCodigo.rows[0][0] - 1;
+        console.log(codigoCliente);
 
         // 3. Llamar al procedimiento para insertar en cabecera usando el código de cliente
         await connection.execute(
