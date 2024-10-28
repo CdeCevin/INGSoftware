@@ -104,7 +104,7 @@ async function boleta(req, res) {
         // 6. Registrar la venta pendiente
         const registrarPendienteQuery = 'BEGIN RegistrarVentaPendiente(:cod); END;';
         await connection.execute(registrarPendienteQuery, {
-            cod: { val: codigoCabecera, dir: oracledb.BIND_IN }
+            cod: { val: NUMBER(codigoCabecera), dir: oracledb.BIND_IN }
         });
 
         // 7. Responder con un JSON
