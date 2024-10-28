@@ -37,7 +37,7 @@ async function boleta(req, res) {
 
         await cursorCabecera.close();
         await cursorCuerpo.close();
-
+        console.log('Contenido de cabeceraRows:', JSON.stringify(cabeceraRows, null, 2));
         const codigoCliente = cabeceraRows[0][1]; 
         console.log('El codigo del cliente es: ',codigoCliente);
         // 3. Llamar a las funciones de Oracle para obtener el nombre y teléfono del cliente
