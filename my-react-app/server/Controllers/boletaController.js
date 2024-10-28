@@ -39,7 +39,7 @@ async function boleta(req, res) {
         await cursorCuerpo.close();
 
         // Obtener el código del cliente de la cabecera
-        const codigoCliente = cabeceraRows[0].CODIGO_CLIENTE;
+        const codigoCliente = cabeceraRows[1].CODIGO_CLIENTE;
 
         // 3. Obtener el nombre del cliente usando OUTLET_Fun_Nombre
         const nombreResult = await connection.execute(
