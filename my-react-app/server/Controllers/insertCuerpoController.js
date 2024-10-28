@@ -10,7 +10,6 @@ const insertCuerpo = async (req, res) => {
         if (!productos || productos.length === 0) {
             return res.status(400).json({ message: 'No se han proporcionado productos.' });
         }
-        console.log(productos)
         connection = await getConnection();
 
         for (const producto of productos) {
