@@ -12,6 +12,7 @@ async function boleta(req, res) {
     try {
         connection = await oracledb.getConnection(dbConfig);
         console.log('toi dentro');
+
         // 1. Obtener el último número de la secuencia `SEC_COD_CABECERA`
         const codigoResult = await connection.execute(
             `SELECT last_number FROM user_sequences WHERE sequence_name = 'SEC_COD_CABECERA'`
@@ -37,10 +38,31 @@ async function boleta(req, res) {
         await cursorCabecera.close();
         await cursorCuerpo.close();
 
-        // 3. Obtener detalles adicionales de cliente (Dirección)
+        // Obtener el código del cliente de la cabecera
+        const codigoCliente = cabeceraRows[0].CODIGO_CLIENTE;
+
+        // 3. Obtener el nombre del cliente usando OUTLET_Fun_Nombre
+        const nombreResult = await connection.execute(
+            `BEGIN :nombre := OUTLET_Fun_Nombre(:codigoCliente); END;`,
+            {
+                nombre: { type: oracledb.STRING, dir: oracledb.BIND_OUT, maxSize: 200 },
+                codigoCliente: { val: codigoCliente, dir: oracledb.BIND_IN }
+            }
+        );
+
+        // 4. Obtener el teléfono del cliente usando OUTLET_Fun_Telefono
+        const telefonoResult = await connection.execute(
+            `BEGIN :telefono := OUTLET_Fun_Telefono(:codigoCliente); END;`,
+            {
+                telefono: { type: oracledb.STRING, dir: oracledb.BIND_OUT, maxSize: 32 },
+                codigoCliente: { val: codigoCliente, dir: oracledb.BIND_IN }
+            }
+        );
+
+        // 5. Obtener la dirección del cliente
         const clienteResult = await connection.execute(
             `SELECT Codigo_Direccion FROM OUTLET_CLIENTE WHERE Codigo_Cliente = :CodC`,
-            { CodC: { val: cabeceraRows[0].CODIGO_CLIENTE, dir: oracledb.BIND_IN } }
+            { CodC: { val: codigoCliente, dir: oracledb.BIND_IN } }
         );
 
         let direccionDetails = {};
@@ -68,22 +90,21 @@ async function boleta(req, res) {
             );
         }
 
-        // 4. Responder con un JSON
-        
+        // 6. Armar la respuesta con los detalles de la cabecera, productos y dirección
         const cabecera = {
-            NOMBRE_CLIENTE: cabeceraRows[0][0], // Asume el primer índice para el nombre
-            TELEFONO: cabeceraRows[0][1],       // Ajusta estos índices según el orden correcto
-            FECHA: cabeceraRows[0][2]
+            NOMBRE_CLIENTE: nombreResult.outBinds.nombre,
+            TELEFONO: telefonoResult.outBinds.telefono,
+            FECHA: cabeceraRows[0].FECHA
         };
-        console.log( 'Cabecera: ',cabecera, 'Cuerpo: ',cuerpoRows, 'Direccion: ',direccionDetails, 'Codigo: ',codigoCabecera);
-        console.log(cabeceraRows);
+
+        console.log('Cabecera:', cabecera, 'Cuerpo:', cuerpoRows, 'Direccion:', direccionDetails, 'Codigo:', codigoCabecera);
+
         res.json({
             cabecera,
             productos: cuerpoRows,
             direccion: direccionDetails,
             codigoCabecera: codigoCabecera
         });
-
 
     } catch (err) {
         console.error(err);
