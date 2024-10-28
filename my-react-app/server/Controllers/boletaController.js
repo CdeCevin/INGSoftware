@@ -76,7 +76,7 @@ async function boleta(req, res) {
                 {
                     p_CodigoDireccion: { val: p_CodigoDireccion, dir: oracledb.BIND_IN },
                     o_NombreCalle: { type: oracledb.STRING, dir: oracledb.BIND_OUT },
-                    o_NumeroDireccion: { type: oracledb.STRING, dir: oracledb.BIND_OUT },
+                    o_NumeroDireccion: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
                     o_NombreCiudad: { type: oracledb.STRING, dir: oracledb.BIND_OUT },
                     o_NombreRegion: { type: oracledb.STRING, dir: oracledb.BIND_OUT }
                 },
