@@ -1,19 +1,24 @@
 const oracledb = require('oracledb');
-const { getConnection } = require('../db/connection');
 
 async function boleta(req, res) {
+    const dbConfig = {
+        user: 'Cevin',
+        password: '213233963Y',
+        connectString: 'localhost:1521/XE'
+    };
+
     let connection;
 
     try {
-        // Conectar a la base de datos
-        connection = await getConnection();
-        console.log("hola toi aca");
-        // Obtener el último número de la secuencia
-        const resultSeq = await connection.execute("SELECT last_number FROM user_sequences WHERE sequence_name = 'SEC_COD_CABECERA'");
-        const codigoCabecera = resultSeq.rows[0][0] - 1; // Restar 1
+        connection = await oracledb.getConnection(dbConfig);
 
+        // 1. Obtener el último número de la secuencia `SEC_COD_CABECERA`
+        const codigoResult = await connection.execute(
+            `SELECT last_number FROM user_sequences WHERE sequence_name = 'SEC_COD_CABECERA'`
+        );
+        const codigoCabecera = codigoResult.rows[0][0] - 1;
 
-        // Preparar y ejecutar el procedimiento almacenado para obtener la boleta
+        // 2. Llamar al procedimiento almacenado `ObtenerBoleta`
         const result = await connection.execute(
             `BEGIN ObtenerBoleta(:CodigoCabecera, :cursor_cabecera, :cursor_cuerpo); END;`,
             {
@@ -23,80 +28,57 @@ async function boleta(req, res) {
             }
         );
 
-        // Obtener los cursores
         const cursorCabecera = result.outBinds.cursor_cabecera;
         const cursorCuerpo = result.outBinds.cursor_cuerpo;
 
-        // Obtener los datos de la cabecera
-        const cabeceraRows = await cursorCabecera.getRows();
-        const cabecera = cabeceraRows[0]; // Asumiendo que solo necesitas la primera fila
+        const cabeceraRows = await cursorCabecera.getRows(); // Información de la cabecera
+        const cuerpoRows = await cursorCuerpo.getRows();     // Detalles de los productos
 
-        // Obtener los datos del cuerpo
-        const cuerpoRows = await cursorCuerpo.getRows();
-        const productos = cuerpoRows;
-
-        // Cerrar cursores
         await cursorCabecera.close();
-await cursorCuerpo.close();
+        await cursorCuerpo.close();
 
-
-        // Registrar la venta pendiente
-        await connection.execute(
-            `BEGIN RegistrarVentaPendiente(:CodigoCabecera); END;`,
-            {
-                CodigoCabecera: { val: codigoCabecera, dir: oracledb.BIND_IN }
-            }
+        // 3. Obtener detalles adicionales de cliente (Dirección)
+        const clienteResult = await connection.execute(
+            `SELECT Codigo_Direccion FROM OUTLET_CLIENTE WHERE Codigo_Cliente = :CodC`,
+            { CodC: { val: cabeceraRows[0].CODIGO_CLIENTE, dir: oracledb.BIND_IN } }
         );
 
-        // Obtener la dirección del cliente
-// Obtener la dirección del cliente
-    const codigoCliente = cabecera.CODIGO_CLIENTE; // Suponiendo que esto está en la cabecera
-    const direccionResult = await connection.execute(
-        `SELECT Codigo_Direccion FROM OUTLET_CLIENTE WHERE Codigo_Cliente = :CodC`,
-        { CodC: { val: codigoCliente, dir: oracledb.BIND_IN } }
-    );
-    console.log('DireccionResult: ', direccionResult);
+        let direccionDetails = {};
+        if (clienteResult.rows.length > 0) {
+            const p_CodigoDireccion = clienteResult.rows[0][0];
 
-    // Verificar si se encontró la dirección antes de acceder a ella
-    if (direccionResult.rows.length === 0) {
-        console.error('No se encontró dirección para el cliente con código:', codigoCliente);
-        res.status(404).send('No se encontró dirección para el cliente especificado');
-        return;
-    }
-
-    const p_CodigoDireccion = direccionResult.rows[0][0];
-
-    // Obtener detalles de la dirección
-    const direccionDetails = {};
-    await connection.execute(
-        `BEGIN ObtenerDireccion(:p_CodigoDireccion, :o_NombreCalle, :o_NumeroDireccion, :o_NombreCiudad, :o_NombreRegion); END;`,
-        {
-            p_CodigoDireccion: { val: p_CodigoDireccion, dir: oracledb.BIND_IN },
-            o_NombreCalle: { type: oracledb.STRING, dir: oracledb.BIND_OUT, val: direccionDetails.nombreCalle },
-            o_NumeroDireccion: { type: oracledb.STRING, dir: oracledb.BIND_OUT, val: direccionDetails.numeroDireccion },
-            o_NombreCiudad: { type: oracledb.STRING, dir: oracledb.BIND_OUT, val: direccionDetails.nombreCiudad },
-            o_NombreRegion: { type: oracledb.STRING, dir: oracledb.BIND_OUT, val: direccionDetails.nombreRegion }
+            await connection.execute(
+                `BEGIN ObtenerDireccion(:p_CodigoDireccion, :o_NombreCalle, :o_NumeroDireccion, :o_NombreCiudad, :o_NombreRegion); END;`,
+                {
+                    p_CodigoDireccion: { val: p_CodigoDireccion, dir: oracledb.BIND_IN },
+                    o_NombreCalle: { type: oracledb.STRING, dir: oracledb.BIND_OUT },
+                    o_NumeroDireccion: { type: oracledb.STRING, dir: oracledb.BIND_OUT },
+                    o_NombreCiudad: { type: oracledb.STRING, dir: oracledb.BIND_OUT },
+                    o_NombreRegion: { type: oracledb.STRING, dir: oracledb.BIND_OUT }
+                },
+                (err, result) => {
+                    if (err) throw err;
+                    direccionDetails = {
+                        nombreCalle: result.outBinds.o_NombreCalle,
+                        numeroDireccion: result.outBinds.o_NumeroDireccion,
+                        nombreCiudad: result.outBinds.o_NombreCiudad,
+                        nombreRegion: result.outBinds.o_NombreRegion
+                    };
+                }
+            );
         }
-    );
 
-
-        // Cerrar la conexión
-        await connection.close();
-
-        // Construir la respuesta
-        console.log(cabecera,
-            productos,
-            direccionDetails,
-            codigoCabecera);
+        // 4. Responder con un JSON
         res.json({
-            cabecera,
-            productos,
+            cabecera: cabeceraRows[0],
+            productos: cuerpoRows,
             direccion: direccionDetails,
-            codigoCabecera
+            codigoCabecera: codigoCabecera
         });
+
     } catch (err) {
         console.error(err);
-        res.status(500).send('Error al obtener la boleta');
+        res.status(500).send("Error al obtener la boleta");
     } finally {
         if (connection) {
             try {
