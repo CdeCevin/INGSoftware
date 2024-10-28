@@ -69,7 +69,7 @@ async function boleta(req, res) {
         }
 
         // 4. Responder con un JSON
-        console.log( cabeceraRows[0], cuerpoRows, direccionDetails,codigoCabecera);
+        console.log( 'Cabecera: ',cabeceraRows[0], 'Cuerpo: ',cuerpoRows, 'Direccion: ',direccionDetails, 'Codigo: ',codigoCabecera);
 
         res.json({
             cabecera: cabeceraRows[0],
