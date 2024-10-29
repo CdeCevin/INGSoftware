@@ -48,6 +48,7 @@ function VentaClienteNu() {
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message); // Mostrar mensaje de éxito
+                resetForm();
                 setPaginaActual('buscarProducto');
             } else {
                 const errorData = await response.json();
@@ -232,7 +233,7 @@ function VentaClienteNu() {
                                 <input 
                                     type="text" 
                                     name="input-teléfono" 
-                                    maxLength="50" 
+                                    maxLength="9" 
                                     value={telefono} 
                                     required
                                     onChange={(e) => setTelefono(e.target.value)} 
