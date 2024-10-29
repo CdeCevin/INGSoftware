@@ -48,7 +48,7 @@ function VentaClienteNu() {
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message); // Mostrar mensaje de éxito
-                resetForm();
+                setPaginaActual('buscarProducto');
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message); // Mostrar mensaje de error
