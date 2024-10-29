@@ -21,7 +21,6 @@ const insertCliente = async (req, res) => {
                 telefono: Number(INtelefono)
             }
         );
-        res.status(200).json({ message: 'Producto actualizado con éxito.' });
         console.log("toi aqui");
         // 2. Obtener el último número de la secuencia `SEC_COD_CLIENTES`
         const resultCodigo = await connection.execute(
