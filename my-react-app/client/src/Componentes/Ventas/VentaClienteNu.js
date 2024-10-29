@@ -26,7 +26,7 @@ function VentaClienteNu() {
 
         // Preparar los datos en formato JSON
         const formData = {
-            INnombre: nombre,
+            INnombre: nombreC,
             INtelefono: telefono, 
             INregion: region,
             INciudad: ciudad,
