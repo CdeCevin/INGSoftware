@@ -220,7 +220,7 @@ function VentaClienteNu() {
                                 <label>Nombre</label>
                                 <input 
                                     type="text" 
-                                    name="input-nombre" 
+                                    name="input-nombreC" 
                                     maxLength="50" 
                                     value={nombreC} 
                                     required
