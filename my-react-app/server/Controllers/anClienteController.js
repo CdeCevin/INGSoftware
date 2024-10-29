@@ -12,13 +12,13 @@ const insertCliente = async (req, res) => {
         // 1. Llamar al procedimiento almacenado para insertar cliente
         console.log("primer procedimiento");
         await connection.execute(
-            `BEGIN OUTLET_Insert_Client(:calle, :numero, :ciudad, :nombre, :telefono); END;`,
+            `BEGIN OUTLET_Insert_Client(:INcalle, :INnumero, :INciudad, :INnombre, :INtelefono); END;`,
             {
-                calle: INcalle,
-                numero: INnumero,
-                ciudad: INciudad,
-                nombre: INnombre,
-                telefono: Number(INtelefono)
+                INcalle: INcalle,
+                INnumero: INnumero,
+                INciudad: INciudad,
+                INnombre: INnombre,
+                INtelefono: Number(INtelefono)
             }
         );
 
