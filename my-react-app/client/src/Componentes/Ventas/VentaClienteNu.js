@@ -63,7 +63,7 @@ function VentaClienteNu() {
 
 
     const resetForm = () => {
-        setNombre('');
+        setNombreC('');
         setRegion('');
         setCiudad('');
         setCalle('');
