@@ -35,10 +35,10 @@ const insertCliente = async (req, res) => {
             { cod: codigoCliente }
         );
 
-        res.status(200).json({ message: 'Cliente y cabecera registrados con éxito.' });
+        res.status(200).json({ message: 'Cliente agregado.' });
 
     } catch (error) {
-        console.error('Error al actualizar el cliente:', error);
+        console.error('Error al ingresar el cliente:', error);
         res.status(500).json({ message: 'Error interno del servidor.' });
     } finally {
         if (connection) {
