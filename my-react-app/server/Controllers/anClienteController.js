@@ -18,7 +18,7 @@ const insertCliente = async (req, res) => {
                 INnumero: INnumero,
                 INciudad: INciudad,
                 INnombre: INnombre,
-                INtelefono: Number(INtelefono)
+                INtelefono: INtelefono
             }
         );
 
