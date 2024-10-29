@@ -32,8 +32,8 @@ const insertCliente = async (req, res) => {
 
         // 3. Llamar al procedimiento para insertar en cabecera usando el código de cliente
         const resultCabecera = await connection.execute(
-            `BEGIN OUTLET_Insert_Cabecera(:codigoCliente); END;`,
-            { codigoCliente }
+            `BEGIN OUTLET_Insert_Cabecera(:cod); END;`,
+            { cod: codigoCliente }
         );
 
         res.status(200).json({ message: 'Cliente y cabecera registrados con éxito.' });
