@@ -124,7 +124,7 @@ function VentaClienteNu() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    'input-nombre': nombreC,
+                    'input-nombre': nombre,
                     'input-color': color,
                 }),
             });
