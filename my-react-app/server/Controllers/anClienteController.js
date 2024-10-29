@@ -21,6 +21,7 @@ const insertCliente = async (req, res) => {
             }
         );
 
+        console.log("toi aqui");
         // 2. Obtener el último número de la secuencia `SEC_COD_CLIENTES`
         const resultCodigo = await connection.execute(
             `SELECT last_number FROM user_sequences WHERE sequence_name = 'SEC_COD_CLIENTES'`
