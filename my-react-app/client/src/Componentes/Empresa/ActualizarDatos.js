@@ -85,31 +85,8 @@ function ActualizarDatos() {
         <div style={{ marginLeft: '12%' }}>
             <div className="main-block">
                 <form onSubmit={handleSubmit}>
-                    <h1>Actualizar Cliente</h1>
-                    <fieldset>
-                        <legend>
-                            <h3>Datos del Cliente</h3>
-                        </legend>
-                        <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
-                            <div>
-                                <label>Codigo*</label>
-                                <input 
-                                    type="text" 
-                                    name="input-cod" 
-                                    pattern="[0-9]+" 
-                                    maxLength="9" 
-                                    required 
-                                    value={cod} 
-                                    onChange={(e) => setCod( e.target.value)} 
-                                />
-                            </div>
-                            
-                        </div>
-                    </fieldset>
+                    <h1>Datos Empresa</h1>
                     <fieldset>   
-                        <legend>
-                            <h3>Datos a editar</h3>
-                        </legend>
                         <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
                             <div>
                                 <label>Nombre</label>
