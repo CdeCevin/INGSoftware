@@ -7,7 +7,6 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root'); // Asegúrate de que el selector de raíz sea correcto
 
 function ActualizarDatos() {
-    const [cod, setCod] = useState('');
     const [nombre, setNombre] = useState('');
     const [telefono, setTelefono] = useState('');
     const [region, setRegion] = useState('');
@@ -22,7 +21,6 @@ function ActualizarDatos() {
 
         // Preparar los datos en formato JSON
         const formData = {
-            cod: cod,
             INnombre: nombre || null,
             INtelefono: telefono || null,
             INregion: region || null,
@@ -34,7 +32,7 @@ function ActualizarDatos() {
 
         try {
             // Enviar los datos al backend
-            const response = await fetch('http://localhost:3001/api/upCliente', {
+            const response = await fetch('http://localhost:3001/api/upEmpresa', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -72,7 +70,7 @@ function ActualizarDatos() {
     };
 
     useEffect(() => {
-        document.title = 'Actualizar Cliente';
+        document.title = 'Actualizar Empresa';
     }, []);
 
     // Manejar cambio en la selección de región

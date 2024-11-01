@@ -9,6 +9,7 @@ const upClientesRoutes = require('./Routes/upCliente');
 
     //Empresa
 const datosEmpresaRoutes = require('./Routes/datosEmpresa');
+const upEmpresaRoutes = require('./Routes/upEmpresa');
 
     //Pendientes
 const pendientesRoutes = require('./Routes/pendientes');
@@ -49,6 +50,7 @@ app.use('/api/upCliente',upClientesRoutes);
 
 //Empresa
 app.use('/api/datosEmpresa', datosEmpresaRoutes);
+app.use('/api/upEmpresa', upEmpresaRoutes);
 
 //Pendientes
 app.use('/api/ventasPendientes', pendientesRoutes);
