@@ -58,7 +58,6 @@ function ActualizarDatos() {
 
     const resetForm = () => {
         setNombre('');
-        setCod('');
         setRegion('');
         setCiudad('');
         setCalle('');
