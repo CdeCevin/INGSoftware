@@ -52,7 +52,7 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 			
 			Visualizar Datos --> LISTO! :D
 
-			Actualizar Datos --> Falta
+			Actualizar Datos --> LISTO! :D
 
 
 ----------------
@@ -87,7 +87,7 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 			Listado Producto --> medio q medio
 				**AHORA SE MUESTRA! Falta dejarlo bonito!!
-			Stock Critico --> Falta
+			Stock Critico -->  LISTO! :D
 				**Los datos se muestran, pero estan feos :c 
 			
 
@@ -98,7 +98,7 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 			Actualizar Producto --> LISTO! :D
 
-			Buscar Producto --> Listo 40%
+			Buscar Producto --> Listo 80%
 				**Solucionar las rutas de las imagenes (si es que falta algo mas anoten)
 
 			Eliminar Producto --> LISTO! :D
@@ -128,7 +128,7 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 		Front:
 
-			Venta Cliente Nuevo --> Falta
+			Venta Cliente Nuevo --> listo 50% 
 
 			Venta Cliente Antiguo --> listo 50% 
 				**Lo de mostrar boleta ta en otro .js llamado MostrarBoleta,,,
@@ -141,7 +141,7 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 		Backend: 
 
 			
-			Venta Cliente Nuevo --> Falta
+			Venta Cliente Nuevo --> Listo! :D
 
 			Venta Cliente Antiguo --> LISTO 99%
 				**Falta solo afinar detalles y ver si puedo optimizar todo KDFJSADSF
