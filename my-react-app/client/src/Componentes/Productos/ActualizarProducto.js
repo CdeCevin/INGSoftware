@@ -80,7 +80,7 @@ function ActualizarProducto() {
                         </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
-                                <label>Código Mueble*</label>
+                                <label>Código Producto*</label>
                                 <input 
                                     type="text" 
                                     name="input-cod" 

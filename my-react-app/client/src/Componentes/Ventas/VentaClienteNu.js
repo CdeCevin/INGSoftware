@@ -81,39 +81,6 @@ function VentaClienteNu() {
     };
 
 
-
-
-    /*const handleSubmitCliente = async (e) => {
-        e.preventDefault();
-        try {
-            console.log("El código es:", codigo);
-            const response = await fetch(`http://localhost:3001/api/insertCabecera`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ codigo })
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                setClienteData(data);
-                setModalMessage('Producto encontrado');
-                setModalIsOpen(false);
-                setPaginaActual('buscarProducto');
-            } else {
-                const errorData = await response.json();
-                setModalMessage(errorData.message);
-                setClienteData(null);
-                setModalIsOpen(true);
-            }
-        } catch (error) {
-            console.error('Error al buscar producto:', error);
-            setModalMessage('Error al buscar producto.');
-            setModalIsOpen(true);
-        }
-    };*/
-
     const buscarProductos = async (event) => {
         event.preventDefault();
 
