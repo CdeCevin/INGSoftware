@@ -110,7 +110,7 @@ function ActualizarCliente() {
                         <legend>
                             <h3>Datos a editar</h3>
                         </legend>
-                        <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
+                        <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <label>Nombre</label>
                                 <input 
