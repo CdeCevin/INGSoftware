@@ -206,9 +206,13 @@ function VentaClienteNu() {
                                     onChange={(e) => setTelefono(e.target.value)} 
                                 />
                             </div>
-                            <legend>
-                            <h3>Dirección del despacho</h3>
-                            </legend>
+                        </div>
+                        </fieldset>
+                            <fieldset>
+                                <legend>
+                                    <h3>Dirección del despacho</h3>
+                                </legend>
+                            <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <label>Región</label>
                                 <select 
