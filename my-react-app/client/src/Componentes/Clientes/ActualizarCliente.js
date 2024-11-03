@@ -92,7 +92,7 @@ function ActualizarCliente() {
                         </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
-                                <label>Codigo*</label>
+                                <label>Código*</label>
                                 <input 
                                     type="text" 
                                     name="input-cod" 
