@@ -20,9 +20,9 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 				Eliminar Cliente --> LISTO!
 
-				Listado Clientes --> Falta
-					**El menu de la izquierda está como tirado pa abajo???? no sé klfjdalk
-					**No está centrado ni tan wonito parece 
+				Listado Clientes --> LISTO = REVISAR BACKEND
+					**Revisar que deberia ser la direccion, no el codigo de la direccion ,,,,
+					**Arreglado lo que estaba hacia el lado y ya esta centrado
 
 	
 		Backend:
@@ -33,7 +33,7 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 				Eliminar Cliente --> LISTO!
 
-				Listado Clientes --> LISTO!
+				Listado Clientes --> REVISAR LO QUE ESTÁ ARRIBA
 
 -------------	
 |  EMPRESA  |
@@ -41,8 +41,9 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 		Front:
 
-			Visualizar Datos --> Falta
-				**Los datos se muestran, pero estan feos :c 
+			Visualizar Datos --> REVISAR
+				**Los datos se muestran, pero estan feos :c
+				**Lo cambié un poco pero tengo un dilema con el boton que aparece en el canva ?? 
 
 			Actualizar Datos --> Falta
 
@@ -61,7 +62,7 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 		Front:
 
-			Ventas Pendientes--> Listo? (lo unico que cambiara es que en vez de ver producto diga ocutlar producto cuando se esten mostrando)
+			Ventas Pendientes--> LISTO ya cambié el boton de ver productos
 				
 
 		Backend:
