@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import '../../Estilos/style_menu.css';
+import '../../Estilos/estilo.css';
 
 function BuscarCliente() {
     const [codigo, setCodigo] = useState('');
@@ -37,7 +39,9 @@ function BuscarCliente() {
         }
     };      
     
-    
+    useEffect(() => {
+        document.title = 'Buscar Cliente';
+    }, []);
 
     const closeModal = () => setModalIsOpen(false);
 
@@ -47,9 +51,12 @@ function BuscarCliente() {
                 <form onSubmit={handleSubmit}>
                     <h1>Buscar Cliente</h1>
                     <fieldset>
+                        <legend>
+                            <h3>Búsqueda</h3>
+                        </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
-                                <label>Código cliente*</label>
+                                <label>Código*</label>
                                 <input 
                                     type="text" 
                                     name="input-cod" 
