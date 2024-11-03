@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 
 function EliminarCliente() {
@@ -40,6 +40,9 @@ function EliminarCliente() {
     
 
     const closeModal = () => setModalIsOpen(false);
+    useEffect(() => {
+        document.title = 'Eliminar Producto';
+    }, []);
 
     return (
         <div style={{ marginLeft: '12%' }}>
@@ -47,6 +50,9 @@ function EliminarCliente() {
                 <form onSubmit={handleSubmit}>
                     <h1>Eliminar Cliente</h1>
                     <fieldset>
+                        <legend>
+                            <h3>Eliminar</h3>
+                        </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <label>Código cliente*</label>

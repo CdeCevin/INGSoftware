@@ -20,8 +20,12 @@ const ListadoClientes = () => {
         fetchClientes();
     }, []);
 
+    useEffect(() => {
+        document.title = 'Listado Clientes';
+    }, []);
+
     return (
-        <div style={{ marginLeft: '10%' }}>
+        <div style={{ marginLeft: '12%' }}>
             <h3>Resultados</h3>
             <table className="venta-table">
                 <thead>
