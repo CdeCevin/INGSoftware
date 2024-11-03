@@ -137,8 +137,9 @@ function VentaClienteEx() {
     const closeModal = () => setModalIsOpen(false);
 
     return (
-        <div style={{ marginLeft: '12%' }}>
+        <div>
             {paginaActual === 'insertCabecera' && (
+                <div style={{ marginLeft: '12%' }}>
                 <div className="main-block">
                     <form onSubmit={handleSubmitCliente}>
                         <h1>Venta Producto</h1>
@@ -164,9 +165,11 @@ function VentaClienteEx() {
                         <button type="submit">Buscar Cliente</button>
                     </form>
                 </div>
+                </div>
             )}
 
             {paginaActual === 'buscarProducto' && (
+                <div style={{marginLeft: '12%'}}>
                 <div className="main-block">
                     <h1>Buscar Producto</h1>
                     <form onSubmit={buscarProductos}>
@@ -203,6 +206,7 @@ function VentaClienteEx() {
                     </form>
                     
                     {productos.length > 0 && (
+                        <div style={{marginLeft: '12%'}}>
                         <table className="venta-table">
                             <thead>
                                 <tr>
@@ -243,6 +247,7 @@ function VentaClienteEx() {
                                 ))}
                             </tbody>
                         </table>
+                        </div>
                     )}
 
                     {carrito.length > 0 && (
@@ -259,10 +264,15 @@ function VentaClienteEx() {
                         </div>
                     )}
                 </div>
+                </div>
             )}
 
             {paginaActual === 'mostrarBoleta' && (
+                <div style={{marginLeft: '12%'}}>
+                <div className="main-block">
                 <MostrarBoleta />
+                </div>
+                </div>
             )}
 
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}>

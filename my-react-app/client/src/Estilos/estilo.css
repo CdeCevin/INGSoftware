@@ -1,5 +1,6 @@
 html, body {
   min-height: 100%;
+  background-color: #f6f6e9;
   }
   body, div, form, input, select, p { 
   padding: 0;
@@ -22,7 +23,7 @@ html, body {
   display: block;
   justify-content: center;
   align-items: center;
-  background: #fff;
+  background: #f6f6e9;
   flex-direction: column;
   width: 100%;
   
@@ -159,7 +160,7 @@ body {
   margin: 0;
   padding: 0;
   width: 200px;
-  background-color: #f1f3f2;
+  background-color: #dbd9d9;
   
   position: fixed;
   height: 100%;
@@ -174,7 +175,9 @@ body {
   text-decoration: none;
 }
 
-
+.w3-container2, .w3-panel2 {
+  padding: 0;
+}
 .sidebar a.active {
   background-color: #6b9787;
   color: white;

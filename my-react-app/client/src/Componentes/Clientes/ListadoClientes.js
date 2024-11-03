@@ -25,15 +25,17 @@ const ListadoClientes = () => {
     }, []);
 
     return (
-        <div style={{ marginLeft: '12%' }}>
-            <h3>Resultados</h3>
+        <div style={{ marginLeft: '13%' }}>
+            <div className="main-block">
+            <h1>Registro de Clientes</h1>
+            <br />
             <table className="venta-table">
                 <thead>
                     <tr>
                         <th>CÓDIGO</th>
                         <th>TELÉFONO</th>
                         <th>NOMBRE</th>
-                        <th>CÓDIGO DIRECCIÓN</th>
+                        <th>DIRECCIÓN</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,6 +55,7 @@ const ListadoClientes = () => {
                     )}
                 </tbody>
             </table>
+            </div>
         </div>
     );
 };

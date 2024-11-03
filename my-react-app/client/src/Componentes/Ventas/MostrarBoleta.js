@@ -25,14 +25,19 @@ function Boleta() {
 
     return (
         <div>
+            <fieldset>
+            <legend>
             <h3>Boleta</h3>
-            <div><strong>Nombre:</strong> {boleta.cabecera.NOMBRE_CLIENTE}</div>
-            <div><strong>Teléfono:</strong> {boleta.cabecera.TELEFONO}</div>
-            <div><strong>Dirección:</strong> {`${boleta.direccion.nombreRegion}, ${boleta.direccion.nombreCiudad}, ${boleta.direccion.nombreCalle} #${boleta.direccion.numeroDireccion}`}</div>
-            <div><strong>Fecha:</strong> {boleta.cabecera.FECHA}</div>
-            <div><strong>Número Boleta:</strong> {boleta.codigoCabecera}</div>
-
-            <table>
+            </legend>
+            <table border="1" cellpadding="8" style={{borderCollapse:'collapse', width: '80%'}}>
+            <tr>
+            <div style={{fontSize: '18px',paddingLeft: '10px',paddingTop: '10px'}}><strong>  Nombre:</strong> {boleta.cabecera.NOMBRE_CLIENTE}</div>
+            <div style={{fontSize: '18px',paddingLeft: '10px'}}><strong>  Teléfono:</strong> {boleta.cabecera.TELEFONO}</div>
+            <div style={{fontSize: '18px',paddingLeft: '10px'}}><strong>  Dirección:</strong> {`${boleta.direccion.nombreRegion}, ${boleta.direccion.nombreCiudad}, ${boleta.direccion.nombreCalle} #${boleta.direccion.numeroDireccion}`}</div>
+            <div style={{fontSize: '18px',paddingLeft: '10px'}}><strong>  Fecha:</strong> {boleta.cabecera.FECHA.split('T')[0]}</div>
+            <div style={{fontSize: '18px',paddingLeft: '10px',paddingBottom: '10px'}}><strong>  Número Boleta:</strong> {boleta.codigoCabecera}</div>
+            
+            <table border="1" cellpadding="8" style={{ borderRight:'none', borderLeft: 'none', borderBottom: 'none', borderCollapse: 'collapse', width: '100%'}}> 
                 <thead>
                     <tr>
                         <th>Producto</th>
@@ -44,7 +49,7 @@ function Boleta() {
                 </thead>
                 <tbody>
                     {boleta.productos.map((producto, index) => (
-                        <tr key={index}>
+                        <tr style={{ textAlign: 'center' }} key={index}>
                             <td>{producto[0]}</td>
                             <td>{producto[1]}</td> 
                             <td>{producto[4]}</td> 
@@ -55,12 +60,17 @@ function Boleta() {
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colSpan="3" style={{ textAlign: 'right' }}><strong>Total a pagar:</strong></td>
+                        <td colSpan="4" style={{ textAlign: 'right' }}><strong>Total a pagar:</strong></td>
                         <td>{boleta.productos.reduce((acc, producto) => acc + producto[3], 0)}</td> {/* Precio Total */}
                     </tr>
                 </tfoot>
             </table>
+            
+            </tr>
+            </table>
+            </fieldset>
         </div>
+       
     );
 }
 

@@ -173,7 +173,7 @@ function VentaClienteNu() {
     const closeModal = () => setModalIsOpen(false);
 
     return (
-        <div style={{ marginLeft: '12%' }}>
+        <div>
             {paginaActual === 'insertCabecera' && (
             <div style={{ marginLeft: '12%' }}>
             <div className="main-block">
@@ -185,7 +185,7 @@ function VentaClienteNu() {
                         </legend>
                         <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
                             <div>
-                                <label>Nombre</label>
+                                <label>Nombre*</label>
                                 <input 
                                     type="text" 
                                     name="input-nombreC" 
@@ -196,7 +196,7 @@ function VentaClienteNu() {
                                 />
                             </div>
                             <div>
-                                <label>Telefono</label>
+                                <label>Telefono*</label>
                                 <input 
                                     type="text" 
                                     name="input-teléfono" 
@@ -277,10 +277,12 @@ function VentaClienteNu() {
         </Modal>
         </div>
             )}
-
+            
             {paginaActual === 'buscarProducto' && (
+                <div style={{marginLeft: '12%'}}>
                 <div className="main-block">
-                    <h1>Buscar Producto</h1>
+                    
+                    <h1> Buscar Producto</h1>
                     <form onSubmit={buscarProductos}>
                         <fieldset>
                             <legend>
@@ -315,6 +317,8 @@ function VentaClienteNu() {
                     </form>
                     
                     {productos.length > 0 && (
+                        <div style={{marginLeft: '12%'}}>
+                        
                         <table className="venta-table">
                             <thead>
                                 <tr>
@@ -355,6 +359,7 @@ function VentaClienteNu() {
                                 ))}
                             </tbody>
                         </table>
+                        </div>
                     )}
 
                     {carrito.length > 0 && (
@@ -370,11 +375,16 @@ function VentaClienteNu() {
                             <button onClick={finalizarVenta}>Finalizar Venta</button>
                         </div>
                     )}
+                    </div>
                 </div>
             )}
 
             {paginaActual === 'mostrarBoleta' && (
+                <div style={{marginLeft: '12%'}}>
+                <div className="main-block">
                 <MostrarBoleta />
+                </div>
+                </div>
             )}
 
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}>

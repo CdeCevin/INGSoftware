@@ -10,12 +10,14 @@ const ListadoPendientes = () => {
     const [visibleTables, setVisibleTables] = useState({});
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [buttonText, setButtonText] = useState("Ver Productos");
 
     const handleButtonClick = (idVenta) => {
         setVisibleTables((prevState) => ({
             ...prevState,
             [idVenta]: !prevState[idVenta],
         }));
+        setButtonText((prevState) => prevState === "Ver Productos" ? "Cerrar Productos" : "Ver Productos");
     };
 
     const refreshPage = () => {
@@ -156,7 +158,7 @@ const ListadoPendientes = () => {
                                         <td className="venta-cell">{venta.cliente}</td>
                                         <td className="venta-cell">{venta.direccion}</td>
                                         <td className="venta-cell">
-                                            <button className='btn_Pendientes' onClick={() => handleButtonClick(venta.idVenta)}>Ver Productos</button>
+                                        <button className='btn_Pendientes' onClick={() => handleButtonClick(venta.idVenta)}> {buttonText} </button>
                                             {visibleTables[venta.idVenta] && (
                                                 <table style={{ borderCollapse: 'collapse' }}>
                                                     <tbody>
