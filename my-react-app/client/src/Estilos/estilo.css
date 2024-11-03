@@ -74,6 +74,10 @@ html, body {
   padding: 5px;
   vertical-align: middle;
   }
+  select {
+  padding: 5px;
+  vertical-align: middle;
+  }
   output {
     padding: 5px;
     vertical-align: middle;
