@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
