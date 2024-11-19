@@ -65,16 +65,16 @@ const StockCritico = () => {
                     </thead>
                     <tbody>
                     {productosBajoStock.map((producto) => (
-                        <tr key={producto.codigo_producto}>
-                            <td>{producto.codigo_producto}</td>
-                            <td>{producto.stock}</td>
-                            <td>{producto.stock_minimo}</td>
-                            <td>{producto.precio_unitario}</td>
-                            <td>{producto.nombre_producto}</td>
-                            <td>{producto.color_producto}</td>
+                        <tr key={producto.Codigo_producto}>
+                            <td>{producto.Codigo_producto}</td>
+                            <td>{producto.Stock}</td>
+                            <td>{producto.Stock_Minimo}</td>
+                            <td>{producto.Precio_Unitario}</td>
+                            <td>{producto.Nombre_Producto}</td>
+                            <td>{producto.Color_Producto}</td>
                             <td>
                                 {/* Botón para ver la imagen */}
-                                <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)}>
+                                <button type="button" onClick={() => mostrarImagen(producto.Codigo_Producto)}>
                                     <i className="fa fa-eye"></i>
                                 </button>
                             </td>
