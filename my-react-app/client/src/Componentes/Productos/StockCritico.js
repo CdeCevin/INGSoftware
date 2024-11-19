@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 
 
 
-const StockCritico = () => {
+function StockCritico()  {
     const [productosBajoStock, setProductosBajoStock] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
