@@ -16,8 +16,8 @@ const StockCritico = () => {
         try {
             const response = await fetch('http://localhost:3001/api/stockCritico');
             const data = await response.json();
-            if (data.data && data.data.length > 0) {
-                setProductosBajoStock(data.data); // Si hay productos, actualiza el estado pero NO abre el modal
+            if (data && data.length > 0) {
+                setProductosBajoStock(data); // Si hay productos, actualiza el estado pero NO abre el modal
             } else {
                 setSelectedImage(null); // Asegurarse de que no haya imagen seleccionada
                 setModalIsOpen(true); // Abre el modal si no se encuentran productos
