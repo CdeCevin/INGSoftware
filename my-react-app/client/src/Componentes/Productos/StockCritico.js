@@ -14,6 +14,12 @@ function StockCritico() {
         }
     };
 
+    const mostrarImagen = (codigo_producto) => {
+        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Usamos una ruta relativa
+        setSelectedImage(imageUrl); // Establecer la URL de la imagen seleccionada
+        setModalIsOpen(true); // Abrir el modal con la imagen
+    };
+
     useEffect(() => {
         obtenerProductosBajoStock(); // Llamar a la función al montar el componente
     }, []);
