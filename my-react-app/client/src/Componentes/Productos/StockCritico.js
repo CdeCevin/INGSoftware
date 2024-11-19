@@ -46,7 +46,7 @@ const StockCritico = () => {
     }, []);
 
     return (
-
+            
         <div style={{ marginLeft: '13%' }}>
             <div className="main-block">
             <h1>Productos con Stock Crítico</h1>
@@ -64,8 +64,9 @@ const StockCritico = () => {
                         </tr>
                     </thead>
                     <tbody>
-                    {productosBajoStock.map((producto) => (
-                        <tr key={producto.Codigo_producto}>
+                    {productosBajoStock.map((producto,index) => (
+                        
+                        <tr key={index}>
                             <td>{producto.Codigo_producto}</td>
                             <td>{producto.Stock}</td>
                             <td>{producto.Stock_Minimo}</td>
