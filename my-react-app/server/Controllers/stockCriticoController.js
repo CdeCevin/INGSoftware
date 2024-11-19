@@ -16,7 +16,7 @@ const obtenerProductosBajoStock = async (req, res) => {
 
         const resultSet = result.outBinds.cursor_resultado;
         console.log(resultSet.Codigo_Producto);
-        console.log(cursor_resultado.Codigo_Producto);
+        
         const rows = [];
         let row;
 
