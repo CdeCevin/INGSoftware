@@ -57,7 +57,7 @@ const BuscarProducto = () => {
     };
 
     return (
-        <div style={{ marginLeft: '12%' }}>
+        <div style={{ marginLeft: '13%' }}>
             <div className="main-block">
                 <form onSubmit={buscarProductos} encType="multipart/form-data">
                     <h1>Buscar Producto</h1>
