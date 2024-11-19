@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import '../../Estilos/style_menu.css';
+import '../../Estilos/estilo.css';
+import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
