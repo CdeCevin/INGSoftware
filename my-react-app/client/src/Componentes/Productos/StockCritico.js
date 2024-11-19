@@ -64,8 +64,8 @@ const StockCritico = () => {
                         </tr>
                     </thead>
                     <tbody>
-                    {productosBajoStock.map((producto, index) => (
-                        <tr key={index}>
+                    {productosBajoStock.map((producto) => (
+                        <tr key={producto.codigo_producto}>
                             <td>{producto.codigo_producto}</td>
                             <td>{producto.stock}</td>
                             <td>{producto.stock_minimo}</td>
