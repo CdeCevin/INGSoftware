@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-function StockCritico() {
+Modal.setAppElement('#root');
+
+const StockCritico = () => {
     const [productosBajoStock, setProductosBajoStock] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
