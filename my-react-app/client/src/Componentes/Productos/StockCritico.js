@@ -2,20 +2,22 @@ import React, { useEffect, useState } from 'react';
 
 function StockCritico() {
     const [productosBajoStock, setProductosBajoStock] = useState([]);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);
 
     // Función para obtener productos con stock crítico
-    const obtenerProductosBajoStock = async () => {
+    const obtenerProductosBajoStock = async(event) => {
+        event.preventDefault();
         try {
             const response = await fetch('http://localhost:3001/api/stockCritico');
             const data = await response.json();
-
             if (data.data && data.data.length > 0) {
-                etProductosBajoStock(data);; // Si hay productos, actualiza el estado pero NO abre el modal
+                setProductosBajoStock(data); // Si hay productos, actualiza el estado pero NO abre el modal
             } else {
                 setSelectedImage(null); // Asegurarse de que no haya imagen seleccionada
                 setModalIsOpen(true); // Abre el modal si no se encuentran productos
             }
-
+            
         } catch (error) {
             console.error('Error al obtener productos:', error);
         }
