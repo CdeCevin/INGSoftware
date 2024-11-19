@@ -19,25 +19,46 @@ function StockCritico() {
     }, []);
 
     return (
-        <div>
+
+        <div style={{ marginLeft: '13%' }}>
+            <div className="main-block">
             <h1>Productos con Stock Crítico</h1>
-            <ul>
                 {productosBajoStock.length > 0 ? (
-                    productosBajoStock.map((producto, index) => (
-                        <li key={index}>
-                            <strong>Producto:</strong> {producto[2]} <br />
-                            <strong>Código:</strong> {producto[0]} <br />
-                            <strong>Stock Actual:</strong> {producto[3]} <br />
-                            <strong>Stock Mínimo:</strong> {producto[6]} <br />
-                            <strong>Precio Unitario:</strong> ${producto[4]} <br />
-                            <strong>Color:</strong> {producto[5]} <br />
-                            <hr />
-                        </li>
-                    ))
+                    <table className="venta-table">
+                    <thead>
+                        <tr>
+                            <th>CÓDIGO</th>
+                            <th>STOCK</th>
+                            <th>STOCK MINIMO</th>
+                            <th>PRECIO</th>
+                            <th>NOMBRE</th>
+                            <th>COLOR</th>
+                            <th>FOTO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {productosBajoStock.map((producto, index) => (
+                        <tr key={index}>
+                            <td>{producto.codigo_producto}</td>
+                            <td>{producto.stock}</td>
+                            <td>{producto.stock_minimo}</td>
+                            <td>{producto.precio_unitario}</td>
+                            <td>{producto.nombre_producto}</td>
+                            <td>{producto.color_producto}</td>
+                            <td>
+                                {/* Botón para ver la imagen */}
+                                <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)}>
+                                    <i className="fa fa-eye"></i>
+                                </button>
+                            </td>
+                         </tr>
+                    ))}
+                    </tbody>
+                    </table>
                 ) : (
                     <p>No hay productos con stock crítico.</p>
                 )}
-            </ul>
+        </div>
         </div>
     );
 }
