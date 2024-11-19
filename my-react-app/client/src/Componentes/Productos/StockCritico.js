@@ -3,7 +3,7 @@ import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
 
-Modal.setAppElement('#root');
+
 
 const StockCritico = () => {
     const [productosBajoStock, setProductosBajoStock] = useState([]);
