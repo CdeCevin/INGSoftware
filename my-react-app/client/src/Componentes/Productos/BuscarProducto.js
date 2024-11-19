@@ -115,7 +115,7 @@ const BuscarProducto = () => {
                 </Modal>
 
                 {productos.length > 0 ? (
-                    <table className="venta-table" style={{ marginLeft: '12%' }}>
+                    <table className="venta-table" style={{ marginLeft: '10%' }}>
                         <thead>
                             <tr>
                                 <th>CÓDIGO</th>
