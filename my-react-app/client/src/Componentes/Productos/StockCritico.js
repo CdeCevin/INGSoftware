@@ -8,10 +8,18 @@ function StockCritico() {
         try {
             const response = await fetch('http://localhost:3001/api/stockCritico');
             const data = await response.json();
-            setProductosBajoStock(data);
+
+            if (data.data && data.data.length > 0) {
+                etProductosBajoStock(data);; // Si hay productos, actualiza el estado pero NO abre el modal
+            } else {
+                setSelectedImage(null); // Asegurarse de que no haya imagen seleccionada
+                setModalIsOpen(true); // Abre el modal si no se encuentran productos
+            }
+
         } catch (error) {
             console.error('Error al obtener productos:', error);
         }
+
     };
 
     const mostrarImagen = (codigo_producto) => {
@@ -19,6 +27,12 @@ function StockCritico() {
         setSelectedImage(imageUrl); // Establecer la URL de la imagen seleccionada
         setModalIsOpen(true); // Abrir el modal con la imagen
     };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
+
+
 
     useEffect(() => {
         obtenerProductosBajoStock(); // Llamar a la función al montar el componente
