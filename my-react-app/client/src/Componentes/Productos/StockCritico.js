@@ -64,15 +64,15 @@ function StockCritico()  {
                         </tr>
                     </thead>
                     <tbody>
-                    {productosBajoStock.map((producto) => (
+                    {productosBajoStock.map((index) => (
                         
-                        <tr key={producto.Codigo_Producto}>
-                            <td>{producto.Codigo_producto}</td>
-                            <td>{producto.Stock}</td>
-                            <td>{producto.Stock_Minimo}</td>
-                            <td>{producto.Precio_Unitario}</td>
-                            <td>{producto.Nombre_Producto}</td>
-                            <td>{producto.Color_Producto}</td>
+                        <tr key={index[0]}>
+                            <td>{index[0].Codigo_producto}</td>
+                            <td>{index[0].Stock}</td>
+                            <td>{index[0].Stock_Minimo}</td>
+                            <td>{index[0].Precio_Unitario}</td>
+                            <td>{index[0].Nombre_Producto}</td>
+                            <td>{index[0].Color_Producto}</td>
                             <td>
                                 {/* Botón para ver la imagen */}
                                 <button type="button" onClick={() => mostrarImagen(producto.Codigo_Producto)}>
