@@ -18,12 +18,12 @@ function StockCritico()  {
             const data = await response.json();
             const productosFormateados = data.map((producto) => ({
                 Codigo_Producto: producto[0],
-                Activo: producto[1],
-                Stock: producto[2],
-                Precio_Unitario: producto[3],
-                Nombre_Producto: producto[4],
-                Categoria: producto[5],
-                Color_Producto: producto[6],
+                Stock_Minimo: producto[6],
+                Stock: producto[3],
+                Precio_Unitario: producto[4],
+                Nombre_Producto: producto[2],
+                Categoria: producto[1],
+                Color_Producto: producto[5],
             }));
             setProductosBajoStock(productosFormateados);        
         } catch (error) {
