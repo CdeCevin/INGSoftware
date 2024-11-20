@@ -72,7 +72,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {productosBajoStock.map((producto) => (
+                    {productosFormateados.map((producto) => (
                         
                         <tr key={producto.Codigo_Producto}>
                             <td>{producto.Fecha}</td>
