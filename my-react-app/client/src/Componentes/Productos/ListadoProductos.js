@@ -83,6 +83,7 @@
                             <th>PRECIO</th>
                             <th>NOMBRE</th>
                             <th>COLOR</th>
+                            <th>FOTO</th>
                         </tr>
                     </thead>
                     <tbody>
