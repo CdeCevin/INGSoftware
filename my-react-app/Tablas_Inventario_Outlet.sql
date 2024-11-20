@@ -59,11 +59,15 @@ CREATE TABLE OUTLET_Producto(
         Color_Producto VARCHAR2(20),
         Activo NUMBER DEFAULT 1,
         Stock_Minimo NUMBER,
+        Fecha_Registro DATE,
         CONSTRAINT OUTLET_Producto PRIMARY KEY(Codigo_Producto)
 );
 
 ALTER TABLE OUTLET_Producto
 ADD Stock_Minimo NUMBER;
+
+ALTER TABLE OUTLET_Producto
+ADD Fecha_Registro DATE;
 
 UPDATE OUTLET_Producto
 SET Stock_Minimo = 1
