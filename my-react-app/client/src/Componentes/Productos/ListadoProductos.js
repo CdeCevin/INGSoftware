@@ -29,7 +29,7 @@
                     const productosFormateados = data.map((producto) => ({
                         Codigo_Producto: producto[0],
                         Stock: producto[1],
-                        Stock_Minimo: producto[1],
+                        Stock_Minimo: producto[2],
                         Precio_Unitario: producto[3],
                         Nombre_Producto: producto[4],
                         Categoria: producto[5],
