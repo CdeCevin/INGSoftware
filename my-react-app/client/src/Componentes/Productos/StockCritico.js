@@ -55,17 +55,6 @@ function StockCritico()  {
         <div style={{ marginLeft: '13%' }}>
             <div className="main-block">
             <h1>Productos con Stock Crítico</h1>
-            <h2>Listado de Productos</h2>
-                <ul>
-                    {productosBajoStock.map((producto) => (
-                        <li key={producto.Codigo_Producto}>
-                            <h3>{producto.Nombre_Producto}</h3>
-                            <p>Precio: ${producto.Precio_Unitario}</p>
-                            <p>Stock: {producto.Stock}</p>
-                            <p>Color: {producto.Color_Producto}</p>
-                        </li>
-                    ))}
-                </ul>
         
                 {productosBajoStock.length > 0 ? (
                     <table className="venta-table">
