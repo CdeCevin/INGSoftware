@@ -61,7 +61,12 @@
             setSelectedImage(imageUrl); // Establecer la URL de la imagen seleccionada
             setModalIsOpen(true); // Abrir el modal con la imagen
         };
-        
+
+        const closeModal = () => {
+            setModalIsOpen(false);
+        };
+    
+
         return (
             <div style={{ marginLeft: '13%' }}>
                 <div className="main-block">
