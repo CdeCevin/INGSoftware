@@ -25,14 +25,7 @@ function StockCritico()  {
                 Categoria: producto[5],
                 Color_Producto: producto[6],
             }));
-            setProductosBajoStock(productosFormateados);
-            if (data && data.length > 0) {
-                setProductosBajoStock(data); // Si hay productos, actualiza el estado pero NO abre el modal
-            } else {
-                setSelectedImage(null); // Asegurarse de que no haya imagen seleccionada
-                setModalIsOpen(true); // Abre el modal si no se encuentran productos
-            }
-            
+            setProductosBajoStock(productosFormateados);        
         } catch (error) {
             console.error('Error al obtener productos:', error);
         }
@@ -56,10 +49,24 @@ function StockCritico()  {
     }, []);
 
     return (
+
+        
             
         <div style={{ marginLeft: '13%' }}>
             <div className="main-block">
             <h1>Productos con Stock Crítico</h1>
+            <h2>Listado de Productos</h2>
+                <ul>
+                    {productosBajoStock.map((producto) => (
+                        <li key={producto.Codigo_Producto}>
+                            <h3>{producto.Nombre_Producto}</h3>
+                            <p>Precio: ${producto.Precio_Unitario}</p>
+                            <p>Stock: {producto.Stock}</p>
+                            <p>Color: {producto.Color_Producto}</p>
+                        </li>
+                    ))}
+                </ul>
+        
                 {productosBajoStock.length > 0 ? (
                     <table className="venta-table">
                     <thead>
