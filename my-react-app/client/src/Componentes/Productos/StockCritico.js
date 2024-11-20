@@ -75,7 +75,7 @@ function StockCritico()  {
                             <td>{index[0].Color_Producto}</td>
                             <td>
                                 {/* Botón para ver la imagen */}
-                                <button type="button" onClick={() => mostrarImagen(producto.Codigo_Producto)}>
+                                <button type="button" onClick={() => mostrarImagen(index[0].Codigo_Producto)}>
                                     <i className="fa fa-eye"></i>
                                 </button>
                             </td>
