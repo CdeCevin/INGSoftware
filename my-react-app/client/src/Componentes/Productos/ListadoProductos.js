@@ -72,7 +72,8 @@
         return (
             <div style={{ marginLeft: '13%' }}>
                 <div className="main-block">
-                <h1>Productos con Stock Crítico</h1>
+                <h1>Historial de Productos</h1>
+                
                 <table className="venta-table">
                     <thead>
                         <tr>
