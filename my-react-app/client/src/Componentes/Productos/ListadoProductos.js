@@ -34,6 +34,7 @@
                         Nombre_Producto: producto[4],
                         Categoria: producto[5],
                         Color_Producto: producto[6],
+                        Fecha: producto[7],
                     }));
                     setProductos(productosFormateados);
                 } catch (error) {
@@ -74,18 +75,13 @@
                     {productosBajoStock.map((producto) => (
                         
                         <tr key={producto.Codigo_Producto}>
+                            <td>{producto.Fecha}</td>
                             <td>{producto.Codigo_Producto}</td>
                             <td>{producto.Stock}</td>
                             <td>{producto.Stock_Minimo}</td>
                             <td>{producto.Precio_Unitario}</td>
                             <td>{producto.Nombre_Producto}</td>
                             <td>{producto.Color_Producto}</td>
-                            <td>
-                                {/* Botón para ver la imagen */}
-                                <button type="button" onClick={() => mostrarImagen(producto.Codigo_Producto)}>
-                                    <i className="fa fa-eye"></i>
-                                </button>
-                            </td>
                          </tr>
                     ))}
                     </tbody>
