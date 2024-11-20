@@ -28,8 +28,8 @@
                     // Convertir array de arrays a array de objetos
                     const productosFormateados = data.map((producto) => ({
                         Codigo_Producto: producto[0],
-                        Activo: producto[1],
-                        Stock: producto[2],
+                        Stock: producto[1],
+                        Stock_Minimo: producto[1],
                         Precio_Unitario: producto[3],
                         Nombre_Producto: producto[4],
                         Categoria: producto[5],
@@ -76,7 +76,7 @@
                     {productos.map((producto) => (
                         
                         <tr key={producto.Codigo_Producto}>
-                            <td>{producto.Fecha}</td>
+                            <td>{producto.Fecha.split('T')[0]}</td>
                             <td>{producto.Codigo_Producto}</td>
                             <td>{producto.Stock}</td>
                             <td>{producto.Stock_Minimo}</td>
