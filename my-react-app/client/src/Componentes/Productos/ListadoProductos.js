@@ -56,6 +56,12 @@
             return <div>Error: {error}</div>;
         }
 
+        const mostrarImagen = (codigo_producto) => {
+            const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Usamos una ruta relativa
+            setSelectedImage(imageUrl); // Establecer la URL de la imagen seleccionada
+            setModalIsOpen(true); // Abrir el modal con la imagen
+        };
+        
         return (
             <div style={{ marginLeft: '13%' }}>
                 <div className="main-block">
@@ -83,6 +89,12 @@
                             <td>{producto.Precio_Unitario}</td>
                             <td>{producto.Nombre_Producto}</td>
                             <td>{producto.Color_Producto}</td>
+                            <td>
+                                {/* Botón para ver la imagen */}
+                                <button type="button" onClick={() => mostrarImagen(producto.Codigo_Producto)}>
+                                    <i className="fa fa-eye"></i>
+                                </button>
+                            </td>
                          </tr>
                     ))}
                     </tbody>
