@@ -73,7 +73,7 @@ function StockCritico()  {
                     {productosBajoStock.map((producto) => (
                         
                         <tr key={producto.Codigo_Producto}>
-                            <td>{producto[0]}</td>
+                            <td>{'1'}</td>
                             <td>{producto.Stock}</td>
                             <td>{producto.Stock_Minimo}</td>
                             <td>{producto.Precio_Unitario}</td>
