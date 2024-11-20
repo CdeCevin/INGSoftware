@@ -1029,16 +1029,18 @@ BEGIN
     OPEN c_Productos FOR v_sql;
 END;
 
+---------------------------------------------------------- Correr este
 CREATE OR REPLACE PROCEDURE Outlet_ObtenerProductosActivos(
     c_Productos OUT SYS_REFCURSOR
 ) AS
 BEGIN
     OPEN c_Productos FOR
-    SELECT Codigo_Producto, Activo, Stock, Precio_Unitario, Nombre_Producto, Tipo_Producto, Color_Producto
+    SELECT Codigo_Producto, Stock, Stock_Minimo, Precio_Unitario, Nombre_Producto, Tipo_Producto, Color_Producto, Fecha_Registro
     FROM OUTLET_Producto
     WHERE Activo = 1;
 END;
 
+------------------------- FIn nuevo
 
 --------------------------------------------------------------
 -------------------Triggers-----------------------------------
