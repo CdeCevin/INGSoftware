@@ -58,16 +58,38 @@
         return (
             <div>
                 <h2>Listado de Productos</h2>
-                <ul>
-                    {productos.map((producto) => (
-                        <li key={producto.Codigo_Producto}>
-                            <h3>{producto.Nombre_Producto}</h3>
-                            <p>Precio: ${producto.Precio_Unitario}</p>
-                            <p>Stock: {producto.Stock}</p>
-                            <p>Color: {producto.Color_Producto}</p>
-                        </li>
+                <table className="venta-table">
+                    <thead>
+                        <tr>
+                            <th>CÓDIGO</th>
+                            <th>STOCK</th>
+                            <th>STOCK MINIMO</th>
+                            <th>PRECIO</th>
+                            <th>NOMBRE</th>
+                            <th>COLOR</th>
+                            <th>FOTO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {productosBajoStock.map((producto) => (
+                        
+                        <tr key={producto.Codigo_Producto}>
+                            <td>{producto.Codigo_Producto}</td>
+                            <td>{producto.Stock}</td>
+                            <td>{producto.Stock_Minimo}</td>
+                            <td>{producto.Precio_Unitario}</td>
+                            <td>{producto.Nombre_Producto}</td>
+                            <td>{producto.Color_Producto}</td>
+                            <td>
+                                {/* Botón para ver la imagen */}
+                                <button type="button" onClick={() => mostrarImagen(producto.Codigo_Producto)}>
+                                    <i className="fa fa-eye"></i>
+                                </button>
+                            </td>
+                         </tr>
                     ))}
-                </ul>
+                    </tbody>
+                    </table>
             </div>
         );
     };
