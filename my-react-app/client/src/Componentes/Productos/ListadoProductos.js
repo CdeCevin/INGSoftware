@@ -77,7 +77,7 @@
                 <table className="venta-table">
                     <thead>
                         <tr>
-                            <th>Fecha</th>
+                            <th>FECHA</th>
                             <th>CÓDIGO</th>
                             <th>STOCK</th>
                             <th>STOCK MINIMO</th>
