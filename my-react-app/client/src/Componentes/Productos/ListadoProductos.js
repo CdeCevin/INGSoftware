@@ -57,8 +57,9 @@
         }
 
         return (
-            <div>
-                <h2>Listado de Productos</h2>
+            <div style={{ marginLeft: '13%' }}>
+                <div className="main-block">
+                <h1>Productos con Stock Crítico</h1>
                 <table className="venta-table">
                     <thead>
                         <tr>
@@ -69,7 +70,6 @@
                             <th>PRECIO</th>
                             <th>NOMBRE</th>
                             <th>COLOR</th>
-                            <th>FOTO</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -87,6 +87,7 @@
                     ))}
                     </tbody>
                     </table>
+            </div>
             </div>
         );
     };
