@@ -10,6 +10,10 @@
         const [error, setError] = useState(null);
 
         useEffect(() => {
+            document.title = 'Listado Productos';
+        }, []);
+
+        useEffect(() => {
             const obtenerProductos = async () => {
                 setCargando(true);
                 console.log("Iniciando la obtención de productos");
