@@ -6,6 +6,8 @@
     const ListadoProductos = () => {
         console.log("HOLAA");
         const [productos, setProductos] = useState([]);
+        const [modalIsOpen, setModalIsOpen] = useState(false);
+        const [selectedImage, setSelectedImage] = useState(null);
         const [cargando, setCargando] = useState(true);
         const [error, setError] = useState(null);
 
