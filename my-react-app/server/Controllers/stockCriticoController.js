@@ -13,19 +13,11 @@ const obtenerProductosBajoStock = async (req, res) => {
                 cursor_resultado: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT }
             }
         );
-
         const resultSet = result.outBinds.cursor_resultado;
-        console.log(resultSet);
-        
-        const rows = [];
-        let row;
-
-        while ((row = await resultSet.getRow())) {
-            rows.push(row);
-        }
-        await resultSet.close();
-        
-        res.json(rows);
+        const products = await resultSet.getRows();
+        await cursor.close();
+        console.log(products);
+        res.json(products);
     } catch (err) {
         console.error('Error:', err);
         res.status(500).send('Error retrieving data');
