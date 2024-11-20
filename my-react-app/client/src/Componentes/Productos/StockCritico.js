@@ -16,6 +16,16 @@ function StockCritico()  {
         try {
             const response = await fetch('http://localhost:3001/api/stockCritico');
             const data = await response.json();
+            const productosFormateados = data.map((producto) => ({
+                Codigo_Producto: producto[0],
+                Activo: producto[1],
+                Stock: producto[2],
+                Precio_Unitario: producto[3],
+                Nombre_Producto: producto[4],
+                Categoria: producto[5],
+                Color_Producto: producto[6],
+            }));
+            setProductosBajoStock(productosFormateados);
             if (data && data.length > 0) {
                 setProductosBajoStock(data); // Si hay productos, actualiza el estado pero NO abre el modal
             } else {
