@@ -73,7 +73,7 @@
             <div style={{ marginLeft: '13%' }}>
                 <div className="main-block">
                 <h1>Historial de Productos</h1>
-                
+                <fieldset> <legend> <h3>Productos añadidos</h3></legend>
                 <table className="venta-table">
                     <thead>
                         <tr>
@@ -108,6 +108,7 @@
                     ))}
                     </tbody>
                     </table>
+                    </fieldset>
             </div>
             </div>
         );
