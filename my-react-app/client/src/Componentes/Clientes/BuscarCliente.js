@@ -73,12 +73,27 @@ function BuscarCliente() {
                 </form>
 
                 {clienteData && (
-                    <div className="client-details">
-                        <h2>Detalles del Cliente</h2>
-                        <p><strong>Nombre:</strong> {clienteData.nombres}</p>
-                        <p><strong>Teléfono:</strong> {clienteData.telefono}</p>
-                        <p><strong>Dirección:</strong> {clienteData.direccion}</p>
-                    </div>
+                    <fieldset>
+                    <legend>
+                        <h3>Resultados</h3>
+                    </legend>
+                    <table className="venta-table" style={{marginLeft: '10%'}}>
+                        <thead>
+                            <tr>
+                            <th>NOMBRE</th>
+                            <th>TELÉFONO</th>
+                            <th>DIRECCIÓN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td>{clienteData.nombres}</td>
+                            <td>{clienteData.telefono}</td>
+                            <td>{clienteData.direccion}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </fieldset>
                 )}
             </div>
 
