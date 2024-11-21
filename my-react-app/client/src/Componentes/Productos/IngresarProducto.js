@@ -99,7 +99,7 @@ function IngresoProducto() {
                                 />
                             </div>
                             <div>
-                                <label>Código Mueble*</label>
+                                <label>Código*</label>
                                 <input 
                                     type="text" 
                                     name="input-cod" 
