@@ -88,7 +88,7 @@ function ActualizarCliente() {
                     <h1>Actualizar Cliente</h1>
                     <fieldset>
                         <legend>
-                            <h3>Datos del Cliente</h3>
+                            <h3>Cliente a Editar</h3>
                         </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
