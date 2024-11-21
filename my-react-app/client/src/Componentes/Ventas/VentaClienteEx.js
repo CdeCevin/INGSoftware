@@ -247,6 +247,8 @@ function VentaClienteEx() {
                                 ))}
                             </tbody>
                         </table>
+                        <button onClick={finalizarVenta}>Finalizar Venta</button>
+
                         </div>
                     )}
                     {/* 
@@ -260,7 +262,6 @@ function VentaClienteEx() {
                                     </li>
                                 ))}
                             </ul></div>)}*/}
-                            <button onClick={finalizarVenta}>Finalizar Venta</button>
                 </div>
                 </div>
             )}
