@@ -73,9 +73,10 @@ function BuscarCliente() {
                 </form>
 
                 {clienteData && (
-                    <fieldset>
+                    
+                    <fieldset style={{padding:20}}>
                     <legend>
-                        <h3>Resultados</h3>
+                        <h3>  Resultados</h3>
                     </legend>
                     <table className="venta-table" style={{marginLeft: '10%'}}>
                         <thead>
