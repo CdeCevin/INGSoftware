@@ -247,8 +247,7 @@ function VentaClienteEx() {
                                 ))}
                             </tbody>
                         </table>
-                        <button onClick={finalizarVenta}>Finalizar Venta</button>
-
+                        <button style={{marginLeft: '-12%'}} onClick={finalizarVenta}>Finalizar Venta</button>
                         </div>
                     )}
                     {/* 
