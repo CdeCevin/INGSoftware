@@ -210,7 +210,7 @@ function VentaClienteNu() {
                         </fieldset>
                             <fieldset>
                                 <legend>
-                                    <h3>Dirección del despacho</h3>
+                                    <h3>Dirección de despacho</h3>
                                 </legend>
                             <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
@@ -361,7 +361,7 @@ function VentaClienteNu() {
                         </table>
                         </div>
                     )}
-
+                    {/*
                     {carrito.length > 0 && (
                         <div>
                             <h2>Carrito de Compras</h2>
@@ -374,7 +374,7 @@ function VentaClienteNu() {
                             </ul>
                             <button onClick={finalizarVenta}>Finalizar Venta</button>
                         </div>
-                    )}
+                    )}*/}
                     </div>
                 </div>
             )}
