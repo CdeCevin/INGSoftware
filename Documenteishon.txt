@@ -15,14 +15,13 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 				Actualizar Cliente --> LISTO! 
 					** Fijarse por si hay algo mal escrito o detalles y eso
 
-				Buscar Cliente --> 80%
+				Buscar Cliente --> LISTO
 					*está hecho el formulario, pero falta dejar lindo el como se reciben los datos y eso :D
 
 				Eliminar Cliente --> LISTO!
 
-				Listado Clientes --> LISTO = REVISAR BACKEND
+				Listado Clientes --> LISTO FE = REVISAR DIRECCION
 					**Revisar que deberia ser la direccion, no el codigo de la direccion ,,,,
-					**Arreglado lo que estaba hacia el lado y ya esta centrado
 
 	
 		Backend:
@@ -41,11 +40,11 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 		Front:
 
-			Visualizar Datos --> REVISAR
+			Visualizar Datos --> LISTO
 				**Los datos se muestran, pero estan feos :c
 				**Lo cambié un poco pero tengo un dilema con el boton que aparece en el canva ?? 
 
-			Actualizar Datos --> Falta
+			Actualizar Datos --> LISTO
 
 
 		Backend:
@@ -81,14 +80,14 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 
 			Actualizar Producto --> LISTO! :D
 
-			Buscar Producto --> Listo 50%
+			Buscar Producto --> REVISAR FOTOS
 				**Los resultados falta dejarlos mas centrado o wonito y falta arreglar el tema de las imaganes (el front de mostrar la imagen supongo)
 
 			Eliminar Producto --> LISTO! :D
 
-			Listado Producto --> medio q medio
+			Listado Producto --> LISTO
 				**AHORA SE MUESTRA! Falta dejarlo bonito!!
-			Stock Critico -->  LISTO! :D
+			Stock Critico -->  LISTO
 				**Los datos se muestran, pero estan feos :c 
 			
 
@@ -127,15 +126,15 @@ NUEVO ORDEN :D !! (LO HICE PA PURO WEAR SI NO TE GUSTA VOLVEMOS A LO ANTERIOR AS
 |  VENTAS  |
 ------------
 
-		Front:
+		Front: REVISAR AVISOS
 
-			Venta Cliente Nuevo --> listo 50% 
+			Venta Cliente Nuevo --> LISTO
 
-			Venta Cliente Antiguo --> listo 50% 
+			Venta Cliente Antiguo --> LISTO
 				**Lo de mostrar boleta ta en otro .js llamado MostrarBoleta,,,
 				**tambien añadi una parte donde se va viendo que hay en  el carrito, pero no taba en el anterior tonces hay que ver si lo ponemos o no
 
-			Historial Venta --> listo 50% 
+			Historial Venta --> LISTO
 				**Los datos se muestran, pero estan feos :c 
 
 		
