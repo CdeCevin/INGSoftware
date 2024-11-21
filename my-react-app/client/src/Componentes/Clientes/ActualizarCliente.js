@@ -126,7 +126,7 @@ function ActualizarCliente() {
                                 <input 
                                     type="text" 
                                     name="input-teléfono" 
-                                    maxLength="50" 
+                                    maxLength="9" 
                                     value={telefono} 
                                     onChange={(e) => setTelefono(e.target.value)} 
                                 />
