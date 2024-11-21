@@ -38,7 +38,7 @@ const VisualizarDatos = () => {
     <div>
     <div style={{ marginLeft: '13%' }}>
       <div className="main-block">
-        <h1>Datos Empresa</h1> <br />
+        <h1 style={{padding:20}}>Datos Empresa</h1>
       </div>
     </div>
         
