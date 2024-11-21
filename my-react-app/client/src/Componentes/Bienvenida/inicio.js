@@ -1,8 +1,12 @@
-import React from 'react';
+import React,{ useEffect } from 'react';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 
 function Inicio() {
+    useEffect(() => {
+        document.title = 'Menú';
+    }, []);
+
     return (
         <div>
             <div class="bloqueprincipal">
