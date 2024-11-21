@@ -249,7 +249,7 @@ function VentaClienteEx() {
                         </table>
                         </div>
                     )}
-
+                    {/* 
                     {carrito.length > 0 && (
                         <div>
                             <h2>Carrito de Compras</h2>
@@ -262,7 +262,7 @@ function VentaClienteEx() {
                             </ul>
                             <button onClick={finalizarVenta}>Finalizar Venta</button>
                         </div>
-                    )}
+                    )}*/}
                 </div>
                 </div>
             )}
