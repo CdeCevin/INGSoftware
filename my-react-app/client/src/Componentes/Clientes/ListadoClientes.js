@@ -27,9 +27,8 @@ const ListadoClientes = () => {
     return (
         <div style={{ marginLeft: '13%' }}>
             <div className="main-block">
-            <h1>Registro Clientes</h1>
-            <br />
-            <table className="venta-table" style={{marginLeft:'8%'}}>
+            <h1  style={{padding:20}}>Registro Clientes</h1>
+            <table className="venta-table" style={{marginLeft:'8%',paddingTop:0}}>
                 <thead>
                     <tr>
                         <th>CÓDIGO</th>
