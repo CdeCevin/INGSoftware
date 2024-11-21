@@ -171,7 +171,7 @@ function VentaClienteEx() {
             {paginaActual === 'buscarProducto' && (
                 <div style={{marginLeft: '12%'}}>
                 <div className="main-block">
-                    <h1 style={{padding:20}}>Buscar Producto</h1>
+                    <h1 style={{padding:20,paddingBottom:0}}>Buscar Producto</h1>
                     <form onSubmit={buscarProductos}>
                         <fieldset>
                             <legend>
