@@ -359,6 +359,8 @@ function VentaClienteNu() {
                                 ))}
                             </tbody>
                         </table>
+                        <button style={{marginLeft: '-12%',width:'110%'}} onClick={finalizarVenta}>Finalizar Venta</button>
+
                         </div>
                     )}
                     {/*
