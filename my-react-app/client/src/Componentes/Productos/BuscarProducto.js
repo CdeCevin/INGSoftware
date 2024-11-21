@@ -60,7 +60,7 @@ const BuscarProducto = () => {
         <div style={{ marginLeft: '13%' }}>
             <div className="main-block">
                 <form onSubmit={buscarProductos} encType="multipart/form-data">
-                    <h1>Buscar Producto</h1>
+                    <h1>Búsqueda</h1>
                     <fieldset>
                         <legend>
                             <h3>Detalles del Producto</h3>
