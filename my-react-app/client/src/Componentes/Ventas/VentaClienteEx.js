@@ -175,7 +175,7 @@ function VentaClienteEx() {
                     <form onSubmit={buscarProductos}>
                         <fieldset>
                             <legend>
-                                <h3>Detalles del Producto</h3>
+                                <h3>Búsqueda</h3>
                             </legend>
                             <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                                 <div>
@@ -204,7 +204,10 @@ function VentaClienteEx() {
                         </fieldset>
                         <button type="submit">Buscar Producto</button>
                     </form>
-                    
+                    <fieldset>
+                    <legend>
+                        <h3>Resultados</h3>
+                    </legend>
                     {productos.length > 0 && (
                         <div style={{marginLeft: '12%'}}>
                         <table className="venta-table">
@@ -249,7 +252,7 @@ function VentaClienteEx() {
                         </table>
                         <button style={{marginLeft: '-12%',width:'110%'}} onClick={finalizarVenta}>Finalizar Venta</button>
                         </div>
-                    )}
+                    )}</fieldset>
                     {/* 
                     {carrito.length > 0 && (
                         <div>
