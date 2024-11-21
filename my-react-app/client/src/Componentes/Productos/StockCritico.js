@@ -54,10 +54,13 @@ function StockCritico()  {
             
         <div style={{ marginLeft: '13%' }}>
             <div className="main-block">
-            <h1>Productos con Stock Crítico</h1>
-        
+            <h1>Stock Crítico</h1>
+            <fieldset>
+            <legend>
+                <h3>Stock</h3>
+            </legend>
                 {productosBajoStock.length > 0 ? (
-                    <table className="venta-table">
+                    <table className="venta-table" style={{ marginLeft: '13%' }}>
                     <thead>
                         <tr>
                             <th>CÓDIGO</th>
@@ -89,9 +92,11 @@ function StockCritico()  {
                     ))}
                     </tbody>
                     </table>
+                    
                 ) : (
                     <p>No hay productos con stock crítico.</p>
                 )}
+                </fieldset>
         </div>
         </div>
     );
