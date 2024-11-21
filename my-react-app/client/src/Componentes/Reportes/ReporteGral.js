@@ -43,7 +43,7 @@ function ReporteGral() {
     <div style={{ marginLeft: '12%' }}>
       <div className="main-block">
         <form onSubmit={handleBuscar} encType="multipart/form-data"  style={{padding: '10px'}}>
-          <h1>Reporte General</h1>
+          <h1>Reporte de Ventas</h1>
           <fieldset>
             <legend>
               <h3>Ventas Totales</h3>
