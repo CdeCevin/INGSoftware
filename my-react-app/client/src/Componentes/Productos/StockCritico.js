@@ -60,7 +60,7 @@ function StockCritico()  {
                 <h3>Stock</h3>
             </legend>
                 {productosBajoStock.length > 0 ? (
-                    <table className="venta-table" style={{ marginLeft: '13%' }}>
+                    <table className="venta-table" style={{ marginLeft: '8%' }}>
                     <thead>
                         <tr>
                             <th>CÓDIGO</th>
