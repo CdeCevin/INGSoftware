@@ -281,12 +281,11 @@ function VentaClienteNu() {
             {paginaActual === 'buscarProducto' && (
                 <div style={{marginLeft: '12%'}}>
                 <div className="main-block">
-                    
-                    <h1> Buscar Producto</h1>
-                    <form onSubmit={buscarProductos}>
+                    <h1 style={{padding:20,paddingBottom:0}}> Buscar Producto</h1>
+                    <form onSubmit={buscarProductos} style={{paddingTop:0}}>
                         <fieldset>
                             <legend>
-                                <h3>Detalles del Producto</h3>
+                                <h3>Búsqueda</h3>
                             </legend>
                             <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                                 <div>
@@ -317,8 +316,11 @@ function VentaClienteNu() {
                     </form>
                     
                     {productos.length > 0 && (
+                        <fieldset>
+                        <legend>
+                            <h3>Resultados</h3>
+                        </legend>
                         <div style={{marginLeft: '12%'}}>
-                        
                         <table className="venta-table">
                             <thead>
                                 <tr>
@@ -362,6 +364,7 @@ function VentaClienteNu() {
                         <button style={{marginLeft: '-12%',width:'110%'}} onClick={finalizarVenta}>Finalizar Venta</button>
 
                         </div>
+                        </fieldset>
                     )}
                     {/*
                     {carrito.length > 0 && (
