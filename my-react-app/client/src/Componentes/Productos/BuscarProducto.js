@@ -60,10 +60,10 @@ const BuscarProducto = () => {
         <div style={{ marginLeft: '13%' }}>
             <div className="main-block">
                 <form onSubmit={buscarProductos} encType="multipart/form-data">
-                    <h1>Búsqueda</h1>
+                    <h1>Buscar Producto</h1>
                     <fieldset>
                         <legend>
-                            <h3>Detalles del Producto</h3>
+                            <h3>Búsqueda</h3>
                         </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
@@ -115,12 +115,16 @@ const BuscarProducto = () => {
                 </Modal>
 
                 {productos.length > 0 ? (
+                    <fieldset>
+                        <legend>
+                            <h3>Resultados</h3>
+                        </legend>
                     <table className="venta-table" style={{ marginLeft: '10%' }}>
                         <thead>
                             <tr>
                                 <th>CÓDIGO</th>
                                 <th>STOCK</th>
-                                <th>STOCK MINIMO</th>
+                                <th>STOCK MÍNIMO</th>
                                 <th>PRECIO</th>
                                 <th>NOMBRE</th>
                                 <th>COLOR</th>
@@ -146,6 +150,7 @@ const BuscarProducto = () => {
                             ))}
                         </tbody>
                     </table>
+                    </fieldset>
                 ) : (
                     <p></p>
                 )}
