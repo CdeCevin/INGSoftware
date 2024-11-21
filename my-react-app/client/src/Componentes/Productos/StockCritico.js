@@ -48,6 +48,10 @@ function StockCritico()  {
         obtenerProductosBajoStock(); // Llamar a la función al montar el componente
     }, []);
 
+    useEffect(() => {
+        document.title = 'Stock Crítico';
+    }, []);
+
     return (
 
         

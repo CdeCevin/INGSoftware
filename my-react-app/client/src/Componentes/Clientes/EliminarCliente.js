@@ -41,7 +41,7 @@ function EliminarCliente() {
 
     const closeModal = () => setModalIsOpen(false);
     useEffect(() => {
-        document.title = 'Eliminar Producto';
+        document.title = 'Eliminar Cliente';
     }, []);
 
     return (

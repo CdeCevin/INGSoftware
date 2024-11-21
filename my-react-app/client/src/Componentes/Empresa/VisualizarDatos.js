@@ -34,6 +34,10 @@ const VisualizarDatos = () => {
     obtenerDatosCliente();
   }, []);
 
+  useEffect(() => {
+    document.title = 'Datos Empresa';
+}, []);
+
   return (
     <div>
     <div style={{ marginLeft: '13%' }}>

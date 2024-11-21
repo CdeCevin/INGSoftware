@@ -72,7 +72,7 @@ function VentaClienteNu() {
     };
 
     useEffect(() => {
-        document.title = 'Ingresar Cliente';
+        document.title = 'Venta Cliente Nuevo';
     }, []);
 
     const handleRegionChange = (e) => {

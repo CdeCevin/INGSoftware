@@ -56,6 +56,10 @@ const BuscarProducto = () => {
         setModalIsOpen(false);
     };
 
+    useEffect(() => {
+        document.title = 'Buscar Producto';
+    }, []);
+
     return (
         <div style={{ marginLeft: '13%' }}>
             <div className="main-block">

@@ -136,6 +136,9 @@ function VentaClienteEx() {
 
     const closeModal = () => setModalIsOpen(false);
 
+    useEffect(() => {
+        document.title = 'Venta Cliente Existente';
+    }, []);
     return (
         <div>
             {paginaActual === 'insertCabecera' && (
