@@ -259,10 +259,8 @@ function VentaClienteEx() {
                                         {producto.nombre_producto} - Cantidad: {producto.cantidad} - Precio: ${producto.precio_unitario}
                                     </li>
                                 ))}
-                            </ul>
+                            </ul></div>)}*/}
                             <button onClick={finalizarVenta}>Finalizar Venta</button>
-                        </div>
-                    )}*/}
                 </div>
                 </div>
             )}
