@@ -58,8 +58,8 @@ function StockCritico()  {
             
         <div style={{ marginLeft: '13%' }}>
             <div className="main-block">
-            <h1>Stock Crítico</h1>
-            <fieldset>
+            <h1 style={{padding:20}}>Stock Crítico</h1>
+            <fieldset style={{paddingTop:0}}>
             <legend>
                 <h3>Stock</h3>
             </legend>
