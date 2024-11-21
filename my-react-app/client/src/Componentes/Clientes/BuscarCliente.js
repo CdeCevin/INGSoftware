@@ -74,7 +74,7 @@ function BuscarCliente() {
 
                 {clienteData && (
                     
-                    <fieldset style={{padding:20}}>
+                    <fieldset>
                     <legend>
                         <h3>  Resultados</h3>
                     </legend>
