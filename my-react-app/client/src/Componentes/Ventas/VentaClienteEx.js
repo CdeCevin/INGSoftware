@@ -142,10 +142,10 @@ function VentaClienteEx() {
                 <div style={{ marginLeft: '12%' }}>
                 <div className="main-block">
                     <form onSubmit={handleSubmitCliente}>
-                        <h1>Venta Producto</h1>
+                        <h1>Cabecera Venta</h1>
                         <fieldset>
                             <legend>
-                                <h3>Cliente Antiguo</h3>
+                                <h3>Buscar Cliente</h3>
                             </legend>
                             <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                                 <div>
@@ -171,7 +171,7 @@ function VentaClienteEx() {
             {paginaActual === 'buscarProducto' && (
                 <div style={{marginLeft: '12%'}}>
                 <div className="main-block">
-                    <h1>Buscar Producto</h1>
+                    <h1 style={{padding:20}}>Buscar Producto</h1>
                     <form onSubmit={buscarProductos}>
                         <fieldset>
                             <legend>
