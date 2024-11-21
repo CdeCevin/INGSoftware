@@ -73,7 +73,7 @@
             <div style={{ marginLeft: '13%' }}>
                 <div className="main-block">
                 <h1 style={{padding:20}}>Historial de Productos</h1>
-                <fieldset> <legend> <h3>Productos añadidos</h3></legend>
+                <fieldset style={{paddingTop:0}}> <legend> <h3>Productos añadidos</h3></legend>
                 <table className="venta-table" style={{ marginLeft: '8%' }}>
                     <thead>
                         <tr>
