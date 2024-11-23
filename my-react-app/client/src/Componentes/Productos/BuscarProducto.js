@@ -11,7 +11,7 @@ const BuscarProducto = () => {
     const [productos, setProductos] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null); // Estado para manejar la imagen seleccionada
-
+    const [modalMessage, setModalMessage] = useState('');
     const buscarProductos = async (event) => {
         event.preventDefault();
 
