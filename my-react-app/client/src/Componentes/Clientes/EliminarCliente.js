@@ -32,7 +32,7 @@ function EliminarCliente() {
             }
         } catch (error) {
             console.error('Error al eliminar cliente:', error);
-            setModalMessage('Error al eliminar cliente.');
+            setModalMessage('El cliente no existe o ha ocurrido un error interno.');
             setModalIsOpen(true); // Abrir el modal en caso de error
         }
     };      
