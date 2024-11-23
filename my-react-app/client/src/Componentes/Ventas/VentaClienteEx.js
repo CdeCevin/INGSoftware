@@ -281,7 +281,7 @@ function VentaClienteEx() {
                 </div>
             )}
 
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
                 <button onClick={closeModal}>Cerrar</button>
