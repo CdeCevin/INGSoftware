@@ -371,14 +371,14 @@ cursor: pointer;
 }
 
 .custom-modal {
-  width: 400px;   /* Ancho del modal */
-  height: 200px;  /* Alto del modal */
-  margin: auto;   /* Centrar el modal */
-  padding: 30px;  /* Relleno del modal */
-  font-size: 1em; /* Tamaño del texto */
-  border: 1px solid #6b9787; /* Borde del modal */
-  border-radius: 8px; /* Opcional: esquinas redondeadas del borde */
-  background-color: #f6f6e9; /* Fondo del modal no transparente */
+  width: 400px;   
+  height: 200px;  
+  margin: auto;   
+  padding: 30px;  
+  font-size: 1em; 
+  border: 1px solid #6b9787; 
+  border-radius: 8px; 
+  background-color: #f6f6e9; 
   margin-top: 50px;
 }
 
