@@ -98,7 +98,7 @@ function BuscarCliente() {
                 )}
             </div>
 
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
                 <button onClick={closeModal}>Cerrar</button>

@@ -198,7 +198,7 @@ const ListadoPendientes = () => {
                 )}
             </div>
 
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={"custom-modal"}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
                 <button onClick={closeModal}>Cerrar</button>
