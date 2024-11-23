@@ -42,7 +42,9 @@ const BuscarProducto = () => {
         } catch (error) {
             console.error('Error al buscar productos:', error);
             setModalMessage('El producto no existe o ha ocurrido un error interno.');
-            setModalIsOpen(true); // Abre el modal si ocurre un error
+            
+        } finally {
+            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
         }
     };
 
