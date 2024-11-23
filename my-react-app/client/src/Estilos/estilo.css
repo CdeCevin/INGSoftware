@@ -370,12 +370,17 @@ cursor: pointer;
   max-height: 1000px; /* Establece una altura máxima suficientemente grande */
 }
 
-.custom-modal { 
-  width: 50%; 
-  height: 50%; 
-  
-  
+.small-modal {
+  width: 300px;   /* Ancho del modal */
+  height: 200px;  /* Alto del modal */
+  margin: auto;   /* Centrar el modal */
+  padding: 20px;  /* Relleno del modal */
+  font-size: 1em; /* Tamaño del texto */
+  border: 2px solid #666; /* Borde del modal */
+  border-radius: 8px; /* Opcional: esquinas redondeadas del borde */
+  background-color: #f6f6e9; /* Fondo del modal no transparente */
 }
+
 
 
 
