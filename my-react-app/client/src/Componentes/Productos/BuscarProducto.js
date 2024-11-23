@@ -11,7 +11,7 @@ const BuscarProducto = () => {
     const [productos, setProductos] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null); // Estado para manejar la imagen seleccionada
-    const [modalMessage, setModalMessage] = useState('');
+
     const buscarProductos = async (event) => {
         event.preventDefault();
 
@@ -41,10 +41,7 @@ const BuscarProducto = () => {
             }
         } catch (error) {
             console.error('Error al buscar productos:', error);
-            setModalMessage('El producto no existe o ha ocurrido un error interno.');
-            
-        } finally {
-            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
+            setModalIsOpen(true); // Abre el modal si ocurre un error
         }
     };
 
