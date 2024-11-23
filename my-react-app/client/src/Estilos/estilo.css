@@ -370,7 +370,7 @@ cursor: pointer;
   max-height: 1000px; /* Establece una altura máxima suficientemente grande */
 }
 
-.small-modal {
+.custom-modal {
   width: 300px;   /* Ancho del modal */
   height: 200px;  /* Alto del modal */
   margin: auto;   /* Centrar el modal */
