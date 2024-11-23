@@ -52,7 +52,7 @@ function ActualizarCliente() {
             }
         } catch (error) {
             console.error('Error al enviar el formulario:', error);
-            setModalMessage('Error al enviar el formulario.'); // Mensaje de error genérico
+            setModalMessage('El cliente no existe o ha ocurrido un error interno.'); // Mensaje de error genérico
         } finally {
             setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
         }
