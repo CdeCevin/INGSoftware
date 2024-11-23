@@ -370,7 +370,13 @@ cursor: pointer;
   max-height: 1000px; /* Establece una altura máxima suficientemente grande */
 }
 
-
+.custom-modal { 
+  width: 50%; 
+  height: 50%; 
+  margin: auto;
+  padding: 20px;
+  font-size: 1.2em; 
+}
 
 
 
