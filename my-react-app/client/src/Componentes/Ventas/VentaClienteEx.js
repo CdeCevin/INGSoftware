@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import '../../Estilos/style_menu.css';
+import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
 import MostrarBoleta from './MostrarBoleta'; // Asegúrate de importar el nuevo componente
 
