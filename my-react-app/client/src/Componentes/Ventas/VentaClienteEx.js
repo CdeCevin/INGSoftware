@@ -14,7 +14,7 @@ function VentaClienteEx() {
     const [cantidad, setCantidad] = useState({});
     const [paginaActual, setPaginaActual] = useState('insertCabecera');
     const [selectedImage, setSelectedImage] = useState(null); // Estado para manejar la imagen seleccionada
-    
+
     const handleSubmitCliente = async (e) => {
         e.preventDefault();
         try {
@@ -241,7 +241,12 @@ function VentaClienteEx() {
                                         <td>{producto.precio_unitario}</td>
                                         <td>{producto.nombre_producto}</td>
                                         <td>{producto.color_producto}</td>
-                                        <td>{'FOTO :D'}</td>
+                                                                                <td>
+                                        {/* Botón para ver la imagen */}
+                                        <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)}>
+                                            <i className="fa fa-eye"></i>
+                                        </button>
+                                    </td>
                                         <td>
                                             <input
                                                 type="number"
