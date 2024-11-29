@@ -29,8 +29,6 @@ function VentaClienteEx() {
             if (response.ok) {
                 const data = await response.json();
                 setClienteData(data);
-                setModalMessage('Producto no encontrado');
-                setModalIsOpen(false);
                 setPaginaActual('buscarProducto');
             } else {
                 const errorData = await response.json();

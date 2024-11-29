@@ -298,7 +298,7 @@ IS
 BEGIN 
         LOCK TABLE OUTLET_PRODUCTO IN ROW EXCLUSIVE MODE;
 
-        INSERT INTO OUTLET_PRODUCTO(Codigo_Producto,Stock,PRECIO_UNITARIO,Nombre_Producto,Color_Producto,Tipo_Producto,Stock_Minimo)    
+        INSERT INTO OUTLET_PRODUCTO(Codigo_Producto,Stock,PRECIO_UNITARIO,Nombre_Producto,Color_Producto,Tipo_Producto,Stock_Minimo,Fecha_Registro)    
                 VALUES(Cod,Stoc,Precio,Nombre,color,tipo,minimo);   
         COMMIT;
         EXCEPTION
@@ -1029,7 +1029,6 @@ BEGIN
     OPEN c_Productos FOR v_sql;
 END;
 
----------------------------------------------------------- Correr este
 CREATE OR REPLACE PROCEDURE Outlet_ObtenerProductosActivos(
     c_Productos OUT SYS_REFCURSOR
 ) AS
@@ -1040,7 +1039,6 @@ BEGIN
     WHERE Activo = 1;
 END;
 
-------------------------- FIn nuevo
 
 --------------------------------------------------------------
 -------------------Triggers-----------------------------------
