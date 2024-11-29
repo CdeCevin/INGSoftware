@@ -58,7 +58,7 @@ function VentaClienteNu() {
             console.error('Error al enviar el formulario:', error);
             setModalMessage('Error al enviar el formulario.'); // Mensaje de error genérico
         } finally {
-            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
+            setModalIsOpen(false); // Abrir el modal después de intentar enviar el formulario
         }
     };
 
