@@ -170,6 +170,12 @@ function VentaClienteNu() {
         }));
     };
 
+    const mostrarImagen = (codigo_producto) => {
+        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Usamos una ruta relativa
+        setSelectedImage(imageUrl); // Establecer la URL de la imagen seleccionada
+        setModalIsOpen(true); // Abrir el modal con la imagen
+    };
+
     const closeModal = () => setModalIsOpen(false);
 
     return (
@@ -342,7 +348,12 @@ function VentaClienteNu() {
                                         <td>{producto.precio_unitario}</td>
                                         <td>{producto.nombre_producto}</td>
                                         <td>{producto.color_producto}</td>
-                                        <td>{'FOTO :D'}</td>
+                                        <td>
+                                        {/* Botón para ver la imagen */}
+                                        <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)}>
+                                            <i className="fa fa-eye"></i>
+                                        </button>
+                                    </td>
                                         <td>
                                             <input
                                                 type="number"
