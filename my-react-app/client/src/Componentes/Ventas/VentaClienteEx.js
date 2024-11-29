@@ -13,7 +13,8 @@ function VentaClienteEx() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [cantidad, setCantidad] = useState({});
     const [paginaActual, setPaginaActual] = useState('insertCabecera');
-
+    const [selectedImage, setSelectedImage] = useState(null); // Estado para manejar la imagen seleccionada
+    
     const handleSubmitCliente = async (e) => {
         e.preventDefault();
         try {
