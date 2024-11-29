@@ -91,7 +91,7 @@
                     {productos.map((producto) => (
                         
                         <tr key={producto.Codigo_Producto}>
-                            <td>{producto.Fecha.split('T')[0]}</td>
+                            <td>{producto.Fecha}</td>
                             <td>{producto.Codigo_Producto}</td>
                             <td>{producto.Stock}</td>
                             <td>{producto.Stock_Minimo}</td>
