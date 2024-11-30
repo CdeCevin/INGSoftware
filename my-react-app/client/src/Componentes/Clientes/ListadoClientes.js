@@ -27,33 +27,33 @@ const ListadoClientes = () => {
     return (
         <div style={{ marginLeft: '13%' }}>
             <div className="main-block">
-            <h1  style={{padding:20}}>Registro Clientes</h1>
-            <table className="venta-table" style={{marginLeft:'8%',paddingTop:0}}>
-                <thead>
-                    <tr>
-                        <th>CÓDIGO</th>
-                        <th>TELÉFONO</th>
-                        <th>NOMBRE</th>
-                        <th>DIRECCIÓN</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {clientes.length > 0 ? (
-                        clientes.map(cliente => (
-                            <tr key={cliente[0]}> {/* Usa cliente[0] para el código */}
-                                <td className="venta-cell">{cliente[0]}</td> {/* Código */}
-                                <td className="venta-cell">{cliente[1]}</td> {/* Teléfono */}
-                                <td className="venta-cell">{cliente[2]}</td> {/* Nombre */}
-                                <td className="venta-cell">{cliente[3]}</td> {/* Código Dirección */}
-                            </tr>
-                        ))
-                    ) : (
+                <h1 style={{ padding: 20 }}>Registro Clientes</h1>
+                <table className="venta-table" style={{ marginLeft: '8%', paddingTop: 0 }}>
+                    <thead>
                         <tr>
-                            <td colSpan="4" style={{ textAlign: 'center' }}>Cliente no encontrado.</td>
+                            <th>CÓDIGO</th>
+                            <th>TELÉFONO</th>
+                            <th>NOMBRE</th>
+                            <th>DIRECCIÓN</th>
                         </tr>
-                    )}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {clientes.length > 0 ? (
+                            clientes.map(cliente => (
+                                <tr key={cliente.codigo}>
+                                    <td className="venta-cell">{cliente.codigo}</td>
+                                    <td className="venta-cell">{cliente.telefono}</td>
+                                    <td className="venta-cell">{cliente.nombre}</td>
+                                    <td className="venta-cell">{cliente.direccion}</td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="4" style={{ textAlign: 'center' }}>Cliente no encontrado.</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
             </div>
         </div>
     );
