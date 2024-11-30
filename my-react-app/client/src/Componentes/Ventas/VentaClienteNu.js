@@ -107,12 +107,12 @@ function VentaClienteNu() {
             if (data.data && data.data.length > 0) {
                 setProductos(data.data);
             } else {
-                setModalMessage("Producto no encontrado")
+                setModalMessage("Producto no encontrado");
                 setModalIsOpen(true);
             }
         } catch (error) {
             console.error('Error al buscar productos:', error);
-            setModalMessage("Producto no encontrado")
+            setModalMessage("Producto no encontrado");
             setModalIsOpen(true);
         }
     };
