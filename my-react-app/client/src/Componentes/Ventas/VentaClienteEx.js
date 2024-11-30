@@ -44,8 +44,8 @@ function VentaClienteEx() {
                 setMessageModalIsOpen(true);
             }
         } catch (error) {
-            console.error('Error al buscar producto:', error);
-            setModalMessage('Error al buscar producto.');
+            console.error('Error al ingresar datos:', error);
+            setModalMessage('Error al ingresar datos.');
             setMessageModalIsOpen(true);
         }
     };
@@ -74,6 +74,7 @@ function VentaClienteEx() {
             if (data.data && data.data.length > 0) {
                 setProductos(data.data);
             } else {
+                setModalMessage('Error al buscar producto.');
                 setMessageModalIsOpen(true);
             }
         } catch (error) {
