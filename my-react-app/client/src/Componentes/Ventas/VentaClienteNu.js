@@ -178,22 +178,16 @@ function VentaClienteNu() {
     };
 
     const mostrarImagen = (codigo_producto) => {
-        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Usamos una ruta relativa
-        setSelectedImage(imageUrl); // Establecer la URL de la imagen seleccionada
-        setImageModalIsOpen(true); // Abrir el modal con la imagen
+        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Ruta relativa de la imagen
+        setSelectedImage(imageUrl);  // Establecer la URL de la imagen seleccionada
+        setImageModalIsOpen(true);   // Abrir el modal de imagen
+        console.log("Imagen mostrada:", imageUrl); // Para asegurarte de que se está estableciendo la imagen
     };
-
-    const closeModal = () => {
-        setImageModalIsOpen(false);
-        setMessageModalIsOpen(false);
-      };
     
-
-      const openImageModal = () => setImageModalIsOpen(true);
-      const openMessageModal = (message) => {
-        setModalMessage(message);
-        setMessageModalIsOpen(true);
-      };
+    const closeModal = () => {
+        setImageModalIsOpen(false);   // Cerrar solo el modal de la imagen
+        setMessageModalIsOpen(false); // Cerrar solo el modal de mensaje
+    };
     
 
       return (
