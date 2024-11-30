@@ -16,8 +16,12 @@ function VentaClienteNu() {
     const [color, setColor] = useState('');
     const [productos, setProductos] = useState([]);
     const [carrito, setCarrito] = useState([]);
-    const [modalMessage, setModalMessage] = useState('');
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    
+    const [imageModalIsOpen, setImageModalIsOpen] = useState(false);
+    const [messageModalIsOpen, setMessageModalIsOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);  // Aquí va la imagen seleccionada
+    const [modalMessage, setModalMessage] = useState("");      
+
     const [cantidad, setCantidad] = useState({});
     const [paginaActual, setPaginaActual] = useState('insertCabecera');
     const [selectedImage, setSelectedImage] = useState(null); // Estado para manejar la imagen seleccionada
@@ -59,8 +63,9 @@ function VentaClienteNu() {
         } catch (error) {
             console.error('Error al enviar el formulario:', error);
             setModalMessage('Error al enviar el formulario.'); // Mensaje de error genérico
+            
         } finally {
-            setModalIsOpen(false); // Abrir el modal después de intentar enviar el formulario
+            setMessageModalIsOpen(false); // Abrir el modal después de intentar enviar el formulario
         }
     };
 
@@ -108,12 +113,12 @@ function VentaClienteNu() {
                 setProductos(data.data);
             } else {
                 setModalMessage("Producto no encontrado");
-                setModalIsOpen(true);
+                setMessageModalIsOpen(true);
             }
         } catch (error) {
             console.error('Error al buscar productos:', error);
             setModalMessage("Producto no encontrado")
-            setModalIsOpen(true);
+            setMessageModalIsOpen(true);
         }
     };
 
@@ -152,18 +157,18 @@ function VentaClienteNu() {
                 const data = await response.json();
                 console.log('Respuesta de la API:', data);
                 setModalMessage("Venta finalizada exitosamente");
-                setModalIsOpen(false);
+                setMessageModalIsOpen(false);
                 setCarrito([]);
                 setPaginaActual('mostrarBoleta'); // Cambia a la página de la boleta
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
-                setModalIsOpen(true);
+                setMessageModalIsOpen(true);
             }
         } catch (error) {
             console.error('Error al finalizar la venta:', error);
             setModalMessage('Error al finalizar la venta.');
-            setModalIsOpen(true);
+            setMessageModalIsOpen(true);
         }
     };
     
@@ -177,10 +182,20 @@ function VentaClienteNu() {
     const mostrarImagen = (codigo_producto) => {
         const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Usamos una ruta relativa
         setSelectedImage(imageUrl); // Establecer la URL de la imagen seleccionada
-        setModalIsOpen(true); // Abrir el modal con la imagen
+        setImageModalIsOpen(true); // Abrir el modal con la imagen
     };
 
-    const closeModal = () => setModalIsOpen(false);
+    const closeModal = () => {
+        setImageModalIsOpen(false);
+        setMessageModalIsOpen(false);
+      };
+    
+
+      const openImageModal = () => setImageModalIsOpen(true);
+      const openMessageModal = (message) => {
+        setModalMessage(message);
+        setMessageModalIsOpen(true);
+      };
     
 
     return (
@@ -282,7 +297,7 @@ function VentaClienteNu() {
             </div>
 
             {/* Modal para mostrar la imagen seleccionada */}
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
+            <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
             <h2>Imagen del Producto</h2>
             {selectedImage ? (
                 <img
@@ -424,7 +439,7 @@ function VentaClienteNu() {
                 </div>
             )}
 
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}> 
+            <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}> 
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
                 <button onClick={closeModal}>Cerrar</button>
