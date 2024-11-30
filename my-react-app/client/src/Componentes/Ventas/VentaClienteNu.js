@@ -282,7 +282,7 @@ function VentaClienteNu() {
             </div>
 
             {/* Modal para mostrar la imagen seleccionada */}
-            <Modal isOpen={modalIsOpen2} onRequestClose={closeModal} contentLabel="Imagen del Producto">
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
             <h2>Imagen del Producto</h2>
             {selectedImage ? (
                 <img
