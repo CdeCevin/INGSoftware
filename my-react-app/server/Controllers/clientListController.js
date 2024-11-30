@@ -48,7 +48,7 @@ const getClients = async (req, res) => {
             );
 
             // Construir la dirección completa y agregarla al cliente
-            const direccion = `${infoResult.outBinds.o_NombreCalle} ${infoResult.outBinds.o_NumeroDireccion}, ${infoResult.outBinds.o_NombreCiudad}, ${infoResult.outBinds.o_NombreRegion}`;
+            const direccion = `${infoResult.outBinds.o_NombreCalle} #${infoResult.outBinds.o_NumeroDireccion}, ${infoResult.outBinds.o_NombreCiudad}, ${infoResult.outBinds.o_NombreRegion}`;
             clientesConDireccion.push({
                 codigo,
                 telefono: infoResult.outBinds.o_Telefono,
