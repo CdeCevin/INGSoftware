@@ -121,28 +121,37 @@ function VentaClienteNu() {
     };
 
     const añadirAlCarrito = (producto) => {
-        console.log(producto)
-        const cantidadSeleccionada = cantidad[producto.codigo_producto] || 0;
-        setCarrito((prevCarrito) => {
-            const existente = prevCarrito.find(p => p.codigo_producto === producto.codigo_producto);
-            if (existente) {
-                return prevCarrito.map(p =>
-                    p.codigo_producto === producto.codigo_producto
-                        ? { ...p, cantidad: p.cantidad + cantidadSeleccionada }
-                        : p
-                );
-            }
-            else{
-              console.error('Stock insuficiente');
-              setModalMessage("Stock insuficiente");
-              setMessageModalIsOpen(true);
-              return;
-
-            }
-            return [...prevCarrito, { ...producto, cantidad: cantidadSeleccionada }];
-        });
-        setCantidad(prevState => ({ ...prevState, [producto.codigo_producto]: 0 }));
-    };
+      console.log("producto:", producto);
+  
+      // Obtener cantidad seleccionada
+      const cantidadSeleccionada = cantidad[producto.codigo_producto] || 0;
+  
+      // Validar stock antes de modificar el carrito
+      if (cantidadSeleccionada > producto.stock) {
+          console.error('Stock insuficiente');
+          setModalMessage("Stock insuficiente");
+          setMessageModalIsOpen(true);
+          return; // Detener ejecución si no hay suficiente stock
+      }
+  
+      // Actualizar el carrito solo si hay stock suficiente
+      setCarrito((prevCarrito) => {
+          const existente = prevCarrito.find(p => p.codigo_producto === producto.codigo_producto);
+          if (existente) {
+              // Actualizar cantidad si el producto ya está en el carrito
+              return prevCarrito.map(p =>
+                  p.codigo_producto === producto.codigo_producto
+                      ? { ...p, cantidad: p.cantidad + cantidadSeleccionada }
+                      : p
+              );
+          }
+          // Agregar el producto al carrito si no existe
+          return [...prevCarrito, { ...producto, cantidad: cantidadSeleccionada }];
+      });
+  
+      // Reiniciar la cantidad seleccionada para el producto
+      setCantidad(prevState => ({ ...prevState, [producto.codigo_producto]: 0 }));
+  };
 
     const finalizarVenta = async () => {
         const productosVenta = carrito.map(producto => ({
