@@ -107,10 +107,12 @@ function VentaClienteNu() {
             if (data.data && data.data.length > 0) {
                 setProductos(data.data);
             } else {
+                setModalMessage(errorData.message)
                 setModalIsOpen(true);
             }
         } catch (error) {
             console.error('Error al buscar productos:', error);
+            setModalMessage(errorData.message)
             setModalIsOpen(true);
         }
     };
