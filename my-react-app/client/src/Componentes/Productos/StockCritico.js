@@ -9,6 +9,7 @@ function StockCritico()  {
     const [productosBajoStock, setProductosBajoStock] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
+    const [modalMessage, setModalMessage] = useState('');
 
     // Función para obtener productos con stock crítico
     const obtenerProductosBajoStock = async(event) => {
