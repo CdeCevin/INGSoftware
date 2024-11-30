@@ -178,151 +178,23 @@ function VentaClienteNu() {
     };
 
     const mostrarImagen = (codigo_producto) => {
-        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Usamos una ruta relativa
-        setSelectedImage(imageUrl); // Establecer la URL de la imagen seleccionada
-        setImageModalIsOpen(true); // Abrir el modal con la imagen
+        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Ruta relativa de la imagen
+        setSelectedImage(imageUrl);  // Establecer la URL de la imagen seleccionada
+        setImageModalIsOpen(true);   // Abrir el modal de imagen
+        console.log("Imagen mostrada:", imageUrl); // Para asegurarte de que se está estableciendo la imagen
     };
-
+    
     const closeModal = () => {
-        setImageModalIsOpen(false);
-        setMessageModalIsOpen(false);
-      };
+        setImageModalIsOpen(false);   // Cerrar solo el modal de la imagen
+        setMessageModalIsOpen(false); // Cerrar solo el modal de mensaje
+    };
     
-
-      const openImageModal = () => setImageModalIsOpen(true);
-      const openMessageModal = (message) => {
-        setModalMessage(message);
-        setMessageModalIsOpen(true);
-      };
-    
-
     return (
         <div>
-            {paginaActual === 'insertCabecera' && (
             <div style={{ marginLeft: '12%' }}>
-            <div className="main-block">
-                <form onSubmit={handleSubmit}>
-                    <h1>Cabecera Venta</h1>
-                    <fieldset>   
-                        <legend>
-                            <h3>Detalles del Cliente</h3>
-                        </legend>
-                        <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
-                            <div>
-                                <label>Nombre*</label>
-                                <input 
-                                    type="text" 
-                                    name="input-nombreC" 
-                                    maxLength="50" 
-                                    value={nombreC} 
-                                    required
-                                    onChange={(e) => setNombreC(e.target.value)} 
-                                />
-                            </div>
-                            <div>
-                                <label>Telefono*</label>
-                                <input 
-                                    type="text" 
-                                    name="input-teléfono" 
-                                    maxLength="9" 
-                                    value={telefono} 
-                                    required
-                                    onChange={(e) => setTelefono(e.target.value)} 
-                                />
-                            </div>
-                        </div>
-                        </fieldset>
-                            <fieldset>
-                                <legend>
-                                    <h3>Dirección de despacho</h3>
-                                </legend>
-                            <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
-                            <div>
-                                <label>Región</label>
-                                <select 
-                                    value={region} 
-                                    required
-                                    onChange={handleRegionChange}
-                                    
-                                >
-                                    <option value="">Selecciona una región</option>
-                                    {Object.keys(optionSets).map((regionName) => (
-                                        <option key={regionName} value={regionName}>{regionName}</option>
-                                    ))}
-                                </select>
-                            </div>
-                            <div>
-                                <label>Comuna</label>
-                                <select 
-                                    value={ciudad} 
-                                    required
-                                    onChange={(e) => setCiudad(e.target.value)} 
-                                    
-                                    disabled={!region}
-                                >
-                                    <option value="">Selecciona una comuna</option>
-                                    {region && optionSets[region].map((city) => (
-                                        <option key={city} value={city}>{city}</option>
-                                    ))}
-                                </select>
-                            </div>
-                            <div>
-                                <label>Calle</label>
-                                <input 
-                                    type="text" 
-                                    name="input-calle" 
-                                    maxLength="100" 
-                                    required
-                                    value={calle} 
-                                    onChange={(e) => setCalle(e.target.value)} 
-                                />
-                            </div>
-                            <div>
-                                <label>Número</label>
-                                <input 
-                                    type="text" 
-                                    name="input-numero" 
-                                    maxLength="100" 
-                                    required
-                                    value={numero} 
-                                    onChange={(e) => setNumero(e.target.value)} 
-                                />
-                            </div>
-                        </div>
-                    </fieldset>
-                    <button type="submit">Añadir cliente</button>
-                </form>
-            </div>
-
-            {/* Modal para mostrar la imagen seleccionada */}
-            <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
-            <h2>Imagen del Producto</h2>
-            {selectedImage ? (
-                <img
-                src={selectedImage}
-                alt="Imagen del producto"
-                style={{
-                    display: 'block',        // Hace que la imagen se comporte como un bloque para facilitar el centrado
-                    margin: '0 auto',        // Centra la imagen horizontalmente
-                    maxWidth: '80%',         // Limita el ancho máximo al 80% del contenedor (ajustable según necesidad)
-                    height: 'auto',          // Mantiene la proporción de la imagen
-                    maxHeight: '400px'       // Limita la altura máxima a 400px (puedes ajustarlo)
-                }}  
-                />
-            ) : (
-                <p>No se ha seleccionado una imagen.</p>
-            )}
-            <button onClick={closeModal}>Cerrar</button>
-            </Modal>
-
-        </div>
-            )}
-            
-            {paginaActual === 'buscarProducto' && (
-                <div style={{marginLeft: '12%'}}>
                 <div className="main-block">
-                    <h1 style={{padding:20,paddingBottom:0}}> Buscar Producto</h1>
-                    <form onSubmit={buscarProductos} style={{paddingTop:0}}>
+                    <h1 style={{ padding: 20, paddingBottom: 0 }}>Buscar Producto</h1>
+                    <form onSubmit={buscarProductos} style={{ paddingTop: 0 }}>
                         <fieldset>
                             <legend>
                                 <h3>Búsqueda</h3>
@@ -354,97 +226,91 @@ function VentaClienteNu() {
                         </fieldset>
                         <button type="submit">Buscar Producto</button>
                     </form>
-                    
+    
                     {productos.length > 0 && (
                         <fieldset>
-                        <legend>
-                            <h3>Resultados</h3>
-                        </legend>
-                        <div style={{marginLeft: '12%'}}>
-                        <table className="venta-table">
-                            <thead>
-                                <tr>
-                                    <th>CÓDIGO</th>
-                                    <th>STOCK</th>
-                                    <th>PRECIO</th>
-                                    <th>NOMBRE</th>
-                                    <th>COLOR</th>
-                                    <th>FOTO</th>
-                                    <th>CANTIDAD</th>
-                                    <th>AÑADIR</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {productos.map((producto) => (
-                                    <tr key={producto.codigo_producto}>
-                                        <td>{producto.codigo_producto}</td>
-                                        <td>{producto.stock}</td>
-                                        <td>{producto.precio_unitario}</td>
-                                        <td>{producto.nombre_producto}</td>
-                                        <td>{producto.color_producto}</td>
-                                        <td>
-                                        {/* Botón para ver la imagen */}
-                                        <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)}>
-                                            <i className="fa fa-eye"></i>
-                                        </button>
-                                    </td>
-                                        <td>
-                                            <input
-                                                type="number"
-                                                min="1"
-                                                style={{ width: '50px' }}
-                                                value={cantidad[producto.codigo_producto] || 0}
-                                                onChange={(e) => handleCantidadChange(producto.codigo_producto, parseInt(e.target.value) || 0)}
-                                            />
-                                        </td>
-                                        <td>
-                                            <button onClick={() => añadirAlCarrito(producto)}>
-                                                <i className="fa fa-shopping-cart"></i>
-                                            </button>
-                                        </td>
+                            <legend>
+                                <h3>Resultados</h3>
+                            </legend>
+                            <table className="venta-table">
+                                <thead>
+                                    <tr>
+                                        <th>CÓDIGO</th>
+                                        <th>STOCK</th>
+                                        <th>PRECIO</th>
+                                        <th>NOMBRE</th>
+                                        <th>COLOR</th>
+                                        <th>FOTO</th>
+                                        <th>CANTIDAD</th>
+                                        <th>AÑADIR</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                        <button style={{marginLeft: '-12%',width:'110%'}} onClick={finalizarVenta}>Finalizar Venta</button>
-
-                        </div>
+                                </thead>
+                                <tbody>
+                                    {productos.map((producto) => (
+                                        <tr key={producto.codigo_producto}>
+                                            <td>{producto.codigo_producto}</td>
+                                            <td>{producto.stock}</td>
+                                            <td>{producto.precio_unitario}</td>
+                                            <td>{producto.nombre_producto}</td>
+                                            <td>{producto.color_producto}</td>
+                                            <td>
+                                                {/* Botón para ver la imagen */}
+                                                <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)}>
+                                                    <i className="fa fa-eye"></i>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="number"
+                                                    min="1"
+                                                    style={{ width: '50px' }}
+                                                    value={cantidad[producto.codigo_producto] || 0}
+                                                    onChange={(e) => handleCantidadChange(producto.codigo_producto, parseInt(e.target.value) || 0)}
+                                                />
+                                            </td>
+                                            <td>
+                                                <button onClick={() => añadirAlCarrito(producto)}>
+                                                    <i className="fa fa-shopping-cart"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </fieldset>
                     )}
-                    {/*
-                    {carrito.length > 0 && (
-                        <div>
-                            <h2>Carrito de Compras</h2>
-                            <ul>
-                                {carrito.map((producto, index) => (
-                                    <li key={index}>
-                                        {producto.nombre_producto} - Cantidad: {producto.cantidad} - Precio: ${producto.precio_unitario}
-                                    </li>
-                                ))}
-                            </ul>
-                            <button onClick={finalizarVenta}>Finalizar Venta</button>
-                        </div>
-                    )}*/}
-                    </div>
+    
+                    {/* Modal para mostrar la imagen seleccionada */}
+                    <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
+                        <h2>Imagen del Producto</h2>
+                        {selectedImage ? (
+                            <img
+                                src={selectedImage}
+                                alt="Imagen del producto"
+                                style={{
+                                    display: 'block',
+                                    margin: '0 auto',
+                                    maxWidth: '80%',
+                                    height: 'auto',
+                                    maxHeight: '400px'
+                                }}
+                            />
+                        ) : (
+                            <p>No se ha seleccionado una imagen.</p>
+                        )}
+                        <button onClick={closeModal}>Cerrar</button>
+                    </Modal>
                 </div>
-            )}
-
-            {paginaActual === 'mostrarBoleta' && (
-                <div style={{marginLeft: '12%'}}>
-                <div className="main-block">
-                <MostrarBoleta />
-                </div>
-                </div>
-            )}
-
-            <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}> 
+            </div>
+    
+            {/* Modal para mostrar un mensaje */}
+            <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
                 <button onClick={closeModal}>Cerrar</button>
             </Modal>
-            
         </div>
-    );
+    );    
 }
 
 export default VentaClienteNu;
