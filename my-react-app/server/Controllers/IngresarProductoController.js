@@ -7,7 +7,7 @@ const { getConnection } = require('../db/connection'); // Importar la conexión
 // Configuración de Multer para subir imágenes
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'C:/Users/Koliv/Desktop/todo/Nueva carpeta/Outlet'); // Cambia el destino si es necesario
+        cb(null, '/images/Outlet/'); // Cambia el destino si es necesario
     },
     filename: (req, file, cb) => {
         const ext = path.extname(file.originalname);
