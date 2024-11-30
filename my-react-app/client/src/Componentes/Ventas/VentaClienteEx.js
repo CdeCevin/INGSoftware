@@ -11,11 +11,15 @@ function VentaClienteEx() {
     const [color, setColor] = useState('');
     const [productos, setProductos] = useState([]);
     const [carrito, setCarrito] = useState([]);
-    const [modalMessage, setModalMessage] = useState('');
-    const [modalIsOpen, setModalIsOpen] = useState(false);
     const [cantidad, setCantidad] = useState({});
     const [paginaActual, setPaginaActual] = useState('insertCabecera');
-    const [selectedImage, setSelectedImage] = useState(null); // Estado para manejar la imagen seleccionada
+    
+    const [imageModalIsOpen, setImageModalIsOpen] = useState(false);
+    const [messageModalIsOpen, setMessageModalIsOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);  // Aquí va la imagen seleccionada
+    const [modalMessage, setModalMessage] = useState("");      
+
+
 
     const handleSubmitCliente = async (e) => {
         e.preventDefault();
@@ -37,12 +41,12 @@ function VentaClienteEx() {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
                 setClienteData(null);
-                setModalIsOpen(true);
+                setMessageModalIsOpen(true);
             }
         } catch (error) {
             console.error('Error al buscar producto:', error);
             setModalMessage('Error al buscar producto.');
-            setModalIsOpen(true);
+            setMessageModalIsOpen(true);
         }
     };
 
@@ -70,11 +74,11 @@ function VentaClienteEx() {
             if (data.data && data.data.length > 0) {
                 setProductos(data.data);
             } else {
-                setModalIsOpen(true);
+                setMessageModalIsOpen(true);
             }
         } catch (error) {
             console.error('Error al buscar productos:', error);
-            setModalIsOpen(true);
+            setMessageModalIsOpen(true);
         }
     };
 
@@ -113,18 +117,18 @@ function VentaClienteEx() {
                 const data = await response.json();
                 console.log('Respuesta de la API:', data);
                 setModalMessage("Venta finalizada exitosamente");
-                setModalIsOpen(false);
+                setMessageModalIsOpen(false);
                 setCarrito([]);
                 setPaginaActual('mostrarBoleta'); // Cambia a la página de la boleta
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
-                setModalIsOpen(true);
+                setMessageModalIsOpen(true);
             }
         } catch (error) {
             console.error('Error al finalizar la venta:', error);
             setModalMessage('Error al finalizar la venta.');
-            setModalIsOpen(true);
+            setMessageModalIsOpen(true);
         }
     };
     
@@ -137,13 +141,15 @@ function VentaClienteEx() {
 
 
     const mostrarImagen = (codigo_producto) => {
-        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Usamos una ruta relativa
-        setSelectedImage(imageUrl); // Establecer la URL de la imagen seleccionada
-        setModalIsOpen(true); // Abrir el modal con la imagen
+        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Ruta relativa de la imagen
+        setSelectedImage(imageUrl);  // Establecer la URL de la imagen seleccionada
+        setImageModalIsOpen(true);   // Abrir el modal de imagen
+        console.log("Imagen mostrada:", imageUrl); // Para asegurarte de que se está estableciendo la imagen
     };
-
+    
     const closeModal = () => {
-        setModalIsOpen(false);
+        setImageModalIsOpen(false);   // Cerrar solo el modal de la imagen
+        setMessageModalIsOpen(false); // Cerrar solo el modal de mensaje
     };
 
     useEffect(() => {
@@ -220,25 +226,25 @@ function VentaClienteEx() {
                     
 
                     {/* Modal para mostrar la imagen seleccionada */}
-                    <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
+                    <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
                     <h2>Imagen del Producto</h2>
                     {selectedImage ? (
-                        <img
+                      <img
                         src={selectedImage}
                         alt="Imagen del producto"
                         style={{
-                          display: 'block',        // Hace que la imagen se comporte como un bloque para facilitar el centrado
-                          margin: '0 auto',        // Centra la imagen horizontalmente
-                          maxWidth: '80%',         // Limita el ancho máximo al 80% del contenedor (ajustable según necesidad)
-                          height: 'auto',          // Mantiene la proporción de la imagen
-                          maxHeight: '400px'       // Limita la altura máxima a 400px (puedes ajustarlo)
-                        }}  
+                          display: 'block',
+                          margin: '0 auto',
+                          maxWidth: '80%',
+                          height: 'auto',
+                          maxHeight: '400px'
+                        }}
                       />
                     ) : (
-                        <p>No se ha seleccionado una imagen.</p>
+                      <p>No se ha seleccionado una imagen.</p>
                     )}
                     <button onClick={closeModal}>Cerrar</button>
-                    </Modal>
+                  </Modal>
 
                     {productos.length > 0 && (
                         <fieldset>
@@ -318,7 +324,7 @@ function VentaClienteEx() {
                 </div>
             )}
 
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}> 
+            <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
                 <button onClick={closeModal}>Cerrar</button>
