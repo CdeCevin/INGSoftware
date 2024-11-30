@@ -277,12 +277,28 @@ function VentaClienteNu() {
                     <button type="submit">Añadir cliente</button>
                 </form>
             </div>
-        {/* Modal para mostrar mensajes */}
-        <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje">
-            <h2>Mensaje</h2>
-            <p>{modalMessage}</p>
+
+            {/* Modal para mostrar la imagen seleccionada */}
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
+            <h2>Imagen del Producto</h2>
+            {selectedImage ? (
+                <img
+                src={selectedImage}
+                alt="Imagen del producto"
+                style={{
+                    display: 'block',        // Hace que la imagen se comporte como un bloque para facilitar el centrado
+                    margin: '0 auto',        // Centra la imagen horizontalmente
+                    maxWidth: '80%',         // Limita el ancho máximo al 80% del contenedor (ajustable según necesidad)
+                    height: 'auto',          // Mantiene la proporción de la imagen
+                    maxHeight: '400px'       // Limita la altura máxima a 400px (puedes ajustarlo)
+                }}  
+                />
+            ) : (
+                <p>No se ha seleccionado una imagen.</p>
+            )}
             <button onClick={closeModal}>Cerrar</button>
-        </Modal>
+            </Modal>
+
         </div>
             )}
             
@@ -404,12 +420,6 @@ function VentaClienteNu() {
                 </div>
                 </div>
             )}
-
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}>
-                <h2>Mensaje</h2>
-                <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
-            </Modal>
         </div>
     );
 }
