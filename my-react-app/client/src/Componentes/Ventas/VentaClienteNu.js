@@ -327,6 +327,7 @@ function VentaClienteNu() {
                       <legend>
                         <h3>Resultados</h3>
                       </legend>
+                      <div style={{marginLeft: '12%'}}>
                       <table className="venta-table">
                         <thead>
                           <tr>
@@ -371,6 +372,8 @@ function VentaClienteNu() {
                           ))}
                         </tbody>
                       </table>
+                      <button style={{marginLeft: '-12%',width:'110%'}} onClick={finalizarVenta}>Finalizar Venta</button>
+                      </div>
                     </fieldset>
                   )}
       
