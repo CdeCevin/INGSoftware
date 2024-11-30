@@ -1,178 +1,387 @@
-:root {
-  --primary-color: #6b9787;
-  --primary-hover: #557c6d;
-  --background-color: #f6f6e9;
-  --text-color: #333;
-  --border-color: #ddd;
-  --sidebar-bg: #e0e0e0;
-  --sidebar-width: 220px;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
+html, body {
+  min-height: 100%;
+  background-color: #f6f6e9;
+  }
+  body, div, form, input, select, p { 
   padding: 0;
-}
-
-body {
-  font-family: 'Roboto', Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--text-color);
-  background-color: var(--background-color);
-}
-
-.main-block {
-  display: flex;
+  margin: 0;
+  outline: none;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 14px;
+  color: #666;
+  }
+  h1 {
+  margin: 0;
+  font-weight: 400;
+  }
+  h3 {
+  margin: 12px 0;
+  color: #6b9787;
+  }
+  .main-block {
+  /*display: flex;*/
+  display: block;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 2rem;
-}
-
-form {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #f6f6e9;
+  flex-direction: column;
   width: 100%;
-  max-width: 800px;
-}
-
-fieldset {
+  
+  }
+  form {
+  width: 100%;
+  padding: 20px;
+  }
+  fieldset {
   border: none;
-  border-top: 2px solid var(--primary-color);
-  margin-bottom: 1.5rem;
-  padding-top: 1.5rem;
-}
-
-.account-details, .personal-details {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-label {
+  border-top: 1px solid #6b9787;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 20px;
+  margin: 0;
   display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
-input, select {
+  unicode-bidi: isolate;
+  }
+  .account-details, .personal-details {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  font-size: 1rem;
-}
+  
+  
+  }
+  .account-details >div , .personal-details >div >div {
+  display: flex;
+  align-items: flex-start;
+  margin: 10px;
+  flex: 1 1 45%;
+  box-sizing: border-box;
+  }
 
-button {
-  background-color: var(--primary-color);
-  color: white;
+
+  .personal-details >div, input, label {
+  width: 100%;
+  align-items: center;
+  margin-bottom: 10px;
+  align-self: center;
+  }
+  label {
+  padding: 0 5px;
+  text-align: right;
+  vertical-align: middle;
+  align-self: center;
+  }
+  input {
+  padding: 5px;
+  vertical-align: middle;
+  }
+  select {
+  padding: 5px;
+  vertical-align: middle;
+  }
+  output {
+    padding: 5px;
+    vertical-align: middle;
+    }
+
+  select, .children, .gender, .bdate-block {
+  width: calc(100% + 26px);
+  padding: 5px 0;
+  }
+  select {
+  background: transparent;
+  
+  }
+  
+  button {
+  width: 100%;
+  padding: 10px 0;
+  margin: 20px auto;
+  border-radius: 5px; 
   border: none;
-  padding: 1rem;
-  font-size: 1rem;
+  background: #6b9787; 
+  font-size: 14px;
   font-weight: 600;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  color: #fff;
+  text-align: center;
 
-button:hover {
-  background-color: var(--primary-hover);
+  }
+  .contenedor {
+    position: relative;
+    width: 100%; /* o cualquier valor específico */
+    height: 100%; /* o cualquier valor específico */
+    /* Añade aquí el resto del estilo de tu contenedor */
+  }
+  .boton-pequeno {
+    width: 120px;
+    padding: 4px 15px;
+    background-color: #6b9787;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  
+    /* Posicionamiento relativo al contenedor */
+    position: absolute;
+    top: -32px; /* Ajusta la distancia desde la parte superior usando unidades px */
+    right: 30px; /* Ajusta la distancia desde el borde derecho usando unidades px */
+  }
+  
+  /* Estilos para el hover */
+  .boton-pequeno:hover {
+    background-color: #637e74;
+  }
+
+  button:hover {
+  background: #637e74;
+  }
+  @media (min-width: 568px) {
+  .account-details >div, .personal-details >div {
+  width: 50%;
+  }
+  label {
+  width: 40%;
+  }
+  input {
+  width: 60%;
+
+  }
+  select, .children, .gender, .bdate-block {
+  width: calc(60% + 16px);
+  }
+  }
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  
 }
 
 .sidebar {
-  width: var(--sidebar-width);
-  background-color: var(--sidebar-bg);
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #dbd9d9;
+  
   position: fixed;
   height: 100%;
-  overflow-y: auto;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
 }
 
 .sidebar a {
   display: block;
-  color: var(--text-color);
-  padding: 1rem;
+  color: black;
+  padding: 16px;
   text-decoration: none;
-  transition: background-color 0.3s ease;
 }
 
-.sidebar a.active, .sidebar a:hover {
-  background-color: var(--primary-color);
+.w3-container2, .w3-panel2 {
+  padding: 0;
+}
+.sidebar a.active {
+  background-color: #6b9787;
   color: white;
 }
 
-.content {
-  margin-left: var(--sidebar-width);
-  padding: 2rem;
-}
-
-.main-content {
-  margin-left: calc(var(--sidebar-width) + 10%);
-}
-
-.venta-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 1.5rem;
-}
-
-.venta-table th, .venta-table td {
-  border: 1px solid var(--border-color);
-  padding: 0.75rem;
-  text-align: center;
-}
-
-.venta-table th {
-  background-color: var(--primary-color);
+.sidebar a:hover {
+  background-color: #6b9787;
   color: white;
-  font-weight: 600;
 }
 
-.btn {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: var(--primary-color);
+.sidebar a:hover:not(.active) {
+  background-color: #637e74;
   color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  
+}
+.sidebar a.active:hover{
+  background-color: #637e74;
+   
+  color: white;
 }
 
-.btn:hover {
-  background-color: var(--primary-hover);
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
 }
 
-.acordeon {
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  margin-top: 1rem;
-  overflow: hidden;
-}
-
-.custom-modal {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  max-width: 400px;
-  margin: 2rem auto;
-}
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 700px) {
   .sidebar {
     width: 100%;
     height: auto;
     position: relative;
   }
-  
-  .content, .main-content {
-    margin-left: 0;
-  }
-  
-  .venta-table {
-    font-size: 0.9rem;
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
   }
 }
+
+.sidebar .w3copia, 
+.sidebar .dropdown-item, 
+.sidebar .w3-button {
+overflow: hidden;
+border-radius: 5px;
+width: 200px; /* Fixed width for all buttons */
+padding: 10px 15px; /* Same padding for all buttons */
+box-sizing: border-box;
+text-align: left;
+transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+/* Base button style */
+.sidebar .w3-button {
+font-family: Roboto, Arial, sans-serif;
+font-weight: bold;
+color: #666;
+text-align: left;
+padding: 16px;
+}
+
+.sidebar .Menu-button {
+font-family: Roboto, Arial, sans-serif;
+font-weight: bold;
+color: white;
+text-align: left;
+padding: 16px;
+background-color:#6b9787 ;
+}
+
+.sidebar .w3-button:hover {
+font-family: Roboto, Arial, sans-serif;
+font-weight: bold;
+background-color: transparent;
+color: #666;
+padding: 16px;
+box-sizing: content-box;
+}
+
+
+.sidebar .w3-dropdown-content w3-bar-block {
+padding: 16px;
+}
+
+
+.main-block2 {
+width: 50%;
+margin: auto;
+border-radius: 15px;
+background-color: #f2f2f2;
+padding: 20px;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+margin-top: 10%;
+}
+
+.account-details2 div {
+margin-bottom: 25px;
+display: flex;
+align-items: center;
+}
+
+.account-details2 label {
+display: inline-block;
+width: 180px;
+font-weight: bold;
+margin-right: 20px;
+}
+
+.account-details2 input[type="text"],
+.account-details2 input[type="password"] {
+flex: 1;
+padding: 12px;
+border-radius: 8px;
+border: 1px solid #ccc;
+
+}
+.tabla-productos th, .tabla-productos td {
+width: 33%;
+padding: 0 15px;
+text-align: left; /* Centrar el texto horizontalmente */
+}
+
+
+/* Nueva hoja de estilo para la venta */
+.main-content {
+  margin-left: 10%;
+}
+
+.venta-table {
+  border-collapse: collapse;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.venta-table th, .venta-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  text-align: center; /* Alinear el texto al centro */
+}
+
+.venta-table th {
+  width: 150px; /* Establecer el ancho fijo que desees */
+  text-align: center; /* Alinear el texto al centro */
+  background-color: #6b9787;
+  color: white;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 5px 10px;
+  background-color: #6b9787;
+  color: white;
+  border: 1px solid #6b9787;
+  border-radius: 3px;
+}
+
+.btn_Pendientes {
+background-color: transparent;
+color:#666;
+cursor: pointer;
+}
+
+.btn_Pendientes:hover {
+background-color: transparent;
+color: #969696;
+cursor: pointer;
+}
+
+.producto {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.acordeon {
+  display: none;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  max-height: 0;
+  border: 1px solid #000;
+  margin-top: 10px;
+}
+
+.acordeon.mostrar {
+  display: block;
+  max-height: 1000px; /* Establece una altura máxima suficientemente grande */
+}
+
+.custom-modal {
+  width: 400px;   
+  height: 200px;  
+  margin: auto;   
+  padding: 30px;  
+  font-size: 1em; 
+  border: 1px solid #6b9787; 
+  border-radius: 8px; 
+  background-color: #f6f6e9; 
+  margin-top: 50px;
+}
+
+
+
+
