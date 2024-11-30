@@ -18,7 +18,6 @@ function VentaClienteNu() {
     const [carrito, setCarrito] = useState([]);
     const [modalMessage, setModalMessage] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [modalIsOpen2, setModalIsOpen2] = useState(false);
     const [cantidad, setCantidad] = useState({});
     const [paginaActual, setPaginaActual] = useState('insertCabecera');
     const [selectedImage, setSelectedImage] = useState(null); // Estado para manejar la imagen seleccionada
@@ -178,11 +177,11 @@ function VentaClienteNu() {
     const mostrarImagen = (codigo_producto) => {
         const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Usamos una ruta relativa
         setSelectedImage(imageUrl); // Establecer la URL de la imagen seleccionada
-        setModalIsOpen2(true); // Abrir el modal con la imagen
+        setModalIsOpen(true); // Abrir el modal con la imagen
     };
 
     const closeModal = () => setModalIsOpen(false);
-    const closeModal2 = () => setModalIsOpen2(false);
+    
 
     return (
         <div>
@@ -283,7 +282,7 @@ function VentaClienteNu() {
             </div>
 
             {/* Modal para mostrar la imagen seleccionada */}
-            <Modal isOpen={modalIsOpen2} onRequestClose={closeModal2} contentLabel="Imagen del Producto">
+            <Modal isOpen={modalIsOpen2} onRequestClose={closeModal} contentLabel="Imagen del Producto">
             <h2>Imagen del Producto</h2>
             {selectedImage ? (
                 <img
@@ -300,7 +299,7 @@ function VentaClienteNu() {
             ) : (
                 <p>No se ha seleccionado una imagen.</p>
             )}
-            <button onClick={closeModal2}>Cerrar</button>
+            <button onClick={closeModal}>Cerrar</button>
             </Modal>
 
         </div>
