@@ -84,6 +84,7 @@ function VentaClienteEx() {
     };
 
     const añadirAlCarrito = (producto) => {
+        console.log(producto)
         const cantidadSeleccionada = cantidad[producto.codigo_producto] || 0;
         setCarrito((prevCarrito) => {
             const existente = prevCarrito.find(p => p.codigo_producto === producto.codigo_producto);
@@ -93,6 +94,13 @@ function VentaClienteEx() {
                         ? { ...p, cantidad: p.cantidad + cantidadSeleccionada }
                         : p
                 );
+            }
+            else{
+              console.error('Stock insuficiente');
+              setModalMessage("Stock insuficiente");
+              setMessageModalIsOpen(true);
+              return;
+
             }
             return [...prevCarrito, { ...producto, cantidad: cantidadSeleccionada }];
         });
