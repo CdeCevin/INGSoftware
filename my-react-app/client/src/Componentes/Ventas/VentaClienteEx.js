@@ -220,7 +220,7 @@ function VentaClienteEx() {
                     
 
                     {/* Modal para mostrar la imagen seleccionada */}
-                    <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
+                    <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto" className ={"custom-modal"}>
                     <h2>Imagen del Producto</h2>
                     {selectedImage ? (
                         <img
@@ -318,7 +318,7 @@ function VentaClienteEx() {
                 </div>
             )}
 
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}> 
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
                 <button onClick={closeModal}>Cerrar</button>
