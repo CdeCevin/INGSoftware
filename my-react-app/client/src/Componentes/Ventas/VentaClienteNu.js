@@ -18,6 +18,7 @@ function VentaClienteNu() {
     const [carrito, setCarrito] = useState([]);
     const [modalMessage, setModalMessage] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalIsOpen2, setModalIsOpen2] = useState(false);
     const [cantidad, setCantidad] = useState({});
     const [paginaActual, setPaginaActual] = useState('insertCabecera');
     const [selectedImage, setSelectedImage] = useState(null); // Estado para manejar la imagen seleccionada
@@ -108,12 +109,12 @@ function VentaClienteNu() {
                 setProductos(data.data);
             } else {
                 setModalMessage("Producto no encontrado");
-                setModalIsOpen(true);
+                setModalIsOpen2(true);
             }
         } catch (error) {
             console.error('Error al buscar productos:', error);
             setModalMessage("Producto no encontrado");
-            setModalIsOpen(true);
+            setModalIsOpen2(true);
         }
     };
 
@@ -152,18 +153,18 @@ function VentaClienteNu() {
                 const data = await response.json();
                 console.log('Respuesta de la API:', data);
                 setModalMessage("Venta finalizada exitosamente");
-                setModalIsOpen(false);
+                setModalIsOpen2(false);
                 setCarrito([]);
                 setPaginaActual('mostrarBoleta'); // Cambia a la página de la boleta
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
-                setModalIsOpen(true);
+                setModalIsOpen2(true);
             }
         } catch (error) {
             console.error('Error al finalizar la venta:', error);
             setModalMessage('Error al finalizar la venta.');
-            setModalIsOpen(true);
+            setModalIsOpen2(true);
         }
     };
     
@@ -423,7 +424,7 @@ function VentaClienteNu() {
                 </div>
             )}
 
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}> 
+            <Modal isOpen={modalIsOpen2} onRequestClose={closeModal} ariaHideApp={false}> 
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
                 <button onClick={closeModal}>Cerrar</button>
