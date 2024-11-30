@@ -110,6 +110,11 @@
                     </table>
                     </fieldset>
             </div>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}> 
+                <h2>Mensaje</h2>
+                <p>{modalMessage}</p>
+                <button onClick={closeModal}>Cerrar</button>
+            </Modal>
             </div>
         );
     };
