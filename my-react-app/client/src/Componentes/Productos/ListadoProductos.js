@@ -79,6 +79,26 @@
                 <div className="main-block">
                 <h1 style={{padding:20}}>Historial de Productos</h1>
                 <fieldset style={{paddingTop:0}}> <legend> <h3>Productos añadidos</h3></legend>
+            {/* Modal para mostrar la imagen seleccionada */}
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
+            <h2>Imagen del Producto</h2>
+            {selectedImage ? (
+                <img
+                src={selectedImage}
+                alt="Imagen del producto"
+                style={{
+                    display: 'block',        // Hace que la imagen se comporte como un bloque para facilitar el centrado
+                    margin: '0 auto',        // Centra la imagen horizontalmente
+                    maxWidth: '80%',         // Limita el ancho máximo al 80% del contenedor (ajustable según necesidad)
+                    height: 'auto',          // Mantiene la proporción de la imagen
+                    maxHeight: '400px'       // Limita la altura máxima a 400px (puedes ajustarlo)
+                }}  
+                />
+            ) : (
+                <p>No se ha seleccionado una imagen.</p>
+            )}
+            <button onClick={closeModal}>Cerrar</button>
+            </Modal>
                 <table className="venta-table" style={{ marginLeft: '8%' }}>
                     <thead>
                         <tr>
@@ -116,26 +136,7 @@
                     </fieldset>
             </div>
 
-            {/* Modal para mostrar la imagen seleccionada */}
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
-            <h2>Imagen del Producto</h2>
-            {selectedImage ? (
-                <img
-                src={selectedImage}
-                alt="Imagen del producto"
-                style={{
-                    display: 'block',        // Hace que la imagen se comporte como un bloque para facilitar el centrado
-                    margin: '0 auto',        // Centra la imagen horizontalmente
-                    maxWidth: '80%',         // Limita el ancho máximo al 80% del contenedor (ajustable según necesidad)
-                    height: 'auto',          // Mantiene la proporción de la imagen
-                    maxHeight: '400px'       // Limita la altura máxima a 400px (puedes ajustarlo)
-                }}  
-                />
-            ) : (
-                <p>No se ha seleccionado una imagen.</p>
-            )}
-            <button onClick={closeModal}>Cerrar</button>
-            </Modal>
+
 
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}> 
                 <h2>Mensaje</h2>
