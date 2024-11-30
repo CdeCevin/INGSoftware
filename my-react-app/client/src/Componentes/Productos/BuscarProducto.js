@@ -9,8 +9,12 @@ const BuscarProducto = () => {
     const [nombre, setNombre] = useState('');
     const [color, setColor] = useState('');
     const [productos, setProductos] = useState([]);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState(null); // Estado para manejar la imagen seleccionada
+
+    const [imageModalIsOpen, setImageModalIsOpen] = useState(false);
+    const [messageModalIsOpen, setMessageModalIsOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);  // Aquí va la imagen seleccionada
+    const [modalMessage, setModalMessage] = useState("");      
+
 
     const buscarProductos = async (event) => {
         event.preventDefault();
@@ -36,25 +40,28 @@ const BuscarProducto = () => {
             if (data.data && data.data.length > 0) {
                 setProductos(data.data); // Si hay productos, actualiza el estado pero NO abre el modal
             } else {
-                setSelectedImage(null); // Asegurarse de que no haya imagen seleccionada
-                setModalIsOpen(true); // Abre el modal si no se encuentran productos
+                setModalMessage('Error al buscar producto.');
+                setMessageModalIsOpen(true);
             }
         } catch (error) {
             console.error('Error al buscar productos:', error);
-            setModalIsOpen(true); // Abre el modal si ocurre un error
+            setMessageModalIsOpen(true); // Abre el modal si ocurre un error
         }
     };
 
     // Función para manejar la visualización de la imagen
     const mostrarImagen = (codigo_producto) => {
-        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Usamos una ruta relativa
-        setSelectedImage(imageUrl); // Establecer la URL de la imagen seleccionada
-        setModalIsOpen(true); // Abrir el modal con la imagen
+        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Ruta relativa de la imagen
+        setSelectedImage(imageUrl);  // Establecer la URL de la imagen seleccionada
+        setImageModalIsOpen(true);   // Abrir el modal de imagen
+        console.log("Imagen mostrada:", imageUrl); // Para asegurarte de que se está estableciendo la imagen
+    };
+    
+    const closeModal = () => {
+        setImageModalIsOpen(false);   // Cerrar solo el modal de la imagen
+        setMessageModalIsOpen(false); // Cerrar solo el modal de mensaje
     };
 
-    const closeModal = () => {
-        setModalIsOpen(false);
-    };
 
     useEffect(() => {
         document.title = 'Buscar Producto';
@@ -98,22 +105,22 @@ const BuscarProducto = () => {
                 </form>
 
                 {/* Modal para mostrar la imagen seleccionada */}
-                <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
+                <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
                     <h2>Imagen del Producto</h2>
                     {selectedImage ? (
-                        <img
+                      <img
                         src={selectedImage}
                         alt="Imagen del producto"
                         style={{
-                          display: 'block',        // Hace que la imagen se comporte como un bloque para facilitar el centrado
-                          margin: '0 auto',        // Centra la imagen horizontalmente
-                          maxWidth: '80%',         // Limita el ancho máximo al 80% del contenedor (ajustable según necesidad)
-                          height: 'auto',          // Mantiene la proporción de la imagen
-                          maxHeight: '400px'       // Limita la altura máxima a 400px (puedes ajustarlo)
+                          display: 'block',
+                          margin: '0 auto',
+                          maxWidth: '80%',
+                          height: 'auto',
+                          maxHeight: '400px'
                         }}
                       />
                     ) : (
-                        <p>No se ha seleccionado una imagen.</p>
+                      <p>No se ha seleccionado una imagen.</p>
                     )}
                     <button onClick={closeModal}>Cerrar</button>
                 </Modal>
@@ -159,6 +166,11 @@ const BuscarProducto = () => {
                     <p></p>
                 )}
             </div>
+            <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>
+                <h2>Mensaje</h2>
+                <p>{modalMessage}</p>
+                <button onClick={closeModal}>Cerrar</button>
+            </Modal>
         </div>
     );
 };
