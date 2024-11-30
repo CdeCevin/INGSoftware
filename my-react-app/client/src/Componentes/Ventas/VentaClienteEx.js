@@ -84,7 +84,7 @@ function VentaClienteEx() {
     };
 
     const añadirAlCarrito = (producto) => {
-        console.log(producto)
+        console.log("producto:",producto);
         const cantidadSeleccionada = cantidad[producto.codigo_producto] || 0;
         setCarrito((prevCarrito) => {
             const existente = prevCarrito.find(p => p.codigo_producto === producto.codigo_producto);
