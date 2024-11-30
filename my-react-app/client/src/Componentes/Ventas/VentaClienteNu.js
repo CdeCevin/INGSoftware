@@ -376,7 +376,16 @@ function VentaClienteNu() {
                       </div>
                     </fieldset>
                   )}
-      
+
+
+                {paginaActual === 'mostrarBoleta' && (
+                <div style={{marginLeft: '12%'}}>
+                 <div className="main-block">
+                    <MostrarBoleta />
+                 </div>
+                </div>
+                )}
+                
                   {/* Modal para mostrar la imagen seleccionada */}
                   <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
                     <h2>Imagen del Producto</h2>
