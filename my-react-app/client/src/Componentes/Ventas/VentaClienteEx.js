@@ -137,12 +137,14 @@ function VentaClienteEx() {
 
 
     const mostrarImagen = (codigo_producto) => {
-        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Usamos una ruta relativa
+        const imageUrl = `../public/images/Outlet/${codigo_producto}.jpg`; // Usamos una ruta relativa
         setSelectedImage(imageUrl); // Establecer la URL de la imagen seleccionada
         setModalIsOpen(true); // Abrir el modal con la imagen
     };
 
-    const closeModal = () => setModalIsOpen(false);
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
 
     useEffect(() => {
         document.title = 'Venta Cliente Existente';
@@ -243,12 +245,12 @@ function VentaClienteEx() {
                                         <td>{producto.precio_unitario}</td>
                                         <td>{producto.nombre_producto}</td>
                                         <td>{producto.color_producto}</td>
-                                                                                <td>
+                                        <td>
                                         {/* Botón para ver la imagen */}
                                         <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)}>
                                             <i className="fa fa-eye"></i>
                                         </button>
-                                    </td>
+                                        </td>
                                         <td>
                                             <input
                                                 type="number"
