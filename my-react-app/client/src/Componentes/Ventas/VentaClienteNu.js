@@ -21,7 +21,7 @@ function VentaClienteNu() {
     const [cantidad, setCantidad] = useState({});
     const [paginaActual, setPaginaActual] = useState('insertCabecera');
     const [selectedImage, setSelectedImage] = useState(null); // Estado para manejar la imagen seleccionada
-
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -112,7 +112,7 @@ function VentaClienteNu() {
             }
         } catch (error) {
             console.error('Error al buscar productos:', error);
-            setModalMessage("Producto no encontrado");
+            setModalMessage("Producto no encontrado")
             setModalIsOpen(true);
         }
     };
@@ -423,7 +423,7 @@ function VentaClienteNu() {
                 </div>
             )}
 
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false}> 
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}> 
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
                 <button onClick={closeModal}>Cerrar</button>
