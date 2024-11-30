@@ -232,7 +232,7 @@ function VentaClienteEx() {
                           maxWidth: '80%',         // Limita el ancho máximo al 80% del contenedor (ajustable según necesidad)
                           height: 'auto',          // Mantiene la proporción de la imagen
                           maxHeight: '400px'       // Limita la altura máxima a 400px (puedes ajustarlo)
-                        }}
+                        }}  
                       />
                     ) : (
                         <p>No se ha seleccionado una imagen.</p>
