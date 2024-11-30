@@ -132,9 +132,10 @@ function VentaClienteNu() {
                 );
             }
             else{
-              console.error('Stock insuficiente', error);
+              console.error('Stock insuficiente');
               setModalMessage("Stock insuficiente");
               setMessageModalIsOpen(true);
+
             }
             return [...prevCarrito, { ...producto, cantidad: cantidadSeleccionada }];
         });
