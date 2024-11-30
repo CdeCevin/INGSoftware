@@ -135,6 +135,7 @@ function VentaClienteNu() {
               console.error('Stock insuficiente');
               setModalMessage("Stock insuficiente");
               setMessageModalIsOpen(true);
+              return;
 
             }
             return [...prevCarrito, { ...producto, cantidad: cantidadSeleccionada }];
