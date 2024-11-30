@@ -190,38 +190,38 @@ function VentaClienteNu() {
     };
     
 
-      return (
+    return (
         <div>
           {paginaActual === 'insertCabecera' && (
             <div style={{ marginLeft: '12%' }}>
               <div className="main-block">
                 <form onSubmit={handleSubmit}>
                   <h1>Cabecera Venta</h1>
-                  <fieldset>   
+                  <fieldset>
                     <legend>
                       <h3>Detalles del Cliente</h3>
                     </legend>
                     <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
                       <div>
                         <label>Nombre*</label>
-                        <input 
-                          type="text" 
-                          name="input-nombreC" 
-                          maxLength="50" 
-                          value={nombreC} 
+                        <input
+                          type="text"
+                          name="input-nombreC"
+                          maxLength="50"
+                          value={nombreC}
                           required
-                          onChange={(e) => setNombreC(e.target.value)} 
+                          onChange={(e) => setNombreC(e.target.value)}
                         />
                       </div>
                       <div>
                         <label>Telefono*</label>
-                        <input 
-                          type="text" 
-                          name="input-teléfono" 
-                          maxLength="9" 
-                          value={telefono} 
+                        <input
+                          type="text"
+                          name="input-teléfono"
+                          maxLength="9"
+                          value={telefono}
                           required
-                          onChange={(e) => setTelefono(e.target.value)} 
+                          onChange={(e) => setTelefono(e.target.value)}
                         />
                       </div>
                     </div>
@@ -233,11 +233,7 @@ function VentaClienteNu() {
                     <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                       <div>
                         <label>Región</label>
-                        <select 
-                          value={region} 
-                          required
-                          onChange={handleRegionChange}
-                        >
+                        <select value={region} required onChange={handleRegionChange}>
                           <option value="">Selecciona una región</option>
                           {Object.keys(optionSets).map((regionName) => (
                             <option key={regionName} value={regionName}>{regionName}</option>
@@ -246,10 +242,10 @@ function VentaClienteNu() {
                       </div>
                       <div>
                         <label>Comuna</label>
-                        <select 
-                          value={ciudad} 
+                        <select
+                          value={ciudad}
                           required
-                          onChange={(e) => setCiudad(e.target.value)} 
+                          onChange={(e) => setCiudad(e.target.value)}
                           disabled={!region}
                         >
                           <option value="">Selecciona una comuna</option>
@@ -260,24 +256,24 @@ function VentaClienteNu() {
                       </div>
                       <div>
                         <label>Calle</label>
-                        <input 
-                          type="text" 
-                          name="input-calle" 
-                          maxLength="100" 
+                        <input
+                          type="text"
+                          name="input-calle"
+                          maxLength="100"
                           required
-                          value={calle} 
-                          onChange={(e) => setCalle(e.target.value)} 
+                          value={calle}
+                          onChange={(e) => setCalle(e.target.value)}
                         />
                       </div>
                       <div>
                         <label>Número</label>
-                        <input 
-                          type="text" 
-                          name="input-numero" 
-                          maxLength="100" 
+                        <input
+                          type="text"
+                          name="input-numero"
+                          maxLength="100"
                           required
-                          value={numero} 
-                          onChange={(e) => setNumero(e.target.value)} 
+                          value={numero}
+                          onChange={(e) => setNumero(e.target.value)}
                         />
                       </div>
                     </div>
@@ -377,35 +373,39 @@ function VentaClienteNu() {
                       </table>
                     </fieldset>
                   )}
+      
+                  {/* Modal para mostrar la imagen seleccionada */}
+                  <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
+                    <h2>Imagen del Producto</h2>
+                    {selectedImage ? (
+                      <img
+                        src={selectedImage}
+                        alt="Imagen del producto"
+                        style={{
+                          display: 'block',
+                          margin: '0 auto',
+                          maxWidth: '80%',
+                          height: 'auto',
+                          maxHeight: '400px'
+                        }}
+                      />
+                    ) : (
+                      <p>No se ha seleccionado una imagen.</p>
+                    )}
+                    <button onClick={closeModal}>Cerrar</button>
+                  </Modal>
                 </div>
               </div>
-              <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
-                <h2>Imagen del Producto</h2>
-                {selectedImage ? (
-                  <img
-                    src={selectedImage}
-                    alt="Imagen del producto"
-                    style={{
-                      display: 'block',
-                      margin: '0 auto',
-                      maxWidth: '80%',
-                      height: 'auto',
-                      maxHeight: '400px',
-                    }}
-                  />
-                ) : (
-                  <p>No se ha seleccionado una imagen.</p>
-                )}
+      
+              {/* Modal para mostrar un mensaje */}
+              <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>
+                <h2>Mensaje</h2>
+                <p>{modalMessage}</p>
                 <button onClick={closeModal}>Cerrar</button>
               </Modal>
             </>
           )}
         </div>
-      );      
-}
-
+      );
+};
 export default VentaClienteNu;
-
-
-
-
