@@ -247,7 +247,7 @@ function VentaClienteEx() {
                                         <td>{producto.color_producto}</td>
                                         <td>
                                         {/* Botón para ver la imagen */}
-                                        <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)}>
+                                        <button type="button" onClick={() => mostrarImagen(23)}>
                                             <i className="fa fa-eye"></i>
                                         </button>
                                         </td>
