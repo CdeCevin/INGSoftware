@@ -91,7 +91,7 @@ function StockCritico()  {
                         <tr>
                             <th>CÓDIGO</th>
                             <th>STOCK</th>
-                            <th>STOCK MINIMO</th>
+                            <th>STOCK MÍNIMO</th>
                             <th>PRECIO</th>
                             <th>NOMBRE</th>
                             <th>COLOR</th>

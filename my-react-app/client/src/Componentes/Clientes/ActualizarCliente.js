@@ -122,7 +122,7 @@ function ActualizarCliente() {
                                 />
                             </div>
                             <div>
-                                <label>Telefono</label>
+                                <label>Teléfono</label>
                                 <input 
                                     type="text" 
                                     name="input-teléfono" 
