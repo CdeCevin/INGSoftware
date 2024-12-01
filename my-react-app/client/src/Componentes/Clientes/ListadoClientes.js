@@ -28,7 +28,7 @@ const ListadoClientes = () => {
         <div style={{ marginLeft: '13%' }}>
             <div className="main-block">
                 <h1 style={{ padding: 20 }}>Registro Clientes</h1>
-                <fieldset></fieldset>
+           
                 <table className="venta-table" style={{ marginLeft: '8%', paddingTop: 0 }}>
                     <thead>
                         <tr>
