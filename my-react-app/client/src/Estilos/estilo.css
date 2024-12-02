@@ -1,10 +1,12 @@
 :root {
   --primary-color: #3498db;
   --secondary-color: #2ecc71;
-  --background-color: #ecf0f1;
-  --text-color: #34495e;
+  --background-color: #f0f4f8;
+  --text-color: #2c3e50;
   --border-color: #bdc3c7;
   --error-color: #e74c3c;
+  --success-color: #27ae60;
+  --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -12,6 +14,8 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -20,13 +24,15 @@ body {
   padding: 2rem;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px var(--shadow-color);
 }
 
 .title {
   color: var(--primary-color);
   text-align: center;
   margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .form {
@@ -37,24 +43,27 @@ body {
 
 .fieldset {
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 1.5rem;
+  margin: 0;
 }
 
 .legend {
   color: var(--primary-color);
   font-weight: bold;
   padding: 0 0.5rem;
+  font-size: 1.2rem;
 }
 
 .formGroup {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .label {
   display: block;
   margin-bottom: 0.5rem;
-  font-weight: bold;
+  font-weight: 600;
+  color: var(--text-color);
 }
 
 .input,
@@ -64,14 +73,29 @@ body {
   border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
+  background-color: #fff;
 }
 
 .input:focus,
 .select:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.input:hover,
+.select:hover {
+  border-color: var(--primary-color);
+}
+
+.select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 12px;
+  padding-right: 2.5rem;
 }
 
 .button {
@@ -81,13 +105,21 @@ body {
   border: none;
   border-radius: 4px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.1s ease;
   align-self: flex-start;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .button:hover {
   background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
 }
 
 .modal {
@@ -98,7 +130,7 @@ body {
   background-color: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px var(--shadow-color);
   max-width: 400px;
   width: 100%;
 }
@@ -106,10 +138,13 @@ body {
 .modalTitle {
   color: var(--primary-color);
   margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .modalMessage {
   margin-bottom: 1.5rem;
+  color: var(--text-color);
 }
 
 .modalButton {
@@ -119,6 +154,7 @@ body {
   border: none;
   border-radius: 4px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -130,6 +166,18 @@ body {
 @media (max-width: 768px) {
   .container {
     padding: 1rem;
+    margin: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .fieldset {
+    padding: 1rem;
+  }
+
+  .button {
+    width: 100%;
   }
 }
-
