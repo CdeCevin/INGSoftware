@@ -31,13 +31,12 @@ import VentaClienteNu from '../src/Componentes/Ventas/VentaClienteNu';
 function App() {
     return (
             <div style={{ display: 'block' }}>
-                
+                <Menu />
                 <div>
                     <Routes>
                         <Route path="" element={<Home />} /> {/* Ruta por defecto para que comience en home*/}
                         <Route path="/home" element={<Home />} />
                         {/*Cliente*/}
-                        
                         <Route path="/ActualizarCliente" element={<ActualizarCliente />} />
                         <Route path="/BuscarCliente" element={<BuscarCliente />} />
                         <Route path="/EliminarCliente" element={<EliminarCliente />} />
