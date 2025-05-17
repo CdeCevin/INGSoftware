@@ -2,14 +2,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './estiloide.css';
-import inicio from '../Bienvenida/inicio'; // Asegúrate de que la ruta sea correcta 
-
 const LoginForm = () => {
   const navigate = useNavigate(); // Hook para redireccionar
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Evita recarga de página
-    navigate('../Bienvenida/Home.js'); // Redirige a la ruta deseada
+    navigate('/home'); // Redirige a la ruta deseada
   };
 
   return (
