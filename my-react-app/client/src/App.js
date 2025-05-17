@@ -1,6 +1,5 @@
-// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 import Login from './Componentes/login/login';
 import Menu from './Componentes/Bienvenida/menu';
@@ -33,8 +32,7 @@ import VentaClienteNu from './Componentes/Ventas/VentaClienteNu';
 
 function LayoutWithMenu({ children }) {
   const { pathname } = useLocation();
-  // Ocultar el menú en estas rutas:
-  const hideMenuOn = ['/', '/login'];
+  const hideMenuOn = ['/', '/login'];  // rutas sin menú
   const shouldHideMenu = hideMenuOn.includes(pathname);
 
   return (
@@ -49,48 +47,46 @@ function LayoutWithMenu({ children }) {
 
 function App() {
   return (
-    <Router>
-      <LayoutWithMenu>
-        <Routes>
-          {/* Rutas sin menú */}
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
+    <LayoutWithMenu>
+      <Routes>
+        {/* Rutas sin menú */}
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
 
-          {/* Rutas con menú */}
-          <Route path="/home" element={<Home />} />
-          <Route path="/Bienvenido/inicio" element={<Inicio />} />
+        {/* Rutas con menú */}
+        <Route path="/home" element={<Home />} />
+        <Route path="/Bienvenido/inicio" element={<Inicio />} />
 
-          {/* Clientes */}
-          <Route path="/ActualizarCliente" element={<ActualizarCliente />} />
-          <Route path="/BuscarCliente" element={<BuscarCliente />} />
-          <Route path="/EliminarCliente" element={<EliminarCliente />} />
-          <Route path="/ListadoClientes" element={<ListadoClientes />} />
+        {/* Clientes */}
+        <Route path="/ActualizarCliente" element={<ActualizarCliente />} />
+        <Route path="/BuscarCliente" element={<BuscarCliente />} />
+        <Route path="/EliminarCliente" element={<EliminarCliente />} />
+        <Route path="/ListadoClientes" element={<ListadoClientes />} />
 
-          {/* Empresa */}
-          <Route path="/ActualizarDatos" element={<ActualizarDatos />} />
-          <Route path="/VisualizarDatos" element={<VisualizarDatos />} />
+        {/* Empresa */}
+        <Route path="/ActualizarDatos" element={<ActualizarDatos />} />
+        <Route path="/VisualizarDatos" element={<VisualizarDatos />} />
 
-          {/* Pendientes */}
-          <Route path="/VentasPendientes" element={<VentasPendientes />} />
+        {/* Pendientes */}
+        <Route path="/VentasPendientes" element={<VentasPendientes />} />
 
-          {/* Productos */}
-          <Route path="/IngresoProducto" element={<IngresoProducto />} />
-          <Route path="/BuscarProducto" element={<BuscarProducto />} />
-          <Route path="/ActualizarProducto" element={<ActualizarProducto />} />
-          <Route path="/EliminarProducto" element={<EliminarProducto />} />
-          <Route path="/ListadoProducto" element={<ListadoProductos />} />
-          <Route path="/StockCritico" element={<StockCritico />} />
+        {/* Productos */}
+        <Route path="/IngresoProducto" element={<IngresoProducto />} />
+        <Route path="/BuscarProducto" element={<BuscarProducto />} />
+        <Route path="/ActualizarProducto" element={<ActualizarProducto />} />
+        <Route path="/EliminarProducto" element={<EliminarProducto />} />
+        <Route path="/ListadoProducto" element={<ListadoProductos />} />
+        <Route path="/StockCritico" element={<StockCritico />} />
 
-          {/* Reportes */}
-          <Route path="/ReporteGral" element={<ReporteGral />} />
+        {/* Reportes */}
+        <Route path="/ReporteGral" element={<ReporteGral />} />
 
-          {/* Ventas */}
-          <Route path="/HistorialVentas" element={<HistorialVentas />} />
-          <Route path="/VentaClienteEx" element={<VentaClienteEx />} />
-          <Route path="/VentaClienteNu" element={<VentaClienteNu />} />
-        </Routes>
-      </LayoutWithMenu>
-    </Router>
+        {/* Ventas */}
+        <Route path="/HistorialVentas" element={<HistorialVentas />} />
+        <Route path="/VentaClienteEx" element={<VentaClienteEx />} />
+        <Route path="/VentaClienteNu" element={<VentaClienteNu />} />
+      </Routes>
+    </LayoutWithMenu>
   );
 }
 
