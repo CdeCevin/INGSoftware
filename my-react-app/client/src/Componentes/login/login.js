@@ -6,9 +6,11 @@ const LoginForm = () => {
   const navigate = useNavigate(); // Hook para redireccionar
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Evita recarga de página
-    navigate('/home'); // Redirige a la ruta deseada
+    e.preventDefault();
+    // navega a /Bienvenido/inicio reemplazando la entrada actual
+    navigate('/Bienvenido/inicio', { replace: true });
   };
+
 
   return (
     <div className="main-block2" style={{ backgroundColor: '#eaeeea' }}>
