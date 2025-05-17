@@ -9,7 +9,7 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Evita recarga de página
-    navigate(inicio); // Redirige a la ruta deseada
+    navigate('../Bienvenida/Home.js'); // Redirige a la ruta deseada
   };
 
   return (
