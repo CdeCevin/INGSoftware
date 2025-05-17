@@ -37,7 +37,7 @@ const LoginForm = () => {
             </div>
           </div>
         </fieldset>
-        <Link to="/Bienvenido/inicio">
+        <Link to="/inicio">
           <button type="button">Entrar</button>
         </Link>
       </form>
