@@ -1,7 +1,7 @@
 // src/components/LoginForm.js
 import React, { useState } from 'react';
 import './estiloide.css';
-import { Link } from 'react-router-dom';
+
 const LoginForm = () => {
   const [rut, setRut] = useState('');
   const [password, setPassword] = useState('');
@@ -58,9 +58,8 @@ const LoginForm = () => {
             </div>
           </div>
         </fieldset>
-        </form>
         <button type="submit">Entrar</button>
-        <Link to="/inicio" >Entrar</Link>
+      </form>
     </div>
   );
 };
