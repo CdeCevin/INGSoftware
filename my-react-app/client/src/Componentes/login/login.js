@@ -60,7 +60,7 @@ const LoginForm = () => {
         </fieldset>
         </form>
         <button type="submit">Entrar</button>
-        <Link to="/inicio" >Entrar</Link>
+        <Link to="../Bienvenida/inicio" >Entrar</Link>
     </div>
   );
 };
