@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Navigate, Route, Routes } from 'react-router-dom';
+import Login from './Componentes/login/login';
 import Menu from '../src/Componentes/Bienvenida/menu';
 import Home from '../src/Componentes/Bienvenida/Home';
 import Inicio from '../src/Componentes/Bienvenida/inicio';
@@ -35,8 +36,8 @@ function App() {
                 <Menu />
                 <div>
                     <Routes>
-                        <Route path="" element={<Home />} /> {/* Ruta por defecto para que comience en home*/}
-                        <Route path="/Inicio" element={<Inicio />} />
+                        <Route path="" element={<Login />} /> {/* Ruta por defecto para que comience en home*/}
+                        <Route path="/home" element={<Home />} />
                         {/*Cliente*/}
                         <Route path="/ActualizarCliente" element={<ActualizarCliente />} />
                         <Route path="/BuscarCliente" element={<BuscarCliente />} />

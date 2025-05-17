@@ -1,5 +1,5 @@
 import React from 'react';
-import Inicio from '../login/login';
+import Inicio from './inicio';
 //import Home from './components/Home';
 //import About from './components/About';
 //import Sidebar from './components/Sidebar';
