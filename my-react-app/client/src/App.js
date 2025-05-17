@@ -33,7 +33,7 @@ import VentaClienteNu from '../src/Componentes/Ventas/VentaClienteNu';
 function App() {
     return (
             <div style={{ display: 'block' }}>
-                <Menu />
+                
                 <div>
                     <Routes>
                         <Route path="" element={<Login />} /> {/* Ruta por defecto para que comience en home*/}
