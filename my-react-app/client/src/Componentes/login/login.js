@@ -1,7 +1,7 @@
 // src/components/LoginForm.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './estilo.css';
+import './estiloide.css';
 
 const LoginForm = () => {
   const navigate = useNavigate(); // Hook para redireccionar
