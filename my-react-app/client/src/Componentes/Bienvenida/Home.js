@@ -6,10 +6,7 @@ import Inicio from '../login/login';
 
 function Home() {
     return (
-        <div>
-        <Inicio />   
-        </div>
-            
+        <Inicio />      
     );
 }
 
