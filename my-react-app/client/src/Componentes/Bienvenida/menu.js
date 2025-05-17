@@ -45,7 +45,7 @@ function Menu() {
                         <Link to="/VisualizarDatos" > Visualizar Datos</Link>
                     </div>
                 </div>
-                <Link to="/login" className='Cerrar-button'><i className="fa fa-sign-out"></i> Cerrar Sesión</Link>
+                <Link to="/login" replace className='Cerrar-button'><i className="fa fa-sign-out"></i> Cerrar Sesión</Link>
             </div>
         </div>
     );
