@@ -257,9 +257,10 @@ font-family: Roboto, Arial, sans-serif;
 font-weight: bold;
 color: white;
 text-align: left;
-padding: 16px;
+position: absolute;
+bottom: 0px;
+padding: 10px 48.9px;
 background-color:#976e6b ;
-margin-bottom:30px;
 }
 
 .sidebar .w3-button:hover {
