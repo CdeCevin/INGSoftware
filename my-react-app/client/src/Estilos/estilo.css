@@ -252,6 +252,15 @@ padding: 16px;
 background-color:#6b9787 ;
 }
 
+.sidebar .Cerrar-button {
+font-family: Roboto, Arial, sans-serif;
+font-weight: bold;
+color: white;
+text-align: left;
+padding: 16px;
+background-color:#976e6b ;
+}
+
 .sidebar .w3-button:hover {
 font-family: Roboto, Arial, sans-serif;
 font-weight: bold;

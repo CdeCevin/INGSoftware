@@ -85,6 +85,7 @@ function App() {
         <Route path="/HistorialVentas" element={<HistorialVentas />} />
         <Route path="/VentaClienteEx" element={<VentaClienteEx />} />
         <Route path="/VentaClienteNu" element={<VentaClienteNu />} />
+
       </Routes>
     </LayoutWithMenu>
   );
