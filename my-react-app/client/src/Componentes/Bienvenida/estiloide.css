@@ -1,0 +1,267 @@
+html, body {
+    min-height: 100%;
+    }
+    body, div, form, input, select, p { 
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 14px;
+    color: #666;
+    }
+    h1 {
+    margin: 0;
+    font-weight: 400;
+    }
+    h3 {
+    margin: 12px 0;
+    color: #6b9787;
+    }
+    .main-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    
+    }
+    form {
+    width: 100%;
+    padding: 20px;
+    }
+    fieldset {
+    border: none;
+    border-top: 1px solid #6b9787;
+    }
+    .account-details, .personal-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    }
+    .account-details >div, .personal-details >div >div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    }
+    .account-details >div, .personal-details >div, input, label {
+    width: 100%;
+    }
+    label {
+    padding: 0 5px;
+    text-align: right;
+    vertical-align: middle;
+    }
+    input {
+    padding: 5px;
+    vertical-align: middle;
+    }
+    output {
+      padding: 5px;
+      vertical-align: middle;
+      }
+
+    select, .children, .gender, .bdate-block {
+    width: calc(100% + 26px);
+    padding: 5px 0;
+    }
+    select {
+    background: transparent;
+    
+    }
+    
+    button {
+    width: 100%;
+    padding: 10px 0;
+    margin: 20px auto;
+    border-radius: 5px; 
+    border: none;
+    background: #6b9787; 
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+
+    }
+    .contenedor {
+      position: relative;
+      width: 100%; /* o cualquier valor específico */
+      height: 100%; /* o cualquier valor específico */
+      /* Añade aquí el resto del estilo de tu contenedor */
+    }
+    .boton-pequeno {
+      width: 120px;
+      padding: 4px 15px;
+      background-color: #6b9787;
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    
+      /* Posicionamiento relativo al contenedor */
+      position: absolute;
+      top: -32px; /* Ajusta la distancia desde la parte superior usando unidades px */
+      right: 60px; /* Ajusta la distancia desde el borde derecho usando unidades px */
+    }
+    
+    /* Estilos para el hover */
+    .boton-pequeno:hover {
+      background-color: #637e74;
+    }
+
+    button:hover {
+    background: #637e74;
+    }
+    @media (min-width: 568px) {
+    .account-details >div, .personal-details >div {
+    width: 50%;
+    }
+    label {
+    width: 40%;
+    }
+    input {
+    width: 60%;
+
+    }
+    select, .children, .gender, .bdate-block {
+    width: calc(60% + 16px);
+    }
+    }
+  body {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+    
+  }
+  
+  .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f3f2;
+    
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+  }
+  
+  .sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+
+
+  .sidebar a.active {
+    background-color: #6b9787;
+    color: white;
+  }
+  
+  .sidebar a.active2 {
+    color: #333;
+    position: absolute;
+    bottom: 0px;
+    padding: 10px 48.9px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .sidebar a:hover:not(.active) {
+    background-color: #637e74;
+    color: white;
+    
+  }
+  .sidebar a.active:hover{
+    background-color: #637e74;
+     
+    color: white;
+  }
+  .sidebar a.active2:hover{
+    background-color: #637e74;
+    color: #000000;
+  }
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+
+
+.sidebar .w3copia{
+  font-family: Roboto, Arial, sans-serif;
+  font-weight: bold;
+  display: block;
+
+  text-decoration: none;
+  border-radius: 5px; 
+  color: #666
+  
+  
+}
+
+.sidebar .w3copia:hover{
+  background-color: #6c2a54;
+  color: white;
+}
+.sidebar .w3copia:hover:not(.active) {
+  background-color: #cfcccc;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  
+}
+.sidebar .w3-dropdown-hover:hover:not(.active) {
+  background-color: #cfcccc;
+
+  text-align: left;
+  color: white;
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.main-block2 {
+  width: 50%;
+  margin: auto;
+  border-radius: 15px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin-top: 10%;
+}
+
+.account-details2 div {
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.account-details2 label {
+  display: inline-block;
+  width: 180px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.account-details2 input[type="text"],
+.account-details2 input[type="password"] {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}

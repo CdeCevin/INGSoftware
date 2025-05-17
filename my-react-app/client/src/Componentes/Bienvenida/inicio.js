@@ -1,27 +1,67 @@
-import React,{ useEffect } from 'react';
-import '../../Estilos/style_menu.css';
-import '../../Estilos/estilo.css';
+// src/components/LoginForm.js
+import React, { useState } from 'react';
+import './estiloide.css';
 
-function Inicio() {
-    useEffect(() => {
-        document.title = 'Menú';
-    }, []);
+const LoginForm = () => {
+  const [rut, setRut] = useState('');
+  const [password, setPassword] = useState('');
 
-    return (
-        <div>
-            <div class="bloqueprincipal">
-            <div style={{ marginLeft: '5%' }}>
-                <div class="w3-container">
-                <h1>hola chavales!</h1>
-                <h3>Bienvenido a la aplicación de registro web de Outlet A Tu Hogar.</h3>
-                <p>En el menú de su izquierda podrá encontrar las acciones disponibles para el manejo del negocio.
-                </p>
-                </div>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const response = await fetch('http://localhost:3001/ingreso', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ rut, password }),
+    });
+
+    const data = await response.json();
+    alert(data.message);
+  };
+
+  return (
+    <div className="main-block2" style={{ backgroundColor: '#eaeeea' }}>
+      <form onSubmit={handleSubmit}>
+        <h1 style={{ textAlign: 'center' }}>Ingresar</h1>
+        <fieldset>
+          <legend>
+            <h3 style={{ textAlign: 'center' }}>
+              Ingrese sus datos a continuación
+            </h3>
+          </legend>
+          <div className="account-details2">
+            <div>
+              <label>RUT*</label>
+              <input
+                type="text"
+                name="input-rut"
+                maxLength="9"
+                pattern="[0-9]+"
+                required
+                value={rut}
+                onChange={(e) => setRut(e.target.value)}
+              />
             </div>
+            <div>
+              <label>Contraseña*</label>
+              <input
+                type="password"
+                name="input-cont"
+                pattern="[0-9]+"
+                maxLength="20"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
-            
-        </div>
-    );
-}
+          </div>
+        </fieldset>
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+  );
+};
 
-export default Inicio;
+export default LoginForm;
