@@ -1,29 +1,12 @@
 // src/components/LoginForm.js
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import './estiloide.css';
 
 const LoginForm = () => {
-  const [rut, setRut] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const response = await fetch('http://localhost:3001/ingreso', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ rut, password }),
-    });
-
-    const data = await response.json();
-    alert(data.message);
-  };
-
   return (
     <div className="main-block2" style={{ backgroundColor: '#eaeeea' }}>
-      <form onSubmit={handleSubmit}>
+      <form>
         <h1 style={{ textAlign: 'center' }}>Ingresar</h1>
         <fieldset>
           <legend>
@@ -40,8 +23,6 @@ const LoginForm = () => {
                 maxLength="9"
                 pattern="[0-9]+"
                 required
-                value={rut}
-                onChange={(e) => setRut(e.target.value)}
               />
             </div>
             <div>
@@ -52,13 +33,13 @@ const LoginForm = () => {
                 pattern="[0-9]+"
                 maxLength="20"
                 required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
         </fieldset>
-        <button type="submit">Entrar</button>
+        <Link to="/Bienvenido/inicio">
+          <button type="button">Entrar</button>
+        </Link>
       </form>
     </div>
   );

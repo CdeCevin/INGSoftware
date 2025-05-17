@@ -37,6 +37,7 @@ function App() {
                         <Route path="" element={<Home />} /> {/* Ruta por defecto para que comience en home*/}
                         <Route path="/home" element={<Home />} />
                         {/*Cliente*/}
+                        <Menu />
                         <Route path="/ActualizarCliente" element={<ActualizarCliente />} />
                         <Route path="/BuscarCliente" element={<BuscarCliente />} />
                         <Route path="/EliminarCliente" element={<EliminarCliente />} />
