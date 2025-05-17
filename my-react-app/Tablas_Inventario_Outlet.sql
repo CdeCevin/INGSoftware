@@ -19,6 +19,14 @@ DROP TABLE OUTLET_Auditoria;
 ------------------ CREATE TABLES------------------------------
 --------------------------------------------------------------
 
+CREATE TABLE OUTLET_Usuario(
+        RUT_Usuario NUMBER,
+        Contrasena_Usuario VARCHAR2(16);
+        ROL NUMBER,
+        CONSTRAINT OUTLET_Usuario PRIMARY KEY (RUT)
+
+);
+
 CREATE TABLE OUTLET_Auditoria(
         Codigo_Auditoria NUMBER,
         Fecha_Desactivacion DATE,
