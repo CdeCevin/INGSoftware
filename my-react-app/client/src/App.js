@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Navigate, Route, Routes } from 'react-router-dom';
 import Menu from '../src/Componentes/Bienvenida/menu';
 import Home from '../src/Componentes/Bienvenida/Home';
+import Inicio from '../src/Componentes/Bienvenida/inicio';
 
 //Clientes
 import ActualizarCliente from '../src/Componentes/Clientes/ActualizarCliente';
@@ -35,7 +36,7 @@ function App() {
                 <div>
                     <Routes>
                         <Route path="" element={<Home />} /> {/* Ruta por defecto para que comience en home*/}
-                        <Route path="/home" element={<Home />} />
+                        <Route path="/Inicio" element={<Inicio />} />
                         {/*Cliente*/}
                         <Route path="/ActualizarCliente" element={<ActualizarCliente />} />
                         <Route path="/BuscarCliente" element={<BuscarCliente />} />
