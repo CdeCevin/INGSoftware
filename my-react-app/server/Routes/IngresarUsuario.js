@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const {insertUsuario} = require('../Controllers/anUserController'); // Asegúrate de que la ruta sea correcta
 
-router.post('/ingresarUsuario', upload.none(), insertUsuario);
+router.post('/', upload.none(), insertUsuario);
 
 
 module.exports = router;
