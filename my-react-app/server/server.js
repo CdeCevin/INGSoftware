@@ -32,6 +32,8 @@ const insertCuerpoRoutes = require('./Routes/insertCuerpo');
 const boletaRoutes = require('./Routes/boleta');
 const anClienteRoutes = require('./Routes/anCliente');
 
+    //Usuarios
+const ingresarUsuarioRoutes = require('./Routes/IngresarUsuario');
 
 const app = express();
 
@@ -72,6 +74,9 @@ app.use('/api/insertCabecera',insertCabeceraRoutes);
 app.use('/api/insertCuerpo',insertCuerpoRoutes);
 app.use('/api/boleta',boletaRoutes);
 app.use('/api/anCliente',anClienteRoutes);
+
+//Usuarios
+app.use('/api/ingresarUsuario', ingresarUsuarioRoutes);
 
 const port = 3001;
 app.listen(port, () => {

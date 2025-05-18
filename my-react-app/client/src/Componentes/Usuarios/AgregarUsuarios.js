@@ -28,7 +28,7 @@ function IngresoUsuario() {
 
         try {
             // Enviar los datos al backend
-            const response = await fetch('http://localhost:3001/api/ingresar_Usuarios/insertar', {
+            const response = await fetch('http://localhost:3001/api/ingresarUsuario', {
                 method: 'POST',
                 body: formData,
             });
