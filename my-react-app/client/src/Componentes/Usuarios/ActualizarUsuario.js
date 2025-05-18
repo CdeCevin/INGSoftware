@@ -132,7 +132,7 @@ function ActualizarUsuario() {
                                     value={tipo}
                                     onChange={(e) => setTipo(e.target.value)} 
                                 >
-                                    <option value="">Selecciona un tipo de usuario</option>
+                                    <option value="">Seleccionar</option> {/*El valor por defecto, luego debe ser el valor que ya está, getUserRol*/}
                                     <option value="Vendedor">Vendedor</option>
                                     <option value="Administrador">Administrador</option>
                                 </select>

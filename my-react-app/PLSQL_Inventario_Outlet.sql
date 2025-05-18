@@ -46,6 +46,33 @@ CREATE SEQUENCE sec_cod_ventas_pendientes
 --------------------------------------------------------------
 ------------------Procedimientos------------------------------
 --------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE OUTLET_Insert_User(
+        Rut_Usuario NUMBER,
+        Nombre_Usuario VARCHAR2,
+        Contrasena_Usuario VARCHAR2,
+        Telefono_Usuario NUMBER,
+        Rol_Usuario NUMBER
+)
+IS
+BEGIN 
+        INSERT INTO OUTLET_USUARIO(RUT_Usuario,Nombre_Usuario, Contrasena_Usuario,ROL_Usuario)    
+                VALUES(Rut_Usuario,Nombre_Usuario, Contrasena_Usuario,Rol_Usuario);
+        EXCEPTION
+                WHEN PROGRAM_ERROR THEN
+                      RAISE_APPLICATION_ERROR(-6501,'Error de programa y/o asignación de variables');
+                WHEN STORAGE_ERROR THEN
+                        RAISE_APPLICATION_ERROR(-6500,'Se acabó la memoria o está corrupta');
+                WHEN ROWTYPE_MISMATCH THEN
+                        RAISE_APPLICATION_ERROR(-6504,'Error de asignación de variables');
+                WHEN OTHERS THEN
+                        RAISE_APPLICATION_ERROR(-20010,'Ocurrió un problema inesperado');
+        ROLLBACK;
+END;
+
+
+
+
+
 
 CREATE OR REPLACE PROCEDURE OUTLET_Insert_Client(
         n_calle VARCHAR2,
