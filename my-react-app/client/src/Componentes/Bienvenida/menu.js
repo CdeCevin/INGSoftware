@@ -5,20 +5,18 @@ import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 
 export default function Menu() {
-  // 1) Lee el rol desde localStorage  
-  const role = localStorage.getItem('userRole'); // "Administrador" o "Vendedor"
-
-  // 2) Define helpers  
+  const role = localStorage.getItem('userRole');
   const isAdmin  = role === 'Administrador';
   const isVendor = role === 'Vendedor';
 
   return (
-    <div className="sidebar" style={{ width: "12%" }}>
-      <Link to="/home" className='Menu-button'>
+    <div className="sidebar" style={{ width: '12%' }}>
+      {/* Siempre visible */}
+      <Link to="/home" className="Menu-button">
         <i className="fa fa-home"></i> Menu
       </Link>
 
-      {/* Nueva Venta: ambos roles */}
+      {/* VENTAS: ambos roles */}
       <div className="w3-dropdown-hover">
         <a className="w3-button">
           <i className="fa fa-credit-card"></i> Nueva Venta <i className="fa fa-caret-down"></i>
@@ -26,49 +24,56 @@ export default function Menu() {
         <div className="w3-dropdown-content w3-bar-block">
           <Link to="/VentaClienteNu">Cliente Nuevo</Link>
           <Link to="/VentaClienteEx">Cliente Antiguo</Link>
-          <Link to="/HistorialVentas">Historial Ventas</Link>
+          {isVendor && <Link to="/VentasPendientes">Ventas Pendientes</Link>}
+          {isAdmin  && <Link to="/VentasPendientes">Ventas Pendientes</Link>}
         </div>
       </div>
 
-      {/* Pendientes: ambos */}
+      {/* PENDIENTES: ambos */}
       <Link to="/VentasPendientes" className="w3-button">
-        <i className="fa fa-clock-o" aria-hidden="true"></i> Pendientes
+        <i className="fa fa-clock-o"></i> Ventas Pendientes
       </Link>
 
-      {/* Clientes: ambos */}
-      <div className="w3-dropdown-hover">
-        <a className="w3-button">
-          <i className="fa fa-address-card"></i> Clientes <i className="fa fa-caret-down"></i>
-        </a>
-        <div className="w3-dropdown-content w3-bar-block">
-          <Link to="/ActualizarCliente">Actualizar Cliente</Link>
-          <Link to="/BuscarCliente">Buscar Cliente</Link>
-          <Link to="/EliminarCliente">Eliminar Cliente</Link>
-          <Link to="/ListadoClientes">Listado Clientes</Link>
-        </div>
-      </div>
-
-      {/* Productos: ambos */}
+      {/* PRODUCTOS */}
       <div className="w3-dropdown-hover">
         <a className="w3-button">
           <i className="fa fa-cubes"></i> Productos <i className="fa fa-caret-down"></i>
         </a>
         <div className="w3-dropdown-content w3-bar-block">
-          <Link to="/IngresoProducto">Ingresar Producto</Link>
-          <Link to="/ActualizarProducto">Actualizar Producto</Link>
-          <Link to="/BuscarProducto">Buscar Producto</Link>
-          <Link to="/EliminarProducto">Eliminar Producto</Link>
-          <Link to="/ListadoProducto">Listado Productos</Link>
-          <Link to="/StockCritico">Stock Crítico</Link>
+          {/* Vendedor puede BUSCAR y LISTAR */}
+          {(isVendor || isAdmin) && <Link to="/BuscarProducto">Buscar Producto</Link>}
+          {(isVendor || isAdmin) && <Link to="/ListadoProducto">Listado Productos</Link>}
+
+          {/* Solo Admin: ABM y Stock crítico */}
+          {isAdmin && <Link to="/IngresoProducto">Ingresar Producto</Link>}
+          {isAdmin && <Link to="/ActualizarProducto">Actualizar Producto</Link>}
+          {isAdmin && <Link to="/EliminarProducto">Eliminar Producto</Link>}
+          {isAdmin && <Link to="/StockCritico">Stock Crítico</Link>}
         </div>
       </div>
 
-      {/* Reporte: ambos */}
+      {/* CLIENTES */}
+      <div className="w3-dropdown-hover">
+        <a className="w3-button">
+          <i className="fa fa-address-card"></i> Clientes <i className="fa fa-caret-down"></i>
+        </a>
+        <div className="w3-dropdown-content w3-bar-block">
+          {/* Ambos pueden CONSULTAR y LISTAR */}
+          {(isVendor || isAdmin) && <Link to="/BuscarCliente">Buscar Cliente</Link>}
+          {(isVendor || isAdmin) && <Link to="/ListadoClientes">Listado Clientes</Link>}
+
+          {/* Solo Admin: ABM de cliente */}
+          {isAdmin && <Link to="/ActualizarCliente">Actualizar Cliente</Link>}
+          {isAdmin && <Link to="/EliminarCliente">Eliminar Cliente</Link>}
+        </div>
+      </div>
+
+      {/* REPORTE: ambos */}
       <Link to="/ReporteGral" className="w3-button">
         <i className="fa fa-bar-chart"></i> Reporte
       </Link>
 
-      {/* Empresa: solo admin */}
+      {/* EMPRESA: solo ADMIN */}
       {isAdmin && (
         <div className="w3-dropdown-hover">
           <a className="w3-button">
@@ -81,7 +86,7 @@ export default function Menu() {
         </div>
       )}
 
-      {/* Usuarios: solo admin */}
+      {/* USUARIOS: solo ADMIN */}
       {isAdmin && (
         <div className="w3-dropdown-hover">
           <a className="w3-button">
@@ -96,8 +101,8 @@ export default function Menu() {
         </div>
       )}
 
-      {/* Cerrar Sesión: ambos */}
-      <Link to="/login" replace className='Cerrar-button'>
+      {/* CERRAR SESIÓN: ambos */}
+      <Link to="/login" replace className="Cerrar-button">
         <i className="fa fa-sign-out"></i> Cerrar Sesión
       </Link>
     </div>
