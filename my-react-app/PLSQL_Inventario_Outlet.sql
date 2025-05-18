@@ -108,7 +108,7 @@ END;
 CREATE OR REPLACE PROCEDURE OUTLET_Up_Usuario(
         Rut NUMBER,
         Telefono NUMBER,
-        contrasena NUMBER,
+        contrasena VARCHAR2,
         tipo VARCHAR2,
         nombre VARCHAR2
 ) 
