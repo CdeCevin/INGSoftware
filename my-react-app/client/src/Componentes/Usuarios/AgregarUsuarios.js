@@ -80,7 +80,7 @@ function IngresoUsuario() {
                                 <label>Nombre*</label>
                                 <input 
                                     type="text" 
-                                    name="input-nombre" 
+                                    name="INnombre" 
                                     maxLength="50" 
                                     required 
                                     value={nombre} 
@@ -91,7 +91,7 @@ function IngresoUsuario() {
                                 <label>RUT*</label>
                                 <input 
                                     type="text" 
-                                    name="input-rut" 
+                                    name="INRut" 
                                     maxLength="10" 
                                     required 
                                     value={rut} 
@@ -102,7 +102,7 @@ function IngresoUsuario() {
                                 <label>Telefono*</label>
                                 <input 
                                     type="text" 
-                                    name="input-tel" 
+                                    name="INtelefono" 
                                     pattern="[0-9]+" 
                                     maxLength="9" 
                                     required 
@@ -113,7 +113,7 @@ function IngresoUsuario() {
                             <div>
                                 <label>Tipo de Usuario</label>
                                 <select 
-                                    name="input-tipo"
+                                    name="INRol"
                                     required
                                     value={tipo}
                                     onChange={(e) => setTipo(e.target.value)}
@@ -128,7 +128,7 @@ function IngresoUsuario() {
                                 <label>Contraseña*</label>  {/* Arreglar esto */}
                                 <input 
                                     type="text" 
-                                    name="input-password" 
+                                    name="INpassword" 
                                     maxLength="9" 
                                     required 
                                     value={password} 
