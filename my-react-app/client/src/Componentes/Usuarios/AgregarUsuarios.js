@@ -24,9 +24,7 @@ function IngresoUsuario() {
         formData.append('input-tel', telefono);
         formData.append('input-tipo', tipo);
         formData.append('input-password', password);
-        console.log('Datos del formulario:', {
-            telefono, stock, precio, password // Muestra solo los campos numéricos
-        });
+
 
         try {
             // Enviar los datos al backend
@@ -56,12 +54,8 @@ function IngresoUsuario() {
         setNombre('');
         setRut(''); 
         settelefono('');
-        setStock('');
-        setPrecio('');
-        setColor('');
         setTipo('');
         setpassword('');
-        setImagen(null);
     };
 
     const closeModal = () => {
