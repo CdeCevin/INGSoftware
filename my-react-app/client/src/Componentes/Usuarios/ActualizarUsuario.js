@@ -73,10 +73,6 @@ function ActualizarUsuario() {
     }, []);
 
     // Manejar cambio en la selección de región
-    const handleRegionChange = (e) => {
-        setRegion(e.target.value);
-        setCiudad(''); // Reiniciar la ciudad al cambiar de región
-    };
 
     return (
         <div style={{ marginLeft: '12%' }}>

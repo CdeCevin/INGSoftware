@@ -56,10 +56,7 @@
             return <div>Error: {error}</div>;
         }
 
-        const closeModal = () => {
-            setModalIsOpen(false);
-        };
-    
+
 
         return (
 
@@ -86,12 +83,6 @@
                             <td>{Usuario.Telefono}</td>
                             <td>{Usuario.Nombre}</td>
                             <td>{Usuario.Tipo}</td>
-                            <td>
-                                {/* Botón para ver la imagen */}
-                                <button type="button" onClick={() => mostrarImagen(Usuario.RUT)}>
-                                    <i className="fa fa-eye"></i>
-                                </button>
-                            </td>
                          </tr>
                     ))}
                     </tbody>
