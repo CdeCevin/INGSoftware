@@ -95,7 +95,7 @@ function IngresoUsuario() {
                                     maxLength="10" 
                                     required 
                                     value={rut} 
-                                    onChange={(e) => setNombre(e.target.value)} 
+                                    onChange={(e) => setRut(e.target.value)} 
                                 />
                             </div>
                             <div>
