@@ -7,14 +7,14 @@ Modal.setAppElement('#root'); // Reemplaza '#root' con tu selector de raíz
 
 function EliminarUsuario() {
     
-    const [rut, setrut] = useState('');
+    const [Rut_Usuario, setRut_Usuario] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
     const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        console.log("Valor de código antes de enviar:", rut); // Verifica si el valor se está capturando correctamente
+        console.log("Valor de código antes de enviar:", Rut_Usuario); // Verifica si el valor se está capturando correctamente
         
         try {
             // Enviar los datos al backend como JSON
@@ -23,10 +23,10 @@ function EliminarUsuario() {
                 headers: {
                     'Content-Type': 'application/json', // Asegúrate de enviar JSON
                 },
-                body: JSON.stringify({ rut }) // Enviar el código del Usuario como JSON
+                body: JSON.stringify({ Rut_Usuario }) // Enviar el código del Usuario como JSON
             });
             
-            console.log("Código enviado al backend:", rut); // Verifica qué valor estás enviando al backend
+            console.log("Código enviado al backend:", Rut_Usuario); // Verifica qué valor estás enviando al backend
         
             if (response.ok) {
                 const data = await response.json();
@@ -49,7 +49,7 @@ function EliminarUsuario() {
     
 
     const resetForm = () => {
-        setrut('');
+        setRut_Usuario('');
     };
 
     const closeModal = () => {
@@ -71,15 +71,15 @@ function EliminarUsuario() {
                         </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
-                                <label>RUT*</label>
+                                <label>Rut*</label>
                                 <input 
                                     type="text" 
-                                    name="rut" 
+                                    name="Rut_Usuario" 
                                     pattern="[0-9]+" 
                                     maxLength="10"  
                                     required 
-                                    value={rut} 
-                                    onChange={(e) => setrut(e.target.value)} 
+                                    value={Rut_Usuario} 
+                                    onChange={(e) => setRut_Usuario(e.target.value)} 
                                 />
                             </div>
                         </div>

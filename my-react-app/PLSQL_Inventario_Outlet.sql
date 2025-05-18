@@ -70,6 +70,26 @@ BEGIN
 END;
 
 
+CREATE OR REPLACE PROCEDURE OUTLET_Eliminar_User(
+        Rut_Usuario NUMBER
+)
+IS 
+BEGIN 
+        DELETE FROM OUTLET_USUARIO
+        WHERE (RUT_Usuario = Rut_Usuario);
+        EXCEPTION
+                WHEN PROGRAM_ERROR THEN
+                      RAISE_APPLICATION_ERROR(-6501,'Error de programa y/o asignación de variables');
+                WHEN STORAGE_ERROR THEN
+                        RAISE_APPLICATION_ERROR(-6500,'Se acabó la memoria o está corrupta');
+                WHEN ROWTYPE_MISMATCH THEN
+                        RAISE_APPLICATION_ERROR(-6504,'Error de asignación de variables');
+                WHEN OTHERS THEN
+                        RAISE_APPLICATION_ERROR(-20010,'Ocurrió un problema inesperado');       
+        ROLLBACK;
+END;
+
+
 
 
 

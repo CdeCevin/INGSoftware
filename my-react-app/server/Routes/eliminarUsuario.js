@@ -1,0 +1,8 @@
+const express = require('express');
+const { eliminarUsuario } = require('../Controllers/eliminarUsuarioController');
+const router = express.Router();
+
+router.post('/', eliminarUsuario);
+
+module.exports = router;
+    
