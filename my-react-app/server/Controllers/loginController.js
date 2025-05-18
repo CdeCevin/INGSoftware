@@ -20,6 +20,7 @@ async function login(req, res) {
     );
 
     const role = result.outBinds.p_role;
+    console.log('Rol obtenido:', role);
     if (!role) {
       return res.status(401).json({ message: 'Rut o contraseña inválidos' });
     }
