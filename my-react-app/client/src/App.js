@@ -92,7 +92,7 @@ function App() {
         <Route path="/VentaClienteEx" element={<VentaClienteEx />} />
         <Route path="/VentaClienteNu" element={<VentaClienteNu />} />
 
-        {/* Ventas */}
+        {/* Usuarios */}
         <Route path="/AgregarUsuarios" element={<AgregarUsuarios />} />
         <Route path="/EliminarUsuario" element={<EliminarUsuario />} />
         <Route path="/ActualizarUsuario" element={<ActualizarUsuario />} />

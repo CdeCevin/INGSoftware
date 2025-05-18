@@ -24,8 +24,8 @@ export default function Menu() {
         <div className="w3-dropdown-content w3-bar-block">
           <Link to="/VentaClienteNu">Cliente Nuevo</Link>
           <Link to="/VentaClienteEx">Cliente Antiguo</Link>
-          {isVendor && <Link to="/VentasPendientes">Ventas Pendientes</Link>}
-          {isAdmin  && <Link to="/VentasPendientes">Ventas Pendientes</Link>}
+          {isVendor && <Link to="/HistorialVentas">Ventas Pendientes</Link>}
+          {isAdmin  && <Link to="/HistorialVentas">Ventas Pendientes</Link>}
         </div>
       </div>
 
@@ -69,10 +69,11 @@ export default function Menu() {
       </div>
 
       {/* REPORTE: ambos */}
+      {isAdmin && (
       <Link to="/ReporteGral" className="w3-button">
         <i className="fa fa-bar-chart"></i> Reporte
       </Link>
-
+      )}
       {/* EMPRESA: solo ADMIN */}
       {isAdmin && (
         <div className="w3-dropdown-hover">
