@@ -35,6 +35,7 @@ const anClienteRoutes = require('./Routes/anCliente');
     //Usuarios
 const ingresarUsuarioRoutes = require('./Routes/IngresarUsuario');
 const eliminarUsuarioRoutes = require('./Routes/eliminarUsuario');
+const userListRoutes = require('./Routes/userList');
 
 const app = express();
 
@@ -79,7 +80,7 @@ app.use('/api/anCliente',anClienteRoutes);
 //Usuarios
 app.use('/api/ingresarUsuario', ingresarUsuarioRoutes);
 app.use('/api/eliminarUsuario', eliminarUsuarioRoutes);
-
+app.use('/api/userList', userListRoutes);
 
 const port = 3001;
 app.listen(port, () => {

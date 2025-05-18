@@ -22,10 +22,10 @@ const eliminarUsuario = async (req, res) => {
 
     await connection.commit();
 
-    res.status(200).json({ message: 'Producto eliminado correctamente.' });
+    res.status(200).json({ message: 'Usuario eliminado correctamente.' });
   } catch (err) {
-    console.error('Error al eliminar producto:', err);
-    res.status(500).json({ message: 'Error al eliminar el producto.' });
+    console.error('Error al eliminar Usuario:', err);
+    res.status(500).json({ message: 'Error al eliminar el Usuario.' });
   } finally {
     if (connection) {
       await connection.close();
