@@ -45,6 +45,15 @@ function Menu() {
                         <Link to="/VisualizarDatos" > Visualizar Datos</Link>
                     </div>
                 </div>
+                <div className="w3-dropdown-hover">
+                    <a className="w3-button"><i className="fa fa-user"></i> Usuarios <i className="fa fa-caret-down"></i></a>
+                    <div className="w3-dropdown-content w3-bar-block">
+                        <Link to="/ActualizarDatos" > Añadir Usuario</Link>
+                        <Link to="/VisualizarDatos" > Actualizar Usuario</Link>
+                        <Link to="/ActualizarDatos" > Eliminar Usuario</Link>
+                        <Link to="/VisualizarDatos" > Listado de Usuarios</Link>
+                    </div>
+                </div>
                 <Link to="/login" replace className='Cerrar-button'><i className="fa fa-sign-out"></i> Cerrar Sesión</Link>
             </div>
         </div>
