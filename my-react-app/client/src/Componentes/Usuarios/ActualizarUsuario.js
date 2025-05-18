@@ -32,7 +32,7 @@ function ActualizarUsuario() {
 
         try {
             // Enviar los datos al backend
-            const response = await fetch('http://localhost:3001/api/upUsuario', {
+            const response = await fetch('http://localhost:3001/api/upUser', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
