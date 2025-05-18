@@ -9,7 +9,7 @@ const upload = multer({ storage });
 const insertUsuario = async (req, res) => {
     const { rut, nombre, telefono, tipo, password } = req.body;
 
-    console.log('Datos recibidos en el backend:', rut, nombre, telefono, tipo, INRol);
+    console.log('Datos recibidos en el backend:', rut, nombre, telefono, tipo);
 password
 
     let connection;
