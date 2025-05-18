@@ -3,59 +3,59 @@ import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
 
-Modal.setAppElement('#root'); // Reemplaza '#root' con tu selector de raíz
+Modal.setAppElement('#root'); // Reemplaza '#root' si usas otro id en tu HTML
 
 function IngresoUsuario() {
     const [nombre, setNombre] = useState('');
-    const [telefono, settelefono] = useState('');
+    const [telefono, setTelefono] = useState('');
     const [rut, setRut] = useState('');
     const [tipo, setTipo] = useState('');
-    const [password, setpassword] = useState('');
-    const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
-    const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
+    const [password, setPassword] = useState('');
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        
-        // Agregar los datos del formulario a FormData
-        formData.append('INnombre', nombre);
-        formData.append('INRut', rut);
-        formData.append('INtelefono', telefono);
-        formData.append('INRol', tipo);
-        formData.append('INpassword', password);
 
+        const formData = {
+            INnombre: nombre,
+            INRut: rut,
+            INtelefono: telefono,
+            INRol: tipo,
+            INpassword: password,
+        };
 
         try {
-            // Enviar los datos al backend
             const response = await fetch('http://localhost:3001/api/ingresarUsuario', {
                 method: 'POST',
-                body: formData,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
             });
 
+            const data = await response.json();
+
             if (response.ok) {
-                const data = await response.json();
-                setModalMessage(data.message); // Mostrar mensaje de éxito
-                // Opcional: Reiniciar el formulario
+                setModalMessage(data.message || 'Usuario añadido correctamente.');
                 resetForm();
             } else {
-                const errorData = await response.json();
-                setModalMessage(errorData.message); // Mostrar mensaje de error
+                setModalMessage(data.message || 'Ocurrió un error al añadir el usuario.');
             }
         } catch (error) {
             console.error('Error al enviar el formulario:', error);
-            setModalMessage('Error al enviar el formulario.'); // Mensaje de error genérico
+            setModalMessage('Error al conectar con el servidor.');
         } finally {
-            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
+            setModalIsOpen(true);
         }
     };
 
     const resetForm = () => {
         setNombre('');
-        setRut(''); 
-        settelefono('');
+        setRut('');
+        setTelefono('');
         setTipo('');
-        setpassword('');
+        setPassword('');
     };
 
     const closeModal = () => {
@@ -69,7 +69,7 @@ function IngresoUsuario() {
     return (
         <div style={{ marginLeft: '12%' }}>
             <div className="main-block">
-                <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <form onSubmit={handleSubmit}>
                     <h1>Añadir Usuario</h1>
                     <fieldset>
                         <legend>
@@ -79,41 +79,37 @@ function IngresoUsuario() {
                             <div>
                                 <label>Nombre*</label>
                                 <input 
-                                    type="text" 
-                                    name="INnombre" 
-                                    maxLength="50" 
-                                    required 
-                                    value={nombre} 
-                                    onChange={(e) => setNombre(e.target.value)} 
+                                    type="text"
+                                    maxLength="50"
+                                    required
+                                    value={nombre}
+                                    onChange={(e) => setNombre(e.target.value)}
                                 />
                             </div>
                             <div>
                                 <label>RUT*</label>
                                 <input 
-                                    type="text" 
-                                    name="INRut" 
-                                    maxLength="10" 
-                                    required 
-                                    value={rut} 
-                                    onChange={(e) => setRut(e.target.value)} 
+                                    type="text"
+                                    maxLength="10"
+                                    required
+                                    value={rut}
+                                    onChange={(e) => setRut(e.target.value)}
                                 />
                             </div>
                             <div>
-                                <label>Telefono*</label>
+                                <label>Teléfono*</label>
                                 <input 
-                                    type="text" 
-                                    name="INtelefono" 
-                                    pattern="[0-9]+" 
-                                    maxLength="9" 
-                                    required 
-                                    value={telefono} 
-                                    onChange={(e) => settelefono(e.target.value)} 
+                                    type="text"
+                                    pattern="[0-9]+"
+                                    maxLength="9"
+                                    required
+                                    value={telefono}
+                                    onChange={(e) => setTelefono(e.target.value)}
                                 />
                             </div>
                             <div>
-                                <label>Tipo de Usuario</label>
+                                <label>Tipo de Usuario*</label>
                                 <select 
-                                    name="INRol"
                                     required
                                     value={tipo}
                                     onChange={(e) => setTipo(e.target.value)}
@@ -123,16 +119,14 @@ function IngresoUsuario() {
                                     <option value="Vendedor">Vendedor</option>
                                 </select>
                             </div>
-                            <div> 
-                            
-                                <label>Contraseña*</label>  {/* Arreglar esto */}
+                            <div>
+                                <label>Contraseña*</label>
                                 <input 
-                                    type="text" 
-                                    name="INpassword" 
-                                    maxLength="9" 
-                                    required 
-                                    value={password} 
-                                    onChange={(e) => setpassword(e.target.value)} 
+                                    type="password"
+                                    maxLength="50"
+                                    required
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
                         </div>
@@ -142,7 +136,7 @@ function IngresoUsuario() {
             </div>
 
             {/* Modal para mostrar mensajes */}
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className="custom-modal">
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
                 <button onClick={closeModal}>Cerrar</button>
