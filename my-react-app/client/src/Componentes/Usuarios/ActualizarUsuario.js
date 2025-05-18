@@ -24,7 +24,7 @@ function ActualizarUsuario() {
             INnombre: nombre || null,
             INtelefono: telefono || null,
             INtipo: tipo || null,
-            INpassowrd: password || null,
+            INpassword: password || null,
 
 
         };
@@ -128,7 +128,7 @@ function ActualizarUsuario() {
                                 <label>Tipo de Usuario</label>
                                 <select 
                                     name="input-tipo"
-                                    required
+                                    
                                     value={tipo}
                                     onChange={(e) => setTipo(e.target.value)} 
                                 >
