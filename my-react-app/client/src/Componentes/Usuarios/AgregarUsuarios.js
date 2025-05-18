@@ -150,4 +150,4 @@ function IngresoUsuario() {
     );
 }
 
-export default IngresoProducto;
+export default IngresoUsuario;
