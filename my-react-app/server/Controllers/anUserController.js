@@ -6,7 +6,7 @@ const { getConnection } = require('../db/connection');
 const storage = multer.memoryStorage(); // o config personalizada
 const upload = multer({ storage });
 
-const insertCliente = async (req, res) => {
+const insertUsuario = async (req, res) => {
     const { INRut, INnombre, INpassword, INtelefono, INRol } = req.body;
 
     console.log('Datos recibidos en el backend:', {
@@ -48,4 +48,4 @@ const insertCliente = async (req, res) => {
     }
 };
 
-module.exports = { insertCliente };
+module.exports = { insertUsuario };
