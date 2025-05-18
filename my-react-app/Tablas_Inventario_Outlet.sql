@@ -24,9 +24,10 @@ CREATE TABLE OUTLET_Usuario(
         Nombre_Usuario VARCHAR2(50),
         Contrasena_Usuario VARCHAR2(16),
         Telefono_Usuario NUMBER,
-        ROL_Usuario NUMBER,
+        ROL_Usuario VARCHAR2(15),
         CONSTRAINT OUTLET_Usuario PRIMARY KEY (RUT_Usuario)
 );
+
 
 
 CREATE TABLE OUTLET_Auditoria(
