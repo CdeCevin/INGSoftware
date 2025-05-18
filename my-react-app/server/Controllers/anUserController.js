@@ -7,7 +7,7 @@ const storage = multer.memoryStorage(); // o config personalizada
 const upload = multer({ storage });
 
 const insertUsuario = async (req, res) => {
-    const { INRrutut, INnombre, INpassword, INtelefono, INRol } = req.body;
+    const { INRut, INnombre, INpassword, INtelefono, INRol } = req.body;
 
     console.log('Datos recibidos en el backend:', INRut, INnombre, INpassword, INtelefono, INRol);
 
