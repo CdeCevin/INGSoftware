@@ -7,10 +7,10 @@ const storage = multer.memoryStorage(); // o config personalizada
 const upload = multer({ storage });
 
 const insertUsuario = async (req, res) => {
-    const { INRut, INnombre, INpassword, INtelefono, INRol } = req.body;
+    const { rut, nombre, telefono, tipo, password } = req.body;
 
-    console.log('Datos recibidos en el backend:', INRut, INnombre, INpassword, INtelefono, INRol);
-
+    console.log('Datos recibidos en el backend:', rut, nombre, telefono, tipo, INRol);
+password
 
     let connection;
 
@@ -20,11 +20,11 @@ const insertUsuario = async (req, res) => {
         await connection.execute(
             `BEGIN OUTLET_Insert_User(:Rut_Usuario, :Nombre_Usuario, :Contrasena_Usuario, :Telefono_Usuario, :Rol_Usuario); END;`,
             {
-                Rut_Usuario: Number(INRut),
-                Nombre_Usuario: INnombre,
-                Contrasena_Usuario: INpassword,
-                Telefono_Usuario: Number(INtelefono),
-                Rol_Usuario: INRol
+                Rut_Usuario: Number(rut),
+                Nombre_Usuario: nombre,
+                Contrasena_Usuario: password,
+                Telefono_Usuario: Number(telefono),
+                Rol_Usuario: tipo
             }
         );
 
