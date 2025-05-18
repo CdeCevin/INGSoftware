@@ -71,12 +71,12 @@ END;
 
 
 CREATE OR REPLACE PROCEDURE OUTLET_Eliminar_User(
-        Rut_Usuario NUMBER
+        Rut NUMBER
 )
 IS 
 BEGIN 
         DELETE FROM OUTLET_USUARIO
-        WHERE (RUT_Usuario = Rut_Usuario);
+        WHERE (Rut = Rut_Usuario);
         EXCEPTION
                 WHEN PROGRAM_ERROR THEN
                       RAISE_APPLICATION_ERROR(-6501,'Error de programa y/o asignación de variables');
