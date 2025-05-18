@@ -90,6 +90,21 @@ BEGIN
 END;
 
 
+CREATE OR REPLACE PROCEDURE Outlet_FiltrarUsuarios(
+  c_Usuarios OUT SYS_REFCURSOR
+) AS
+BEGIN
+  OPEN c_Usuarios FOR
+    SELECT
+      RUT_Usuario,
+      Telefono_Usuario,
+      Nombre_Usuario,
+      ROL_Usuario
+    FROM OUTLET_Usuario;
+END;
+
+
+
 
 
 

@@ -14,39 +14,22 @@
         }, []);
 
         useEffect(() => {
-            const obtenerUsuarios = async () => {
-                setCargando(true);
-                console.log("Iniciando la obtención de Usuarios");
-                try {
-                    const response = await fetch('http://localhost:3001/api/products');
-                    console.log("Respuesta de la API:", response);
-                    if (!response.ok) {
-                        throw new Error('Error en la red al obtener los Usuarios');
-                    }
-                    const data = await response.json();
-                    console.log("Datos recibidos:", data);
-                    // Convertir array de arrays a array de objetos
-                    const UsuariosFormateados = data.map((Usuario) => ({
-                        Codigo_Usuario: Usuario[0],
-                        Stock: Usuario[1],
-                        Stock_Minimo: Usuario[2],
-                        Precio_Unitario: Usuario[3],
-                        Nombre_Usuario: Usuario[4],
-                        Categoria: Usuario[5],
-                        Color_Usuario: Usuario[6],
-                        Fecha: Usuario[7],
-                    }));
-                    setUsuarios(UsuariosFormateados);
-                } catch (error) {
-                    setError(error.message);
-                } finally {
-                    setCargando(false);
-                }
-            };
-            
-
-            obtenerUsuarios();
+        async function obtenerUsuarios() {
+            setCargando(true);
+            try {
+            const res = await fetch('http://localhost:3001/api/usuarios');
+            if (!res.ok) throw new Error('Error en la red');
+            const data = await res.json();
+            setUsuarios(data);
+            } catch (e) {
+            setError(e.message);
+            } finally {
+            setCargando(false);
+            }
+        }
+        obtenerUsuarios();
         }, []);
+
 
         if (cargando) {
             return <div>Cargando Usuarios...</div>;
@@ -76,6 +59,7 @@
                         </tr>
                     </thead>
                     <tbody>
+
                     {Usuarios.map((Usuario) => (
                         
                         <tr key={Usuario.RUT}>
