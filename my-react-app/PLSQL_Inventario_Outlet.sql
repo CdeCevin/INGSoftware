@@ -55,8 +55,8 @@ CREATE OR REPLACE PROCEDURE OUTLET_Insert_User(
 )
 IS
 BEGIN 
-        INSERT INTO OUTLET_USUARIO(RUT_Usuario,Nombre_Usuario, Contrasena_Usuario,ROL_Usuario)    
-                VALUES(Rut_Usuario,Nombre_Usuario, Contrasena_Usuario,Rol_Usuario);
+        INSERT INTO OUTLET_USUARIO(RUT_Usuario,Nombre_Usuario, Contrasena_Usuario,Telefono_Usuario,ROL_Usuario)    
+                VALUES(Rut_Usuario,Nombre_Usuario, Contrasena_Usuario,Telefono_Usuario,Rol_Usuario);
         EXCEPTION
                 WHEN PROGRAM_ERROR THEN
                       RAISE_APPLICATION_ERROR(-6501,'Error de programa y/o asignación de variables');

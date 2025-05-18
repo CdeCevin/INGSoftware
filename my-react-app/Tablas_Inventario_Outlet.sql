@@ -28,9 +28,6 @@ CREATE TABLE OUTLET_Usuario(
         CONSTRAINT OUTLET_Usuario PRIMARY KEY (RUT_Usuario)
 );
 
-ALTER TABLE OUTLET_Usuario
-ADD Telefono_Usuario NUMBER;
-ADD Nombre_Usuario VARCHAR2(50),;
 
 CREATE TABLE OUTLET_Auditoria(
         Codigo_Auditoria NUMBER,
