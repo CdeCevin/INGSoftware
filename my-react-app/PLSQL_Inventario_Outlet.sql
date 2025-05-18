@@ -1242,7 +1242,7 @@ BEGIN
                 :NEW.Telefono_Usuario:= :OLD.Telefono_Usuario;
         END IF;
         IF :NEW.ROL_Usuario is NULL THEN
-                :NEW.SROL_Usuario:= :OLD.ROL_Usuario;
+                :NEW.ROL_Usuario:= :OLD.ROL_Usuario;
         END IF;       
 
 END;   

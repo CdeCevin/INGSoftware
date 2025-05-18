@@ -16,18 +16,19 @@ const updateUser = async (req, res) => {
       `BEGIN
          OUTLET_Up_Usuario(
            :p_rut,
-           :p_nombre,
            :p_telefono,
+           :p_password,
            :p_rol,
-           :p_password
+           :p_nombre,
+           
          );
        END;`,
       {
-        p_rut:      { val: Number(rut),      dir: oracledb.BIND_IN, type: oracledb.NUMBER },
-        p_nombre:   { val: INnombre,         dir: oracledb.BIND_IN, type: oracledb.STRING },
+        p_rut:      { val: Number(rut),      dir: oracledb.BIND_IN, type: oracledb.NUMBER }, 
         p_telefono: { val: Number(INtelefono), dir: oracledb.BIND_IN, type: oracledb.NUMBER },
+        p_password: { val: INpassword,       dir: oracledb.BIND_IN, type: oracledb.STRING },
         p_rol:      { val: INtipo,           dir: oracledb.BIND_IN, type: oracledb.STRING },
-        p_password: { val: INpassword,       dir: oracledb.BIND_IN, type: oracledb.STRING }
+        p_nombre:   { val: INnombre,         dir: oracledb.BIND_IN, type: oracledb.STRING }
       }
     );
 
