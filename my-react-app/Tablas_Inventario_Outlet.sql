@@ -21,9 +21,9 @@ DROP TABLE OUTLET_Auditoria;
 
 CREATE TABLE OUTLET_Usuario(
         RUT_Usuario NUMBER,
-        Contrasena_Usuario VARCHAR2(16);
+        Contrasena_Usuario VARCHAR2(16),
         ROL_Usuario NUMBER,
-        CONSTRAINT OUTLET_Usuario PRIMARY KEY (RUT)
+        CONSTRAINT OUTLET_Usuario PRIMARY KEY (RUT_Usuario)
 );
 
 CREATE TABLE OUTLET_Auditoria(
