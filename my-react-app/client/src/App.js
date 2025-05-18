@@ -30,6 +30,9 @@ import HistorialVentas from './Componentes/Ventas/HistorialVentas';
 import VentaClienteEx from './Componentes/Ventas/VentaClienteEx';
 import VentaClienteNu from './Componentes/Ventas/VentaClienteNu';
 
+// Usuarios 
+import AgregarUsuarios from './Componentes/Usuarios/AgregarUsuarios';
+
 function LayoutWithMenu({ children }) {
   const { pathname } = useLocation();
   const hideMenuOn = ['/', '/login'];  // rutas sin menú
@@ -85,6 +88,9 @@ function App() {
         <Route path="/HistorialVentas" element={<HistorialVentas />} />
         <Route path="/VentaClienteEx" element={<VentaClienteEx />} />
         <Route path="/VentaClienteNu" element={<VentaClienteNu />} />
+
+        {/* Ventas */}
+        <Route path="/AgregarUsuarios" element={<AgregarUsuarios />} />
 
       </Routes>
     </LayoutWithMenu>
