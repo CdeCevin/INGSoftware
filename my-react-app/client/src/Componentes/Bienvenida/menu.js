@@ -24,8 +24,8 @@ export default function Menu() {
         <div className="w3-dropdown-content w3-bar-block">
           <Link to="/VentaClienteNu">Cliente Nuevo</Link>
           <Link to="/VentaClienteEx">Cliente Antiguo</Link>
-          {isVendor && <Link to="/HistorialVentas">Ventas Pendientes</Link>}
-          {isAdmin  && <Link to="/HistorialVentas">Ventas Pendientes</Link>}
+          {isVendor && <Link to="/HistorialVentas">Historial de Ventas</Link>}
+          {isAdmin  && <Link to="/HistorialVentas">Historial de Ventas</Link>}
         </div>
       </div>
 
