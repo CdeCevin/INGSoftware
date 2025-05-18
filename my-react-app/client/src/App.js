@@ -33,6 +33,8 @@ import VentaClienteNu from './Componentes/Ventas/VentaClienteNu';
 // Usuarios 
 import AgregarUsuarios from './Componentes/Usuarios/AgregarUsuarios';
 import EliminarUsuario from './Componentes/Usuarios/EliminarUsuario';
+import ActualizarUsuario from './Componentes/Usuarios/ActualizarUsuario';
+import ListadoUsuarios from './Componentes/Usuarios/ListadoUsuarios';
 
 function LayoutWithMenu({ children }) {
   const { pathname } = useLocation();
