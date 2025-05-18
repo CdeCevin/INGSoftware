@@ -48,4 +48,4 @@ const insertCliente = async (req, res) => {
     }
 };
 
-export default  insertCliente ;
+module.exports = { insertCliente };
