@@ -1,7 +1,6 @@
     import React, { useEffect, useState } from 'react';
     import '../../Estilos/style_menu.css';
     import '../../Estilos/estilo.css';
-    import Modal from 'react-modal';
 
     const ListadoUsuarios = () => {
         console.log("HOLAA");
@@ -17,7 +16,7 @@
         async function obtenerUsuarios() {
             setCargando(true);
             try {
-            const res = await fetch('http://localhost:3001/api/usuarios');
+            const res = await fetch('http://localhost:3001/api/userList');
             if (!res.ok) throw new Error('Error en la red');
             const data = await res.json();
             setUsuarios(data);
@@ -48,7 +47,7 @@
                 <div className="main-block">
                 <h1 style={{padding:20}}>Listado de Usuarios</h1>
                 <fieldset style={{paddingTop:0}}> <legend> <h3>Usuarios añadidos</h3></legend>
-            {/* Modal para mostrar la imagen seleccionada */}
+     
                 <table className="venta-table" style={{ marginLeft: '8%' }}>
                     <thead>
                         <tr>
