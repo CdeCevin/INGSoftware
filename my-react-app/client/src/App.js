@@ -32,6 +32,7 @@ import VentaClienteNu from './Componentes/Ventas/VentaClienteNu';
 
 // Usuarios 
 import AgregarUsuarios from './Componentes/Usuarios/AgregarUsuarios';
+import EliminarUsuario from './Componentes/Usuarios/EliminarUsuario';
 
 function LayoutWithMenu({ children }) {
   const { pathname } = useLocation();
@@ -91,6 +92,9 @@ function App() {
 
         {/* Ventas */}
         <Route path="/AgregarUsuarios" element={<AgregarUsuarios />} />
+        <Route path="/EliminarUsuario" element={<EliminarUsuario />} />
+        <Route path="/ActualizarUsuario" element={<ActualizarUsuario />} />
+        <Route path="/ListadoUsuarios" element={<ListadoUsuarios />} />
 
       </Routes>
     </LayoutWithMenu>

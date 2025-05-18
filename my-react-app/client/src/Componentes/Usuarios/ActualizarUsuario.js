@@ -1,42 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
+import optionSets from '../../Estilos/regiones'; // Importa el archivo con regiones y ciudades
 import Modal from 'react-modal';
 
-Modal.setAppElement('#root'); // Reemplaza '#root' con tu selector de raíz
+Modal.setAppElement('#root'); // Asegúrate de que el selector de raíz sea correcto
 
-function IngresoUsuario() {
+function ActualizarUsuario() {
+    const [rut, setrut] = useState('');
     const [nombre, setNombre] = useState('');
-    const [telefono, settelefono] = useState('');
-    const [rut, setRut] = useState('');
-    const [tipo, setTipo] = useState('');
+    const [telefono, setTelefono] = useState('');
     const [password, setpassword] = useState('');
+    const [tipo, setTipo] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
     const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        
-        // Agregar los datos del formulario a FormData
-        formData.append('input-nombre', nombre);
-        formData.append('input-rut', rut);
-        formData.append('input-tel', telefono);
-        formData.append('input-tipo', tipo);
-        formData.append('input-password', password);
 
+        // Preparar los datos en formato JSON
+        const formData = {
+            rut: rut,
+            INnombre: nombre || null,
+            INtelefono: telefono || null,
+            INpassowrd: password || null,
+            INtipo: tipo || null,
+
+
+        };
+        console.log('Datos del formulario:', formData);
 
         try {
             // Enviar los datos al backend
-            const response = await fetch('http://localhost:3001/api/ingresar_Usuarios/insertar', {
+            const response = await fetch('http://localhost:3001/api/upUsuario', {
                 method: 'POST',
-                body: formData,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
             });
 
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message); // Mostrar mensaje de éxito
-                // Opcional: Reiniciar el formulario
                 resetForm();
             } else {
                 const errorData = await response.json();
@@ -44,7 +50,7 @@ function IngresoUsuario() {
             }
         } catch (error) {
             console.error('Error al enviar el formulario:', error);
-            setModalMessage('Error al enviar el formulario.'); // Mensaje de error genérico
+            setModalMessage('El Usuario no existe o ha ocurrido un error interno.'); // Mensaje de error genérico
         } finally {
             setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
         }
@@ -52,8 +58,8 @@ function IngresoUsuario() {
 
     const resetForm = () => {
         setNombre('');
-        setRut(''); 
-        settelefono('');
+        setrut('');
+        setTelefono('');
         setTipo('');
         setpassword('');
     };
@@ -63,51 +69,63 @@ function IngresoUsuario() {
     };
 
     useEffect(() => {
-        document.title = 'Ingresar Usuario';
+        document.title = 'Actualizar Usuario';
     }, []);
+
+    // Manejar cambio en la selección de región
+    const handleRegionChange = (e) => {
+        setRegion(e.target.value);
+        setCiudad(''); // Reiniciar la ciudad al cambiar de región
+    };
 
     return (
         <div style={{ marginLeft: '12%' }}>
             <div className="main-block">
-                <form onSubmit={handleSubmit} encType="multipart/form-data">
-                    <h1>Añadir Usuario</h1>
+                <form onSubmit={handleSubmit}>
+                    <h1>Actualizar Usuario</h1>
                     <fieldset>
                         <legend>
-                            <h3>Detalles del Usuario</h3>
+                            <h3>Usuario a Editar</h3>
                         </legend>
-                        <div className="account-details">
+                        <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
-                                <label>Nombre*</label>
+                                <label>Rut*</label>
+                                <input 
+                                    type="text" 
+                                    name="input-rut" 
+                                    pattern="[0-9]+" 
+                                    maxLength="10" 
+                                    required 
+                                    value={rut} 
+                                    onChange={(e) => setrut( e.target.value)} 
+                                />
+                            </div>
+                            
+                        </div>
+                    </fieldset>
+                    <fieldset>   
+                        <legend>
+                            <h3>Datos a editar</h3>
+                        </legend>
+                        <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
+                            <div>
+                                <label>Nombre</label>
                                 <input 
                                     type="text" 
                                     name="input-nombre" 
                                     maxLength="50" 
-                                    required 
                                     value={nombre} 
                                     onChange={(e) => setNombre(e.target.value)} 
                                 />
                             </div>
                             <div>
-                                <label>RUT*</label>
+                                <label>Teléfono</label>
                                 <input 
                                     type="text" 
-                                    name="input-rut" 
-                                    maxLength="10" 
-                                    required 
-                                    value={rut} 
-                                    onChange={(e) => setNombre(e.target.value)} 
-                                />
-                            </div>
-                            <div>
-                                <label>Telefono*</label>
-                                <input 
-                                    type="text" 
-                                    name="input-tel" 
-                                    pattern="[0-9]+" 
+                                    name="input-teléfono" 
                                     maxLength="9" 
-                                    required 
                                     value={telefono} 
-                                    onChange={(e) => settelefono(e.target.value)} 
+                                    onChange={(e) => setTelefono(e.target.value)} 
                                 />
                             </div>
                             <div>
@@ -116,31 +134,28 @@ function IngresoUsuario() {
                                     name="input-tipo"
                                     required
                                     value={tipo}
-                                    onChange={(e) => setTipo(e.target.value)}
+                                    onChange={(e) => setTipo(e.target.value)} 
                                 >
-                                    <option value="">Seleccionar</option>
-                                    <option value="Administrador">Administrador</option>
+                                    <option value="">Selecciona un tipo de usuario</option>
                                     <option value="Vendedor">Vendedor</option>
+                                    <option value="Administrador">Administrador</option>
                                 </select>
                             </div>
-                            <div> 
-                            
-                                <label>Contraseña*</label>  {/* Arreglar esto */}
+                            <div>
+                                <label>Contraseña</label>
                                 <input 
-                                    type="text" 
+                                    type="password" 
                                     name="input-password" 
-                                    maxLength="9" 
-                                    required 
+                                    maxLength="50" 
                                     value={password} 
                                     onChange={(e) => setpassword(e.target.value)} 
                                 />
                             </div>
                         </div>
                     </fieldset>
-                    <button type="submit">Añadir Usuario</button>
+                    <button type="submit">Actualizar</button>
                 </form>
             </div>
-
             {/* Modal para mostrar mensajes */}
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
                 <h2>Mensaje</h2>
@@ -151,4 +166,4 @@ function IngresoUsuario() {
     );
 }
 
-export default IngresoUsuario;
+export default ActualizarUsuario;
