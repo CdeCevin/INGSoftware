@@ -23,8 +23,8 @@ function ActualizarUsuario() {
             rut: rut,
             INnombre: nombre || null,
             INtelefono: telefono || null,
-            INpassowrd: password || null,
             INtipo: tipo || null,
+            INpassowrd: password || null,
 
 
         };
