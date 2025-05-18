@@ -92,7 +92,7 @@ function IngresoUsuario() {
                                 <input 
                                     type="text" 
                                     name="input-rut" 
-                                    maxLength="50" 
+                                    maxLength="10" 
                                     required 
                                     value={rut} 
                                     onChange={(e) => setNombre(e.target.value)} 
@@ -104,7 +104,7 @@ function IngresoUsuario() {
                                     type="text" 
                                     name="input-tel" 
                                     pattern="[0-9]+" 
-                                    maxLength="4" 
+                                    maxLength="9" 
                                     required 
                                     value={telefono} 
                                     onChange={(e) => settelefono(e.target.value)} 
@@ -124,7 +124,7 @@ function IngresoUsuario() {
                                 </select>
                             </div>
                             <div> 
-                                <label>Contraseña*</label>
+                                <label>Contraseña*</label>  //Arreglar aqui 
                                 <input 
                                     type="text" 
                                     name="input-password" 
