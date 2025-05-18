@@ -25,7 +25,7 @@ const insertCliente = async (req, res) => {
                 Nombre_Usuario: INnombre,
                 Contrasena_Usuario: INpassword,
                 Telefono_Usuario: Number(INtelefono),
-                Rol_Usuario: Number(INRol)
+                Rol_Usuario: 0
             }
         );
 
