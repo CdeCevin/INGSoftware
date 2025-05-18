@@ -105,6 +105,33 @@ END;
 
 
 
+CREATE OR REPLACE PROCEDURE OUTLET_Up_Usuario(
+        Rut NUMBER,
+        Telefono NUMBER,
+        contrasena NUMBER,
+        tipo VARCHAR2,
+        nombre VARCHAR2
+) 
+IS
+BEGIN   
+        LOCK TABLE OUTLET_PRODUCTO IN ROW EXCLUSIVE MODE;
+        UPDATE OUTLET_USUARIO
+        SET Nombre_Usuario = nombre, Contrasena_Usuario = contrasena, Telefono_Usuario = Telefono, ROL_Usuario = tipo
+        WHERE(RUT_Usuario = Rut);             
+
+        COMMIT;
+        EXCEPTION
+                WHEN PROGRAM_ERROR THEN
+                        RAISE_APPLICATION_ERROR(-6501,'Error de programa y/o asignación de variables');
+                WHEN STORAGE_ERROR THEN
+                        RAISE_APPLICATION_ERROR(-6500,'Se acabó la memoria o está corrupta');
+                WHEN ROWTYPE_MISMATCH THEN
+                        RAISE_APPLICATION_ERROR(-6504,'Error de asignación de variables');
+                WHEN OTHERS THEN
+                        RAISE_APPLICATION_ERROR(-20010,'Ocurrió un problema inesperado');
+        ROLLBACK;
+END;
+
 
 
 
@@ -1200,3 +1227,22 @@ BEGIN
         :NEW.STOCK := -1 * :NEW.STOCK; 
     END IF;
 END;
+
+CREATE OR REPLACE TRIGGER Tri_Up_User
+BEFORE UPDATE ON OUTLET_Usuario
+FOR EACH ROW
+BEGIN
+        IF :NEW.Nombre_Usuario is NULL THEN
+                :NEW.Nombre_Usuario := :OLD.Nombre_Usuario;
+        END IF;
+        IF :NEW.Contrasena_Usuario is NULL THEN
+                :NEW.Contrasena_Usuario := :OLD.Contrasena_Usuario;
+        END IF;
+        IF :NEW.Telefono_Usuario is NULL THEN
+                :NEW.Telefono_Usuario:= :OLD.Telefono_Usuario;
+        END IF;
+        IF :NEW.ROL_Usuario is NULL THEN
+                :NEW.SROL_Usuario:= :OLD.ROL_Usuario;
+        END IF;       
+
+END;   
