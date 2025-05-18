@@ -46,6 +46,33 @@ CREATE SEQUENCE sec_cod_ventas_pendientes
 --------------------------------------------------------------
 ------------------Procedimientos------------------------------
 --------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE OUTLET_Auth_User (
+    p_rut        IN  OUTLET_Usuario.RUT_Usuario%TYPE,
+    p_password   IN  OUTLET_Usuario.Contrasena_Usuario%TYPE,
+    p_role       OUT OUTLET_Usuario.ROL_Usuario%TYPE
+) IS
+    v_count NUMBER;
+BEGIN
+    -- Verificamos existencia y contraseña
+    SELECT COUNT(*)
+      INTO v_count
+      FROM OUTLET_Usuario
+     WHERE RUT_Usuario = p_rut
+       AND Contrasena_Usuario = p_password;
+
+    IF v_count = 1 THEN
+        -- Si coincide, devolvemos el rol
+        SELECT ROL_Usuario
+          INTO p_role
+          FROM OUTLET_Usuario
+         WHERE RUT_Usuario = p_rut;
+    ELSE
+        -- Rol vacío indica fallo de autenticación
+        p_role := NULL;
+    END IF;
+END;
+
 CREATE OR REPLACE PROCEDURE OUTLET_Insert_User(
         Rut_Usuario NUMBER,
         Nombre_Usuario VARCHAR2,
@@ -102,7 +129,6 @@ BEGIN
       ROL_Usuario
     FROM OUTLET_Usuario;
 END;
-
 
 
 CREATE OR REPLACE PROCEDURE OUTLET_Up_Usuario(

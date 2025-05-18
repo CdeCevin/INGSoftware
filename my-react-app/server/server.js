@@ -38,6 +38,9 @@ const eliminarUsuarioRoutes = require('./Routes/eliminarUsuario');
 const userListRoutes = require('./Routes/userList');
 const upUserRoutes = require('./Routes/upUser');
 
+    //Login
+const loginRoutes = require('./Routes/login');
+
 const app = express();
 
 app.use(cors());
@@ -83,7 +86,7 @@ app.use('/api/ingresarUsuario', ingresarUsuarioRoutes);
 app.use('/api/eliminarUsuario', eliminarUsuarioRoutes);
 app.use('/api/userList', userListRoutes);
 app.use('/api/upUser', upUserRoutes);
-
+app.use('/api/login', loginRoutes);
 const port = 3001;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
