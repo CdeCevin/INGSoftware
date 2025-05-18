@@ -19,11 +19,11 @@ function IngresoUsuario() {
         const formData = new FormData();
         
         // Agregar los datos del formulario a FormData
-        formData.append('input-nombre', nombre);
-        formData.append('input-rut', rut);
-        formData.append('input-tel', telefono);
-        formData.append('input-tipo', tipo);
-        formData.append('input-password', password);
+        formData.append('INnombre', nombre);
+        formData.append('INRut', rut);
+        formData.append('INtelefono', telefono);
+        formData.append('INRol', tipo);
+        formData.append('INpassword', password);
 
 
         try {
