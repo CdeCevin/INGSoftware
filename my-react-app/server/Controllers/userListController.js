@@ -28,7 +28,8 @@ async function getUsuarios(req, res) {
       Nombre:     r[2],
       Tipo:       r[3]
     }));
-
+ 
+    console.log('Usuarios obtenidos:', usuarios);
     res.json(usuarios);
 
   } catch (err) {

@@ -59,15 +59,13 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                    {Usuarios.map((Usuario) => (
-                        
-                        <tr key={Usuario.RUT}>
-                            <td>{Usuario.RUT}</td>
-                            <td>{Usuario.Telefono}</td>
-                            <td>{Usuario.Nombre}</td>
-                            <td>{Usuario.Tipo}</td>
-                         </tr>
+                    {Usuarios.map(u => (
+                        <tr key={u.RUT}>
+                        <td>{u.RUT}</td>
+                        <td>{u.Telefono}</td>
+                        <td>{u.Nombre}</td>
+                        <td>{u.Tipo}</td>
+                        </tr>
                     ))}
                     </tbody>
                     </table>
