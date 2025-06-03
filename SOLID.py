@@ -63,7 +63,7 @@ if __name__ == "__main__":
     # Ingresar un producto
     producto_data = {
         "codigo": 1,
-        "nombre": "Camiseta",
+        "nombre": "Cortina",
         "stock": 10,
         "precio": 19.99
     }
