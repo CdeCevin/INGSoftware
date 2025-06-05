@@ -1,4 +1,3 @@
-// src/Componentes/Bienvenida/Menu.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../Estilos/style_menu.css';

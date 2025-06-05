@@ -107,9 +107,13 @@ CREATE TABLE OUTLET_Cabecera_Comprobante_Pago(
         Fecha DATE,
         Estado NUMBER DEFAULT 0,
         Codigo_Cliente NUMBER,
+        RUT_USUARIO NUMBER,
         CONSTRAINT OUTLET_Cabecera_Comprobante_Pago PRIMARY KEY(Codigo_Comprobante_Pago)
 );
 ALTER TABLE OUTLET_Cabecera_Comprobante_Pago ADD CONSTRAINT FK_OUTLET_Cabecera_Comprobante_Pago_OUTLET_Cliente FOREIGN KEY(Codigo_Cliente) REFERENCES OUTLET_Cliente(Codigo_Cliente);
+ALTER TABLE OUTLET_CABECERA_COMPROBANTE_PAGO ADD CONSTRAINT FK_OUTLET_Cabecera_Comprobante_Pago_OUTLET_Usuario FOREIGN KEY(RUT_Usuario) REFERENCES OUTLET_Usuario(RUT_Usuario);
+
+ALTER TABLE OUTLET_CABECERA_COMPROBANTE_PAGO ADD RUT_USUARIO
 
 CREATE TABLE OUTLET_Cuerpo_Comprobante_Pago(
         Codigo_Cuerpo_Comprobante_Pago NUMBER,
@@ -119,7 +123,7 @@ CREATE TABLE OUTLET_Cuerpo_Comprobante_Pago(
         Codigo_Producto NUMBER,
         CONSTRAINT PK_OUTLET_Cuerpo_Comprobante_Pago PRIMARY KEY(Codigo_Cuerpo_Comprobante_Pago)
 );
-ALTER TABLE OUTLET_Cuerpo_Comprobante_Pago ADD CONSTRAINT FK_OUTLET_Cuerpo_Comprobante_Pago_OUTLET_Cabecera_Comprobante_Pago FOREIGN KEY(Codigo_Comprobante_Pago) REFERENCES OUTLET_Cabecera_Comprobante_Pago(Codigo_Comprobante_Pago);
+        ALTER TABLE OUTLET_Cuerpo_Comprobante_Pago ADD CONSTRAINT FK_OUTLET_Cuerpo_Comprobante_Pago_OUTLET_Cabecera_Comprobante_Pago FOREIGN KEY(Codigo_Comprobante_Pago) REFERENCES OUTLET_Cabecera_Comprobante_Pago(Codigo_Comprobante_Pago);
 ALTER TABLE OUTLET_Cuerpo_Comprobante_Pago ADD CONSTRAINT FK_OUTLET_Cuerpo_Comprobante_Pago_OUTLET_Producto FOREIGN KEY(Codigo_Producto) REFERENCES OUTLET_Producto(Codigo_Producto);
 
 CREATE TABLE OUTLET_Ventas_Pendientes (
