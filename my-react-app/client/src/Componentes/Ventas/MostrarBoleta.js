@@ -31,7 +31,7 @@ function Boleta() {
             </legend>
             <table border="1" cellpadding="8" style={{borderCollapse:'collapse', width: '80%'}}>
             <tr>
-            <div style={{fontSize: '18px',paddingLeft: '10px',paddingTop: '10px'}}><strong>  Usuario:</strong> {boleta.cabecera.NOMBRE_CLIENTE}</div>
+            <div style={{fontSize: '18px',paddingLeft: '10px',paddingTop: '10px'}}><strong>  Usuariox:</strong> {boleta.cabecera.NOMBRE_CLIENTE}</div>
             <div style={{fontSize: '18px',paddingLeft: '10px',paddingTop: '10px'}}><strong>  Nombre:</strong> {boleta.cabecera.NOMBRE_CLIENTE}</div>
             <div style={{fontSize: '18px',paddingLeft: '10px'}}><strong>  Teléfono:</strong> {boleta.cabecera.TELEFONO}</div>
             <div style={{fontSize: '18px',paddingLeft: '10px'}}><strong>  Dirección:</strong> {`${boleta.direccion.nombreRegion}, ${boleta.direccion.nombreCiudad}, ${boleta.direccion.nombreCalle} #${boleta.direccion.numeroDireccion}`}</div>
