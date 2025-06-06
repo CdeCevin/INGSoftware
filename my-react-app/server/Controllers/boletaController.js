@@ -89,6 +89,8 @@ async function boleta(req, res) {
 
         // 5. Construir la cabecera de la respuesta
         const cabecera = {
+            RUT_USUARIO: cabeceraRows[0][2],
+            NOMBRE_USUARIO: cabeceraRows[0][3],
             NOMBRE_CLIENTE: nombreCliente,
             TELEFONO: telefonoCliente,
             FECHA: cabeceraRows[0][0]
