@@ -677,7 +677,6 @@ END;
 --------------------------------------------------------------
 -------------------Cursores-----------------------------------
 --------------------------------------------------------------
-
 CREATE OR REPLACE PROCEDURE ObtenerBoleta(
     CodigoCabecera IN NUMBER,
     cursor_cabecera OUT SYS_REFCURSOR,
@@ -686,12 +685,13 @@ CREATE OR REPLACE PROCEDURE ObtenerBoleta(
 IS
 BEGIN
     OPEN cursor_cabecera FOR
-        SELECT R.Fecha, R.Codigo_Cliente
+        SELECT R.Fecha, R.Codigo_Cliente, U.RUT_Usuario, U.Nombre_Usuario
         FROM OUTLET_Cabecera_Comprobante_Pago R
+        JOIN OUTLET_Usuario U ON R.RUT_Usuario = U.RUT_Usuario
         WHERE R.Codigo_Comprobante_Pago = CodigoCabecera;
 
     OPEN cursor_cuerpo FOR
-        SELECT M.Nombre_Producto,M.Color_Producto, C.Cantidad, C.Precio_Total, C.Codigo_Producto
+        SELECT M.Nombre_Producto, M.Color_Producto, C.Cantidad, C.Precio_Total, C.Codigo_Producto
         FROM OUTLET_Cuerpo_Comprobante_Pago C
         JOIN OUTLET_Producto M ON C.Codigo_Producto = M.Codigo_Producto
         WHERE C.Codigo_Comprobante_Pago = CodigoCabecera;
