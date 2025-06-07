@@ -105,7 +105,7 @@ async function boleta(req, res) {
                 cod: { val: codigoCabecera, dir: oracledb.BIND_IN }
             });
             await connection.commit(); // Asegúrate de realizar un commit si es necesario
-            console.log('Registro de venta pendiente ejecutado para CodigoCabecera:', codigoCabecera);
+            console.log('Registro de venta pendiente ejecutado para CosdigoCabecera:', codigoCabecera);
         } catch (err) {
             console.error('Error al registrar la venta pendiente:', err);
         }
