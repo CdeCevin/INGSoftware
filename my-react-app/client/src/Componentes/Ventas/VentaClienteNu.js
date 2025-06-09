@@ -428,10 +428,10 @@ function VentaClienteNu() {
               </Modal>
             </>
           )}
-            {paginaActual === 'mostrarBoleta' && (
+            {paginaActual === 'VentaClienteNuevo' && (
                 <div style={{marginLeft: '12%'}}>
                  <div className="main-block">
-                    <MostrarBoleta />
+                    <VentaClienteNuevo />
                  </div>
                 </div>
             )}
