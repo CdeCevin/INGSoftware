@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
-import VentasPendientes from '../VentasPendientes'; // Asegúrate de importar el nuevo componente
+import VentasPendientes from "../Pendiente/VentasPendientes"; // Asegúrate de importar el nuevo componente
 
 function VentaClienteEx() {
     const [codigo, setCodigo] = useState('');
