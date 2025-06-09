@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
-import MostrarBoleta from './MostrarBoleta'; // Asegúrate de importar el nuevo componente
+import VentaClienteNu from './VentaClienteNu'; // Asegúrate de importar el nuevo componente
 import optionSets from '../../Estilos/regiones';
 Modal.setAppElement('#root');
 function VentaClienteNu() {
