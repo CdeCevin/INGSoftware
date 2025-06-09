@@ -43,6 +43,7 @@ function HistorialVentas() {
                                         <th>DIRECCIÓN</th>
                                         <th>PRODUCTOS</th>
                                         <th>TOTAL</th>
+                                        <th>BOLETA</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,6 +71,11 @@ function HistorialVentas() {
                                                     </tbody>
                                                 </table>
                                             )}
+                                        </td>
+                                        <td className='venta-cell'>
+                                            <a href={`http://localhost:3001/api/historialVentas/boleta/${venta.codigoComprobante}`} target="_blank" rel="noopener noreferrer">
+                                                Ver Boleta
+                                            </a>
                                         </td>
                                         <td className='venta-cell'>{venta.precioTotal}</td>
                                     </tr>
