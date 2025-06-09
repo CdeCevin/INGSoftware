@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
-import VentaClienteNuevo from './VentaClienteNu'; // Asegúrate de importar el nuevo componente
+import VentasPendientes from '../VentasPendientes'; // Asegúrate de importar el nuevo componente
 import optionSets from '../../Estilos/regiones';
 Modal.setAppElement('#root');
 function VentaClienteNu() {
@@ -174,7 +174,7 @@ function VentaClienteNu() {
                 setModalMessage("Venta finalizada exitosamente");
                 setMessageModalIsOpen(false);
                 setCarrito([]);
-                setPaginaActual('VentaClienteNuevo'); // Cambia a la página de la boleta
+                setPaginaActual('VentasPendientes'); // Cambia a la página de la boleta
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
@@ -428,10 +428,10 @@ function VentaClienteNu() {
               </Modal>
             </>
           )}
-            {paginaActual === 'VentaClienteNuevo' && (
+            {paginaActual === 'VentasPendientes' && (
                 <div style={{marginLeft: '12%'}}>
                  <div className="main-block">
-                    <VentaClienteNuevo />
+                    <VentasPendientes />
                  </div>
                 </div>
             )}
