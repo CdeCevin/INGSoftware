@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
-import MostrarBoleta from './MostrarBoleta'; // Asegúrate de importar el nuevo componente
+import VentasPendientes from '../VentasPendientes'; // Asegúrate de importar el nuevo componente
 
 function VentaClienteEx() {
     const [codigo, setCodigo] = useState('');
@@ -138,7 +138,7 @@ function VentaClienteEx() {
                 setModalMessage("Venta finalizada exitosamente");
                 setMessageModalIsOpen(false);
                 setCarrito([]);
-                setPaginaActual('mostrarBoleta'); // Cambia a la página de la boleta
+                setPaginaActual('VentasPendientes'); // Cambia a la página de la boleta
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
@@ -335,10 +335,10 @@ function VentaClienteEx() {
                 </div>
             )}
 
-            {paginaActual === 'mostrarBoleta' && (
+            {paginaActual === 'VentasPendientes' && (
                 <div style={{marginLeft: '12%'}}>
                 <div className="main-block">
-                <MostrarBoleta />
+                <VentasPendientes />
                 </div>
                 </div>
             )}
