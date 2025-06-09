@@ -72,12 +72,13 @@ function HistorialVentas() {
                                                 </table>
                                             )}
                                         </td>
-                                        <td className='venta-cell'>
-                                            <a href={`http://localhost:3001/api/historialVentas/boleta/${venta.codigoComprobante}`} target="_blank" rel="noopener noreferrer">
-                                                Ver Boleta
-                                            </a>
-                                        </td>
                                         <td className='venta-cell'>{venta.precioTotal}</td>
+                                        <td>
+                                            {/* Botón para ver la boleta */}
+                                            <button type="button" onClick={() => mostrarImagen(producto.Codigo_Producto)}>
+                                                <i className="fa fa-eye"></i>
+                                            </button>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
