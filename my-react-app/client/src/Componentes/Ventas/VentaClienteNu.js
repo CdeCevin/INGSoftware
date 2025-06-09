@@ -174,7 +174,7 @@ function VentaClienteNu() {
                 setModalMessage("Venta finalizada exitosamente");
                 setMessageModalIsOpen(false);
                 setCarrito([]);
-                setPaginaActual('mostrarBoleta'); // Cambia a la página de la boleta
+                setPaginaActual('VentaClienteNu'); // Cambia a la página de la boleta
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
