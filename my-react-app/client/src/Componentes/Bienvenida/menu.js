@@ -9,7 +9,7 @@ export default function Menu() {
   const isVendor = role === 'Vendedor';
 
   return (
-    <div className="sidebar" style={{ width: '12%' }}>
+    <div className="sidebar">
       {/* Siempre visible */}
       <Link to="/home" className="Menu-button">
         <i className="fa fa-home"></i> Menu

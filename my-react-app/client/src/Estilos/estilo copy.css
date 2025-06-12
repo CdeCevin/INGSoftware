@@ -161,11 +161,10 @@ body {
   padding: 0;
   width: 200px;
   background-color: #dbd9d9;
-  
   position: fixed;
   height: 100%;
-  overflow: hidden;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+  overflow: auto;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
 }
 
 .sidebar a {

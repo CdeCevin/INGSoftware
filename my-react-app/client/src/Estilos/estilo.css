@@ -445,7 +445,9 @@ button:active {
         margin-top: 10px;
     }
 }
-
+*, *::before, *::after {
+    box-sizing: border-box; /* Enfocado en la prediccion de los tamaños - sidebar */
+}
 /*
 @media (min-width: 568px) {
     label {
