@@ -133,3 +133,4 @@ CREATE TABLE OUTLET_Ventas_Pendientes (
     CONSTRAINT PK_Ventas_Pendientes PRIMARY KEY (ID_Venta_Pendiente)
 );
 ALTER TABLE OUTLET_Ventas_Pendientes ADD CONSTRAINT FK_Ventas_Pendientes_Cabecera_Comprobante_Pago FOREIGN KEY (Codigo_Comprobante_Pago) REFERENCES OUTLET_Cabecera_Comprobante_Pago (Codigo_Comprobante_Pago);
+
