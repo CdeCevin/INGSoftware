@@ -78,19 +78,19 @@ async function obtenerBoletaPorCodigo(req, res) {
         connection = await getConnection();
         console.log('Conexión establecida con la base de datos.');
 
-        const codigoCabecera = req.params.id;
+        const codigoComprobante = req.params.id;
 
-        if (!codigoCabecera) {
+        if (!codigoComprobante) {
             console.error('Error: CodigoCabecera no proporcionado en la solicitud.');
             return res.status(400).send('Error: Código de cabecera de boleta no proporcionado.');
         }
 
-        console.log('Generando boleta para CodigoCabecera:', codigoCabecera);
+        console.log('Generando boleta para CodigoCabecera:', codigoComprobante);
 
         const result = await connection.execute(
             `BEGIN ObtenerBoleta(:CodigoCabecera, :cursor_cabecera, :cursor_cuerpo); END;`,
             {
-                CodigoCabecera: { val: Number(codigoCabecera), dir: oracledb.BIND_IN },
+                codigoComprobante: { val: Number(codigoComprobante), dir: oracledb.BIND_IN },
                 cursor_cabecera: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT },
                 cursor_cuerpo: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT }
             }
