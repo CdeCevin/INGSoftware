@@ -22,7 +22,7 @@ function HistorialVentas() {
 
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/historialVentas') // Reemplaza con tu endpoint
+        fetch('http://localhost:3001/api/historialVentas/historialVentas') // Reemplaza con tu endpoint
             .then(response => response.json())
             .then(data => {
                 const sortedData = data.sort((a, b) => b.codigoComprobante - a.codigoComprobante);
