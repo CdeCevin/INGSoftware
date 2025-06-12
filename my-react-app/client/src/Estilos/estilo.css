@@ -202,15 +202,16 @@ button:active {
     position: fixed;
     height: 100%;
     overflow: auto;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
 }
 
 .sidebar a {
     display: block;
-    color: black;
+    color: #333;
     padding: 16px;
     text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease;
+    box-sizing: border-box;
 }
 
 .sidebar a.active {
@@ -246,6 +247,7 @@ button:active {
     color: #666;
     text-align: left;
     padding: 16px;
+    box-sizing: border-box;
 }
 
 .sidebar .Menu-button {
