@@ -276,6 +276,9 @@ button:active {
     transition: background-color 0.3s ease;
 }
 
+.sidebar .Menu-button:hover {
+    background-color: #5a7f72; /* Slightly darker on hover */
+}
 .sidebar .Cerrar-button {
     font-family: Roboto, Arial, sans-serif;
     font-weight: bold;
