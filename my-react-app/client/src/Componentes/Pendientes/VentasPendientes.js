@@ -141,14 +141,14 @@ const ListadoPendientes = () => {
                             <table className="venta-table">
                                 <thead>
                                     <tr>
-                                        <th>Código Venta</th>
-                                        <th>Fecha</th>
-                                        <th>Cliente</th>
-                                        <th>Dirección</th>
-                                        <th>Productos</th>
-                                        <th>Total</th>
-                                        <th>Realizado</th>
-                                        <th>Cancelar</th>
+                                        <th>CÓDIGO DE VENTA</th>
+                                        <th>FECHA</th>
+                                        <th>CLIENTE</th>
+                                        <th>DIRECCIÓN</th>
+                                        <th>PRODUCTOS</th>
+                                        <th>TOTAL</th>
+                                        <th>COMPLETAR</th>
+                                        <th>ANULAR</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -158,7 +158,7 @@ const ListadoPendientes = () => {
                                         <td className="venta-cell">{venta.cliente}</td>
                                         <td className="venta-cell">{venta.direccion}</td>
                                         <td className="venta-cell">
-                                        <button className='btn_Pendientes' onClick={() => handleButtonClick(venta.idVenta)}> {buttonText} </button>
+                                        <button className='btn_Pendientes' onClick={() => handleButtonClick(venta.idVenta)}> {visibleTables[venta.idVenta] ? "Cerrar Productos" : "Ver Productos"} </button>
                                             {visibleTables[venta.idVenta] && (
                                                 <table style={{ borderCollapse: 'collapse' }}>
                                                     <tbody>
