@@ -75,7 +75,7 @@ function HistorialVentas() {
                 {ventas.length > 0 ? (
                     ventas.map((venta) => (
                         <div key={venta.codigoComprobante} className="venta-block" style={{paddingTop:0}}>
-                            <table className="venta-table" style={{marginLeft:'8%'}}>
+                            <table className="venta-table">
                                 <thead>
                                     <tr>
                                         <th>CÓDIGO DE VENTA</th>
