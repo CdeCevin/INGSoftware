@@ -238,6 +238,7 @@ button:active {
     box-sizing: border-box; /* Crucial: Ensure consistency */
     text-align: left;
     transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
 }
 
 .sidebar .w3copia,
@@ -245,7 +246,7 @@ button:active {
 .sidebar .w3-button {
     overflow: hidden;
     border-radius: 5px;
-    width: 200px;
+    width: 100%;
     padding: 10px 15px;
     box-sizing: border-box;
     text-align: left;
@@ -263,6 +264,7 @@ button:active {
     box-sizing: border-box; /* Explicitly ensure border-box */
     transition: background-color 0.3s ease, color 0.3s ease; /* Ensure transition */
     display: block;
+    width: 100%;
 }
 
 .sidebar .Menu-button {
