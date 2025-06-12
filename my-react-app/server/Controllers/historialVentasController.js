@@ -71,6 +71,8 @@ async function obtenerReporteVentas(req, res) {
     }
 }
 
+// ... (código anterior)
+
 async function obtenerBoletaPorCodigo(req, res) {
     let connection;
 
@@ -161,7 +163,8 @@ async function obtenerBoletaPorCodigo(req, res) {
         }
 
         const cabecera = {
-            RUT_USUARIO: cabeceraRows[0][2],
+            // Asegúrate de incluir RUT_USUARIO aquí
+            RUT_USUARIO: cabeceraRows[0][2], // Este ya lo tenías, ¡es correcto!
             NOMBRE_USUARIO: cabeceraRows[0][3],
             NOMBRE_CLIENTE: nombreCliente,
             TELEFONO: telefonoCliente,
