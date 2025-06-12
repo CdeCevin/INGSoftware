@@ -68,7 +68,7 @@ function HistorialVentas() {
     };
 
     return (
-        <div style={{ marginLeft: '13%' }}>
+        <div>
             <div className="main-block">
                 <h1 style={{padding:20}}>Historial de Ventas</h1>
 
