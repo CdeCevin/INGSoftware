@@ -27,14 +27,14 @@ function HistorialVentas() {
     };
 
     return (
-        <div style={{ marginLeft: '13%' }}>
+        <div /*style={{ marginLeft: '13%' }}*/>
             <div className="main-block">
                 <h1 style={{padding:20}}>Historial de Ventas</h1>
             
                 {ventas.length > 0 ? (
                     ventas.map((venta) => (
                         <div key={venta.codigoComprobante} className="venta-block" style={{paddingTop:0}}>
-                            <table className="venta-table" style={{marginLeft:'8%'}}>
+                            <table className="venta-table" /* style={{marginLeft:'8%'}}*/>
                                 <thead>
                                     <tr>
                                         <th>CÓDIGO DE VENTA</th>
