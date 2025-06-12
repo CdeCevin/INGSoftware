@@ -230,6 +230,17 @@ button:active {
 }
 
 .sidebar .w3copia,
+.sidebar .dropdown-item { /* Assuming these are related to w3-dropdowns */
+    overflow: hidden;
+    border-radius: 5px;
+    width: 200px; /* If these are meant to always be 200px regardless of sidebar width */
+    padding: 10px 15px;
+    box-sizing: border-box; /* Crucial: Ensure consistency */
+    text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar .w3copia,
 .sidebar .dropdown-item,
 .sidebar .w3-button {
     overflow: hidden;
@@ -248,6 +259,10 @@ button:active {
     text-align: left;
     padding: 16px;
     box-sizing: border-box;
+    border-radius: 5px; /* Added for consistency with your other dropdown items */
+    box-sizing: border-box; /* Explicitly ensure border-box */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Ensure transition */
+    display: block;
 }
 
 .sidebar .Menu-button {
@@ -280,10 +295,8 @@ button:active {
 .sidebar .w3-button:hover {
     font-family: Roboto, Arial, sans-serif;
     font-weight: bold;
-    background-color: transparent;
-    color: #666;
-    padding: 16px;
-    box-sizing: content-box;
+    background-color: #637e74;
+    color: #ffffff;
 }
 
 .sidebar .w3-dropdown-content w3-bar-block {
