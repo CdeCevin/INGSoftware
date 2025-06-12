@@ -1,9 +1,9 @@
-// Routes/historialVentas.js
 const express = require('express');
-const { obtenerReporteVentas, obtenerBoletaPorCodigo } = require('../Controllers/historialVentasController');
+const { obtenerReporteVentas, obtenerBoletaPorCodigo  } = require('../Controllers/historialVentasController');
 const router = express.Router();
 
-router.get('/', obtenerReporteVentas); // Ruta para /api/historialVentas
-router.get('/boleta/:id', obtenerBoletaPorCodigo); // Ruta para /api/historialVentas/boleta/:id
+router.get('/historialVentas', obtenerReporteVentas);
+router.get('/boleta/:id', obtenerBoletaPorCodigo); // Esta es la ruta para ver la boleta específica
 
 module.exports = router;
+    
