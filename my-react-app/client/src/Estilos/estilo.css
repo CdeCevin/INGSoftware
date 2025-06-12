@@ -198,12 +198,12 @@ button:active {
 .sidebar {
     margin: 0;
     padding: 0;
-    width: 200px;
-    background-color: #dbd9d9;
+    width: 200px; /* Keep your fixed width */
+    background-color: #dbd9d9; /* Lighter background */
     position: fixed;
     height: 100%;
-    overflow: auto;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    overflow: auto; /* Allows scrolling if menu content exceeds height */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Softer, slightly wider shadow */
 }
 
 .sidebar a {
