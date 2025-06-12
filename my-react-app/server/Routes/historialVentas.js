@@ -1,5 +1,5 @@
 const express = require('express');
-const { obtenerReporteVenta, obtenerBoletaPorCodigo  } = require('../Controllers/historialVentasController');
+const { obtenerReporteVentas, obtenerBoletaPorCodigo  } = require('../Controllers/historialVentasController');
 const router = express.Router();
 
 router.get('/historialVentas', obtenerReporteVentas);
