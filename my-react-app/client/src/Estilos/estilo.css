@@ -1,6 +1,6 @@
 html, body {
     min-height: 100vh;
-    background-color: #dbd9d9;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', Arial, sans-serif;
@@ -198,7 +198,7 @@ button:active {
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: #ffffff;
+    background-color: #e7e7e7;
     position: fixed;
     height: 100%;
     overflow: auto;
