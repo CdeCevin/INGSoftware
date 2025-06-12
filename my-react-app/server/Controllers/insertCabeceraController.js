@@ -1,6 +1,6 @@
 const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
-
+ const currentUserRut = localStorage.getItem('userRut');
 const insertCabecera = async (req, res) => {
     let connection; 
     try {
@@ -9,8 +9,8 @@ const insertCabecera = async (req, res) => {
         connection = await getConnection();
 
         await connection.execute(
-            `BEGIN OUTLET_Insert_Cabecera(:c_Clientes);END;`,
-            { c_Clientes: codigo }
+            `BEGIN OUTLET_Insert_Cabecera(:c_Clientes, c_rut);END;`,
+            { c_Clientes: codigo, c_rut: currentUserRut}
         );
         
         const codigoResult = await connection.execute(
