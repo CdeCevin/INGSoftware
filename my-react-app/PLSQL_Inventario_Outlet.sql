@@ -694,6 +694,67 @@ END;
 
 
 
+//prueba?? 
+
+DECLARE
+    -- Declara variables para los cursores de salida
+    v_cursor_cabecera SYS_REFCURSOR;
+    v_cursor_cuerpo   SYS_REFCURSOR;
+
+    -- Variables para almacenar los datos de la cabecera
+    v_fecha             OUTLET_Cabecera_Comprobante_Pago.Fecha%TYPE;
+    v_codigo_cliente    OUTLET_Cabecera_Comprobante_Pago.Codigo_Cliente%TYPE;
+    v_rut_usuario       OUTLET_Usuario.RUT_Usuario%TYPE;
+    v_nombre_usuario    OUTLET_Usuario.Nombre_Usuario%TYPE;
+
+    -- Variables para almacenar los datos del cuerpo (productos)
+    v_nombre_producto   OUTLET_Producto.Nombre_Producto%TYPE;
+    v_color_producto    OUTLET_Producto.Color_Producto%TYPE;
+    v_cantidad          OUTLET_Cuerpo_Comprobante_Pago.Cantidad%TYPE;
+    v_precio_total      OUTLET_Cuerpo_Comprobante_Pago.Precio_Total%TYPE;
+    v_codigo_producto   OUTLET_Cuerpo_Comprobante_Pago.Codigo_Producto%TYPE;
+
+BEGIN
+    -- Llama al procedimiento ObtenerBoleta
+    ObtenerBoleta(
+        CodigoCabecera  => 246,                  -- Aquí pasas el código de cabecera que quieres probar
+        cursor_cabecera => v_cursor_cabecera,
+        cursor_cuerpo   => v_cursor_cuerpo
+    );
+
+    -- Imprimir resultados de la cabecera
+    DBMS_OUTPUT.PUT_LINE('--- CABECERA DE BOLETA ---');
+    LOOP
+        FETCH v_cursor_cabecera INTO v_fecha, v_codigo_cliente, v_rut_usuario, v_nombre_usuario;
+        EXIT WHEN v_cursor_cabecera%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE('Fecha: ' || TO_CHAR(v_fecha, 'DD-MON-YYYY HH24:MI:SS'));
+        DBMS_OUTPUT.PUT_LINE('Codigo Cliente: ' || v_codigo_cliente);
+        DBMS_OUTPUT.PUT_LINE('RUT Usuario: ' || v_rut_usuario);
+        DBMS_OUTPUT.PUT_LINE('Nombre Usuario: ' || v_nombre_usuario);
+    END LOOP;
+    CLOSE v_cursor_cabecera;
+
+    DBMS_OUTPUT.PUT_LINE('--- CUERPO DE BOLETA (PRODUCTOS) ---');
+    LOOP
+        FETCH v_cursor_cuerpo INTO v_nombre_producto, v_color_producto, v_cantidad, v_precio_total, v_codigo_producto;
+        EXIT WHEN v_cursor_cuerpo%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE('Producto: ' || v_nombre_producto || ', Color: ' || v_color_producto || ', Cantidad: ' || v_cantidad || ', Precio Total: ' || v_precio_total || ', Codigo Producto: ' || v_codigo_producto);
+    END LOOP;
+    CLOSE v_cursor_cuerpo;
+
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+        -- Asegúrate de cerrar los cursores si ocurre un error antes de que se cierren automáticamente
+        IF v_cursor_cabecera%ISOPEN THEN
+            CLOSE v_cursor_cabecera;
+        END IF;
+        IF v_cursor_cuerpo%ISOPEN THEN
+            CLOSE v_cursor_cuerpo;
+        END IF;
+END;
+/
+
 CREATE OR REPLACE PROCEDURE RegistrarVentaPendiente(
     CodigoCabecera IN NUMBER
 )
