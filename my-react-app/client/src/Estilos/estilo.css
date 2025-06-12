@@ -34,6 +34,7 @@ div.content {
     align-items: flex-start;
     background-color: #f6f6e9;
     box-sizing: border-box;
+    width: auto;
 }
 
 .main-block {
@@ -41,7 +42,7 @@ div.content {
     flex-direction: column;
     gap: 25px;
     width: 90%;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 40px 0;
     padding: 30px;
     background-color: #ffffff;
