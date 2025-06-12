@@ -1,6 +1,6 @@
 const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
-const {insertarCabecera} = require('./insertarCabeceraController');
+const {insertarCabecera} = require('./insertCabeceraController');
 const insertCliente = async (req, res) => {
     const { INnombre, INtelefono, INregion, INciudad, INcalle, INnumero } = req.body;
     console.log(INnombre, INtelefono, INregion, INciudad, INcalle, INnumero);
