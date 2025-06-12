@@ -1,5 +1,5 @@
 // controllers/authController.js
-const oracledb      = require('oracledb');
+const oracledb        = require('oracledb');
 const { getConnection } = require('../db/connection');
 
 async function login(req, res) {
@@ -19,19 +19,27 @@ async function login(req, res) {
       }
     );
 
-    const role = result.outBinds.p_role;
+    const role = result.outBinds.p_role; // Ya no necesitas la coma aquí
+    
     console.log('Rol obtenido:', role);
     if (!role) {
       return res.status(401).json({ message: 'Rut o contraseña inválidos' });
     }
 
     // Opcional: podrías generar un JWT aquí e incluir el role en el payload
-    res.json({ role });
+    // ¡CORRECCIÓN AQUÍ! Envía tanto el rol como el rut en un solo objeto
+    res.json({ role, rut }); 
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Error interno al autenticar' });
   } finally {
-    if (conn) try { await conn.close(); } catch(_) {}
+    if (conn) {
+      try { 
+        await conn.close(); 
+      } catch (err) {
+        console.error('Error al cerrar la conexión:', err); // Agrega un manejo de error para el cierre
+      }
+    }
   }
 }
 
