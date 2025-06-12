@@ -272,6 +272,8 @@ button:active {
     text-align: left;
     padding: 16px;
     background-color:#6b9787;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
 }
 
 .sidebar .Cerrar-button {
