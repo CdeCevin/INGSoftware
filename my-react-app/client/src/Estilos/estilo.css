@@ -208,10 +208,20 @@ button:active {
 
 .sidebar a {
     display: block;
-    color: black;
+    color: #333; 
     padding: 16px;
     text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex; 
+    align-items: center;
+    gap: 10px; 
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.sidebar a .icon {
+    font-size: 20px; 
+    line-height: 1; 
 }
 
 .sidebar a.active {
