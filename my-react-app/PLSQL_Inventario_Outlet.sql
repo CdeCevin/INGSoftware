@@ -413,13 +413,8 @@ IS
 BEGIN 
         LOCK TABLE OUTLET_PRODUCTO IN ROW EXCLUSIVE MODE;
 
-<<<<<<< HEAD
         INSERT INTO OUTLET_PRODUCTO(Codigo_Producto,Stock,PRECIO_UNITARIO,Nombre_Producto,Color_Producto,Tipo_Producto,Stock_Minimo,Fecha_Registro)    
                 VALUES(Cod,Stoc,Precio,Nombre,color,tipo,minimo, SYSDATE);   
-=======
-        INSERT INTO OUTLET_PRODUCTO(Codigo_Producto,Stock,PRECIO_UNITARIO,Nombre_Producto,Color_Producto,Tipo_Producto,Stock_Minimo,Fecha_Registro)    
-                VALUES(Cod,Stoc,Precio,Nombre,color,tipo,minimo);   
->>>>>>> 6199f3e942428feba9049fd3b579cd4fafffef5e
         COMMIT;
         EXCEPTION
                 WHEN PROGRAM_ERROR THEN
