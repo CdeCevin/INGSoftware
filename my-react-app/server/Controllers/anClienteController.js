@@ -1,7 +1,8 @@
 const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
- const currentUserRut = localStorage.getItem('userRut');
+ 
 const insertCliente = async (req, res) => {
+    const currentUserRut = localStorage.getItem('userRut');
     const { INnombre, INtelefono, INregion, INciudad, INcalle, INnumero } = req.body;
     console.log(INnombre, INtelefono, INregion, INciudad, INcalle, INnumero);
 
