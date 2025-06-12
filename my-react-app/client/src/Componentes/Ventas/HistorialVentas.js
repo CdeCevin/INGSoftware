@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './HistorialVentas.css'; // Asegúrate de tener este archivo CSS
 
 function HistorialVentas() {
     const [ventas, setVentas] = useState([]);
