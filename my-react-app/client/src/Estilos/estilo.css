@@ -1,6 +1,6 @@
 html, body {
     min-height: 100vh;
-    background-color: #ffffff;
+    background-color: #f6f6e9;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', Arial, sans-serif;
@@ -183,7 +183,6 @@ button:active {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     font-size: 13px;
-
     position: absolute;
     top: 20px;
     right: 20px;
@@ -198,30 +197,20 @@ button:active {
 .sidebar {
     margin: 0;
     padding: 0;
-    width: 200px; /* Keep your fixed width */
-    background-color: #dbd9d9; /* Lighter background */
+    width: 200px;
+    background-color: #dbd9d9;
     position: fixed;
     height: 100%;
-    overflow: auto; /* Allows scrolling if menu content exceeds height */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Softer, slightly wider shadow */
+    overflow: auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
 }
 
 .sidebar a {
     display: block;
-    color: #333; 
+    color: black;
     padding: 16px;
     text-decoration: none;
-    transition: background-color 0.2s ease, color 0.2s ease;
-    display: flex; 
-    align-items: center;
-    gap: 10px; 
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.sidebar a .icon {
-    font-size: 20px; 
-    line-height: 1; 
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .sidebar a.active {
@@ -279,6 +268,11 @@ button:active {
     background-color:#976e6b;
     width: 100%;
     box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar .Cerrar-button:hover {
+    background-color: #8c635d;
 }
 
 .sidebar .w3-button:hover {
@@ -296,7 +290,7 @@ button:active {
 
 /*
 .main-content {
-    /* margin-left: 10%;
+
 }*/
 
 .venta-table {
