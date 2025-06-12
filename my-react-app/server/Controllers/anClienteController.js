@@ -1,6 +1,6 @@
 const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
-
+const {insertarCabecera} = require('./insertarCabeceraController');
 const insertCliente = async (req, res) => {
     const { INnombre, INtelefono, INregion, INciudad, INcalle, INnumero } = req.body;
     console.log(INnombre, INtelefono, INregion, INciudad, INcalle, INnumero);
@@ -28,13 +28,7 @@ const insertCliente = async (req, res) => {
         );
         const codigoCliente = resultCodigo.rows[0][0] - 1;
         console.log(codigoCliente);
-
-        // 3. Llamar al procedimiento para insertar en cabecera usando el código de cliente
-        const resultCabecera = await connection.execute(
-            `BEGIN OUTLET_Insert_Cabecera(:cod); END;`,
-            { cod: codigoCliente }
-        );
-
+        insertarCabecera(codigoCliente);
         res.status(200).json({ message: 'Cliente agregado.' });
 
     } catch (error) {
