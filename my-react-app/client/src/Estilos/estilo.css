@@ -267,6 +267,8 @@ button:active {
     width: 100%;
 }
 
+
+
 .sidebar .Menu-button {
     font-family: Roboto, Arial, sans-serif;
     font-weight: bold;
@@ -300,6 +302,13 @@ button:active {
 }
 
 .sidebar .w3-button:hover {
+    font-family: Roboto, Arial, sans-serif;
+    font-weight: bold;
+    background-color: #637e74;
+    color: #ffffff;
+}
+
+.sidebar .w3-dropdown-hover {
     font-family: Roboto, Arial, sans-serif;
     font-weight: bold;
     background-color: #637e74;
