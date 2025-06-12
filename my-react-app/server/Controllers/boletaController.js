@@ -1,3 +1,5 @@
+//Tengo este codigo en ./controllers/boletaController.js
+
 const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
 
@@ -8,17 +10,31 @@ async function boleta(req, res) {
         connection = await getConnection();
         console.log('Conexión establecida con la base de datos.');
 
-        // 1. Obtener el último número de la secuencia `SEC_COD_CABECERA`
-        const codigoResult = await connection.execute(
-            `SELECT last_number FROM user_sequences WHERE sequence_name = 'SEC_COD_CABECERA'`
-        );
-        const codigoCabecera = codigoResult.rows[0][0] - 1;
+        // 1. Obtener el CodigoCabecera desde los parámetros de la solicitud
+        // Si se llama como una ruta normal, será req.params.id
+        // Si se llama internamente, lo habremos pasado en boletaReq.params.id
+        const codigoCabecera = req.params.id;
+
+        // Validación básica
+        if (!codigoCabecera) {
+            console.error('Error: CodigoCabecera no proporcionado en la solicitud.');
+            return res.status(400).send('Error: Codigo de cabecera de boleta no proporcionado.');
+        }
+
+        console.log('Generando boleta para CodigoCabecera:', codigoCabecera);
+
+        // Ya no necesitamos esta consulta:
+        // const codigoResult = await connection.execute(
+        // `SELECT last_number FROM user_sequences WHERE sequence_name = 'SEC_COD_CABECERA'`
+        // );
+        // const codigoCabecera = codigoResult.rows[0][0] - 1;
+
 
         // 2. Llamar al procedimiento almacenado `ObtenerBoleta`
         const result = await connection.execute(
             `BEGIN ObtenerBoleta(:CodigoCabecera, :cursor_cabecera, :cursor_cuerpo); END;`,
             {
-                CodigoCabecera: { val: codigoCabecera, dir: oracledb.BIND_IN },
+                CodigoCabecera: { val: Number(codigoCabecera), dir: oracledb.BIND_IN }, // Asegúrate de convertirlo a Number
                 cursor_cabecera: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT },
                 cursor_cuerpo: { type: oracledb.CURSOR, dir: oracledb.BIND_OUT }
             }
@@ -32,6 +48,12 @@ async function boleta(req, res) {
 
         await cursorCabecera.close();
         await cursorCuerpo.close();
+
+        // Si no hay datos para el codigoCabecera, se puede retornar un error 404
+        if (cabeceraRows.length === 0) {
+            return res.status(404).send('Boleta no encontrada para el código proporcionado.');
+        }
+
 
         const codigoCliente = cabeceraRows[0][1]; // Asegúrate de que el índice sea correcto
         console.log('El codigo del cliente es: ', codigoCliente);
@@ -97,18 +119,6 @@ async function boleta(req, res) {
         };
 
         console.log('Cabecera: ', cabecera, 'Cuerpo: ', cuerpoRows, 'Direccion: ', direccionDetails, 'Codigo: ', codigoCabecera);
-
-        // 6. Registrar la venta pendiente
-        const registrarPendienteQuery = 'BEGIN RegistrarVentaPendiente(:cod); END;';
-        try {
-            await connection.execute(registrarPendienteQuery, {
-                cod: { val: codigoCabecera, dir: oracledb.BIND_IN }
-            });
-            await connection.commit(); // Asegúrate de realizar un commit si es necesario
-            console.log('Registro de venta pendiente ejecutado para CodigoCabecera:', codigoCabecera);
-        } catch (err) {
-            console.error('Error al registrar la venta pendiente:', err);
-        }
 
         // 7. Responder con un JSON
         res.json({
