@@ -71,13 +71,8 @@
     
 
         return (
-
-            
-
-
-            <div style={{ marginLeft: '13%' }}>
                 <div className="main-block">
-                <h1 style={{padding:20}}>Historial de Productos</h1>
+                <h1>Historial de Productos</h1>
                 <fieldset style={{paddingTop:0}}> <legend> <h3>Productos añadidos</h3></legend>
             {/* Modal para mostrar la imagen seleccionada */}
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
@@ -99,7 +94,7 @@
             )}
             <button onClick={closeModal}>Cerrar</button>
             </Modal>
-                <table className="venta-table" style={{ marginLeft: '8%' }}>
+                <table className="venta-table">
                     <thead>
                         <tr>
                             <th>FECHA</th>
@@ -136,8 +131,7 @@
                     </fieldset>
 
             </div>
-   
-            </div>
+
         );
     };
 
