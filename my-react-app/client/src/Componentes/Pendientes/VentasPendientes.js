@@ -176,12 +176,12 @@ const ListadoPendientes = () => {
                                         </td>
                                         <td className="venta-cell">${venta.precioTotal}</td>
                                         <td className="venta-cell">
-                                            <button className="btn" onClick={() => realizarVenta(venta.idVenta)}>
+                                            <button className="btn complete-btn" onClick={() => realizarVenta(venta.idVenta)}>
                                                 <i className="fa fa-check" aria-hidden="true"></i>
                                             </button>
                                         </td>
                                         <td className="venta-cell">
-                                            <button className="btn" onClick={() => cancelarVenta(venta.idVenta)}>
+                                            <button className="btn cancel-btn" onClick={() => cancelarVenta(venta.idVenta)}>
                                                 <i className="fa fa-times" aria-hidden="true"></i>
                                             </button>
                                         </td>

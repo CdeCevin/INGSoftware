@@ -385,14 +385,43 @@ button:active {
 }
 
 .btn {
-    text-decoration: none;
-    padding: 5px 10px;
-    background-color: #6b9787;
-    color: white;
-    border: 1px solid #6b9787;
-    border-radius: 3px;
-    display: inline-block;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    padding: 8px; /* Adjust if needed */
+    font-size: 1.1em; /* Adjust icon size */
+    min-width: 30px;
+    height: 30px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: none;
+    /* Remove a specific background color here if you want it to be inherited or always overridden */
+    /* Example: background: #ccc; or remove completely if complete-btn/cancel-btn always define it */
+    color: #fff; /* White icon color */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Specific colors for complete and cancel buttons --- */
+.btn.complete-btn {
+    background: #4CAF50; /* A nice green for "Complete" */
+}
+
+.btn.cancel-btn {
+    background: #F44336; /* A clear red for "Cancel" */
+}
+
+/* --- Hover effects (apply to both specific buttons) --- */
+.btn.complete-btn:hover {
+    background: #45a049; /* Slightly darker green on hover */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn.cancel-btn:hover {
+    background: #e53935; /* Slightly darker red on hover */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn:hover {
