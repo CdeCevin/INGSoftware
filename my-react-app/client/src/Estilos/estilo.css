@@ -37,7 +37,7 @@ div.content {
     width: auto;
 }
 
-.main-block {
+.main-block .div.main-block {
     display: flex;
     flex-direction: column;
     gap: 25px;
