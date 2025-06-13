@@ -10,7 +10,7 @@ const insertCabecera = async (req, res) => {
         connection = await getConnection();
 
         await connection.execute(
-            `BEGIN OUTLET_Insert_Cabecera(:c_Clientes, c_rut);END;`,
+            `BEGIN OUTLET_Insert_Cabecera(:c_Clientes, :c_rut);END;`,
             { c_Clientes: codigo, c_rut: currentUserRut}
         );
         
