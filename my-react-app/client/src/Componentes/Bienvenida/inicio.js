@@ -10,7 +10,6 @@ function Inicio() {
     return (
         <div>
             <div class="bloqueprincipal">
-            <div style={{ marginLeft: '5%' }}>
                 <div class="w3-container">
                 <h1>¡Bienvenido!</h1>
                 <h3>Bienvenido a la aplicación de registro web de Outlet A Tu Hogar.</h3>
@@ -19,8 +18,6 @@ function Inicio() {
                 </div>
             </div>
             </div>
-            
-        </div>
     );
 }
 
