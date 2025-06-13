@@ -387,7 +387,7 @@ button:active {
 .btn {
     padding: 8px; /* Adjust if needed */
     font-size: 1.1em; /* Adjust icon size */
-    min-width: 30px;
+    min-width: 100px;
     height: 30px;
     display: inline-flex;
     justify-content: center;
