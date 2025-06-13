@@ -130,7 +130,7 @@ const ListadoPendientes = () => {
     }, []);
 
     return (
-        <div style={{ marginLeft: '13%' }}>
+        <div>
             <div className="main-block">
                 <br />
                 <h1>Ventas Pendientes</h1>
