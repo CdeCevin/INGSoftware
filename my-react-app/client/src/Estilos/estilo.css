@@ -55,6 +55,7 @@ div.content {
 
 /* --- .main-block: The white content block (e.g., Historial de Ventas) --- */
 .main-block {
+    
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -74,6 +75,7 @@ div.content {
 
 /* --- .main-block2: For other content blocks (e.g., login form) --- */
 .main-block2 {
+    margin-left: 0px !important;
     display: flex;
     flex-direction: column;
     width: 90%;
