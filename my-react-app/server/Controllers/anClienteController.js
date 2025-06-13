@@ -30,8 +30,8 @@ const insertCliente = async (req, res) => {
 
         // 3. Call procedure to insert into cabecera using the client code
         await connection.execute(
-            `BEGIN OUTLET_Insert_Cabecera(:c_Clientes, :c_rut);END;`,
-            { c_Clientes: codigo, c_rut: currentUserRut}
+            `BEGIN OUTLET_Insert_Cabecera(:c_Clientes, c_rut);END;`,
+            { c_Clientes: codigoCliente, c_rut: currentUserRut}
         );
 
         // 4. Get the last number from the `SEC_COD_CABECERA` sequence (for the newly inserted cabecera)
