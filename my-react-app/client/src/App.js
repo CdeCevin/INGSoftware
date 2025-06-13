@@ -42,9 +42,9 @@ function LayoutWithMenu({ children }) {
   const shouldHideMenu = hideMenuOn.includes(pathname);
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', width: '100vw' }}>
       {!shouldHideMenu && <Menu />}
-      <div style={{ flex: 1 }}>
+      <div className="content">
         {children}
       </div>
     </div>
