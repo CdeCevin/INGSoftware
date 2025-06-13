@@ -120,7 +120,7 @@
                             <td>{producto.Color_Producto}</td>
                             <td>
                                 {/* Botón para ver la imagen */}
-                                <button type="button" onClick={() => mostrarImagen(producto.Codigo_Producto)}>
+                                <button type="button" onClick={() => mostrarImagen(producto.Codigo_Producto)}  className="btn btn-primary">
                                     <i className="fa fa-eye"></i>
                                 </button>
                             </td>
