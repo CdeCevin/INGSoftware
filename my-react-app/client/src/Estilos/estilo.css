@@ -453,6 +453,7 @@ button:active {
         padding: 20px;
     }
 }
+
 @media screen and (max-width: 400px) {
     .sidebar a {
         text-align: center;
