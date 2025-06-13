@@ -2,8 +2,7 @@ const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
  
 const insertCliente = async (req, res) => {
-    const currentUserRut = localStorage.getItem('userRut');
-    const { INnombre, INtelefono, INregion, INciudad, INcalle, INnumero } = req.body;
+    const { INnombre, INtelefono, INregion, INciudad, INcalle, INnumero, currentUserRut} = req.body;
     console.log(INnombre, INtelefono, INregion, INciudad, INcalle, INnumero);
 
     let connection;
@@ -31,7 +30,7 @@ const insertCliente = async (req, res) => {
 
         // 3. Call procedure to insert into cabecera using the client code
         await connection.execute(
-            `BEGIN OUTLET_Insert_Cabecera(:c_Clientes, c_rut);END;`,
+            `BEGIN OUTLET_Insert_Cabecera(:c_Clientes, :c_rut);END;`,
             { c_Clientes: codigo, c_rut: currentUserRut}
         );
 

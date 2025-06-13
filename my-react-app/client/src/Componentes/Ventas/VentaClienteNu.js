@@ -36,6 +36,7 @@ function VentaClienteNu() {
             INciudad: ciudad,
             INcalle: calle, 
             INnumero: numero,
+            currentUser: localStorage.getItem('currentUser') // Obtener el usuario actual del localStorage
         };
         console.log('Datos del formulario:', formData);
 
