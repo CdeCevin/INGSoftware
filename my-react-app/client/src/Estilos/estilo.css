@@ -39,7 +39,7 @@ div.content {
     margin-left: 200px; /* Offset for the fixed sidebar */
     padding: 20px;
     min-height: 100vh;
-    background-color: #ffffff;
+    background-color: #f2f2f2;
     box-sizing: border-box;
 
     /* CRITICAL FLEXBOX PROPERTIES FOR CENTERING */
@@ -75,7 +75,6 @@ div.content {
 
 /* --- .main-block2: For other content blocks (e.g., login form) --- */
 .main-block2 {
-    margin-left: 0px !important;
     display: flex;
     flex-direction: column;
     width: 90%;
