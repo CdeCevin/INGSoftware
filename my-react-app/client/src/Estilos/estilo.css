@@ -1,11 +1,12 @@
-/* Universal Box Sizing - Move to top */
+/* Universal Box Sizing - Moved to the very top for global consistency */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
 html, body {
     min-height: 100vh;
-    background-color: #f6f6e9; /* Match div.content background for consistency */
+    /* Changed background-color to match div.content for seamless appearance */
+    background-color: #f6f6e9;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', Arial, sans-serif;
@@ -13,13 +14,14 @@ html, body {
     color: #666;
     width: 100%;
     height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrollbar on the body */
 }
 
 body, div, form, input, select, p, h1, h3, fieldset, label, button, output, textarea {
     padding: 0;
     margin: 0;
     outline: none;
-    /* box-sizing: border-box; /* Already handled by universal selector above */
+    /* box-sizing: border-box; - Already handled by the universal selector above */
 }
 
 h1 {
@@ -32,39 +34,49 @@ h3 {
     color: #6b9787;
 }
 
+/* --- div.content: The main content area wrapper --- */
 div.content {
-    margin-left: 200px;
+    margin-left: 200px; /* Offset for the fixed sidebar */
     padding: 20px;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column; /* Add this to stack children vertically */
-    align-items: center; /* Centers children horizontally when flex-direction is column */
-    /* Remove justify-content: center; here for horizontal centering when flex-direction is column */
     background-color: #f6f6e9;
     box-sizing: border-box;
-    width: calc(100vw - 200px); /* CRUCIAL: Make it take the full remaining width */
-    overflow-x: hidden; /* Prevents unwanted horizontal scrollbar */
+
+    /* CRITICAL FLEXBOX PROPERTIES FOR CENTERING */
+    display: flex;
+    flex-direction: column; /* Force children (like .main-block) to stack vertically */
+    align-items: center; /* This will center children horizontally when flex-direction is column */
+    /* Removed: justify-content: center; (as it would now control vertical alignment for column direction) */
+
+    /* CRITICAL: Explicitly set width to take the full remaining viewport space */
+    width: calc(100vw - 200px);
+    overflow-x: hidden; /* Prevent div.content itself from causing horizontal scroll */
 }
 
+/* --- .main-block: The white content block (e.g., Historial de Ventas) --- */
 .main-block {
     display: flex;
     flex-direction: column;
     gap: 25px;
-    width: 90%; /* Give it a percentage width */
-    max-width: 1200px; /* Keep this to prevent it from getting too wide */
-    margin: 40px auto; /* CRUCIAL: Centers horizontally using auto margins */
+    /* Using a percentage width, allowing margin: auto to work effectively */
+    width: 90%;
+    /* Max-width to prevent it from becoming too wide on large screens */
+    max-width: 1200px;
+    /* CRITICAL: Centers horizontally using auto margins */
+    margin: 40px auto;
     padding: 30px;
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    align-items: center; /* Centers content within .main-block (e.g., tables if they're not 100% width) */
+    /* Aligns content within .main-block itself (e.g., tables if they're not 100% width) */
+    align-items: center;
 }
 
-
+/* --- .main-block2: For other content blocks (e.g., login form) --- */
 .main-block2 {
     width: 80%;
     max-width: 500px;
-    margin: auto; /* This is correct for centering this block */
+    margin: auto; /* This correctly centers this block */
     border-radius: 15px;
     background-color: #f2f2f2;
     padding: 30px;
@@ -154,7 +166,7 @@ button {
     width: auto;
     min-width: 180px;
     padding: 14px 30px;
-    margin: 25px auto 10px auto; /* Keep auto here for horizontal centering of button */
+    margin: 25px auto 10px auto; /* Centers button horizontally within its flex parent */
     border-radius: 8px;
     border: none;
     background: #6b9787;
@@ -165,7 +177,7 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    align-self: center; /* This aligns it if button's parent is flex container */
+    align-self: center; /* Aligns this item if its parent is a flex container */
 }
 
 button:hover {
@@ -206,6 +218,7 @@ button:active {
     background-color: #637e74;
 }
 
+/* --- Sidebar styles --- */
 .sidebar {
     margin: 0;
     padding: 0;
@@ -245,12 +258,11 @@ button:active {
 .sidebar .dropdown-item {
     overflow: hidden;
     border-radius: 5px;
-    /* width: 200px; /* Redundant if width: 100% is also applied */
     padding: 10px 15px;
     box-sizing: border-box;
     text-align: left;
     transition: background-color 0.3s ease, color 0.3s ease;
-    width: 100%;
+    width: 100%; /* Ensures these elements take full width of sidebar */
 }
 
 .sidebar .w3copia,
@@ -273,13 +285,10 @@ button:active {
     padding: 16px;
     box-sizing: border-box;
     border-radius: 5px;
-    box-sizing: border-box;
     transition: background-color 0.3s ease, color 0.3s ease;
     display: block;
     width: 100%;
 }
-
-
 
 .sidebar .Menu-button {
     font-family: Roboto, Arial, sans-serif;
@@ -295,6 +304,7 @@ button:active {
 .sidebar .Menu-button:hover {
     background-color: #5a7f72;
 }
+
 .sidebar .Cerrar-button {
     font-family: Roboto, Arial, sans-serif;
     font-weight: bold;
@@ -302,7 +312,7 @@ button:active {
     text-align: left;
     position: absolute;
     bottom: 0px;
-    padding: 10px 48.9px; /* This padding value might make it look uneven */
+    padding: 10px 48.9px; /* Consider if this fixed padding is always desired */
     background-color:#976e6b;
     width: 100%;
     box-sizing: border-box;
@@ -324,14 +334,9 @@ button:active {
     padding: 16px;
 }
 
-/*
-.main-content {
-
-}*/
-
 .venta-table {
     border-collapse: collapse;
-    width: 100%;
+    width: 100%; /* Ensures table takes full width of .main-block's content area */
     margin-bottom: 20px;
     background-color: #ffffff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -346,7 +351,7 @@ button:active {
 }
 
 .venta-table th {
-    width: 150px;
+    width: 150px; /* This sets a fixed width for the header cells, adjust if needed */
     background-color: #6b9787;
     color: white;
     font-weight: 600;
@@ -358,7 +363,7 @@ button:active {
 }
 
 .tabla-productos th, .tabla-productos td {
-    width: 33%;
+    width: 33%; /* If these are for a specific table, adjust as needed */
     padding: 0 15px;
     text-align: left;
 }
@@ -437,24 +442,25 @@ button:active {
     .sidebar {
         width: 100%;
         height: auto;
-        position: relative;
+        position: relative; /* Sidebar becomes part of normal flow on small screens */
         overflow: hidden;
     }
     .sidebar a {
-        float: left;
+        float: left; /* Keep if you want horizontal nav on small screens */
     }
     div.content {
-        margin-left: 0;
+        margin-left: 0; /* No sidebar offset on mobile */
         padding: 15px;
-        align-items: center;
-        width: 100%; /* Important for mobile: ensures full width */
-        /* Ensure display: flex; flex-direction: column; are still in effect */
+        /* div.content should already be display: flex; flex-direction: column; align-items: center;
+           from its global styles. No need to redefine unless changing behavior. */
+        width: 100%; /* CRITICAL: Takes full width on mobile */
     }
     .main-block {
-        margin: 20px auto; /* CRUCIAL CHANGE: Re-introduce auto margins for horizontal centering */
+        /* CRITICAL CHANGE: Ensure horizontal auto margin on mobile too */
+        margin: 20px auto;
         padding: 20px;
-        max-width: 95%; /* Adjust for mobile responsiveness */
-        width: 90%; /* Keep percentage width */
+        max-width: 95%; /* Adjust max-width for smaller screens if needed */
+        width: 90%; /* Keep percentage width for responsiveness */
     }
     .venta-table {
         width: 100%;
@@ -478,6 +484,7 @@ button:active {
     }
 }
 
+/* Old, commented-out media query. Remove if not used. */
 /*
 @media (min-width: 568px) {
     label {
