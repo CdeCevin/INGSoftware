@@ -141,7 +141,7 @@ const ListadoPendientes = () => {
                                         <th>CÓDIGO DE VENTA</th>
                                         <th>FECHA</th>
                                         <th>CLIENTE</th>
-                                       {/* <th>DIRECCIÓN</th>*/ }
+                                        <th>DIRECCIÓN</th>
                                         <th>PRODUCTOS</th>
                                         <th>TOTAL</th>
                                         <th>COMPLETAR</th>
