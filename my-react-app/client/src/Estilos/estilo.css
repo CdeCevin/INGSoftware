@@ -351,7 +351,7 @@ button:active {
 }
 
 .venta-table th {
-    width: 150px; /* This sets a fixed width for the header cells, adjust if needed */
+    width: 100%; /* This sets a fixed width for the header cells, adjust if needed */
     background-color: #6b9787;
     color: white;
     font-weight: 600;
