@@ -276,6 +276,7 @@ button:active {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
     display: flex; /* Makes the sidebar a flex container */
     flex-direction: column; /* Stacks its direct children vertically */
+    z-index: 1000;
 }
 
 /* Style for all top-level menu items within the sidebar */
