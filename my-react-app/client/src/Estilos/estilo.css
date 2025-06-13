@@ -41,7 +41,7 @@ div.content {
     display: flex;
     flex-direction: column;
     gap: 25px;
-    width: 90%;
+    width: auto;
     max-width: 1200px;
     margin: 40px 0;
     padding: 30px;
