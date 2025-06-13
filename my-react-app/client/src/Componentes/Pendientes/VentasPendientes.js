@@ -130,7 +130,7 @@ const ListadoPendientes = () => {
     }, []);
 
     return (
-        <div>
+        
             <div className="main-block">
                 <br />
                 <h1>Ventas Pendientes</h1>
@@ -196,7 +196,7 @@ const ListadoPendientes = () => {
                 ) : (
                     <p>No hay ventas pendientes.</p>
                 )}
-            </div>
+            
 
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={"custom-modal"}>
                 <h2>Mensaje</h2>
