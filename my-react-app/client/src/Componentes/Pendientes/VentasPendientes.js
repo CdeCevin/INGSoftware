@@ -1,6 +1,6 @@
 // my-react-app/client/src/Componentes/Pendientes/ListadoPendientes.js
 import React, { useEffect, useState } from 'react';
-import '../../Estilos/style_menu.css';
+//import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
 Modal.setAppElement('#root'); // Reemplaza '#root' con tu selector de raíz
@@ -132,9 +132,7 @@ const ListadoPendientes = () => {
     return (
         
             <div className="main-block">
-                <br />
                 <h1>Ventas Pendientes</h1>
-                <br />
                 {pendientes.length > 0 ? (
                     pendientes.map((venta) => (
                         <div key={venta.idVenta} className="venta-block">
