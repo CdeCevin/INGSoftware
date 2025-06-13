@@ -99,6 +99,7 @@ fieldset {
     padding: 25px;
     margin-bottom: 0;
     background-color: #fdfdfd;
+    width: 100%;
 }
 
 legend {
