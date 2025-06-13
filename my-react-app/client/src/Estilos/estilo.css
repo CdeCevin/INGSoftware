@@ -306,7 +306,6 @@ button:active {
 }
 
 .sidebar .Cerrar-button {
-    text-decoration: overline;
     font-family: Roboto, Arial, sans-serif;
     font-weight: bold;
     color: #666;
