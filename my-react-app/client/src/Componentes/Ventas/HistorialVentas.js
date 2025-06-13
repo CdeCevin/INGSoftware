@@ -70,7 +70,7 @@ function HistorialVentas() {
                                                 </table>
                                             )}
                                         </td>
-                                        <td className='venta-cell'>{venta.precioTotal}</td>
+                                        <td className='venta-cell'>${venta.precioTotal}</td>
                                         <td>
                                             {/* Botón para ver la boleta */}
                                             <button type="button" onClick={() => window.open(`http://localhost:3001/api/historialVentas/boleta/${venta.codigoComprobante}`, '_blank')} className="btn btn-primary">
