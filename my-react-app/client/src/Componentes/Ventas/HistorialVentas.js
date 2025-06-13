@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import '../../Estilos/estilo.css';
 function HistorialVentas() {
     const [ventas, setVentas] = useState([]);
     const [visibleTables, setVisibleTables] = useState({});
@@ -29,7 +29,6 @@ function HistorialVentas() {
     return (
             <div className="main-block">
                 <h1 style={{padding:20}}>Historial de Ventas</h1>
-            
                 {ventas.length > 0 ? (
                     ventas.map((venta) => (
                         <div key={venta.codigoComprobante} className="venta-block" style={{paddingTop:0}}>
