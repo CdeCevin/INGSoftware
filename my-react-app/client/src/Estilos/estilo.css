@@ -429,19 +429,19 @@ button:active {
     .sidebar {
         width: 100%;
         height: auto;
-        position: relative;
+        position: relative; /* <-- CHANGE 1: This is crucial */
         overflow: hidden;
     }
     .sidebar a {
         float: left;
     }
     div.content {
-        margin-left: 0;
+        margin-left: 0; /* <-- CHANGE 2: This is also crucial */
         padding: 15px;
         align-items: center;
     }
     .main-block {
-        margin: 20px 0;
+        margin: 20px 0; /* <-- CHANGE 3: This removes horizontal auto margins */
         padding: 20px;
     }
     .venta-table {
@@ -453,14 +453,6 @@ button:active {
         padding: 20px;
     }
 }
-
-@media screen and (max-width: 567px) {
-    .account-details > div,
-    .personal-details > div {
-        flex: 1 1 100%;
-    }
-}
-
 @media screen and (max-width: 400px) {
     .sidebar a {
         text-align: center;
