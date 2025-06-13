@@ -6,7 +6,7 @@ const insertCabecera = async (req, res) => {
     let connection; 
     try {
         const { codigo, currentUserRut } = req.body;
-        
+        console.log('Datos recibidos:', { codigo, currentUserRut });        
         connection = await getConnection();
 
         await connection.execute(
