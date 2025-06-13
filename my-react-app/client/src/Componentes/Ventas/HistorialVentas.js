@@ -35,7 +35,7 @@ function HistorialVentas() {
                             <table className="venta-table" /* style={{marginLeft:'8%'}}*/>
                                 <thead>
                                     <tr>
-                                        <th>CÓDIGO DE VENTA</th>
+                                        <th>CÓDIGO DE <br></br> VENTA</th>
                                         <th>FECHA</th>
                                         <th>CLIENTE</th>
                                         <th>DIRECCIÓN</th>
