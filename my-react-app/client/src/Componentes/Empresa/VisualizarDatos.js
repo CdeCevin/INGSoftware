@@ -39,23 +39,18 @@ const VisualizarDatos = () => {
 }, []);
 
   return (
-    <div>
-    <div style={{ marginLeft: '13%' }}>
-      <div className="main-block">
-        <h1 style={{padding:20}}>Datos Empresa</h1>
-      </div>
+    <div className="main-block">
+      <h1>Datos Empresa</h1>
+      
+      <fieldset>
+          <div class="w3-container2">
+          <p style={{color: '#637e74', fontSize: '18px',paddingLeft: '10px',paddingTop: '10px'}}><strong>Nombre:</strong> <span style={{color: '#666'}}>{datos.nombre}</span></p>
+          <p style={{color: '#637e74', fontSize: '18px',paddingLeft: '10px',paddingTop: '10px'}}><strong>Dirección:</strong> <span style={{color: '#666'}}> {datos.nombreCalle} {datos.numeroDireccion}, {datos.nombreCiudad}, {datos.nombreRegion}</span></p>
+          <p style={{color: '#637e74', fontSize: '18px',paddingLeft: '10px',paddingTop: '10px'}}><strong>Teléfono:</strong>  <span style={{color: '#666'}}>{datos.telefono}</span></p>          
+          </div>
+      </fieldset> 
     </div>
-        
-    <div class="bloqueprincipal2" style={{position:'center'}}>
-      <div style={{ marginLeft: '5%' }}>
-        <div class="w3-container2">
-        <p style={{color: '#637e74', fontSize: '18px',paddingLeft: '10px',paddingTop: '10px'}}><strong>Nombre:</strong> <span style={{color: '#666'}}>{datos.nombre}</span></p>
-        <p style={{color: '#637e74', fontSize: '18px',paddingLeft: '10px',paddingTop: '10px'}}><strong>Dirección:</strong> <span style={{color: '#666'}}> {datos.nombreCalle} {datos.numeroDireccion}, {datos.nombreCiudad}, {datos.nombreRegion}</span></p>
-        <p style={{color: '#637e74', fontSize: '18px',paddingLeft: '10px',paddingTop: '10px'}}><strong>Teléfono:</strong>  <span style={{color: '#666'}}>{datos.telefono}</span></p>          
-        </div>
-      </div> 
-    </div>
-    </div>
+
   );
 };
 
