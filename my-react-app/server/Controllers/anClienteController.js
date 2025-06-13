@@ -30,7 +30,7 @@ const insertCliente = async (req, res) => {
 
         // 3. Call procedure to insert into cabecera using the client code
         await connection.execute(
-            `BEGIN OUTLET_Insert_Cabecera(:c_Clientes, c_rut);END;`,
+            `BEGIN OUTLET_Insert_Cabecera(:c_Clientes, :c_rut);END;`,
             { c_Clientes: codigoCliente, c_rut: currentUserRut}
         );
 
