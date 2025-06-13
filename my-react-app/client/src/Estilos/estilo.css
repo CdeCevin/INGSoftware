@@ -319,13 +319,13 @@ button:active {
 }
 
 .sidebar .Cerrar-button:hover {
-    background-color: #8c635d;
+    background-color: #d8d8d8;
 }
 
 .Cerrar-button::before {
     content: ''; /* Required for pseudo-elements */
     position: absolute; /* Positions the line relative to the button */
-    top: -8px; /* Adjust this value to control how far above the button the line appears. A negative value moves it up. */
+    top: -3px; /* Adjust this value to control how far above the button the line appears. A negative value moves it up. */
     left: 50%; /* Start the line at the horizontal center of the button */
     transform: translateX(-50%); /* Move the line back by half its own width to truly center it */
     width: 60%; /* This controls the length of the line. 60% means 60% of the button's width. Adjust as desired (e.g., 70%, 100px). */
