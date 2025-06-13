@@ -324,6 +324,19 @@ button:active {
     background-color: #8c635d;
 }
 
+.Cerrar-button::before {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Positions the line relative to the button */
+    top: -8px; /* Adjust this value to control how far above the button the line appears. A negative value moves it up. */
+    left: 50%; /* Start the line at the horizontal center of the button */
+    transform: translateX(-50%); /* Move the line back by half its own width to truly center it */
+    width: 60%; /* This controls the length of the line. 60% means 60% of the button's width. Adjust as desired (e.g., 70%, 100px). */
+    height: 2px; /* This controls the thickness of the line. Adjust as desired (e.g., 1px, 3px). */
+    background-color: #333; /* Initial color of the line (e.g., red) */
+    z-index: 1; /* Ensures the line is above other button content if there are any stacking issues */
+    transition: background-color 0.3s ease, top 0.3s ease; /* Smooth transition for color and position change on hover */
+}
+
 .sidebar .w3-button:hover {
     font-family: Roboto, Arial, sans-serif;
     font-weight: bold;
