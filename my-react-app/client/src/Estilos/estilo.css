@@ -236,22 +236,15 @@ button:active {
     height: 100%;
     overflow: auto;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 16px;
 }
 
 .sidebar a {
-    display: flex;
+    display: block;
     color: #333;
     padding: 16px;
     text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease;
     box-sizing: border-box;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: left;
 }
 
 .sidebar a.active {
@@ -301,19 +294,8 @@ button:active {
     box-sizing: border-box;
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    display: flex;
+    display: block;
     width: 100%;
-    align-items: center;
-    justify-content:flex-start;
-
-}
-
-.sidebar a.Menu-button{
-    background-color: #6b9787;
-    color: white;
-    font-weight: bold;
-
-
 }
 
 .sidebar .Menu-button {
@@ -342,82 +324,6 @@ button:active {
     width: 100%;
     box-sizing: border-box;
     transition: background-color 0.3s ease;
-}
-
-.sidebar a.Cerrar-button{
-    justify-content: center;
-}
-
-.sidebar .w3-button .fa-caret-down {
-    margin-left: auto; /* Pushes the arrow to the far right */
-    transition: transform 0.3s ease; /* Smooth rotation transition */
-}
-
-.w3-dropdown-hover {
-    position: relative; /* **CRITICAL:** Establishes a positioning context for the dropdown content */
-    display: block; /* Ensures it takes full width of sidebar */
-    width: 100%; /* Important for `left: 100%` positioning */
-    /* If you want hover to apply to the whole row: */
-    /* background-color: #e7e7e7; /* Default sidebar background */
-    /* transition: background-color 0.3s ease; */
-}
-
-/* Hover effect for the main dropdown button area */
-.w3-dropdown-hover:hover > .w3-button {
-    background-color: #637e74; /* Matches your sidebar hover color */
-    color: #ffffff; /* Text color on hover */
-}
-
-/* The dropdown content itself, i.e., <div className="w3-dropdown-content w3-bar-block"> */
-.w3-dropdown-content {
-    position: absolute; /* Take it out of normal flow for precise placement */
-    top: 0; /* Align the top of the flyout with the top of the main button */
-    left: 100%; /* **CRITICAL:** Push the flyout to the right of the sidebar */
-    min-width: 180px; /* Set a fixed width or min-width for the flyout menu */
-    background-color: #f9f9f9; /* Lighter background for the flyout menu */
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add a subtle shadow for depth */
-    z-index: 1000; /* Ensure it appears on top of other content */
-    border-radius: 5px; /* Match other elements' rounded corners */
-    padding: 0; /* Remove default padding from w3-bar-block, links will add their own */
-    margin: 0; /* Remove default margin */
-    list-style: none; /* In case it's treated as a list */
-
-
-    /* Hide by default using opacity and visibility for smooth transitions */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-    transform: translateX(-10px); /* Slightly move it left initially for a "fly-in" effect */
-}
-
-/* Styles for the links inside the dropdown content */
-.w3-dropdown-content a { /* Targeting direct links within w3-dropdown-content */
-    color: #333; /* Text color for dropdown links */
-    padding: 12px 16px; /* Padding for individual dropdown items */
-    text-decoration: none;
-    display: block; /* Make the whole area clickable */
-    text-align: left; /* Ensure text aligns left within the flyout */
-    white-space: nowrap; /* Prevent text wrapping within flyout items */
-    transition: background-color 0.2s ease, color 0.2s ease;
-    font-weight: normal; /* Override bold from parent .sidebar a if any */
-}
-
-.w3-dropdown-content a:hover {
-    background-color: #e0e0e0; /* Hover effect for dropdown items */
-    color: #333; /* Keep text color for hover */
-}
-
-
-/* **Rule to SHOW the dropdown content on hover** */
-.w3-dropdown-hover:hover .w3-dropdown-content {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0); /* Move it to its final position */
-}
-
-/* **Rotate the arrow when the dropdown is open (on hover)** */
-.w3-dropdown-hover:hover > .w3-button .fa-caret-down {
-    transform: rotate(-90deg); /* Rotate to point left, indicating flyout to right */
 }
 
 .sidebar .Cerrar-button:hover {
