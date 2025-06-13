@@ -365,7 +365,7 @@ button:active {
     min-width: 180px; /* Set a fixed width or min-width for the flyout menu */
     background-color: #f9f9f9; /* Lighter background for the flyout menu */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add a subtle shadow for depth */
-    z-index: 1000; /* Ensure it appears on top of other content */
+    z-index: 9999; /* Ensure it appears on top of other content */
     border-radius: 5px; /* Match other elements' rounded corners */
     padding: 0; /* Remove default padding from w3-bar-block */
     margin: 0; /* Remove default margin */
@@ -533,12 +533,6 @@ button:active {
     background: #e53935;
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.btn:hover { /* General hover, ensure it's specific enough not to override complete/cancel */
-    /* This might be redundant if specific buttons have their own hover */
-    /* background-color: #5a7f72; */
-    /* border-color: #5a7f72; */
 }
 
 .btn_Pendientes {
