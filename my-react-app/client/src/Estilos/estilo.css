@@ -309,7 +309,7 @@ button:active {
     font-family: Roboto, Arial, sans-serif;
     font-weight: bold;
     color: #666;
-    text-align: left;
+    text-align: center;
     position: absolute;
     bottom: 0px;
     padding: 10px 20px; /* Consider if this fixed padding is always desired */
