@@ -130,7 +130,6 @@ const ListadoPendientes = () => {
     }, []);
 
     return (
-        
             <div className="main-block">
                 <h1>Ventas Pendientes</h1>
                 {pendientes.length > 0 ? (
@@ -142,7 +141,7 @@ const ListadoPendientes = () => {
                                         <th>CÓDIGO DE VENTA</th>
                                         <th>FECHA</th>
                                         <th>CLIENTE</th>
-                                        <th>DIRECCIÓN</th>
+                                       {/* <th>DIRECCIÓN</th>*/ }
                                         <th>PRODUCTOS</th>
                                         <th>TOTAL</th>
                                         <th>COMPLETAR</th>
