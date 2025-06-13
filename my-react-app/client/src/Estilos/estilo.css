@@ -39,7 +39,7 @@ div.content {
     margin-left: 200px; /* Offset for the fixed sidebar */
     padding: 20px;
     min-height: 100vh;
-    background-color: #f6f6e9;
+    background-color: #ffffff;
     box-sizing: border-box;
 
     /* CRITICAL FLEXBOX PROPERTIES FOR CENTERING */
