@@ -434,8 +434,17 @@ button:active {
     color:#666;
     cursor: pointer;
     border: none;
-    padding: 5px 10px;
     transition: color 0.3s ease;
+
+    padding: 8px; /* Adjust if needed */
+    font-size: 1.1em; /* Adjust icon size */
+    min-width: 100px;
+    height: 30px;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .btn_Pendientes:hover {
