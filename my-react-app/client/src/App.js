@@ -30,7 +30,7 @@ import HistorialVentas from './Componentes/Ventas/HistorialVentas';
 import VentaClienteEx from './Componentes/Ventas/VentaClienteEx';
 import VentaClienteNu from './Componentes/Ventas/VentaClienteNu';
 
-// Usuarios 
+// Usuarios
 import AgregarUsuarios from './Componentes/Usuarios/AgregarUsuarios';
 import EliminarUsuario from './Componentes/Usuarios/EliminarUsuario';
 import ActualizarUsuario from './Componentes/Usuarios/ActualizarUsuario';
@@ -38,13 +38,24 @@ import ListadoUsuarios from './Componentes/Usuarios/ListadoUsuarios';
 
 function LayoutWithMenu({ children }) {
   const { pathname } = useLocation();
-  const hideMenuOn = ['/', '/login'];  // rutas sin menú
+  const hideMenuOn = ['/', '/login']; // rutas sin menú
   const shouldHideMenu = hideMenuOn.includes(pathname);
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', width: '100vw' }}>
       {!shouldHideMenu && <Menu />}
-      <div className="content">
+      <div
+        className="content"
+        style={shouldHideMenu ? {
+            flexGrow: 1,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100vw', // Ensures it spans full viewport width when sidebar is hidden
+            // Optional: If your login page needs a specific background color when centered, add it here.
+            // backgroundColor: '#f0f2f5'
+        } : { flexGrow: 1 }}
+      >
         {children}
       </div>
     </div>
