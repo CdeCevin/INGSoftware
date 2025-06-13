@@ -44,7 +44,7 @@ const LoginForm = () => {
     };
 
     return (
-        <div className="main-block" style={{ backgroundColor: '#eaeeea' }}>
+        <div className="main-block2" style={{ backgroundColor: '#eaeeea' }}>
             <form onSubmit={handleSubmit}>
                 <h1 style={{ textAlign: 'center' }}>Ingresar</h1>
                 <fieldset>
