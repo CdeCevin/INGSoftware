@@ -41,7 +41,7 @@ function HistorialVentas() {
                                         <th>DIRECCIÓN</th>
                                         <th>PRODUCTOS</th>
                                         <th>TOTAL</th>
-                                        <th>BOLETA</th>
+                                        <th>COMPROBANTE</th>
                                     </tr>
                                 </thead>
                                 <tbody>
