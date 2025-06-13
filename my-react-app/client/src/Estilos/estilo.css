@@ -361,6 +361,21 @@ button:active {
     background-color: #f2f2f2;
     cursor: pointer;
 }
+.venta-table td table { /* Selects tables directly inside a venta-table td */
+    width: 100%; /* Make sure nested tables also fill their cell's width */
+    border-collapse: collapse; /* Ensure consistent styling */
+}
+.venta-table td table td,
+.venta-table td table th { /* Apply consistent padding to nested table cells */
+    padding: 5px; /* Adjust as needed */
+    text-align: left; /* Adjust alignment */
+    border: none; /* Usually, nested tables don't need borders */
+}
+.venta-table td table li { /* If products are lists, style them */
+    list-style: none; /* Remove bullet points */
+    padding: 2px 0;
+    margin: 0;
+}
 
 .tabla-productos th, .tabla-productos td {
     width: 100%; /* If these are for a specific table, adjust as needed */
