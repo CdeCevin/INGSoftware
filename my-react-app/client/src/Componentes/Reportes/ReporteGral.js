@@ -40,9 +40,8 @@ function ReporteGral() {
     }, []);
 
   return (
-    <div style={{ marginLeft: '12%' }}>
       <div className="main-block">
-        <form onSubmit={handleBuscar} encType="multipart/form-data"  style={{padding: '10px'}}>
+        <form onSubmit={handleBuscar} encType="multipart/form-data">
           <h1>Reporte de Ventas</h1>
           <fieldset>
             <legend>
@@ -130,7 +129,6 @@ function ReporteGral() {
           </div>
         </fieldset> 
       </div>
-    </div>
   );
 }
 
