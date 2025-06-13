@@ -47,6 +47,7 @@ function LayoutWithMenu({ children }) {
       <div
         className="content"
         style={shouldHideMenu ? {
+            marginLeft: 0,
             flexGrow: 1,
             display: 'flex',
             justifyContent: 'center',
