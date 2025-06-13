@@ -27,7 +27,7 @@ body, div, form, input, select, p, h1, h3, fieldset, label, button, output, text
 h1 {
     margin: 0;
     font-weight: 400;
-    font-size: 30;
+    /* font-size: 30; */
 }
 
 h3 {
