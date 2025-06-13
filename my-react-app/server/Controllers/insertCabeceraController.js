@@ -2,10 +2,10 @@ const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
 
 const insertCabecera = async (req, res) => {
-    const currentUserRut = localStorage.getItem('userRut');
+    
     let connection; 
     try {
-        const { codigo } = req.body;
+        const { codigo, currentUserRut } = req.body;
         
         connection = await getConnection();
 

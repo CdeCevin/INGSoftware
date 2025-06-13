@@ -17,7 +17,7 @@ function VentaClienteEx() {
     const [messageModalIsOpen, setMessageModalIsOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);  // Aquí va la imagen seleccionada
     const [modalMessage, setModalMessage] = useState("");      
-
+    const currentUserRut = localStorage.getItem('userRut');
 
 
     const handleSubmitCliente = async (e) => {
@@ -29,7 +29,7 @@ function VentaClienteEx() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ codigo })
+                body: JSON.stringify({ codigo, currentUserRut })
             });
 
             if (response.ok) {
