@@ -313,7 +313,7 @@ button:active {
     text-align: left;
     position: absolute;
     bottom: 0px;
-    padding: 10px 48.9px; /* Consider if this fixed padding is always desired */
+    padding: 10px 20px; /* Consider if this fixed padding is always desired */
     background-color:#976e6b;
     width: 100%;
     box-sizing: border-box;
