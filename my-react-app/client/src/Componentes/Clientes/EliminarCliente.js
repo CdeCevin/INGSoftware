@@ -45,7 +45,6 @@ function EliminarCliente() {
     }, []);
 
     return (
-        <div style={{ marginLeft: '12%' }}>
             <div className="main-block">
                 <form onSubmit={handleSubmit}>
                     <h1>Eliminar Cliente</h1>
@@ -70,8 +69,6 @@ function EliminarCliente() {
                     </fieldset>
                     <button type="submit">Eliminar</button>
                 </form>
-            </div>
-
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>

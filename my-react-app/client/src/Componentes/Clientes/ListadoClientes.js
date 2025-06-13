@@ -25,7 +25,6 @@ const ListadoClientes = () => {
     }, []);
 
     return (
-        <div >
             <div className="main-block">
                 <h1 >Registro Clientes</h1>
            
@@ -56,7 +55,6 @@ const ListadoClientes = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
     );
 };
 

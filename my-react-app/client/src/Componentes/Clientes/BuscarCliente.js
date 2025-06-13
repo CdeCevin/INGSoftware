@@ -46,7 +46,6 @@ function BuscarCliente() {
     const closeModal = () => setModalIsOpen(false);
 
     return (
-        <div style={{ marginLeft: '12%' }}>
             <div className="main-block">
                 <form onSubmit={handleSubmit}>
                     <h1>Buscar Cliente</h1>
@@ -78,7 +77,7 @@ function BuscarCliente() {
                     <legend>
                         <h3>  Resultados</h3>
                     </legend>
-                    <table className="venta-table" style={{marginLeft: '10%'}}>
+                    <table className="venta-table">
                         <thead>
                             <tr>
                             <th>NOMBRE</th>
@@ -96,7 +95,6 @@ function BuscarCliente() {
                     </table>
                     </fieldset>
                 )}
-            </div>
 
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
                 <h2>Mensaje</h2>
