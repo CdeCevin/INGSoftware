@@ -39,7 +39,7 @@ div.content {
     margin-left: 200px; /* Offset for the fixed sidebar */
     padding: 20px;
     min-height: 100vh;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     box-sizing: border-box;
 
     /* CRITICAL FLEXBOX PROPERTIES FOR CENTERING */
@@ -68,7 +68,7 @@ div.content {
     padding: 30px;
     background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     /* Aligns content within .main-block itself (e.g., tables if they're not 100% width) */
     align-items: center;
 }
