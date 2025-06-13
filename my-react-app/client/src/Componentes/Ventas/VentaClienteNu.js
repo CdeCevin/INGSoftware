@@ -24,7 +24,7 @@ function VentaClienteNu() {
 
     const [cantidad, setCantidad] = useState({});
     const [paginaActual, setPaginaActual] = useState('insertCabecera');
-
+    const currentUserRut = localStorage.getItem('userRut');
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -36,7 +36,7 @@ function VentaClienteNu() {
             INciudad: ciudad,
             INcalle: calle, 
             INnumero: numero,
-            currentUser: localStorage.getItem('currentUser') // Obtener el usuario actual del localStorage
+            currentUserRut: currentUserRut // Obtener el usuario actual del localStorage
         };
         console.log('Datos del formulario:', formData);
 
