@@ -78,7 +78,6 @@ function IngresoProducto() {
     }, []);
 
     return (
-        <div style={{ marginLeft: '12%' }}>
             <div className="main-block">
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <h1>Añadir Producto</h1>
@@ -180,7 +179,6 @@ function IngresoProducto() {
                     </fieldset>
                     <button type="submit">Añadir</button>
                 </form>
-            </div>
 
             {/* Modal para mostrar mensajes */}
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>

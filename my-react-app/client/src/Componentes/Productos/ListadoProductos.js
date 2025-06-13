@@ -73,7 +73,8 @@
         return (
                 <div className="main-block">
                 <h1>Historial de Productos</h1>
-                <fieldset style={{paddingTop:0}}> <legend> <h3>Productos añadidos</h3></legend>
+                <fieldset>
+                     <legend> <h3>Productos añadidos</h3></legend>
             {/* Modal para mostrar la imagen seleccionada */}
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
             <h2>Imagen del Producto</h2>

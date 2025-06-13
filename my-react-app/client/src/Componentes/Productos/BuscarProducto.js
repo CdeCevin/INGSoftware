@@ -68,7 +68,6 @@ const BuscarProducto = () => {
     }, []);
 
     return (
-        <div style={{ marginLeft: '13%' }}>
             <div className="main-block">
                 <form onSubmit={buscarProductos} encType="multipart/form-data">
                     <h1>Buscar Producto</h1>
@@ -130,7 +129,7 @@ const BuscarProducto = () => {
                         <legend>
                             <h3>Resultados</h3>
                         </legend>
-                    <table className="venta-table" style={{ marginLeft: '10%' }}>
+                    <table className="venta-table">
                         <thead>
                             <tr>
                                 <th>CÓDIGO</th>
@@ -165,7 +164,7 @@ const BuscarProducto = () => {
                 ) : (
                     <p></p>
                 )}
-            </div>
+           
             <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
