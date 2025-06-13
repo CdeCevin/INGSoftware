@@ -6,7 +6,7 @@
 html, body {
     min-height: 100vh;
     /* Changed background-color to match div.content for seamless appearance */
-    background-color: #ffffff;
+    background-color: #f3f3f3;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', Arial, sans-serif;
