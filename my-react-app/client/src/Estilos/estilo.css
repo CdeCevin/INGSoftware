@@ -52,6 +52,7 @@ div.content {
     /* CRITICAL: Explicitly set width to take the full remaining viewport space */
     width: calc(100vw - 200px);
     overflow-x: hidden; /* Prevent div.content itself from causing horizontal scroll */
+    z-index: 1;
 }
 
 /* --- .main-block: The white content block (e.g., Historial de Ventas) --- */
@@ -388,7 +389,7 @@ button:active {
   background-color: #e7e7e7;
   color: #333;
   min-width: 180px;
-  z-index: 1;
+  z-index: 9999;
   border-radius: 8px;
   
 }
