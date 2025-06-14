@@ -74,7 +74,7 @@
                 <div className="main-block">
                 <h1>Historial de Productos</h1>
                 <fieldset>
-                     <legend> <h3>Productos añadidos</h3></legend>
+                    <h3>Productos añadidos</h3>
             {/* Modal para mostrar la imagen seleccionada */}
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
             <h2>Imagen del Producto</h2>
