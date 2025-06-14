@@ -379,7 +379,7 @@ button:active {
 .w3-dropdown-hover:hover .w3-dropdown-content {
   display: block;
   background-color: #e7e7e7;
-  color: #000;
+  color: #333;
 }
 
 .w3-dropdown-content a {
@@ -390,8 +390,8 @@ button:active {
 }
 
 .w3-dropdown-content a:hover {
-  background-color: #637e74;
-  color: #333;
+  background-color: #ccc;
+  color: #000;
 }
 
 .w3-button {
