@@ -383,7 +383,7 @@ button:active {
 }
 
 .w3-dropdown-content a {
-  color: white;
+  color: #333;
   padding: 10px 15px;
   text-decoration: none;
   display: block;
