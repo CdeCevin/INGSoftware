@@ -369,6 +369,7 @@ button:active {
   left: 100%; /* Position submenu to the right */
   top: 0;
   background-color: #e7e7e7;
+  color: #333;
   min-width: 180px;
   z-index: 1;
   border-radius: 8px;
