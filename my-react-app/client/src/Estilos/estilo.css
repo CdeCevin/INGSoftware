@@ -573,6 +573,7 @@ button:active {
 
 .custom-modal {
     width: 400px;
+    margin-left: 200px;
     height: auto;
     margin: auto;
     padding: 30px;
