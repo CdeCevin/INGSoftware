@@ -370,7 +370,7 @@ button:active {
 
 .w3-dropdown-content {
   position: absolute;
-  top: 0;
+  top: 100%;
   left: 100%; /* fly out to the right */
   opacity: 0;
   transform: translateY(-10px);
@@ -383,7 +383,22 @@ button:active {
   min-width: 160px;
 }
 
+.w3-dropdown-hover .w3-dropdown-content {
+  display: none;
+  position: absolute;
+  left: 100%; /* Position submenu to the right */
+  top: 0;
+  background-color: #e7e7e7;
+  color: #333;
+  min-width: 180px;
+  border-radius: 8px;
+  
+}
+
 .w3-dropdown-hover:hover .w3-dropdown-content {
+  display: block;
+  background-color: #e7e7e7;
+  color: #333;
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
@@ -394,7 +409,6 @@ button:active {
   padding: 10px 15px;
   text-decoration: none;
   display: block;
-  transition: background-color 0.2s ease;
 }
 
 .w3-dropdown-content a:hover {
