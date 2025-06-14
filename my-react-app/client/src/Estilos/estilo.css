@@ -575,10 +575,11 @@ button:active {
     width: 400px;
     height: auto;
     margin: auto;
+    margin-left: 200px;
     padding: 30px;
     font-size: 1em;
     border: 1px solid #6b9787;
-    border-radius: 8px;
+    border-radius: 10px;
     background-color: #f6f6e9;
     margin-top: 50px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
