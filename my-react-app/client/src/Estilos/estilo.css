@@ -390,7 +390,25 @@ button:active {
   background-color: #3c5d75;
 }
 
+.w3-dropdown-content {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
 
+.w3-dropdown-hover:hover .w3-dropdown-content {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.w3-dropdown-content {
+  border-radius: 0.5rem;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
 
 .w3-button {
   color: white;
