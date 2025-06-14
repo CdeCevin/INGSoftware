@@ -43,7 +43,7 @@
         return (
                 <div className="main-block">
                 <h1>Listado de Usuarios</h1>
-                <fieldset> <legend> <h3>Usuarios añadidos</h3></legend>
+                <fieldset> <h3>Usuarios añadidos</h3>
      
                 <table className="venta-table">
                     <thead>

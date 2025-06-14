@@ -48,11 +48,9 @@ const LoginForm = () => {
             <form onSubmit={handleSubmit}>
                 <h1>Ingresar</h1>
                 <fieldset>
-                    <legend>
                         <h3>
                             Ingrese sus datos a continuación
                         </h3>
-                    </legend>
                     <div className="account-details2">
                         <div>
                             <label>RUT*</label>

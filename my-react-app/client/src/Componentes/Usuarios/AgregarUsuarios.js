@@ -70,7 +70,6 @@ function IngresoUsuario() {
     }, []);
 
     return (
-        <div style={{ marginLeft: '12%' }}>
             <div className="main-block">
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <h1>Añadir Usuario</h1>
@@ -142,8 +141,6 @@ function IngresoUsuario() {
                     </fieldset>
                     <button type="submit">Añadir Usuario</button>
                 </form>
-            </div>
-
             {/* Modal para mostrar mensajes */}
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
                 <h2>Mensaje</h2>
