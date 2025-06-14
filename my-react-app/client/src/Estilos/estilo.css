@@ -50,7 +50,7 @@ div.content {
     /* CRITICAL: Explicitly set width to take the full remaining viewport space */
     width: calc(100vw - 200px);
     overflow-x: hidden; /* Prevent div.content itself from causing horizontal scroll */
-    z-index: 5000;
+    z-index: 5000 !important;
 }
 
 /* --- .main-block: The white content block (e.g., Historial de Ventas) --- */
@@ -277,7 +277,7 @@ button:active {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
     display: flex; /* Makes the sidebar a flex container */
     flex-direction: column; /* Stacks its direct children vertically */
-    z-index: 9000;
+    z-index: 9000 !important;
 }
 
 /* Style for all top-level menu items within the sidebar */
@@ -367,7 +367,7 @@ button:active {
     min-width: 180px; /* Set a fixed width or min-width for the flyout menu */
     background-color: #f9f9f9; /* Lighter background for the flyout menu */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add a subtle shadow for depth */
-    z-index: 9999; /* Ensure it appears on top of other content */
+    z-index: 9999 !important; /* Ensure it appears on top of other content */
     border-radius: 5px; /* Match other elements' rounded corners */
     padding: 0; /* Remove default padding from w3-bar-block */
     margin: 0; /* Remove default margin */
