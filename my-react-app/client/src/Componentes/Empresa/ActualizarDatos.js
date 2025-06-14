@@ -79,7 +79,6 @@ function ActualizarDatos() {
     };
 
     return (
-        <div style={{ marginLeft: '12%' }}>
             <div className="main-block">
                 <form onSubmit={handleSubmit}>
                     <h1>Datos Empresa</h1>
@@ -160,7 +159,6 @@ function ActualizarDatos() {
                     </fieldset>
                     <button type="submit">Actualizar</button>
                 </form>
-            </div>
             {/* Modal para mostrar mensajes */}
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
                 <h2>Mensaje</h2>
