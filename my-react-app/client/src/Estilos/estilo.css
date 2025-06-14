@@ -56,7 +56,6 @@ div.content {
 
 /* --- .main-block: The white content block (e.g., Historial de Ventas) --- */
 .main-block {
-    
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -67,7 +66,7 @@ div.content {
     /* CRITICAL: Centers horizontally using auto margins */
     margin: 40px auto;
     padding: 30px;
-    background-color: #ffffff;
+    background-color: #e7e7e7;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     /* Aligns content within .main-block itself (e.g., tables if they're not 100% width) */
@@ -366,6 +365,7 @@ button:active {
 
 .w3-dropdown-hover {
   position: relative;
+  color: #333;
 }
 
 .w3-dropdown-content {
