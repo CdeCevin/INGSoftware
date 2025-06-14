@@ -73,6 +73,7 @@ div.content {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     /* Aligns content within .main-block itself (e.g., tables if they're not 100% width) */
     align-items: center;
+    z-index: 2;
 }
 
 /* --- .main-block2: For other content blocks (e.g., login form) --- */
