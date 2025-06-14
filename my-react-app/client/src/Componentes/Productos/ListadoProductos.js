@@ -2,6 +2,7 @@
     import '../../Estilos/style_menu.css';
     import '../../Estilos/estilo.css';
     import Modal from 'react-modal';
+    Modal.setAppElement('#root');
 
     const ListadoProductos = () => {
         console.log("HOLAA");
