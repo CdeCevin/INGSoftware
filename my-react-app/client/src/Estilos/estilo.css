@@ -42,7 +42,7 @@ div.content {
     min-height: 100vh;
     background-color: #ffffff;
     box-sizing: border-box;
-
+    position: relative;
     /* CRITICAL FLEXBOX PROPERTIES FOR CENTERING */
     display: flex;
     flex-direction: column; /* Force children (like .main-block) to stack vertically */
@@ -232,13 +232,15 @@ button:active {
     padding: 0;
     width: 200px;
     background-color: #e7e7e7;
-    position: relative;
+    position: fixed;
     height: 100%;
     height: 100vh;
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: auto;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
+
 }
 
 .sidebar a {
@@ -251,17 +253,17 @@ button:active {
 }
 
 .sidebar a.active {
-    background-color: #6b9787;
+    background-color: #ccc;
     color: white;
 }
 
 .sidebar a:hover:not(.active) {
-    background-color: #637e74;
+    background-color: #ccc;
     color: white;
 }
 
 .sidebar a.active:hover {
-    background-color: #637e74;
+    background-color: #ccc;
     color: white;
 }
 
@@ -351,7 +353,7 @@ button:active {
 .sidebar .w3-button:hover {
     font-family: Roboto, Arial, sans-serif;
     font-weight: bold;
-    background-color: #637e74;
+    background-color: #ccc;
     color: #333;
 }
 
@@ -361,6 +363,21 @@ button:active {
 
 .w3-dropdown-hover {
   position: relative;
+}
+
+.w3-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 100%; /* fly out to the right */
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  pointer-events: none;
+  z-index: 9999; /* ensures it overlaps everything else */
+  min-width: 160px;
 }
 
 .w3-dropdown-hover .w3-dropdown-content {
@@ -380,6 +397,9 @@ button:active {
   display: block;
   background-color: #e7e7e7;
   color: #333;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .w3-dropdown-content a {
