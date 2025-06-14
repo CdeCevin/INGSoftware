@@ -77,7 +77,7 @@
                 <fieldset>
                     <h3>Productos añadidos</h3>
             {/* Modal para mostrar la imagen seleccionada */}
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto" classname = "custom-modal">
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto" className={"custom-modal"}>
             <h2>Imagen del Producto</h2>
             {selectedImage ? (
                 <img
