@@ -605,7 +605,7 @@ button:active {
         width: 100%;
         height: auto;
         position: relative; /* Sidebar becomes part of normal flow on small screens */
-        overflow: hidden;
+        /*overflow: hidden;*/
         flex-direction: row; /* Layout main items horizontally on small screens */
         flex-wrap: wrap; /* Allow items to wrap to next line */
     }
