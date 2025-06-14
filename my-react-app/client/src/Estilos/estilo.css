@@ -272,7 +272,7 @@ button:active {
     position: fixed;
     height: 100%;
     overflow-y: auto; /* Allows vertical scrolling if content exceeds height */
-    overflow-x: hidden; /* Prevent horizontal scrolling within the sidebar */
+    overflow-x: visible; /* Prevent horizontal scrolling within the sidebar */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
     display: flex; /* Makes the sidebar a flex container */
     flex-direction: column; /* Stacks its direct children vertically */
