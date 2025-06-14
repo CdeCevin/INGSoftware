@@ -52,7 +52,6 @@ div.content {
     /* CRITICAL: Explicitly set width to take the full remaining viewport space */
     width: calc(100vw - 200px);
     overflow-x: hidden; /* Prevent div.content itself from causing horizontal scroll */
-    z-index: 1 !important;
 }
 
 /* --- .main-block: The white content block (e.g., Historial de Ventas) --- */
@@ -239,10 +238,11 @@ button:active {
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
+    overflow: visible;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
-    z-index: 9990 !important;
+    z-index: 1000 !important;
 
 }
 
