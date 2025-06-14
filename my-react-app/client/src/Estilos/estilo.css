@@ -390,38 +390,6 @@ button:active {
   background-color: #3c5d75;
 }
 
-.w3-dropdown-content {
-  opacity: 0;
-  transform: translateX(-15px); /* Slight slide left */
-  transition: opacity 0.35s ease, transform 0.35s ease;
-  pointer-events: none; /* Disable mouse events when hidden */
-  position: absolute;    /* So it overlaps content */
-  background-color: white;
-  border-radius: 8px;    /* Rounded corners */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  z-index: 1000;         /* Make sure it's above other stuff */
-  min-width: 150px;      /* Optional, adjust to your needs */
-  will-change: opacity, transform; /* Hint for smoother animation */
-}
-
-.w3-dropdown-hover:hover .w3-dropdown-content {
-  opacity: 1;
-  transform: translateX(0); /* Slide to original position */
-  pointer-events: auto;
-}
-
-.w3-dropdown-hover {
-  position: relative;
-  display: inline-block; /* or block, depending on your layout */
-}
-
-.w3-dropdown-content {
-  border-radius: 0.5rem;
-  background: white;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-  overflow: hidden;
-}
-
 .w3-button {
   color: white;
   padding: 12px 16px;
