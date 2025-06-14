@@ -50,6 +50,7 @@ div.content {
     /* CRITICAL: Explicitly set width to take the full remaining viewport space */
     width: calc(100vw - 200px);
     overflow-x: hidden; /* Prevent div.content itself from causing horizontal scroll */
+    z-index: 5000;
 }
 
 /* --- .main-block: The white content block (e.g., Historial de Ventas) --- */
