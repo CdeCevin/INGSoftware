@@ -378,7 +378,7 @@ button:active {
 
 .w3-dropdown-hover:hover .w3-dropdown-content {
   display: block;
-  background-color: #ccc;
+  background-color: #e7e7e7;
   color: #000;
 }
 
