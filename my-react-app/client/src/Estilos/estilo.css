@@ -352,7 +352,7 @@ button:active {
     font-family: Roboto, Arial, sans-serif;
     font-weight: bold;
     background-color: #637e74;
-    color: #ffffff;
+    color: #333;
 }
 
 .sidebar .w3-dropdown-content w3-bar-block {
@@ -378,6 +378,8 @@ button:active {
 
 .w3-dropdown-hover:hover .w3-dropdown-content {
   display: block;
+  background-color: #637e74;
+  color: #333;
 }
 
 .w3-dropdown-content a {
@@ -388,7 +390,8 @@ button:active {
 }
 
 .w3-dropdown-content a:hover {
-  background-color: #3c5d75;
+  background-color: #637e74;
+  color: #333;
 }
 
 .w3-button {
