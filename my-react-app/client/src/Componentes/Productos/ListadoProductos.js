@@ -73,7 +73,7 @@
 
         return (
                 <div className="main-block">
-                <h1>Historial de Productos</h1>
+                <h1>Listado de Productos</h1>
                 <fieldset>
                     <h3>Productos añadidos</h3>
             {/* Modal para mostrar la imagen seleccionada */}

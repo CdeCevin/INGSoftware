@@ -244,7 +244,7 @@ function VentaClienteEx() {
                     
 
                     {/* Modal para mostrar la imagen seleccionada */}
-                    <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto">
+                    <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto" className={"custom-modal"}>
                     <h2>Imagen del Producto</h2>
                     {selectedImage ? (
                       <img
