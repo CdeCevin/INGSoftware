@@ -126,9 +126,7 @@ const BuscarProducto = () => {
 
                 {productos.length > 0 ? (
                     <fieldset>
-                        <legend>
                             <h3>Resultados</h3>
-                        </legend>
                     <table className="venta-table">
                         <thead>
                             <tr>
