@@ -176,7 +176,6 @@ function VentaClienteEx() {
     return (
         <div>
             {paginaActual === 'insertCabecera' && (
-                <div style={{ marginLeft: '12%' }}>
                 <div className="main-block">
                     <form onSubmit={handleSubmitCliente}>
                         <h1>Cabecera Venta</h1>
@@ -201,7 +200,6 @@ function VentaClienteEx() {
                         </fieldset>
                         <button type="submit">Buscar Cliente</button>
                     </form>
-                </div>
                 </div>
             )}
 
