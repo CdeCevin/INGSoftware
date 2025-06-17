@@ -206,9 +206,8 @@ function VentaClienteEx() {
             )}
 
             {paginaActual === 'buscarProducto' && (
-                <div style={{marginLeft: '12%'}}>
                 <div className="main-block">
-                    <h1 style={{padding:20,paddingBottom:0}}>Buscar Producto</h1>
+                    <h1>Buscar Producto</h1>
                     <form onSubmit={buscarProductos} style={{paddingTop:0}}>
                         <fieldset>
                             <legend>
@@ -266,10 +265,7 @@ function VentaClienteEx() {
 
                     {productos.length > 0 && (
                         <fieldset>
-                        <legend>
                             <h3>Resultados</h3>
-                        </legend>
-                        <div style={{marginLeft: '12%'}}>
                         <table className="venta-table">
                             <thead>
                                 <tr>
@@ -315,8 +311,7 @@ function VentaClienteEx() {
                                 ))}
                             </tbody>
                         </table>
-                        <button style={{marginLeft: '-12%',width:'110%'}} onClick={finalizarVenta}>Finalizar Venta</button>
-                        </div>
+                        <button  onClick={finalizarVenta}>Finalizar Venta</button>
                         </fieldset>
                     )}
                     {/* 
@@ -331,14 +326,11 @@ function VentaClienteEx() {
                                 ))}
                             </ul></div>)}*/}
                 </div>
-                </div>
             )}
 
             {paginaActual === 'VentasPendientes' && (
-                <div style={{marginLeft: '12%'}}>
                 <div className="main-block">
                 <VentasPendientes />
-                </div>
                 </div>
             )}
 
