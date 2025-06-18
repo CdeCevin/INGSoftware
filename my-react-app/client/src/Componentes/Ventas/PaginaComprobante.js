@@ -77,11 +77,12 @@ const PaginaComprobante = () => {
 
     const { cabecera, productos, direccion, codigoCabecera } = invoiceData;
 
-    const total=0;
+    let subtotal = 0;
 
     if (productos && productos.length > 0) {
-        total = productos.reduce((sum, item) => sum + (item[2] || 0) * (item[3] || 0), 0);
+        subtotal = productos.reduce((sum, item) => sum + (item[2] || 0) * (item[3] || 0), 0);
     }
+    const total = subtotal;
 
     const downloadPdf = () => {
         if (!invoiceRef.current) return;
