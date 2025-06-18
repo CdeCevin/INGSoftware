@@ -3,8 +3,6 @@ import '../../Estilos/estilo.css';
 function HistorialVentas() {
     const [ventas, setVentas] = useState([]);
     const [visibleTables, setVisibleTables] = useState({});
-    const [invoiceLoadingId, setInvoiceLoadingId] = useState(null);
-    const [invoiceError, setInvoiceError] = useState(null);
 
     // Fetch and sort data
     useEffect(() => {
@@ -26,44 +24,6 @@ function HistorialVentas() {
             ...prevState,
             [idVenta]: !prevState[idVenta],
         }));
-    };
-
-    const handleVerBoleta = async (codigoComprobante) => {
-        setInvoiceLoadingId(codigoComprobante); // Set loading state for this specific venta
-        setInvoiceError(null); // Clear previous errors
-        try {
-            const response = await fetch(`http://localhost:3001/api/historialVentas/boleta/${codigoComprobante}`);
-
-            // --- IMPORTANT: Check for HTTP errors with fetch ---
-            if (!response.ok) {
-                // If response.status is not in the 200-299 range, it's an HTTP error
-                const errorText = await response.text(); // Get more details if possible
-                throw new Error(`Error HTTP ${response.status}: ${errorText || response.statusText}`);
-            }
-
-            const invoiceData = await response.json(); // <--- Parse JSON from the response
-
-            // Basic validation
-            if (!invoiceData || !invoiceData.cabecera || !invoiceData.direccion) {
-                throw new Error("Datos de factura incompletos recibidos del servidor.");
-            }
-            if (!invoiceData.productos || invoiceData.productos.length === 0) {
-                 console.warn(`Factura ${codigoComprobante} no tiene productos detallados.`);
-            }
-
-            // Store the data in sessionStorage for the InvoicePage to pick up
-            sessionStorage.setItem('currentInvoiceData', JSON.stringify(invoiceData));
-
-            // Open the frontend invoice page in a new window/tab
-            const invoiceUrl = `${window.location.origin}/invoice`; // Ensure this matches your route in App.js
-            window.open(invoiceUrl, '_blank', 'noopener,noreferrer');
-
-        } catch (error) {
-            console.error("Error al obtener o abrir la boleta:", error);
-            setInvoiceError(`Error al cargar la boleta ${codigoComprobante}. ${error.message}`); // Display error message from catch
-        } finally {
-            setInvoiceLoadingId(null); // Clear loading state
-        }
     };
 
     return (
@@ -113,20 +73,9 @@ function HistorialVentas() {
                                         <td className='venta-cell'>${venta.precioTotal}</td>
                                         <td>
                                             {/* Botón para ver la boleta */}
-                                            <button
-                                            type="button"
-                                            onClick={() => handleVerBoleta(venta.codigoComprobante)}
-                                            className="btn btn-primary"
-                                            disabled={invoiceLoadingId === venta.codigoComprobante}
-                                        >
-                                            {invoiceLoadingId === venta.codigoComprobante ? (
-                                                <i className="fa fa-spinner fa-spin"></i>
-                                            ) : (
+                                            <button type="button" onClick={() => window.open(`http://localhost:3001/api/historialVentas/boleta/${venta.codigoComprobante}`, '_blank')} className="btn btn-primary">
                                                 <i className="fa fa-eye"></i>
-                                            )}
-                                        </button>
-                                        {invoiceError && invoiceLoadingId === venta.codigoComprobante &&
-                                            <p style={{ color: 'red', fontSize: '0.8em', marginTop: '5px' }}>{invoiceError}</p>}
+                                            </button>
                                         </td>
                                     </tr>
                                 </tbody>
