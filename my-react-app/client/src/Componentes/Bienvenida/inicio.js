@@ -9,7 +9,7 @@ function Inicio() {
 
     return (
         <div>
-            <div class="bloqueprincipal">
+            <div class="main-block">
                 <div class="w3-container">
                 <h1>¡Bienvenido!</h1>
                 <h3>Bienvenido a la aplicación de registro web de Outlet A Tu Hogar.</h3>
