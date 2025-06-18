@@ -26,6 +26,12 @@ function HistorialVentas() {
         }));
     };
 
+    const handleVerBoleta = (codigoComprobante) => {
+        // No fetch or sessionStorage here! Just open the new window with the correct URL
+        const comprobanteUrl = `${window.location.origin}/comprobante/${codigoComprobante}`; // <--- NEW URL FORMAT
+        window.open(comprobanteUrl, '_blank', 'noopener,noreferrer');
+    };
+
     return (
             <div className="main-block">
                 <h1 /*style={{padding:20}}*/>Historial de Ventas</h1>
@@ -73,9 +79,12 @@ function HistorialVentas() {
                                         <td className='venta-cell'>${venta.precioTotal}</td>
                                         <td>
                                             {/* Botón para ver la boleta */}
-                                            <button type="button" onClick={() => window.open(`http://localhost:3001/api/historialVentas/boleta/${venta.codigoComprobante}`, '_blank')} className="btn btn-primary">
-                                                <i className="fa fa-eye"></i>
-                                            </button>
+                                            <button
+                                            type="button"
+                                            onClick={() => handleVerBoleta(venta.codigoComprobante)}
+                                            className="btn btn-primary">
+                                            <i className="fa fa-eye"></i>
+                                        </button>
                                         </td>
                                     </tr>
                                 </tbody>

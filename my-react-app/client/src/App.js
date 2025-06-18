@@ -40,7 +40,7 @@ import ListadoUsuarios from './Componentes/Usuarios/ListadoUsuarios';
 
 function LayoutWithMenu({ children }) {
   const { pathname } = useLocation();
-  const hideMenuOn = ['/', '/login','comprobante']; // rutas sin menú
+  const hideMenuOn = ['/', '/login','comprobante',/^\/comprobante\/\d+$/]; // rutas sin menú
   const shouldHideMenu = hideMenuOn.includes(pathname);
 
   return (
@@ -72,7 +72,7 @@ function App() {
         {/* Rutas sin menú */}
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/comprobante" element={<PaginaComprobante />}/>
+        <Route path="/comprobante/:codigoComprobante" element={<PaginaComprobante />} />
 
         {/* Rutas con menú */}
         <Route path="/home" element={<Home />} />
