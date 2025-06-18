@@ -657,6 +657,8 @@ button:active {
 }*/
 /* src/components/InvoicePage.css */
 
+
+/*estilos comprobante*/
 .invoice-page-container {
     padding: 20px;
     background-color: #f0f2f5; /* Light background for the whole page */
