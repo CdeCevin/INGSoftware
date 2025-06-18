@@ -2,22 +2,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
-import './InvoicePage.css'; // We'll create this CSS file next
+import './InvoicePage.css';
 
 const InvoicePage = () => {
-    const invoiceRef = useRef(null); // Ref to capture the invoice div
+    const invoiceRef = useRef(null);
     const [invoiceData, setInvoiceData] = useState(null);
 
     useEffect(() => {
-        // Retrieve data from sessionStorage when the component mounts
         const storedData = sessionStorage.getItem('currentInvoiceData');
         if (storedData) {
             setInvoiceData(JSON.parse(storedData));
-            // Optional: Remove data after retrieving to clean up
-            // sessionStorage.removeItem('currentInvoiceData');
         } else {
-            // Handle case where no data is found (e.g., redirect or show error)
             console.error("No invoice data found in session storage.");
+            // You might want to redirect the user or show a "No invoice data" message
         }
     }, []);
 
@@ -25,27 +22,34 @@ const InvoicePage = () => {
         return (
             <div className="invoice-page-container">
                 <p>Cargando factura...</p>
-                {/* Or a more robust loading/error state */}
             </div>
         );
     }
 
-    const { client, items, date, invoiceNumber } = invoiceData;
+    // --- IMPORTANT: Destructure data based on your JSON structure ---
+    const { cabecera, productos, direccion, codigoCabecera } = invoiceData;
 
     // Calculate totals
-    const subtotal = items.reduce((sum, item) => sum + item.quantity * item.price, 0);
+    let subtotal = 0;
     const taxRate = 0.19; // Example 19% tax (IVA in Chile)
+
+    // Calculate subtotal from products (assuming item[2] is quantity, item[3] is unit price)
+    if (productos && productos.length > 0) {
+        subtotal = productos.reduce((sum, item) => sum + (item[2] || 0) * (item[3] || 0), 0);
+    }
+
     const taxAmount = subtotal * taxRate;
     const total = subtotal + taxAmount;
+    // --- END IMPORTANT ADJUSTMENTS ---
 
     const downloadPdf = () => {
         if (!invoiceRef.current) return;
 
         html2canvas(invoiceRef.current, { scale: 2 }).then(canvas => {
             const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF('p', 'mm', 'a4'); // 'p' for portrait, 'mm' for millimeters, 'a4' size
-            const imgWidth = 210; // A4 width in mm
-            const pageHeight = 297; // A4 height in mm
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const imgWidth = 210;
+            const pageHeight = 297;
             const imgHeight = (canvas.height * imgWidth) / canvas.width;
             let heightLeft = imgHeight;
             let position = 0;
@@ -60,7 +64,7 @@ const InvoicePage = () => {
                 heightLeft -= pageHeight;
             }
 
-            pdf.save(`Factura_${invoiceNumber || 'generada'}.pdf`);
+            pdf.save(`Factura_${codigoCabecera || 'generada'}.pdf`);
         });
     };
 
@@ -71,41 +75,52 @@ const InvoicePage = () => {
             </button>
             <div className="invoice-wrapper" ref={invoiceRef}>
                 <div className="invoice-header">
-                    <h2>Factura #{invoiceNumber || 'N/A'}</h2>
-                    <p>Fecha: {new Date(date).toLocaleDateString('es-CL')}</p>
+                    <h2>Factura #{codigoCabecera || 'N/A'}</h2>
+                    {/* Format date from ISO string to a readable format (e.g., "18 de junio de 2025") */}
+                    <p>Fecha: {new Date(cabecera.FECHA).toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                    <p>Emitido por: {cabecera.NOMBRE_USUARIO || 'N/A'}</p>
+                    <p>RUT Emisor: {cabecera.RUT_USUARIO || 'N/A'}</p>
                 </div>
 
                 <div className="invoice-section client-details">
                     <h3>Detalles del Cliente:</h3>
-                    <p><strong>Nombre:</strong> {client.name}</p>
-                    <p><strong>RUT:</strong> {client.rut}</p>
-                    <p><strong>Dirección:</strong> {client.address}</p>
-                    <p><strong>Email:</strong> {client.email}</p>
+                    <p><strong>Nombre:</strong> {cabecera.NOMBRE_CLIENTE || 'N/A'}</p>
+                    <p><strong>Teléfono:</strong> {cabecera.TELEFONO || 'N/A'}</p>
+                    {/* Concatenate address details for a clear display */}
+                    <p><strong>Dirección:</strong> {`${direccion.nombreCalle || ''} ${direccion.numeroDireccion || ''}, ${direccion.nombreCiudad || ''}, ${direccion.nombreRegion || ''}`.trim()}</p>
                 </div>
 
-                <div className="invoice-section items-details">
-                    <h3>Productos/Servicios:</h3>
-                    <table className="invoice-items-table">
-                        <thead>
-                            <tr>
-                                <th>Cantidad</th>
-                                <th>Descripción</th>
-                                <th>Precio Unitario</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {items.map((item, index) => (
-                                <tr key={index}>
-                                    <td>{item.quantity}</td>
-                                    <td>{item.description}</td>
-                                    <td>${item.price.toLocaleString('es-CL')}</td>
-                                    <td>${(item.quantity * item.price).toLocaleString('es-CL')}</td>
+                {/* --- IMPORTANT: Conditional rendering for products section --- */}
+                {productos && productos.length > 0 ? (
+                    <div className="invoice-section items-details">
+                        <h3>Productos/Servicios:</h3>
+                        <table className="invoice-items-table">
+                            <thead>
+                                <tr>
+                                    <th>Cantidad</th>
+                                    <th>Descripción</th>
+                                    <th>Precio Unitario</th>
+                                    <th>Total</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                                {productos.map((item, index) => (
+                                    <tr key={index}>
+                                        <td>{item[2] || '1'}</td> {/* Quantity */}
+                                        <td>{`${item[0] || 'Producto sin descripción'} (${item[1] || 'Sin color'})`}</td> {/* Description + Color */}
+                                        <td>${(item[3] || 0).toLocaleString('es-CL')}</td> {/* Unit Price */}
+                                        <td>${((item[2] || 0) * (item[3] || 0)).toLocaleString('es-CL')}</td> {/* Line Total */}
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                ) : (
+                    <div className="invoice-section items-details">
+                        <p>No se detallaron productos o servicios para esta factura.</p>
+                    </div>
+                )}
+                {/* --- END IMPORTANT --- */}
 
                 <div className="invoice-totals">
                     <p>Subtotal: <span>${subtotal.toLocaleString('es-CL')}</span></p>
