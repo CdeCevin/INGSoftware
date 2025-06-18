@@ -56,7 +56,6 @@ div.content {
 
 /* --- .main-block: The white content block (e.g., Historial de Ventas) --- */
 .main-block {
-    
     display: flex;
     flex-direction: column;
     gap: 25px;

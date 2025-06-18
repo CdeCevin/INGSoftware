@@ -1,19 +1,15 @@
-
-.sidebar {
-  width: 10%;
-}
 .bloqueprincipal {
-width: 60%;
-margin: auto;
-border-radius: 30px;
-background-color: #f2f2f2;
-padding: 50px;
-box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-position: absolute;
-top: 25%;
-left: 50%;
-transform: translate(-50%, -50%)
-}
+  width: 90%;
+  margin: auto;
+  border-radius: 30px;
+  background-color: #f2f2f2;
+  padding: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+  }
 .bloqueprincipal2 {
 width: 30% ;
 height: 50%;
