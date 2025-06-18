@@ -315,44 +315,51 @@ END;
 
 
 CREATE OR REPLACE PROCEDURE OUTLET_Insert_Cabecera(
-        Codigo NUMBER,
-        rutUsuario NUMBER
+    Codigo NUMBER,
+    rutUsuario NUMBER -- Asegúrate de que el tipo de RUT_Usuario en la tabla sea NUMBER
 )
 IS
-        codigo_comprobante NUMBER:= sec_cod_Cabecera.NEXTVAL;
-        fechaActual DATE:='';
-        Ac NUMBER := 0;
-
+    codigo_comprobante NUMBER := sec_cod_Cabecera.NEXTVAL;
+    fechaActual DATE; -- Corrección: Solo declara la variable, no la inicialices con string vacía
+    Ac NUMBER := 0;
 
 BEGIN
 
-        SELECT ACTIVO INTO Ac
-        FROM OUTLET_CLIENTE
-        WHERE (CODIGO_CLIENTE = Codigo);
+    SELECT ACTIVO INTO Ac
+    FROM OUTLET_CLIENTE
+    WHERE (CODIGO_CLIENTE = Codigo);
 
-        SELECT SYSDATE into fechaActual
-        FROM DUAL;
-        IF  Ac = 1 THEN
-                INSERT INTO OUTLET_Cabecera_Comprobante_Pago(Codigo_Comprobante_Pago,Fecha,Codigo_Cliente, RUT_Usuario)
-                        VALUES(codigo_comprobante,fechaActual,Codigo,rutUsuario);
-        END IF;
+    SELECT SYSDATE INTO fechaActual
+    FROM DUAL;
 
-        IF Ac = 0 THEN
-                INSERT INTO OUTLET_Cabecera_Comprobante_Pago(Codigo_Comprobante_Pago,Fecha,Codigo_Cliente)
-                VALUES(codigo_comprobante,fechaActual,-1, rutUsuario);
-        END IF;
-        COMMIT;
-        EXCEPTION
-                WHEN PROGRAM_ERROR THEN
-                        RAISE_APPLICATION_ERROR(-6501,'Error de programa y/o asignación de variables');
-                WHEN STORAGE_ERROR THEN
-                        RAISE_APPLICATION_ERROR(-6500,'Se acabó la memoria o está corrupta');
-                WHEN ROWTYPE_MISMATCH THEN
-                        RAISE_APPLICATION_ERROR(-6504,'Error de asignación de variables');
-                WHEN OTHERS THEN
-                        RAISE_APPLICATION_ERROR(-20010,'Ocurrió un problema inesperado');
-        ROLLBACK;
-END; 
+    -- Usamos ELSIF para condiciones mutuamente excluyentes
+    IF Ac = 1 THEN
+        INSERT INTO OUTLET_Cabecera_Comprobante_Pago(Codigo_Comprobante_Pago, Fecha, Codigo_Cliente, RUT_Usuario)
+        VALUES(codigo_comprobante, fechaActual, Codigo, rutUsuario);
+    ELSIF Ac = 0 THEN
+        -- Corrección: Asegúrate de que el número de columnas y valores coincida.
+        -- Si Codigo_Cliente debe ser -1, y RUT_Usuario también debe insertarse.
+        INSERT INTO OUTLET_Cabecera_Comprobante_Pago(Codigo_Comprobante_Pago, Fecha, Codigo_Cliente)
+        VALUES(codigo_comprobante, fechaActual, -1);
+    END IF;
+
+    COMMIT;
+
+EXCEPTION
+    WHEN PROGRAM_ERROR THEN
+        ROLLBACK; -- Rollback antes de levantar el error
+        RAISE_APPLICATION_ERROR(-6501,'Error de programa y/o asignación de variables');
+    WHEN STORAGE_ERROR THEN
+        ROLLBACK; -- Rollback antes de levantar el error
+        RAISE_APPLICATION_ERROR(-6500,'Se acabó la memoria o está corrupta');
+    WHEN ROWTYPE_MISMATCH THEN
+        ROLLBACK; -- Rollback antes de levantar el error
+        RAISE_APPLICATION_ERROR(-6504,'Error de asignación de variables');
+    WHEN OTHERS THEN
+        ROLLBACK; -- Rollback antes de levantar el error
+        RAISE_APPLICATION_ERROR(-20010,'Ocurrió un problema inesperado');
+END;
+
 
 CREATE OR REPLACE PROCEDURE OUTLET_Up_Client(
         n_calle VARCHAR2,
