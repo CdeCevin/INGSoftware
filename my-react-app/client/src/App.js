@@ -29,6 +29,8 @@ import ReporteGral from './Componentes/Reportes/ReporteGral';
 import HistorialVentas from './Componentes/Ventas/HistorialVentas';
 import VentaClienteEx from './Componentes/Ventas/VentaClienteEx';
 import VentaClienteNu from './Componentes/Ventas/VentaClienteNu';
+import PaginaComprobante from './Componentes/Ventas/PaginaComprobante';
+
 
 // Usuarios
 import AgregarUsuarios from './Componentes/Usuarios/AgregarUsuarios';
@@ -38,7 +40,7 @@ import ListadoUsuarios from './Componentes/Usuarios/ListadoUsuarios';
 
 function LayoutWithMenu({ children }) {
   const { pathname } = useLocation();
-  const hideMenuOn = ['/', '/login']; // rutas sin menú
+  const hideMenuOn = ['/', '/login','comprobante']; // rutas sin menú
   const shouldHideMenu = hideMenuOn.includes(pathname);
 
   return (
@@ -70,6 +72,7 @@ function App() {
         {/* Rutas sin menú */}
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/comprobante" element={<PaginaComprobante />}/>
 
         {/* Rutas con menú */}
         <Route path="/home" element={<Home />} />

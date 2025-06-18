@@ -3,6 +3,8 @@ import '../../Estilos/estilo.css';
 function HistorialVentas() {
     const [ventas, setVentas] = useState([]);
     const [visibleTables, setVisibleTables] = useState({});
+    const [invoiceLoadingId, setInvoiceLoadingId] = useState(null);
+    const [invoiceError, setInvoiceError] = useState(null);
 
     // Fetch and sort data
     useEffect(() => {
@@ -24,6 +26,40 @@ function HistorialVentas() {
             ...prevState,
             [idVenta]: !prevState[idVenta],
         }));
+    };
+
+    const handleVerBoleta = async (codigoComprobante) => {
+        setInvoiceLoadingId(codigoComprobante);
+        setInvoiceError(null);
+        try {
+            const response = await fetch(`http://localhost:3001/api/historialVentas/boleta/${codigoComprobante}`);
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Error HTTP ${response.status}: ${errorText || response.statusText}`);
+            }
+
+            const invoiceData = await response.json();
+
+            if (!invoiceData || !invoiceData.cabecera || !invoiceData.direccion) {
+                throw new Error("Datos de comprobante incompletos recibidos del servidor.");
+            }
+            if (!invoiceData.productos || invoiceData.productos.length === 0) {
+                 console.warn(`Comprobante ${codigoComprobante} no tiene productos detallados.`);
+            }
+
+            sessionStorage.setItem('currentInvoiceData', JSON.stringify(invoiceData));
+
+            // --- UPDATED URL PATH ---
+            const invoiceUrl = `${window.location.origin}/comprobante`; // <--- UPDATED FROM /invoice TO /comprobante
+            window.open(invoiceUrl, '_blank', 'noopener,noreferrer');
+
+        } catch (error) {
+            console.error("Error al obtener o abrir el comprobante:", error);
+            setInvoiceError(`Error al cargar el comprobante ${codigoComprobante}. ${error.message}`);
+        } finally {
+            setInvoiceLoadingId(null);
+        }
     };
 
     return (
@@ -73,10 +109,21 @@ function HistorialVentas() {
                                         <td className='venta-cell'>${venta.precioTotal}</td>
                                         <td>
                                             {/* Botón para ver la boleta */}
-                                            <button type="button" onClick={() => window.open(`http://localhost:3001/api/historialVentas/boleta/${venta.codigoComprobante}`, '_blank')} className="btn btn-primary">
+                                            <button
+                                            type="button"
+                                            onClick={() => handleVerBoleta(venta.codigoComprobante)}
+                                            className="btn btn-primary"
+                                            disabled={invoiceLoadingId === venta.codigoComprobante}
+                                        >
+                                            {invoiceLoadingId === venta.codigoComprobante ? (
+                                                <i className="fa fa-spinner fa-spin"></i>
+                                            ) : (
                                                 <i className="fa fa-eye"></i>
-                                            </button>
-                                        </td>
+                                            )}
+                                        </button>
+                                        {invoiceError && invoiceLoadingId === venta.codigoComprobante &&
+                                            <p style={{ color: 'red', fontSize: '0.8em', marginTop: '5px' }}>{invoiceError}</p>}
+                                    </td>
                                     </tr>
                                 </tbody>
                             </table>
