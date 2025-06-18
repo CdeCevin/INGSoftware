@@ -67,53 +67,54 @@ function LayoutWithMenu({ children }) {
 
 function App() {
   return (
-
+    <LayoutWithMenu>
       <Routes>
         {/* Rutas sin menú */}
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/comprobante/:codigoComprobante" element={<PaginaComprobante />} />
-        <Route element={<LayoutWithMenu />}>
-          {/* Rutas con menú */}
-          <Route path="/home" element={<Home />} />
-          <Route path="/Bienvenido/inicio" element={<Inicio />} />
 
-          {/* Clientes */}
-          <Route path="/ActualizarCliente" element={<ActualizarCliente />} />
-          <Route path="/BuscarCliente" element={<BuscarCliente />} />
-          <Route path="/EliminarCliente" element={<EliminarCliente />} />
-          <Route path="/ListadoClientes" element={<ListadoClientes />} />
+        {/* Rutas con menú */}
+        <Route path="/home" element={<Home />} />
+        <Route path="/Bienvenido/inicio" element={<Inicio />} />
 
-          {/* Empresa */}
-          <Route path="/ActualizarDatos" element={<ActualizarDatos />} />
-          <Route path="/VisualizarDatos" element={<VisualizarDatos />} />
+        {/* Clientes */}
+        <Route path="/ActualizarCliente" element={<ActualizarCliente />} />
+        <Route path="/BuscarCliente" element={<BuscarCliente />} />
+        <Route path="/EliminarCliente" element={<EliminarCliente />} />
+        <Route path="/ListadoClientes" element={<ListadoClientes />} />
 
-          {/* Pendientes */}
-          <Route path="/VentasPendientes" element={<VentasPendientes />} />
+        {/* Empresa */}
+        <Route path="/ActualizarDatos" element={<ActualizarDatos />} />
+        <Route path="/VisualizarDatos" element={<VisualizarDatos />} />
 
-          {/* Productos */}
-          <Route path="/IngresoProducto" element={<IngresoProducto />} />
-          <Route path="/BuscarProducto" element={<BuscarProducto />} />
-          <Route path="/ActualizarProducto" element={<ActualizarProducto />} />
-          <Route path="/EliminarProducto" element={<EliminarProducto />} />
-          <Route path="/ListadoProducto" element={<ListadoProductos />} />
-          <Route path="/StockCritico" element={<StockCritico />} />
+        {/* Pendientes */}
+        <Route path="/VentasPendientes" element={<VentasPendientes />} />
 
-          {/* Reportes */}
-          <Route path="/ReporteGral" element={<ReporteGral />} />
+        {/* Productos */}
+        <Route path="/IngresoProducto" element={<IngresoProducto />} />
+        <Route path="/BuscarProducto" element={<BuscarProducto />} />
+        <Route path="/ActualizarProducto" element={<ActualizarProducto />} />
+        <Route path="/EliminarProducto" element={<EliminarProducto />} />
+        <Route path="/ListadoProducto" element={<ListadoProductos />} />
+        <Route path="/StockCritico" element={<StockCritico />} />
 
-          {/* Ventas */}
-          <Route path="/HistorialVentas" element={<HistorialVentas />} />
-          <Route path="/VentaClienteEx" element={<VentaClienteEx />} />
-          <Route path="/VentaClienteNu" element={<VentaClienteNu />} />
+        {/* Reportes */}
+        <Route path="/ReporteGral" element={<ReporteGral />} />
 
-          {/* Usuarios */}
-          <Route path="/AgregarUsuarios" element={<AgregarUsuarios />} />
-          <Route path="/EliminarUsuario" element={<EliminarUsuario />} />
-          <Route path="/ActualizarUsuario" element={<ActualizarUsuario />} />
-          <Route path="/ListadoUsuarios" element={<ListadoUsuarios />} />
-        </Route>
+        {/* Ventas */}
+        <Route path="/HistorialVentas" element={<HistorialVentas />} />
+        <Route path="/VentaClienteEx" element={<VentaClienteEx />} />
+        <Route path="/VentaClienteNu" element={<VentaClienteNu />} />
+
+        {/* Usuarios */}
+        <Route path="/AgregarUsuarios" element={<AgregarUsuarios />} />
+        <Route path="/EliminarUsuario" element={<EliminarUsuario />} />
+        <Route path="/ActualizarUsuario" element={<ActualizarUsuario />} />
+        <Route path="/ListadoUsuarios" element={<ListadoUsuarios />} />
+
       </Routes>
+    </LayoutWithMenu>
   );
 }
 
