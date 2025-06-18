@@ -655,3 +655,167 @@ button:active {
 
     }
 }*/
+/* src/components/InvoicePage.css */
+
+.invoice-page-container {
+    padding: 20px;
+    background-color: #f0f2f5; /* Light background for the whole page */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Arial', sans-serif; /* A professional-looking font */
+}
+
+.download-pdf-button {
+    background-color: #6b9787; /* Your brand color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.download-pdf-button:hover {
+    background-color: #5a7f72;
+}
+
+.invoice-wrapper {
+    width: 100%;
+    max-width: 800px; /* Standard invoice width */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    border-radius: 8px;
+    box-sizing: border-box; /* Important for padding/width */
+}
+
+.invoice-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #6b9787;
+    padding-bottom: 20px;
+}
+
+.invoice-header h2 {
+    color: #333;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+.invoice-header p {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.invoice-section {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.invoice-section h3 {
+    color: #6b9787;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.client-details p {
+    margin: 5px 0;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.invoice-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.invoice-items-table th,
+.invoice-items-table td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 0.95em;
+}
+
+.invoice-items-table th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+}
+
+.invoice-items-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.invoice-items-table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.invoice-totals {
+    text-align: right;
+    margin-top: 30px;
+    font-size: 1.1em;
+}
+
+.invoice-totals p {
+    margin: 8px 0;
+    color: #555;
+}
+
+.invoice-totals span {
+    display: inline-block;
+    width: 120px; /* Align total amounts */
+    text-align: right;
+    font-weight: bold;
+    color: #333;
+}
+
+.invoice-totals .total-amount {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #6b9787;
+    border-top: 2px solid #6b9787;
+    padding-top: 10px;
+    margin-top: 15px;
+}
+
+.invoice-footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #888;
+    font-size: 0.85em;
+}
+
+/* Print Styles for cleaner PDF generation */
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff; /* Ensure white background for print */
+    }
+    .invoice-page-container {
+        padding: 0;
+        margin: 0;
+        box-shadow: none;
+        width: 100%;
+        max-width: none;
+    }
+    .download-pdf-button {
+        display: none; /* Hide the download button when printing */
+    }
+    .invoice-wrapper {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        padding: 20mm; /* Use print units */
+        width: 100%;
+        max-width: none;
+    }
+}
