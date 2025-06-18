@@ -1,7 +1,7 @@
 // src/components/LoginForm.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './estiloide.css';
+//import './estiloide.css';
 
 const LoginForm = () => {
     const navigate = useNavigate();
