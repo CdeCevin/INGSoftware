@@ -40,7 +40,7 @@ import ListadoUsuarios from './Componentes/Usuarios/ListadoUsuarios';
 
 function LayoutWithMenu({ children }) {
   const { pathname } = useLocation();
-  const hideMenuOn = ['/', '/login','comprobante',/^\/comprobante\/\d+$/]; // rutas sin menú
+  const hideMenuOn = ['/', '/login','/comprobante',/^\/comprobante\/\d+$/]; // rutas sin menú
   const shouldHideMenu = hideMenuOn.includes(pathname);
 
   return (
