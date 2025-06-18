@@ -8,10 +8,10 @@ import { jsPDF } from 'jspdf';
 const PaginaComprobante = () => {
     const invoiceRef = useRef(null);
     const [invoiceData, setInvoiceData] = useState(null);
-    const [loading, setLoading] = useState(true); // <--- Add loading state
-    const [error, setError] = useState(null);     // <--- Add error state
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null); 
 
-    const { codigoComprobante } = useParams(); // <--- GET ID FROM URL
+    const { codigoComprobante } = useParams(); //Obtener el codigo desde la URL
 
     useEffect(() => {
         const fetchInvoice = async () => {
@@ -77,15 +77,11 @@ const PaginaComprobante = () => {
 
     const { cabecera, productos, direccion, codigoCabecera } = invoiceData;
 
-    let subtotal = 0;
-    const taxRate = 0.19;
+    const total;
 
     if (productos && productos.length > 0) {
-        subtotal = productos.reduce((sum, item) => sum + (item[2] || 0) * (item[3] || 0), 0);
+        total = productos.reduce((sum, item) => sum + (item[2] || 0) * (item[3] || 0), 0);
     }
-
-    const taxAmount = subtotal * taxRate;
-    const total = subtotal + taxAmount;
 
     const downloadPdf = () => {
         if (!invoiceRef.current) return;
@@ -109,25 +105,22 @@ const PaginaComprobante = () => {
                 heightLeft -= pageHeight;
             }
 
-            pdf.save(`Comprobante_${codigoCabecera || 'generado'}.pdf`);
+            pdf.save(`Comprobante_${codigoCabecera}.pdf`);
         });
     };
 
     return (
         <div className="invoice-page-container">
-            <button onClick={downloadPdf} className="download-pdf-button">
-                Descargar Comprobante PDF
-            </button>
             <div className="invoice-wrapper" ref={invoiceRef}>
                 <div className="invoice-header">
-                    <h2>Comprobante #{codigoCabecera || 'N/A'}</h2>
+                    <h2>Comprobante #{codigoCabecera || 'S/N'}</h2>
                     <p>Fecha: {new Date(cabecera.FECHA).toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                    <p>Emitido por: {cabecera.NOMBRE_USUARIO || 'N/A'}</p>
-                    <p>RUT Emisor: {cabecera.RUT_USUARIO || 'N/A'}</p>
+                    <p>Emitido por: {cabecera.NOMBRE_USUARIO || 'S/N'}</p>
+                    <p>RUT Emisor: {cabecera.RUT_USUARIO || 'S/N'}</p>
                 </div>
 
                 <div className="invoice-section client-details">
-                    <h3>Detalles del Cliente:</h3>
+                    <h3>Detalles del Cliente</h3>
                     <p><strong>Nombre:</strong> {cabecera.NOMBRE_CLIENTE || 'N/A'}</p>
                     <p><strong>Teléfono:</strong> {cabecera.TELEFONO || 'N/A'}</p>
                     <p><strong>Dirección:</strong> {`${direccion.nombreCalle || ''} ${direccion.numeroDireccion || ''}, ${direccion.nombreCiudad || ''}, ${direccion.nombreRegion || ''}`.trim()}</p>
@@ -135,7 +128,7 @@ const PaginaComprobante = () => {
 
                 {productos && productos.length > 0 ? (
                     <div className="invoice-section items-details">
-                        <h3>Productos/Servicios:</h3>
+                        <h3>Productos</h3>
                         <table className="invoice-items-table">
                             <thead>
                                 <tr>
@@ -164,15 +157,16 @@ const PaginaComprobante = () => {
                 )}
 
                 <div className="invoice-totals">
-                    <p>Subtotal: <span>${subtotal.toLocaleString('es-CL')}</span></p>
-                    <p>IVA ({taxRate * 100}%): <span>${taxAmount.toLocaleString('es-CL')}</span></p>
                     <p className="total-amount">Total: <span>${total.toLocaleString('es-CL')}</span></p>
                 </div>
 
                 <div className="invoice-footer">
-                    <p>¡Gracias por su compra!</p>
+                    <p>Outlet a Tu Hogar</p>
                 </div>
             </div>
+             <button onClick={downloadPdf} className="download-pdf-button">
+                Descargar Comprobante PDF
+            </button>
         </div>
     );
 };
