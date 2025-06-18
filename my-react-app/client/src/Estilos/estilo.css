@@ -590,6 +590,9 @@ button:active {
     transform: translate(-50%, -50%);
     max-width: 500px;
     width: 90%;
+    display: flex;
+    flex-direction: column; /* Force children (like .main-block) to stack vertically */
+    align-items: center; 
 }
 
 /* --- Media Queries --- */
