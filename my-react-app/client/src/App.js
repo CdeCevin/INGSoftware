@@ -40,8 +40,13 @@ import ListadoUsuarios from './Componentes/Usuarios/ListadoUsuarios';
 
 function LayoutWithMenu({ children }) {
   const { pathname } = useLocation();
-  const hideMenuOn = ['/', '/login','/comprobante',/^\/comprobante\/\d+$/]; // rutas sin menú
-  const shouldHideMenu = hideMenuOn.includes(pathname);
+  // <--- Updated: now includes the dynamic /comprobante/:id path using a regex
+  const hideMenuOn = ['/', '/login', /^\/comprobante\/\d+$/]; // For example, /comprobante/123
+
+  // <--- Updated: uses .some() to check against both strings and regex
+  const shouldHideMenu = hideMenuOn.some(path =>
+    typeof path === 'string' ? pathname === path : path.test(pathname)
+  );
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', width: '100vw' }}>
@@ -49,16 +54,17 @@ function LayoutWithMenu({ children }) {
       <div
         className="content"
         style={shouldHideMenu ? {
-            marginLeft: 0,
-            flexGrow: 1,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100vw', // Ensures it spans full viewport width when sidebar is hidden
-            // Optional: If your login page needs a specific background color when centered, add it here.
-            // backgroundColor: '#f0f2f5'
+          marginLeft: 0,
+          flexGrow: 1,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100vw',
         } : { flexGrow: 1 }}
       >
+        {/* When LayoutWithMenu is used as an element in a <Route element={...}> */}
+        {/* it should render an <Outlet /> to display its nested children routes */}
+        {/* However, your current LayoutWithMenu passes children directly, which works too */}
         {children}
       </div>
     </div>
