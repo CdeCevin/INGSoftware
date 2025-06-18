@@ -1,24 +1,57 @@
-// src/Componentes/Ventas/PaginaComprobante.js (or wherever it's located)
+// src/Componentes/Ventas/PaginaComprobante.js
 
 import React, { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom'; // <--- IMPORT useParams
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import './PaginaComprobante.css';
 
-const PaginaComprobante = () => { // <--- UPDATED COMPONENT NAME
+const PaginaComprobante = () => {
     const invoiceRef = useRef(null);
     const [invoiceData, setInvoiceData] = useState(null);
+    const [loading, setLoading] = useState(true); // <--- Add loading state
+    const [error, setError] = useState(null);     // <--- Add error state
+
+    const { codigoComprobante } = useParams(); // <--- GET ID FROM URL
 
     useEffect(() => {
-        const storedData = sessionStorage.getItem('currentInvoiceData');
-        if (storedData) {
-            setInvoiceData(JSON.parse(storedData));
-        } else {
-            console.error("No invoice data found in session storage.");
-            // Optionally, redirect the user or show a "No invoice data" message
-        }
-    }, []);
+        const fetchInvoice = async () => {
+            if (!codigoComprobante) {
+                setError("No se encontró el código de comprobante en la URL.");
+                setLoading(false);
+                return;
+            }
 
-    if (!invoiceData) {
+            try {
+                setLoading(true);
+                setError(null); // Clear previous errors
+
+                const response = await fetch(`http://localhost:3001/api/historialVentas/boleta/${codigoComprobante}`);
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Error HTTP ${response.status}: ${errorText || response.statusText}`);
+                }
+
+                const data = await response.json();
+
+                if (!data || !data.cabecera || !data.direccion) {
+                    throw new Error("Datos de comprobante incompletos recibidos del servidor.");
+                }
+
+                setInvoiceData(data);
+            } catch (err) {
+                console.error("Error al obtener datos del comprobante:", err);
+                setError(`Error al cargar el comprobante: ${err.message}`);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchInvoice();
+    }, [codigoComprobante]); // <--- Re-run effect if codigoComprobante changes (though it shouldn't for this use case)
+
+    if (loading) {
         return (
             <div className="invoice-page-container">
                 <p>Cargando comprobante...</p>
@@ -26,10 +59,27 @@ const PaginaComprobante = () => { // <--- UPDATED COMPONENT NAME
         );
     }
 
+    if (error) {
+        return (
+            <div className="invoice-page-container">
+                <p style={{ color: 'red' }}>{error}</p>
+                <p>Por favor, intente de nuevo más tarde o verifique el código del comprobante.</p>
+            </div>
+        );
+    }
+
+    if (!invoiceData) {
+        return (
+            <div className="invoice-page-container">
+                <p>No se encontraron datos para este comprobante.</p>
+            </div>
+        );
+    }
+
     const { cabecera, productos, direccion, codigoCabecera } = invoiceData;
 
     let subtotal = 0;
-    const taxRate = 0.19; // Example 19% tax (IVA in Chile)
+    const taxRate = 0.19;
 
     if (productos && productos.length > 0) {
         subtotal = productos.reduce((sum, item) => sum + (item[2] || 0) * (item[3] || 0), 0);
@@ -60,7 +110,7 @@ const PaginaComprobante = () => { // <--- UPDATED COMPONENT NAME
                 heightLeft -= pageHeight;
             }
 
-            pdf.save(`Comprobante_${codigoCabecera || 'generado'}.pdf`); // <--- UPDATED PDF FILENAME
+            pdf.save(`Comprobante_${codigoCabecera || 'generado'}.pdf`);
         });
     };
 
@@ -71,7 +121,7 @@ const PaginaComprobante = () => { // <--- UPDATED COMPONENT NAME
             </button>
             <div className="invoice-wrapper" ref={invoiceRef}>
                 <div className="invoice-header">
-                    <h2>Comprobante #{codigoCabecera || 'N/A'}</h2> {/* <--- UPDATED HEADING */}
+                    <h2>Comprobante #{codigoCabecera || 'N/A'}</h2>
                     <p>Fecha: {new Date(cabecera.FECHA).toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                     <p>Emitido por: {cabecera.NOMBRE_USUARIO || 'N/A'}</p>
                     <p>RUT Emisor: {cabecera.RUT_USUARIO || 'N/A'}</p>
@@ -128,4 +178,4 @@ const PaginaComprobante = () => { // <--- UPDATED COMPONENT NAME
     );
 };
 
-export default PaginaComprobante; // <--- UPDATED EXPORT NAME
+export default PaginaComprobante;
