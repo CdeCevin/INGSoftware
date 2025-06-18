@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom'; // <--- IMPORT useParams
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
-import './PaginaComprobante.css';
 
 const PaginaComprobante = () => {
     const invoiceRef = useRef(null);
