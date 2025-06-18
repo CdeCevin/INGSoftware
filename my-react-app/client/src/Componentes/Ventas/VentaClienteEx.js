@@ -174,6 +174,7 @@ function VentaClienteEx() {
         document.title = 'Venta Cliente Existente';
     }, []);
     return (
+        
         <div>
             {paginaActual === 'insertCabecera' && (
                 <div style={{ marginLeft: '12%' }}>
