@@ -175,7 +175,7 @@ function VentaClienteEx() {
     }, []);
     return (
 
-        <div>
+        <div className="main-block">
             {paginaActual === 'insertCabecera' && (
                 <div className="main-block">
                     <form onSubmit={handleSubmitCliente}>
