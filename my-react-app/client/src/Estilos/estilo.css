@@ -479,6 +479,10 @@ button:active {
 }
 
 
+.tabla-productos{
+    table-layout: auto;
+}
+
 .tabla-productos th, .tabla-productos td {
     width: 100%; /* If these are for a specific table, adjust as needed */
     padding: 0 15px;
