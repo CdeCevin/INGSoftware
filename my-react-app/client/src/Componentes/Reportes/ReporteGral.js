@@ -125,7 +125,7 @@ function ReporteGral() {
                     </div>
                 </fieldset>
             </form>
-            <fieldset>
+            <fieldset style={"alignItems:center"}>
                 <h3>Top Productos</h3>
                 <div>
                     <table className="tabla-productos">

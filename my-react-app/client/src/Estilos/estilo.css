@@ -489,10 +489,6 @@ button:active {
     text-align: left;
 }
 
-.tabla-productos th {
-text-align: center;
-}
-
 .btn {
     padding: 8px; /* Adjust if needed */
     font-size: 1.1em; /* Adjust icon size */
