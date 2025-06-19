@@ -86,8 +86,10 @@ function ActualizarUsuario() {
                                 <input 
                                     type="text" 
                                     name="input-rut" 
-                                    pattern="[0-9]+" 
-                                    maxLength="10" 
+                                    pattern="[0-9]+"
+                                    minLength="8"
+                                    maxLength="9"
+                                    placeholder='No considere puntos ni guión'
                                     required 
                                     value={rut} 
                                     onChange={(e) => setrut( e.target.value)} 

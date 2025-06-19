@@ -94,8 +94,8 @@ function IngresoUsuario() {
                                     type="text" 
                                     name="INRut" 
                                     pattern="[0-9]+"
-                                    minLength="7"
-                                    maxLength="8"
+                                    minLength="8"
+                                    maxLength="9"
                                     placeholder='No considere puntos ni guión'
                                     required 
                                     value={rut} 
