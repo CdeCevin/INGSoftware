@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
-import VentasPendientes from '../Pendientes/VentasPendientes'; // Asegúrate de importar el nuevo componente
+import VentasPendientes from '../Pendientes/VentasPendientes';
 import optionSets from '../../Estilos/regiones';
+import authenticatedFetch from '../../utils/api';
+import { useNavigate } from 'react-router-dom';
+
 Modal.setAppElement('#root');
 function VentaClienteNu() {
     const [nombreC, setNombreC] = useState('');
@@ -16,33 +19,42 @@ function VentaClienteNu() {
     const [color, setColor] = useState('');
     const [productos, setProductos] = useState([]);
     const [carrito, setCarrito] = useState([]);
-    
+
     const [imageModalIsOpen, setImageModalIsOpen] = useState(false);
     const [messageModalIsOpen, setMessageModalIsOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState(null);  // Aquí va la imagen seleccionada
-    const [modalMessage, setModalMessage] = useState("");      
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [modalMessage, setModalMessage] = useState("");
 
     const [cantidad, setCantidad] = useState({});
     const [paginaActual, setPaginaActual] = useState('insertCabecera');
     const currentUserRut = localStorage.getItem('userRut');
+    const navigate = useNavigate();
+    const userRole = localStorage.getItem('userRole');
+
+    useEffect(() => {
+        document.title = 'Venta Cliente Nuevo';
+        const allowedRoles = ['Administrador', 'Vendedor'];
+        if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+            navigate('/login');
+        }
+    }, [userRole, navigate]);
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Preparar los datos en formato JSON
         const formData = {
             INnombre: nombreC,
-            INtelefono: telefono, 
+            INtelefono: telefono,
             INregion: region,
             INciudad: ciudad,
-            INcalle: calle, 
+            INcalle: calle,
             INnumero: numero,
-            currentUserRut: currentUserRut // Obtener el usuario actual del localStorage
+            currentUserRut: currentUserRut
         };
-        console.log('Datos del formulario:', formData);
 
         try {
-            // Enviar los datos al backend
-            const response = await fetch('http://localhost:3001/api/anCliente', {
+            const response = await authenticatedFetch('/anCliente', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -50,21 +62,26 @@ function VentaClienteNu() {
                 body: JSON.stringify(formData),
             });
 
+            if (response.status === 401 || response.status === 403) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userRut');
+                navigate('/login');
+                return;
+            }
+
             if (response.ok) {
-                const data = await response.json();
-                
                 resetForm();
                 setPaginaActual('buscarProducto');
             } else {
                 const errorData = await response.json();
-                setModalMessage(errorData.message); // Mostrar mensaje de error
+                setModalMessage(errorData.message);
+                setMessageModalIsOpen(true);
             }
         } catch (error) {
             console.error('Error al enviar el formulario:', error);
-            setModalMessage('Error al enviar el formulario.'); // Mensaje de error genérico
-            
-        } finally {
-            setMessageModalIsOpen(false); // Abrir el modal después de intentar enviar el formulario
+            setModalMessage('Error al enviar el formulario.');
+            setMessageModalIsOpen(true);
         }
     };
 
@@ -77,13 +94,10 @@ function VentaClienteNu() {
         setNumero('');
     };
 
-    useEffect(() => {
-        document.title = 'Venta Cliente Nuevo';
-    }, []);
 
     const handleRegionChange = (e) => {
         setRegion(e.target.value);
-        setCiudad(''); // Reiniciar la ciudad al cambiar de región
+        setCiudad('');
     };
 
 
@@ -91,7 +105,7 @@ function VentaClienteNu() {
         event.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:3001/api/buscarProducto', {
+            const response = await authenticatedFetch('/buscarProducto', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -102,8 +116,17 @@ function VentaClienteNu() {
                 }),
             });
 
+            if (response.status === 401 || response.status === 403) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userRut');
+                navigate('/login');
+                return;
+            }
+
             if (!response.ok) {
-                throw new Error('Error en la solicitud');
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Error en la solicitud');
             }
 
             const data = await response.json();
@@ -111,57 +134,68 @@ function VentaClienteNu() {
             if (data.data && data.data.length > 0) {
                 setProductos(data.data);
             } else {
-                setModalMessage("Producto no encontrado");
+                setModalMessage("No se encontraron productos con los criterios de búsqueda.");
                 setMessageModalIsOpen(true);
+                setProductos([]);
             }
         } catch (error) {
             console.error('Error al buscar productos:', error);
-            setModalMessage("Producto no encontrado")
+            setModalMessage(error.message || "Error al buscar productos");
             setMessageModalIsOpen(true);
+            setProductos([]);
         }
     };
 
     const añadirAlCarrito = (producto) => {
-      console.log("producto:", producto);
-  
-      // Obtener cantidad seleccionada
-      const cantidadSeleccionada = cantidad[producto.codigo_producto] || 0;
-  
-      // Validar stock antes de modificar el carrito
-      if (cantidadSeleccionada > producto.stock) {
-          console.error('Stock insuficiente');
-          setModalMessage("Stock insuficiente");
-          setMessageModalIsOpen(true);
-          return; // Detener ejecución si no hay suficiente stock
-      }
-  
-      // Actualizar el carrito solo si hay stock suficiente
-      setCarrito((prevCarrito) => {
-          const existente = prevCarrito.find(p => p.codigo_producto === producto.codigo_producto);
-          if (existente) {
-              // Actualizar cantidad si el producto ya está en el carrito
-              return prevCarrito.map(p =>
-                  p.codigo_producto === producto.codigo_producto
-                      ? { ...p, cantidad: p.cantidad + cantidadSeleccionada }
-                      : p
-              );
-          }
-          // Agregar el producto al carrito si no existe
-          return [...prevCarrito, { ...producto, cantidad: cantidadSeleccionada }];
-      });
-  
-      // Reiniciar la cantidad seleccionada para el producto
-      setCantidad(prevState => ({ ...prevState, [producto.codigo_producto]: 0 }));
-  };
+        const cantidadSeleccionada = cantidad[producto.codigo_producto] || 0;
+
+        if (cantidadSeleccionada <= 0) {
+            setModalMessage("La cantidad debe ser mayor que cero.");
+            setMessageModalIsOpen(true);
+            return;
+        }
+
+        if (cantidadSeleccionada > producto.stock) {
+            setModalMessage("Stock insuficiente.");
+            setMessageModalIsOpen(true);
+            return;
+        }
+
+        setCarrito((prevCarrito) => {
+            const existente = prevCarrito.find(p => p.codigo_producto === producto.codigo_producto);
+            if (existente) {
+                const nuevaCantidad = existente.cantidad + cantidadSeleccionada;
+                if (nuevaCantidad > producto.stock) {
+                    setModalMessage("La cantidad total en el carrito excede el stock disponible.");
+                    setMessageModalIsOpen(true);
+                    return prevCarrito;
+                }
+                return prevCarrito.map(p =>
+                    p.codigo_producto === producto.codigo_producto
+                        ? { ...p, cantidad: nuevaCantidad }
+                        : p
+                );
+            }
+            return [...prevCarrito, { ...producto, cantidad: cantidadSeleccionada }];
+        });
+
+        setCantidad(prevState => ({ ...prevState, [producto.codigo_producto]: 0 }));
+    };
 
     const finalizarVenta = async () => {
+        if (carrito.length === 0) {
+            setModalMessage("El carrito está vacío. Agregue productos antes de finalizar la venta.");
+            setMessageModalIsOpen(true);
+            return;
+        }
+
         const productosVenta = carrito.map(producto => ({
             codigo: producto.codigo_producto,
             cantidad: producto.cantidad
         }));
 
         try {
-            const response = await fetch('http://localhost:3001/api/insertCuerpo', {
+            const response = await authenticatedFetch('/insertCuerpo', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -169,13 +203,20 @@ function VentaClienteNu() {
                 body: JSON.stringify({ productos: productosVenta }),
             });
 
+            if (response.status === 401 || response.status === 403) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userRut');
+                navigate('/login');
+                return;
+            }
+
             if (response.ok) {
                 const data = await response.json();
-                console.log('Respuesta de la API:', data);
                 setModalMessage("Venta finalizada exitosamente");
-                setMessageModalIsOpen(false);
+                setMessageModalIsOpen(true);
                 setCarrito([]);
-                setPaginaActual('VentasPendientes'); // Cambia a la página de la boleta
+                setPaginaActual('VentasPendientes');
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
@@ -187,7 +228,7 @@ function VentaClienteNu() {
             setMessageModalIsOpen(true);
         }
     };
-    
+
     const handleCantidadChange = (codigoProducto, value) => {
         setCantidad(prevState => ({
             ...prevState,
@@ -196,231 +237,232 @@ function VentaClienteNu() {
     };
 
     const mostrarImagen = (codigo_producto) => {
-        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Ruta relativa de la imagen
-        setSelectedImage(imageUrl);  // Establecer la URL de la imagen seleccionada
-        setImageModalIsOpen(true);   // Abrir el modal de imagen
-        console.log("Imagen mostrada:", imageUrl); // Para asegurarte de que se está estableciendo la imagen
+        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`;
+        setSelectedImage(imageUrl);
+        setImageModalIsOpen(true);
     };
-    
+
     const closeModal = () => {
-        setImageModalIsOpen(false);   // Cerrar solo el modal de la imagen
-        setMessageModalIsOpen(false); // Cerrar solo el modal de mensaje
+        setImageModalIsOpen(false);
+        setMessageModalIsOpen(false);
     };
-    
+
+    const allowedRoles = ['Administrador', 'Vendedor'];
+    if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+        return (
+            <div className="main-block">
+                <h1>Redirigiendo...</h1>
+            </div>
+        );
+    }
 
     return (
         <div className="main-block">
-          {paginaActual === 'insertCabecera' && (
-              <>
-                <form onSubmit={handleSubmit}>
-                  <h1>Cabecera Venta</h1>
-                  <fieldset>
-                      <h3>Detalles del Cliente</h3>
-                    <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
-                      <div>
-                        <label>Nombre*</label>
-                        <input
-                          type="text"
-                          name="input-nombreC"
-                          maxLength="50"
-                          value={nombreC}
-                          required
-                          onChange={(e) => setNombreC(e.target.value)}
-                        />
-                      </div>
-                      <div>
-                        <label>Teléfono*</label>
-                        <input
-                          type="text"
-                          name="input-teléfono"
-                          maxLength="9"
-                          value={telefono}
-                          required
-                          onChange={(e) => setTelefono(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                  </fieldset>
-                  <fieldset>
-                      <h3>Dirección de despacho</h3>
-                    <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
-                      <div>
-                        <label>Región*</label>
-                        <select value={region} required onChange={handleRegionChange}>
-                          <option value="">Selecciona una región</option>
-                          {Object.keys(optionSets).map((regionName) => (
-                            <option key={regionName} value={regionName}>{regionName}</option>
-                          ))}
-                        </select>
-                      </div>
-                      <div>
-                        <label>Comuna*</label>
-                        <select
-                          value={ciudad}
-                          required
-                          onChange={(e) => setCiudad(e.target.value)}
-                          disabled={!region}
-                        >
-                          <option value="">Selecciona una comuna</option>
-                          {region && optionSets[region].map((city) => (
-                            <option key={city} value={city}>{city}</option>
-                          ))}
-                        </select>
-                      </div>
-                      <div>
-                        <label>Calle*</label>
-                        <input
-                          type="text"
-                          name="input-calle"
-                          maxLength="100"
-                          required
-                          value={calle}
-                          onChange={(e) => setCalle(e.target.value)}
-                        />
-                      </div>
-                      <div>
-                        <label>Número*</label>
-                        <input
-                          type="text"
-                          name="input-numero"
-                          maxLength="100"
-                          required
-                          value={numero}
-                          onChange={(e) => setNumero(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                  </fieldset>
-                  <button type="submit">Añadir cliente</button>
-                </form>
-              </>
-          )}
-      
-          {paginaActual === 'buscarProducto' && (
-            <>
-                <h1>Buscar Producto</h1>
-                  <form onSubmit={buscarProductos}>
-                    <fieldset>
-                        <h3>Búsqueda</h3>
-                      <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <div>
-                          <label>Nombre*</label>
-                          <input
-                            type="text"
-                            name="input-nombre"
-                            maxLength="50"
-                            required
-                            value={nombre}
-                            onChange={(e) => setNombre(e.target.value)}
-                            placeholder="Nombre del producto"
-                          />
-                        </div>
-                        <div>
-                          <label>Color</label>
-                          <input
-                            type="text"
-                            name="input-color"
-                            value={color}
-                            onChange={(e) => setColor(e.target.value)}
-                            placeholder="Color del producto"
-                          />
-                        </div>
-                      </div>
-                    </fieldset>
-                    <button type="submit">Buscar Producto</button>
-                  </form>
-      
-                  {productos.length > 0 && (
-                    <fieldset>
-                        <h3>Resultados</h3>
-                     
-                      <table className="venta-table">
-                        <thead>
-                          <tr>
-                            <th>CÓDIGO</th>
-                            <th>STOCK</th>
-                            <th>PRECIO</th>
-                            <th>NOMBRE</th>
-                            <th>COLOR</th>
-                            <th>FOTO</th>
-                            <th>CANTIDAD</th>
-                            <th>AÑADIR</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {productos.filter(producto => producto.stock > 0).map((producto) => ( 
-                            <tr key={producto.codigo_producto}>
-                              <td>{producto.codigo_producto}</td>
-                              <td>{producto.stock}</td>
-                              <td>{producto.precio_unitario}</td>
-                              <td>{producto.nombre_producto}</td>
-                              <td>{producto.color_producto}</td>
-                              <td>
-                                <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)} className={"btn mini-boton"}>
-                                  <i className="fa fa-eye"></i>
-                                </button>
-                              </td>
-                              <td>
-                                <input
-                                  type="number"
-                                  min="1"
-                                  style={{ width: '50px' }}
-                                  value={cantidad[producto.codigo_producto] || 0}
-                                  onChange={(e) => handleCantidadChange(producto.codigo_producto, parseInt(e.target.value) || 0)}
-                                />
-                              </td>
-                              <td>
-                                <button onClick={() => añadirAlCarrito(producto)} className={"btn mini-boton"}>
-                                  <i className="fa fa-shopping-cart"></i>
-                                </button>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                      <button onClick={finalizarVenta}>Finalizar Venta</button>
-                    </fieldset>
-                  )}
+            {paginaActual === 'insertCabecera' && (
+                <>
+                    <form onSubmit={handleSubmit}>
+                        <h1>Cabecera Venta</h1>
+                        <fieldset>
+                            <h3>Detalles del Cliente</h3>
+                            <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
+                                <div>
+                                    <label>Nombre*</label>
+                                    <input
+                                        type="text"
+                                        name="input-nombreC"
+                                        maxLength="50"
+                                        value={nombreC}
+                                        required
+                                        onChange={(e) => setNombreC(e.target.value)}
+                                    />
+                                </div>
+                                <div>
+                                    <label>Teléfono*</label>
+                                    <input
+                                        type="text"
+                                        name="input-teléfono"
+                                        maxLength="9"
+                                        value={telefono}
+                                        required
+                                        onChange={(e) => setTelefono(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <h3>Dirección de despacho</h3>
+                            <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
+                                <div>
+                                    <label>Región*</label>
+                                    <select value={region} required onChange={handleRegionChange}>
+                                        <option value="">Selecciona una región</option>
+                                        {Object.keys(optionSets).map((regionName) => (
+                                            <option key={regionName} value={regionName}>{regionName}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div>
+                                    <label>Comuna*</label>
+                                    <select
+                                        value={ciudad}
+                                        required
+                                        onChange={(e) => setCiudad(e.target.value)}
+                                        disabled={!region}
+                                    >
+                                        <option value="">Selecciona una comuna</option>
+                                        {region && optionSets[region].map((city) => (
+                                            <option key={city} value={city}>{city}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div>
+                                    <label>Calle*</label>
+                                    <input
+                                        type="text"
+                                        name="input-calle"
+                                        maxLength="100"
+                                        required
+                                        value={calle}
+                                        onChange={(e) => setCalle(e.target.value)}
+                                    />
+                                </div>
+                                <div>
+                                    <label>Número*</label>
+                                    <input
+                                        type="text"
+                                        name="input-numero"
+                                        maxLength="100"
+                                        required
+                                        value={numero}
+                                        onChange={(e) => setNumero(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <button type="submit">Añadir cliente</button>
+                    </form>
+                </>
+            )}
 
+            {paginaActual === 'buscarProducto' && (
+                <>
+                    <h1>Buscar Producto</h1>
+                    <form onSubmit={buscarProductos}>
+                        <fieldset>
+                            <h3>Búsqueda</h3>
+                            <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
+                                <div>
+                                    <label>Nombre*</label>
+                                    <input
+                                        type="text"
+                                        name="input-nombre"
+                                        maxLength="50"
+                                        required
+                                        value={nombre}
+                                        onChange={(e) => setNombre(e.target.value)}
+                                        placeholder="Nombre del producto"
+                                    />
+                                </div>
+                                <div>
+                                    <label>Color</label>
+                                    <input
+                                        type="text"
+                                        name="input-color"
+                                        value={color}
+                                        onChange={(e) => setColor(e.target.value)}
+                                        placeholder="Color del producto"
+                                    />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <button type="submit">Buscar Producto</button>
+                    </form>
 
+                    {productos.length > 0 && (
+                        <fieldset>
+                            <h3>Resultados</h3>
 
-
-                  {/* Modal para mostrar la imagen seleccionada */}
-                  <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto"className={"custom-modal"}>
-                    <h2>Imagen del Producto</h2>
-                    {selectedImage ? (
-                      <img
-                        src={selectedImage}
-                        alt="Imagen del producto"
-                        style={{
-                          display: 'block',
-                          margin: '0 auto',
-                          maxWidth: '80%',
-                          height: 'auto',
-                          maxHeight: '400px'
-                        }}
-                      />
-                    ) : (
-                      <p>No se ha seleccionado una imagen.</p>
+                            <table className="venta-table">
+                                <thead>
+                                    <tr>
+                                        <th>CÓDIGO</th>
+                                        <th>STOCK</th>
+                                        <th>PRECIO</th>
+                                        <th>NOMBRE</th>
+                                        <th>COLOR</th>
+                                        <th>FOTO</th>
+                                        <th>CANTIDAD</th>
+                                        <th>AÑADIR</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {productos.filter(producto => producto.stock > 0).map((producto) => (
+                                        <tr key={producto.codigo_producto}>
+                                            <td>{producto.codigo_producto}</td>
+                                            <td>{producto.stock}</td>
+                                            <td>{producto.precio_unitario}</td>
+                                            <td>{producto.nombre_producto}</td>
+                                            <td>{producto.color_producto}</td>
+                                            <td>
+                                                <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)} className={"btn mini-boton"}>
+                                                    <i className="fa fa-eye"></i>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="number"
+                                                    min="0"
+                                                    style={{ width: '50px' }}
+                                                    value={cantidad[producto.codigo_producto] || 0}
+                                                    onChange={(e) => handleCantidadChange(producto.codigo_producto, parseInt(e.target.value) || 0)}
+                                                />
+                                            </td>
+                                            <td>
+                                                <button onClick={() => añadirAlCarrito(producto)} className={"btn mini-boton"}>
+                                                    <i className="fa fa-shopping-cart"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                            <button onClick={finalizarVenta}>Finalizar Venta</button>
+                        </fieldset>
                     )}
-                    <button onClick={closeModal}>Cerrar</button>
-                  </Modal>
-      
-              {/* Modal para mostrar un mensaje */}
-              <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>
-                <h2>Mensaje</h2>
-                <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
-              </Modal>
-            </>
-          )}
-          {paginaActual === 'VentasPendientes' && (
-                 <>
+
+                    <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto" className={"custom-modal"}>
+                        <h2>Imagen del Producto</h2>
+                        {selectedImage ? (
+                            <img
+                                src={selectedImage}
+                                alt="Imagen del producto"
+                                style={{
+                                    display: 'block',
+                                    margin: '0 auto',
+                                    maxWidth: '80%',
+                                    height: 'auto',
+                                    maxHeight: '400px'
+                                }}
+                            />
+                        ) : (
+                            <p>No se ha seleccionado una imagen.</p>
+                        )}
+                        <button onClick={closeModal}>Cerrar</button>
+                    </Modal>
+
+                    <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>
+                        <h2>Mensaje</h2>
+                        <p>{modalMessage}</p>
+                        <button onClick={closeModal}>Cerrar</button>
+                    </Modal>
+                </>
+            )}
+            {paginaActual === 'VentasPendientes' && (
+                <>
                     <VentasPendientes />
-                 </>
+                </>
             )}
         </div>
-        
-      );
-};
+    );
+}
 export default VentaClienteNu;

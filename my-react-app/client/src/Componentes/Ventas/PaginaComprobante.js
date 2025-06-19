@@ -1,19 +1,27 @@
-// src/Componentes/Ventas/PaginaComprobante.js
-
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom'; // <--- IMPORT useParams
+import { useParams, useNavigate } from 'react-router-dom';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import authenticatedFetch from '../../utils/api';
 
 const PaginaComprobante = () => {
     const invoiceRef = useRef(null);
     const [invoiceData, setInvoiceData] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null); 
-
-    const { codigoComprobante } = useParams(); //Obtener el codigo desde la URL
+    const [error, setError] = useState(null);
+    const { codigoComprobante } = useParams();
+    const navigate = useNavigate();
+    const userRole = localStorage.getItem('userRole');
 
     useEffect(() => {
+        document.title = `Comprobante N° ${codigoComprobante || 'Cargando...'}`;
+
+        const allowedRoles = ['Administrador', 'Vendedor'];
+        if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+            navigate('/login');
+            return;
+        }
+
         const fetchInvoice = async () => {
             if (!codigoComprobante) {
                 setError("No se encontró el código de comprobante en la URL.");
@@ -23,9 +31,17 @@ const PaginaComprobante = () => {
 
             try {
                 setLoading(true);
-                setError(null); // Clear previous errors
+                setError(null);
 
-                const response = await fetch(`http://localhost:3001/api/historialVentas/boleta/${codigoComprobante}`);
+                const response = await authenticatedFetch(`/historialVentas/boleta/${codigoComprobante}`);
+
+                if (response.status === 401 || response.status === 403) {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('userRole');
+                    localStorage.removeItem('userRut');
+                    navigate('/login');
+                    return;
+                }
 
                 if (!response.ok) {
                     const errorText = await response.text();
@@ -48,7 +64,7 @@ const PaginaComprobante = () => {
         };
 
         fetchInvoice();
-    }, [codigoComprobante]); // <--- Re-run effect if codigoComprobante changes (though it shouldn't for this use case)
+    }, [codigoComprobante, userRole, navigate]);
 
     if (loading) {
         return (
@@ -165,7 +181,7 @@ const PaginaComprobante = () => {
                     <p>Outlet a Tu Hogar</p>
                 </div>
             </div>
-             <button onClick={downloadPdf} className="download-pdf-button">
+            <button onClick={downloadPdf} className="download-pdf-button">
                 Descargar Comprobante PDF
             </button>
         </div>

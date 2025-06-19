@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
-import VentasPendientes from "../Pendientes/VentasPendientes"; // Asegúrate de importar el nuevo componente"
+import VentasPendientes from "../Pendientes/VentasPendientes";
+import authenticatedFetch from '../../utils/api';
+import { useNavigate } from 'react-router-dom';
+
 function VentaClienteEx() {
     const [codigo, setCodigo] = useState('');
     const [clienteData, setClienteData] = useState(null);
@@ -12,25 +15,42 @@ function VentaClienteEx() {
     const [carrito, setCarrito] = useState([]);
     const [cantidad, setCantidad] = useState({});
     const [paginaActual, setPaginaActual] = useState('insertCabecera');
-    
+
     const [imageModalIsOpen, setImageModalIsOpen] = useState(false);
     const [messageModalIsOpen, setMessageModalIsOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState(null);  // Aquí va la imagen seleccionada
-    const [modalMessage, setModalMessage] = useState("");      
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [modalMessage, setModalMessage] = useState("");
     const currentUserRut = localStorage.getItem('userRut');
+    const navigate = useNavigate();
+    const userRole = localStorage.getItem('userRole');
 
+    useEffect(() => {
+        document.title = 'Venta Cliente Existente';
+        const allowedRoles = ['Administrador', 'Vendedor'];
+
+        if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+            navigate('/login');
+        }
+    }, [userRole, navigate]);
 
     const handleSubmitCliente = async (e) => {
         e.preventDefault();
         try {
-            console.log("El código es:", codigo);
-            const response = await fetch(`http://localhost:3001/api/insertCabecera`, {
+            const response = await authenticatedFetch('/insertCabecera', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ codigo, currentUserRut })
             });
+
+            if (response.status === 401 || response.status === 403) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userRut');
+                navigate('/login');
+                return;
+            }
 
             if (response.ok) {
                 const data = await response.json();
@@ -53,7 +73,7 @@ function VentaClienteEx() {
         event.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:3001/api/buscarProducto', {
+            const response = await authenticatedFetch('/buscarProducto', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,8 +84,17 @@ function VentaClienteEx() {
                 }),
             });
 
+            if (response.status === 401 || response.status === 403) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userRut');
+                navigate('/login');
+                return;
+            }
+
             if (!response.ok) {
-                throw new Error('Error en la solicitud');
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Error en la solicitud');
             }
 
             const data = await response.json();
@@ -73,57 +102,68 @@ function VentaClienteEx() {
             if (data.data && data.data.length > 0) {
                 setProductos(data.data);
             } else {
-                setModalMessage('Error al buscar producto.');
+                setModalMessage('No se encontraron productos con los criterios de búsqueda.');
                 setMessageModalIsOpen(true);
+                setProductos([]);
             }
         } catch (error) {
             console.error('Error al buscar productos:', error);
+            setModalMessage(error.message || 'Error al buscar productos.');
             setMessageModalIsOpen(true);
+            setProductos([]);
         }
     };
 
     const añadirAlCarrito = (producto) => {
-        console.log("producto:", producto);
-    
-        // Obtener cantidad seleccionada
         const cantidadSeleccionada = cantidad[producto.codigo_producto] || 0;
-    
-        // Validar stock antes de modificar el carrito
-        if (cantidadSeleccionada > producto.stock) {
-            console.error('Stock insuficiente');
-            setModalMessage("Stock insuficiente");
+
+        if (cantidadSeleccionada <= 0) {
+            setModalMessage("La cantidad debe ser mayor que cero.");
             setMessageModalIsOpen(true);
-            return; // Detener ejecución si no hay suficiente stock
+            return;
         }
-    
-        // Actualizar el carrito solo si hay stock suficiente
+
+        if (cantidadSeleccionada > producto.stock) {
+            setModalMessage("Stock insuficiente.");
+            setMessageModalIsOpen(true);
+            return;
+        }
+
         setCarrito((prevCarrito) => {
             const existente = prevCarrito.find(p => p.codigo_producto === producto.codigo_producto);
             if (existente) {
-                // Actualizar cantidad si el producto ya está en el carrito
+                const nuevaCantidad = existente.cantidad + cantidadSeleccionada;
+                if (nuevaCantidad > producto.stock) {
+                    setModalMessage("La cantidad total en el carrito excede el stock disponible.");
+                    setMessageModalIsOpen(true);
+                    return prevCarrito;
+                }
                 return prevCarrito.map(p =>
                     p.codigo_producto === producto.codigo_producto
-                        ? { ...p, cantidad: p.cantidad + cantidadSeleccionada }
+                        ? { ...p, cantidad: nuevaCantidad }
                         : p
                 );
             }
-            // Agregar el producto al carrito si no existe
             return [...prevCarrito, { ...producto, cantidad: cantidadSeleccionada }];
         });
-    
-        // Reiniciar la cantidad seleccionada para el producto
+
         setCantidad(prevState => ({ ...prevState, [producto.codigo_producto]: 0 }));
     };
-    
 
     const finalizarVenta = async () => {
+        if (carrito.length === 0) {
+            setModalMessage("El carrito está vacío. Agregue productos antes de finalizar la venta.");
+            setMessageModalIsOpen(true);
+            return;
+        }
+
         const productosVenta = carrito.map(producto => ({
             codigo: producto.codigo_producto,
             cantidad: producto.cantidad
         }));
 
         try {
-            const response = await fetch('http://localhost:3001/api/insertCuerpo', {
+            const response = await authenticatedFetch('/insertCuerpo', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -131,13 +171,20 @@ function VentaClienteEx() {
                 body: JSON.stringify({ productos: productosVenta }),
             });
 
+            if (response.status === 401 || response.status === 403) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userRut');
+                navigate('/login');
+                return;
+            }
+
             if (response.ok) {
                 const data = await response.json();
-                console.log('Respuesta de la API:', data);
-                setModalMessage("Venta finalizada exitosamente");
-                setMessageModalIsOpen(false);
+                setModalMessage("Venta finalizada exitosamente.");
+                setMessageModalIsOpen(true);
                 setCarrito([]);
-                setPaginaActual('VentasPendientes'); // Cambia a la página de la boleta
+                setPaginaActual('VentasPendientes');
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
@@ -149,7 +196,7 @@ function VentaClienteEx() {
             setMessageModalIsOpen(true);
         }
     };
-    
+
     const handleCantidadChange = (codigoProducto, value) => {
         setCantidad(prevState => ({
             ...prevState,
@@ -157,42 +204,45 @@ function VentaClienteEx() {
         }));
     };
 
-
     const mostrarImagen = (codigo_producto) => {
-        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Ruta relativa de la imagen
-        setSelectedImage(imageUrl);  // Establecer la URL de la imagen seleccionada
-        setImageModalIsOpen(true);   // Abrir el modal de imagen
-        console.log("Imagen mostrada:", imageUrl); // Para asegurarte de que se está estableciendo la imagen
+        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`;
+        setSelectedImage(imageUrl);
+        setImageModalIsOpen(true);
     };
-    
+
     const closeModal = () => {
-        setImageModalIsOpen(false);   // Cerrar solo el modal de la imagen
-        setMessageModalIsOpen(false); // Cerrar solo el modal de mensaje
+        setImageModalIsOpen(false);
+        setMessageModalIsOpen(false);
     };
 
-    useEffect(() => {
-        document.title = 'Venta Cliente Existente';
-    }, []);
-    return (
+    const allowedRoles = ['Administrador', 'Vendedor'];
+    if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+        return (
+            <div className="main-block">
+                <h1>Redirigiendo...</h1>
+            </div>
+        );
+    }
 
+    return (
         <div className="main-block">
             {paginaActual === 'insertCabecera' && (
                 <>
                     <form onSubmit={handleSubmitCliente}>
                         <h1>Cabecera Venta</h1>
                         <fieldset>
-                                <h3>Buscar Cliente</h3>
+                            <h3>Buscar Cliente</h3>
                             <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                                 <div>
                                     <label>Código cliente*</label>
-                                    <input 
-                                        type="text" 
-                                        name="input-cod" 
-                                        pattern="[0-9]+" 
-                                        maxLength="4" 
-                                        required 
-                                        value={codigo} 
-                                        onChange={(e) => setCodigo(e.target.value)} 
+                                    <input
+                                        type="text"
+                                        name="input-cod"
+                                        pattern="[0-9]+"
+                                        maxLength="4"
+                                        required
+                                        value={codigo}
+                                        onChange={(e) => setCodigo(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -207,7 +257,7 @@ function VentaClienteEx() {
                     <h1>Buscar Producto</h1>
                     <form onSubmit={buscarProductos}>
                         <fieldset>
-                                <h3>Búsqueda</h3>
+                            <h3>Búsqueda</h3>
                             <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                                 <div>
                                     <label>Nombre*</label>
@@ -235,97 +285,83 @@ function VentaClienteEx() {
                         </fieldset>
                         <button type="submit">Buscar Producto</button>
                     </form>
-                    
 
-                    {/* Modal para mostrar la imagen seleccionada */}
                     <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto" className={"custom-modal"}>
-                    <h2>Imagen del Producto</h2>
-                    {selectedImage ? (
-                      <img
-                        src={selectedImage}
-                        alt="Imagen del producto"
-                        style={{
-                          display: 'block',
-                          margin: '0 auto',
-                          maxWidth: '80%',
-                          height: 'auto',
-                          maxHeight: '400px'
-                        }}
-                      />
-                    ) : (
-                      <p>No se ha seleccionado una imagen.</p>
-                    )}
-                    <button onClick={closeModal}>Cerrar</button>
-                  </Modal>
+                        <h2>Imagen del Producto</h2>
+                        {selectedImage ? (
+                            <img
+                                src={selectedImage}
+                                alt="Imagen del producto"
+                                style={{
+                                    display: 'block',
+                                    margin: '0 auto',
+                                    maxWidth: '80%',
+                                    height: 'auto',
+                                    maxHeight: '400px'
+                                }}
+                            />
+                        ) : (
+                            <p>No se ha seleccionado una imagen.</p>
+                        )}
+                        <button onClick={closeModal}>Cerrar</button>
+                    </Modal>
 
                     {productos.length > 0 && (
                         <fieldset>
                             <h3>Resultados</h3>
-                        <table className="venta-table">
-                            <thead>
-                                <tr>
-                                    <th>CÓDIGO</th>
-                                    <th>STOCK</th>
-                                    <th>PRECIO</th>
-                                    <th>NOMBRE</th>
-                                    <th>COLOR</th>
-                                    <th>FOTO</th>
-                                    <th>CANTIDAD</th>
-                                    <th>AÑADIR</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {productos.filter(producto => producto.stock > 0).map((producto) => ( 
-                                    <tr key={producto.codigo_producto}>
-                                        <td>{producto.codigo_producto}</td>
-                                        <td>{producto.stock}</td>
-                                        <td>{producto.precio_unitario}</td>
-                                        <td>{producto.nombre_producto}</td>
-                                        <td>{producto.color_producto}</td>
-                                        <td>
-                                        {/* Botón para ver la imagen */}
-                                        <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)} className={"btn mini-boton"}>
-                                            <i className="fa fa-eye"></i>
-                                        </button>
-                                        </td>
-                                        <td>
-                                            <input
-                                                type="number"
-                                                min="1"
-                                                style={{ width: '50px' }}
-                                                value={cantidad[producto.codigo_producto] || 0}
-                                                onChange={(e) => handleCantidadChange(producto.codigo_producto, parseInt(e.target.value) || 0)}
-                                            />
-                                        </td>
-                                        <td>
-                                            <button onClick={() => añadirAlCarrito(producto)} className={"btn mini-boton"}>
-                                                <i className="fa fa-shopping-cart"></i>
-                                            </button>
-                                        </td>
+                            <table className="venta-table">
+                                <thead>
+                                    <tr>
+                                        <th>CÓDIGO</th>
+                                        <th>STOCK</th>
+                                        <th>PRECIO</th>
+                                        <th>NOMBRE</th>
+                                        <th>COLOR</th>
+                                        <th>FOTO</th>
+                                        <th>CANTIDAD</th>
+                                        <th>AÑADIR</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                        <button onClick={finalizarVenta}>Finalizar Venta</button>
+                                </thead>
+                                <tbody>
+                                    {productos.filter(producto => producto.stock > 0).map((producto) => (
+                                        <tr key={producto.codigo_producto}>
+                                            <td>{producto.codigo_producto}</td>
+                                            <td>{producto.stock}</td>
+                                            <td>{producto.precio_unitario}</td>
+                                            <td>{producto.nombre_producto}</td>
+                                            <td>{producto.color_producto}</td>
+                                            <td>
+                                                <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)} className={"btn mini-boton"}>
+                                                    <i className="fa fa-eye"></i>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="number"
+                                                    min="0"
+                                                    style={{ width: '50px' }}
+                                                    value={cantidad[producto.codigo_producto] || 0}
+                                                    onChange={(e) => handleCantidadChange(producto.codigo_producto, parseInt(e.target.value) || 0)}
+                                                />
+                                            </td>
+                                            <td>
+                                                <button onClick={() => añadirAlCarrito(producto)} className={"btn mini-boton"}>
+                                                    <i className="fa fa-shopping-cart"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                            <button onClick={finalizarVenta}>Finalizar Venta</button>
                         </fieldset>
                     )}
-                    {/* 
-                    {carrito.length > 0 && (
-                        <div>
-                            <h2>Carrito de Compras</h2>
-                            <ul>
-                                {carrito.map((producto, index) => (
-                                    <li key={index}>
-                                        {producto.nombre_producto} - Cantidad: {producto.cantidad} - Precio: ${producto.precio_unitario}
-                                    </li>
-                                ))}
-                            </ul></div>)}*/}
                 </>
             )}
 
             {paginaActual === 'VentasPendientes' && (
                 <>
-                <VentasPendientes />
+                    <VentasPendientes />
                 </>
             )}
 
