@@ -41,7 +41,7 @@ const authorizeRole = (allowedRoles) => {
       // pero es una salvaguarda.
       return res.status(403).json({ message: 'Información de usuario no disponible. Acceso denegado.' });
     }
-
+    console.log('DEBUG (AuthorizeRole): Rol del usuario:', req.user.role, 'Roles permitidos:', allowedRoles);
     // Verificar si el rol del usuario está incluido en los roles permitidos para esta ruta
     if (!allowedRoles.includes(req.user.role)) {
       return res.status(403).json({ message: 'Acceso denegado. No tienes los permisos necesarios para esta acción.' });
