@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-
+console.log('Valor de JWT_SECRET en server.js:', process.env.JWT_SECRET);
 const { verifyToken, authorizeRole } = require('../middleware/authMiddleware');
 
 // Clientes
