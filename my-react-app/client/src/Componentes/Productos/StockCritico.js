@@ -57,7 +57,7 @@ function StockCritico()  {
             <div className="main-block">
             <h1>Stock Crítico</h1>
             <fieldset>
-                <h3>Stock</h3>
+            
             {/* Modal para mostrar la imagen seleccionada */}
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto"className={"custom-modal"}>
             <h2>Imagen del Producto</h2>
