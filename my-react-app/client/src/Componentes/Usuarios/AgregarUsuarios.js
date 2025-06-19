@@ -20,6 +20,18 @@ function IngresoUsuario() {
         
         // Agregar los datos del formulario a FormData
         
+            // --- MODIFICACIONES CLAVE AQUÍ: Lógica de verificación de rol y redirección ---
+        useEffect(() => {
+        document.title = 'Actualizar Usuario';
+        const allowedRoles = ['Administrador']; // Solo administradores pueden actualizar usuarios
+
+        if (!userRole || !allowedRoles.includes(userRole)) {
+            console.warn("Acceso denegado. Redirigiendo al login.");
+            navigate('/login'); // Redirige directamente al login
+            // No se establecen mensajes ni se abre el modal aquí para una redirección inmediata
+        }
+        }, [userRole, navigate]); // Dependencias para re-ejecutar si el rol o navigate cambian
+        // ---------------------------------------------------------------------------------
 
 
         formData.append('INnombre', nombre);
