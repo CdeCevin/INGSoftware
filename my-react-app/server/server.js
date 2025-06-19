@@ -1,18 +1,24 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path'); // <-- Añade esta línea para importar el módulo 'path'
-const projectRoot = '/c/Users/Koliv/INGSoftware/my-react-app';
-// --- MODIFICACIÓN AQUÍ ---
-require('dotenv').config({ 
-    path: path.join(projectRoot, '.env') // Sube 2 niveles para llegar a my-react-app/
-});
-// -------------------------
+// const path = require('path'); // Comentar o eliminar esta línea
 
-// Debugging line (puedes dejarla o quitarla una vez que funcione)
+// Comentar o eliminar esta sección:
+// const projectRoot = '/c/Users/Koliv/INGSoftware/my-react-app'; 
+// require('dotenv').config({ 
+//     path: path.join(projectRoot, '.env') 
+// });
+
+// --- ¡SOLUCIÓN DE PRUEBA: Define la variable directamente aquí! ---
+process.env.JWT_SECRET = 'MI_CLAVE_SECRETA_SIMPLE_PARA_PROBAR_123'; 
+// Asegúrate de que esta clave sea EXACTAMENTE la misma que en tu .env real.
+// Una vez que esto funcione, la reemplazaremos por un método de carga adecuado.
+// ------------------------------------------------------------------
+
+// Mantén la línea de depuración
 console.log('DEBUG: Valor de process.env.JWT_SECRET cargado en server.js:', process.env.JWT_SECRET);
 
 // Importar los middlewares de autenticación y autorización
-const { verifyToken, authorizeRole } = require('../middleware/authMiddleware'); // Esta ruta es correcta
+const { verifyToken, authorizeRole } = require('../middleware/authMiddleware');
 
 
 // Clientes
