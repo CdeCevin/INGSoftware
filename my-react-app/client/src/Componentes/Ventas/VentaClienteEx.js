@@ -177,7 +177,7 @@ function VentaClienteEx() {
 
         <div className="main-block">
             {paginaActual === 'insertCabecera' && (
-                <div className="main-block">
+                <>
                     <form onSubmit={handleSubmitCliente}>
                         <h1>Cabecera Venta</h1>
                         <fieldset>
@@ -201,7 +201,7 @@ function VentaClienteEx() {
                         </fieldset>
                         <button type="submit">Buscar Cliente</button>
                     </form>
-                </div>
+                </>
             )}
 
             {paginaActual === 'buscarProducto' && (
