@@ -117,6 +117,7 @@ function ActualizarCliente() {
                                     name="input-nombre" 
                                     maxLength="50" 
                                     value={nombre} 
+                                    pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
                                     onChange={(e) => setNombre(e.target.value)} 
                                 />
                             </div>

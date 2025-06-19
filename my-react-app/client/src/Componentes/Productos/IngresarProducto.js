@@ -138,6 +138,8 @@ function IngresoProducto() {
                                 <input 
                                     type="text" 
                                     name="input-color" 
+                                    maxLength="15"
+                                    pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
                                     required 
                                     value={color} 
                                     onChange={(e) => setColor(e.target.value)} 
@@ -160,6 +162,7 @@ function IngresoProducto() {
                                     type="text" 
                                     name="input-stockmin" 
                                     maxLength="9" 
+                                    pattern="[0-9]+"
                                     required 
                                     value={stockmin} 
                                     onChange={(e) => setStockmin(e.target.value)} 

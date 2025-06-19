@@ -135,6 +135,7 @@ function ActualizarProducto() {
                                     type="text" 
                                     name="input-stockmin" 
                                     maxLength="9" 
+                                    pattern="[0-9]+"
                                     value={stockmin} 
                                     onChange={(e) => setStockmin(e.target.value)} 
                                 />

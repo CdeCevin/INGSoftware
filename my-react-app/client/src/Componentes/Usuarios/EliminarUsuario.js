@@ -74,8 +74,10 @@ function EliminarUsuario() {
                                 <input 
                                     type="text" 
                                     name="Rut_Usuario" 
-                                    pattern="[0-9]+" 
-                                    maxLength="10"  
+                                    pattern="[0-9]+"
+                                    minLength="7"
+                                    maxLength="8"
+                                    placeholder='No considere puntos ni guión' 
                                     required 
                                     value={Rut_Usuario} 
                                     onChange={(e) => setRut_Usuario(e.target.value)} 

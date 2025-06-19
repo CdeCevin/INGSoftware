@@ -57,10 +57,9 @@ const LoginForm = () => {
                             <input
                                 type="text"
                                 name="input-rut"
-                                maxLength="10"
                                 pattern="[0-9]+"
-                                minLength="8"
-                                maxLength="9"
+                                minLength="7"
+                                maxLength="8"
                                 placeholder='No considere puntos ni guión'
                                 required
                                 value={rut}

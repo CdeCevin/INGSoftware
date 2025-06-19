@@ -93,6 +93,8 @@ const BuscarProducto = () => {
                                 <input
                                     type="text"
                                     name="input-color"
+                                    maxLength="15"
+                                    pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
                                     value={color}
                                     onChange={(e) => setColor(e.target.value)}
                                     placeholder="Color del producto"

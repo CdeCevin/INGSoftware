@@ -109,6 +109,7 @@ function ActualizarUsuario() {
                                     type="text" 
                                     name="input-nombre" 
                                     maxLength="50" 
+                                    pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
                                     value={nombre} 
                                     onChange={(e) => setNombre(e.target.value)} 
                                 />
@@ -118,8 +119,11 @@ function ActualizarUsuario() {
                                 <input 
                                     type="text" 
                                     name="input-teléfono" 
-                                    maxLength="9" 
+                                    minLength="9"
+                                    maxLength="9"
+                                    pattern="[0-9]+" 
                                     value={telefono} 
+                                    placeholder='No considere el +56'
                                     onChange={(e) => setTelefono(e.target.value)} 
                                 />
                             </div>

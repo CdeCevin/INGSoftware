@@ -84,6 +84,7 @@ function IngresoUsuario() {
                                     type="text" 
                                     name="INnombre" 
                                     maxLength="50" 
+                                    pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
                                     required 
                                     value={nombre} 
                                     onChange={(e) => setNombre(e.target.value)} 
@@ -94,7 +95,10 @@ function IngresoUsuario() {
                                 <input 
                                     type="text" 
                                     name="INRut" 
-                                    maxLength="10" 
+                                    pattern="[0-9]+"
+                                    minLength="7"
+                                    maxLength="8"
+                                    placeholder='No considere puntos ni guión'
                                     required 
                                     value={rut} 
                                     onChange={(e) => setRut(e.target.value)} 
@@ -105,8 +109,10 @@ function IngresoUsuario() {
                                 <input 
                                     type="text" 
                                     name="INtelefono" 
-                                    pattern="[0-9]+" 
-                                    maxLength="9" 
+                                    minLength="9"
+                                    maxLength="9"
+                                    pattern="[0-9]+"
+                                    placeholder='No considere el +56'
                                     required 
                                     value={telefono} 
                                     onChange={(e) => settelefono(e.target.value)} 
