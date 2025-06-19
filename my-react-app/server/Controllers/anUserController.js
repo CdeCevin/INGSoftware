@@ -1,5 +1,8 @@
 // Controllers/anUserController.js
 const { getConnection } = require('../db/connection');
+const bcrypt = require('bcrypt'); // Importar bcrypt
+
+const saltRounds = 12; // Número de rondas de sal para bcrypt (un valor seguro es 10-12)
 
 const insertUsuario = async (req, res) => {
   const { INRut, INnombre, INpassword, INtelefono, INRol } = req.body;
@@ -10,19 +13,24 @@ const insertUsuario = async (req, res) => {
 
   let conn;
   try {
+    // 1. Hashear la contraseña antes de enviarla a la base de datos
+    const hashedPassword = await bcrypt.hash(INpassword, saltRounds);
+    console.log('Contraseña hasheada:', hashedPassword); // Para depuración, puedes eliminar esto después
+
     conn = await getConnection();
     await conn.execute(
       `BEGIN OUTLET_Insert_User(
-         :Rut_Usuario,
-         :Nombre_Usuario,
-         :Contrasena_Usuario,
-         :Telefono_Usuario,
-         :Rol_Usuario
-       ); END;`,
+           :Rut_Usuario,
+           :Nombre_Usuario,
+           :Contrasena_Usuario,
+           :Telefono_Usuario,
+           :Rol_Usuario
+         ); END;`,
       {
         Rut_Usuario: Number(INRut),
         Nombre_Usuario: INnombre,
-        Contrasena_Usuario: INpassword,
+        // 2. Usar la contraseña hasheada en lugar de la original
+        Contrasena_Usuario: hashedPassword,
         Telefono_Usuario: Number(INtelefono),
         Rol_Usuario: INRol
       }
