@@ -1,13 +1,18 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config(); // Esto intenta cargar las variables de .env
+const path = require('path'); // <-- Añade esta línea para importar el módulo 'path'
 
-// --- ¡Añade esta línea aquí! ---
+// --- MODIFICACIÓN AQUÍ ---
+require('dotenv').config({ 
+    path: path.resolve(__dirname, '../../.env') // Sube 2 niveles para llegar a my-react-app/
+});
+// -------------------------
+
+// Debugging line (puedes dejarla o quitarla una vez que funcione)
 console.log('DEBUG: Valor de process.env.JWT_SECRET cargado en server.js:', process.env.JWT_SECRET);
-// -----------------------------
 
 // Importar los middlewares de autenticación y autorización
-const { verifyToken, authorizeRole } = require('../middleware/authMiddleware');
+const { verifyToken, authorizeRole } = require('../middleware/authMiddleware'); // Esta ruta es correcta
 
 
 // Clientes
