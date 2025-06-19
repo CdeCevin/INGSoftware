@@ -181,9 +181,7 @@ function VentaClienteEx() {
                     <form onSubmit={handleSubmitCliente}>
                         <h1>Cabecera Venta</h1>
                         <fieldset>
-                            <legend>
                                 <h3>Buscar Cliente</h3>
-                            </legend>
                             <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                                 <div>
                                     <label>Código cliente*</label>
@@ -209,9 +207,7 @@ function VentaClienteEx() {
                     <h1>Buscar Producto</h1>
                     <form onSubmit={buscarProductos}>
                         <fieldset>
-                            <legend>
                                 <h3>Búsqueda</h3>
-                            </legend>
                             <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                                 <div>
                                     <label>Nombre*</label>
@@ -264,9 +260,7 @@ function VentaClienteEx() {
 
                     {productos.length > 0 && (
                         <fieldset>
-                        <legend>
                             <h3>Resultados</h3>
-                        </legend>
                         <table className="venta-table">
                             <thead>
                                 <tr>

@@ -34,7 +34,7 @@ function HistorialVentas() {
 
     return (
             <div className="main-block">
-                <h1 /*style={{padding:20}}*/>Historial de Ventas</h1>
+                <h1>Historial de Ventas</h1>
                 {ventas.length > 0 ? (
                     ventas.map((venta) => (
                         <div key={venta.codigoComprobante} className="venta-block" /*style={{paddingTop:0}}*/>

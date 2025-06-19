@@ -215,9 +215,7 @@ function VentaClienteNu() {
                 <form onSubmit={handleSubmit}>
                   <h1>Cabecera Venta</h1>
                   <fieldset>
-                    <legend>
                       <h3>Detalles del Cliente</h3>
-                    </legend>
                     <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
                       <div>
                         <label>Nombre*</label>
@@ -244,9 +242,7 @@ function VentaClienteNu() {
                     </div>
                   </fieldset>
                   <fieldset>
-                    <legend>
                       <h3>Dirección de despacho</h3>
-                    </legend>
                     <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                       <div>
                         <label>Región</label>
@@ -305,9 +301,7 @@ function VentaClienteNu() {
                 <h1>Buscar Producto</h1>
                   <form onSubmit={buscarProductos}>
                     <fieldset>
-                      <legend>
                         <h3>Búsqueda</h3>
-                      </legend>
                       <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                         <div>
                           <label>Nombre*</label>
@@ -338,9 +332,7 @@ function VentaClienteNu() {
       
                   {productos.length > 0 && (
                     <fieldset>
-                      <legend>
                         <h3>Resultados</h3>
-                      </legend>
                      
                       <table className="venta-table">
                         <thead>
