@@ -15,7 +15,6 @@ const verifyToken = (req, res, next) => {
   try {
     // Verificar el token usando la clave secreta
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-él.
     req.user = decoded; 
     
     next(); // Pasar a la función de la ruta
