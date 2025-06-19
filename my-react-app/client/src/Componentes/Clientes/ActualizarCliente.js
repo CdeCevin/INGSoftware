@@ -97,6 +97,7 @@ function ActualizarCliente() {
                                     name="input-cod" 
                                     pattern="[0-9]+" 
                                     maxLength="9" 
+                                    minLength="[8-9]"
                                     required 
                                     value={cod} 
                                     onChange={(e) => setCod( e.target.value)} 
