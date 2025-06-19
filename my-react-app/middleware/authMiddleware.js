@@ -20,6 +20,9 @@ const verifyToken = (req, res, next) => {
     // Si el token es válido, decodifica el payload (que contiene { rut, role })
     // y lo adjunta al objeto de solicitud (req) para que las rutas puedan acceder a él.
     req.user = decoded; // Ahora req.user contendrá { rut: <valor>, role: <valor> }
+    
+    console.log('DEBUG (Middleware): Rol decodificado del token:', req.user.role);
+    
     next(); // Pasar al siguiente middleware o a la función de la ruta
   } catch (error) {
     // Si la verificación falla (token inválido, expirado, etc.)
