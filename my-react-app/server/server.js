@@ -14,12 +14,6 @@ console.log('DEBUG: Valor de process.env.JWT_SECRET cargado en server.js:', proc
 // Importar los middlewares de autenticación y autorización
 const { verifyToken, authorizeRole } = require('../middleware/authMiddleware'); // Esta ruta es correcta
 
-// Debugging line (puedes dejarla o quitarla una vez que funcione)
-console.log('DEBUG: Valor de process.env.JWT_SECRET cargado en server.js:', process.env.JWT_SECRET);
-
-// Importar los middlewares de autenticación y autorización
-const { verifyToken, authorizeRole } = require('../middleware/authMiddleware'); // Esta ruta es correcta
-
 
 // Clientes
 const buscarClienteRoutes = require('./Routes/buscarCliente');
