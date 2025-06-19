@@ -16,6 +16,7 @@ const updateProducto = async (req, res) => {
         const stock_minimo = inputStockmin ? Number(inputStockmin) : null;
 
         // Llamar al procedimiento almacenado
+        console.log('Datos:',codigo, stock, precio, inputNombre, stock_minimo);
         const result = await connection.execute(
             `BEGIN OUTLET_Up_Producto(:codigo, :stock, :precio, :nombre, :stock_minimo); END;`,
             {
