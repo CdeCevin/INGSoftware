@@ -86,9 +86,7 @@ function ActualizarCliente() {
                 <form onSubmit={handleSubmit}>
                     <h1>Actualizar Cliente</h1>
                     <fieldset>
-                        <legend>
-                            <h3>Cliente a Editar</h3>
-                        </legend>
+                        <h3>Cliente a Editar</h3>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <label>Código*</label>
@@ -106,9 +104,7 @@ function ActualizarCliente() {
                         </div>
                     </fieldset>
                     <fieldset>   
-                        <legend>
                             <h3>Datos a editar</h3>
-                        </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <label>Nombre</label>

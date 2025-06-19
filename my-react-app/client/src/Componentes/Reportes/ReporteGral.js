@@ -44,9 +44,7 @@ function ReporteGral() {
         <form onSubmit={handleBuscar} encType="multipart/form-data">
           <h1>Reporte de Ventas</h1>
           <fieldset>
-            <legend>
               <h3>Ventas Totales</h3>
-            </legend>
             <div className="account-details" style={{ display: 'flex', justifyContent: 'space-between',alignItems: 'center' }}>
               <div style={{ flex: '1', display: 'flex', alignItems: 'center',marginLeft: '50px'  }}>
               <h2>${ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>
@@ -78,9 +76,7 @@ function ReporteGral() {
       
         {/*<h2>Ventas Mensuales: {ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>*/}
           <fieldset>
-          <legend>
           <h3>Top Productos</h3>
-          </legend>
           <div>
             <table class="tabla-productos">
               <thead>
@@ -104,9 +100,7 @@ function ReporteGral() {
           </fieldset> 
 
          <fieldset> 
-         <legend>
           <h3>Productos Menos Vendidos</h3>
-          </legend>
           <div>
             <table class="tabla-productos">
               <thead>

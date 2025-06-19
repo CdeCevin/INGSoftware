@@ -50,9 +50,7 @@ function BuscarCliente() {
                 <form onSubmit={handleSubmit}>
                     <h1>Buscar Cliente</h1>
                     <fieldset>
-                        <legend>
-                            <h3>Búsqueda</h3>
-                        </legend>
+                        <h3>Búsqueda</h3>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <label>Código*</label>
@@ -74,9 +72,7 @@ function BuscarCliente() {
                 {clienteData && (
                     
                     <fieldset>
-                    <legend>
                         <h3>  Resultados</h3>
-                    </legend>
                     <table className="venta-table">
                         <thead>
                             <tr>

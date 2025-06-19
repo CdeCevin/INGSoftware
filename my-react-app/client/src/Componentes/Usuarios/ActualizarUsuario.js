@@ -79,9 +79,7 @@ function ActualizarUsuario() {
                 <form onSubmit={handleSubmit}>
                     <h1>Actualizar Usuario</h1>
                     <fieldset>
-                        <legend>
                             <h3>Usuario a Editar</h3>
-                        </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <label>Rut*</label>
@@ -99,9 +97,7 @@ function ActualizarUsuario() {
                         </div>
                     </fieldset>
                     <fieldset>   
-                        <legend>
                             <h3>Datos a editar</h3>
-                        </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <label>Nombre</label>

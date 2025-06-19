@@ -74,9 +74,7 @@ function IngresoUsuario() {
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <h1>Añadir Usuario</h1>
                     <fieldset>
-                        <legend>
                             <h3>Detalles del Usuario</h3>
-                        </legend>
                         <div className="account-details">
                             <div>
                                 <label>Nombre*</label>

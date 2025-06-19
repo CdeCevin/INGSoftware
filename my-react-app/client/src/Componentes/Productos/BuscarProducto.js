@@ -72,9 +72,7 @@ const BuscarProducto = () => {
                 <form onSubmit={buscarProductos} encType="multipart/form-data">
                     <h1>Buscar Producto</h1>
                     <fieldset>
-                        <legend>
                             <h3>Búsqueda</h3>
-                        </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <label>Nombre*</label>
@@ -128,7 +126,7 @@ const BuscarProducto = () => {
 
                 {productos.length > 0 ? (
                     <fieldset>
-                            <h3>Resultados</h3>
+                    <h3>Resultados</h3>
                     <table className="venta-table">
                         <thead>
                             <tr>

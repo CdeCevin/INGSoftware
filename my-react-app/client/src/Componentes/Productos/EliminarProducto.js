@@ -65,9 +65,7 @@ function EliminarProducto() {
                 <form onSubmit={handleSubmit}>
                     <h1>Eliminar Producto</h1>
                     <fieldset>
-                        <legend>
                             <h3>Eliminar</h3>
-                        </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <label>Código Producto*</label>

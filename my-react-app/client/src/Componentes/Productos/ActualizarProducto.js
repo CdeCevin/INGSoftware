@@ -74,9 +74,7 @@ function ActualizarProducto() {
                 <form onSubmit={handleSubmit}>
                     <h1>Actualizar Producto</h1>
                     <fieldset>
-                        <legend>
                             <h3>Producto a Editar</h3>
-                        </legend>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
                                 <label>Código Producto*</label>
@@ -93,9 +91,7 @@ function ActualizarProducto() {
                         </div>
                     </fieldset>
                     <fieldset>   
-                        <legend>
                             <h3>Detalles del Producto</h3>
-                        </legend>
                         <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
                             <div>
                                 <label>Nombre</label>
