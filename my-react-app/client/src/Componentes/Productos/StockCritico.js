@@ -1,21 +1,45 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
+import authenticatedFetch from '../../utils/api'; // Importa la función authenticatedFetch
 
+Modal.setAppElement('#root');
 
-
-function StockCritico()  {
+function StockCritico() {
     const [productosBajoStock, setProductosBajoStock] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
-    const [modalMessage, setModalMessage] = useState('');
+    const [modalMessage, setModalMessage] = useState(''); // eslint-disable-line no-unused-vars
+    const navigate = useNavigate();
+    const userRole = localStorage.getItem('userRole');
+
+    useEffect(() => {
+        document.title = 'Stock Crítico';
+        const allowedRoles = ['Administrador', 'Vendedor'];
+
+        if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+            navigate('/login');
+        }
+    }, [userRole, navigate]);
 
     // Función para obtener productos con stock crítico
-    const obtenerProductosBajoStock = async(event) => {
-
+    const obtenerProductosBajoStock = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/stockCritico');
+            const response = await authenticatedFetch('/stockCritico');
+
+            if (response.status === 401 || response.status === 403) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userRut');
+                navigate('/login');
+                return;
+            }
+
+            if (!response.ok) {
+                throw new Error('Error en la red al obtener los productos de stock crítico');
+            }
             const data = await response.json();
             const productosFormateados = data.map((producto) => ({
                 Codigo_Producto: producto[0],
@@ -26,96 +50,98 @@ function StockCritico()  {
                 Categoria: producto[1],
                 Color_Producto: producto[5],
             }));
-            setProductosBajoStock(productosFormateados);        
+            setProductosBajoStock(productosFormateados);
         } catch (error) {
             console.error('Error al obtener productos:', error);
+            // Puedes establecer un mensaje de error en el estado si lo deseas
         }
-
     };
 
     const mostrarImagen = (codigo_producto) => {
-        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Usamos una ruta relativa
-        setSelectedImage(imageUrl); // Establecer la URL de la imagen seleccionada
-        setModalIsOpen(true); // Abrir el modal con la imagen
+        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`;
+        setSelectedImage(imageUrl);
+        setModalIsOpen(true);
     };
 
     const closeModal = () => {
         setModalIsOpen(false);
+        setSelectedImage(null);
     };
 
-
-
     useEffect(() => {
-        obtenerProductosBajoStock(); // Llamar a la función al montar el componente
-    }, []);
+        if (localStorage.getItem('token')) {
+            obtenerProductosBajoStock();
+        }
+    }, [navigate]);
 
-    useEffect(() => {
-        document.title = 'Stock Crítico';
-    }, []);
-
-    return (     
+    const allowedRoles = ['Administrador', 'Vendedor'];
+    if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+        return (
             <div className="main-block">
+                <h1>Redirigiendo...</h1>
+            </div>
+        );
+    }
+
+    return (
+        <div className="main-block">
             <h1>Stock Crítico</h1>
             <fieldset>
-            
-            {/* Modal para mostrar la imagen seleccionada */}
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto"className={"custom-modal"}>
-            <h2>Imagen del Producto</h2>
-            {selectedImage ? (
-                <img
-                src={selectedImage}
-                alt="Imagen del producto"
-                style={{
-                    display: 'block',        // Hace que la imagen se comporte como un bloque para facilitar el centrado
-                    margin: '0 auto',        // Centra la imagen horizontalmente
-                    maxWidth: '80%',         // Limita el ancho máximo al 80% del contenedor (ajustable según necesidad)
-                    height: 'auto',          // Mantiene la proporción de la imagen
-                    maxHeight: '400px'       // Limita la altura máxima a 400px (puedes ajustarlo)
-                }}  
-                />
-            ) : (
-                <p>No se ha seleccionado una imagen.</p>
-            )}
-            <button onClick={closeModal}>Cerrar</button>
-            </Modal>
+                <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto" className={"custom-modal"}>
+                    <h2>Imagen del Producto</h2>
+                    {selectedImage ? (
+                        <img
+                            src={selectedImage}
+                            alt="Imagen del producto"
+                            style={{
+                                display: 'block',
+                                margin: '0 auto',
+                                maxWidth: '80%',
+                                height: 'auto',
+                                maxHeight: '400px'
+                            }}
+                        />
+                    ) : (
+                        <p>No se ha seleccionado una imagen.</p>
+                    )}
+                    <button onClick={closeModal}>Cerrar</button>
+                </Modal>
                 {productosBajoStock.length > 0 ? (
                     <table className="venta-table">
-                    <thead>
-                        <tr>
-                            <th>CÓDIGO</th>
-                            <th>STOCK</th>
-                            <th>STOCK MÍNIMO</th>
-                            <th>PRECIO</th>
-                            <th>NOMBRE</th>
-                            <th>COLOR</th>
-                            <th>FOTO</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {productosBajoStock.map((producto) => (
-                        
-                        <tr key={producto.Codigo_Producto}>
-                            <td>{producto.Codigo_Producto}</td>
-                            <td>{producto.Stock}</td>
-                            <td>{producto.Stock_Minimo}</td>
-                            <td>${producto.Precio_Unitario}</td>
-                            <td>{producto.Nombre_Producto}</td>
-                            <td>{producto.Color_Producto}</td>
-                            <td>
-                                {/* Botón para ver la imagen */}
-                                <button type="button" onClick={() => mostrarImagen(producto.Codigo_Producto)}  className="btn btn-primary">
-                                    <i className="fa fa-eye"></i>
-                                </button>
-                            </td>
-                         </tr>
-                    ))}
-                    </tbody>
+                        <thead>
+                            <tr>
+                                <th>CÓDIGO</th>
+                                <th>STOCK</th>
+                                <th>STOCK MÍNIMO</th>
+                                <th>PRECIO</th>
+                                <th>NOMBRE</th>
+                                <th>COLOR</th>
+                                <th>FOTO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {productosBajoStock.map((producto) => (
+                                <tr key={producto.Codigo_Producto}>
+                                    <td>{producto.Codigo_Producto}</td>
+                                    <td>{producto.Stock}</td>
+                                    <td>{producto.Stock_Minimo}</td>
+                                    <td>${producto.Precio_Unitario}</td>
+                                    <td>{producto.Nombre_Producto}</td>
+                                    <td>{producto.Color_Producto}</td>
+                                    <td>
+                                        <button type="button" onClick={() => mostrarImagen(producto.Codigo_Producto)} className="btn btn-primary">
+                                            <i className="fa fa-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
                     </table>
-                    
+
                 ) : (
                     <p>No hay productos con stock crítico.</p>
                 )}
-                </fieldset>
+            </fieldset>
         </div>
     );
 }

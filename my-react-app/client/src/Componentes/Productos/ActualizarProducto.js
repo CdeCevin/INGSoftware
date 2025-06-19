@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
+import authenticatedFetch from '../../utils/api';
 
-Modal.setAppElement('#root'); // Reemplaza '#root' con tu selector de raíz
+Modal.setAppElement('#root');
 
 function ActualizarProducto() {
     const [nombre, setNombre] = useState('');
@@ -11,13 +13,23 @@ function ActualizarProducto() {
     const [stock, setStock] = useState('');
     const [precio, setPrecio] = useState('');
     const [stockmin, setStockmin] = useState('');
-    const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
-    const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
+    const navigate = useNavigate();
+    const userRole = localStorage.getItem('userRole');
+
+    useEffect(() => {
+        document.title = 'Actualizar Producto';
+        const allowedRoles = ['Administrador'];
+
+        if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+            navigate('/login');
+        }
+    }, [userRole, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Preparar los datos en formato JSON
         const formData = {
             inputNombre: nombre || null,
             inputCod: codigo,
@@ -25,31 +37,33 @@ function ActualizarProducto() {
             inputPrecio: precio || null,
             inputStockmin: stockmin || null,
         };
-        console.log('Datos del formulario:', formData);
 
         try {
-            // Enviar los datos al backend
-            const response = await fetch('http://localhost:3001/api/up_producto/', {
+            const response = await authenticatedFetch('/up_producto', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 body: JSON.stringify(formData),
             });
 
+            if (response.status === 401 || response.status === 403) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userRut');
+                navigate('/login');
+                return;
+            }
+
             if (response.ok) {
                 const data = await response.json();
-                setModalMessage(data.message); // Mostrar mensaje de éxito
+                setModalMessage(data.message);
                 resetForm();
             } else {
                 const errorData = await response.json();
-                setModalMessage(errorData.message); // Mostrar mensaje de error
+                setModalMessage(errorData.message);
             }
         } catch (error) {
-            console.error('Error al enviar el formulario:', error);
-            setModalMessage('Error al enviar el formulario.'); // Mensaje de error genérico
+            setModalMessage('Error al enviar el formulario.');
         } finally {
-            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
+            setModalIsOpen(true);
         }
     };
 
@@ -65,83 +79,87 @@ function ActualizarProducto() {
         setModalIsOpen(false);
     };
 
-    useEffect(() => {
-        document.title = 'Actualizar Producto';
-    }, []);
+    const allowedRoles = ['Administrador'];
+    if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+        return (
+            <div className="main-block">
+                <h1>Redirigiendo...</h1>
+            </div>
+        );
+    }
 
     return (
-            <div className="main-block">
-                <form onSubmit={handleSubmit}>
-                    <h1>Actualizar Producto</h1>
-                    <fieldset>
-                            <h3>Producto a Editar</h3>
-                        <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
-                            <div>
-                                <label>Código Producto*</label>
-                                <input 
-                                    type="text" 
-                                    name="input-cod" 
-                                    pattern="[0-9]+" 
-                                    maxLength="4" 
-                                    required 
-                                    value={codigo} 
-                                    onChange={(e) => setCodigo(e.target.value)} 
-                                />
-                            </div>
+        <div className="main-block">
+            <form onSubmit={handleSubmit}>
+                <h1>Actualizar Producto</h1>
+                <fieldset>
+                    <h3>Producto a Editar</h3>
+                    <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <div>
+                            <label>Código Producto*</label>
+                            <input
+                                type="text"
+                                name="input-cod"
+                                pattern="[0-9]+"
+                                maxLength="4"
+                                required
+                                value={codigo}
+                                onChange={(e) => setCodigo(e.target.value)}
+                            />
                         </div>
-                    </fieldset>
-                    <fieldset>   
-                            <h3>Detalles del Producto</h3>
-                        <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
-                            <div>
-                                <label>Nombre</label>
-                                <input 
-                                    type="text" 
-                                    name="input-nombre" 
-                                    maxLength="50" 
-                                    value={nombre} 
-                                    onChange={(e) => setNombre(e.target.value)} 
-                                />
-                            </div>
-                            <div>
-                                <label>Precio</label>
-                                <input 
-                                    type="text" 
-                                    name="input-precio" 
-                                    pattern="[0-9]+" 
-                                    maxLength="10" 
-                                    value={precio} 
-                                    onChange={(e) => setPrecio(e.target.value)} 
-                                />
-                            </div>
-                            <div>
-                                <label>Stock</label>
-                                <input 
-                                    type="text" 
-                                    name="input-stock" 
-                                    pattern="[0-9]+" 
-                                    maxLength="4" 
-                                    value={stock} 
-                                    onChange={(e) => setStock(e.target.value)} 
-                                />
-                            </div>
-                            <div>
-                                <label>Stock Mínimo</label>
-                                <input 
-                                    type="text" 
-                                    name="input-stockmin" 
-                                    maxLength="9" 
-                                    pattern="[0-9]+"
-                                    value={stockmin} 
-                                    onChange={(e) => setStockmin(e.target.value)} 
-                                />
-                            </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <h3>Detalles del Producto</h3>
+                    <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
+                        <div>
+                            <label>Nombre</label>
+                            <input
+                                type="text"
+                                name="input-nombre"
+                                maxLength="50"
+                                value={nombre}
+                                onChange={(e) => setNombre(e.target.value)}
+                            />
                         </div>
-                    </fieldset>
-                    <button type="submit">Actualizar</button>
-                </form>
-            
-            {/* Modal para mostrar mensajes */}
+                        <div>
+                            <label>Precio</label>
+                            <input
+                                type="text"
+                                name="input-precio"
+                                pattern="[0-9]+"
+                                maxLength="10"
+                                value={precio}
+                                onChange={(e) => setPrecio(e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <label>Stock</label>
+                            <input
+                                type="text"
+                                name="input-stock"
+                                pattern="[0-9]+"
+                                maxLength="4"
+                                value={stock}
+                                onChange={(e) => setStock(e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <label>Stock Mínimo</label>
+                            <input
+                                type="text"
+                                name="input-stockmin"
+                                maxLength="9"
+                                pattern="[0-9]+"
+                                value={stockmin}
+                                onChange={(e) => setStockmin(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                </fieldset>
+                <button type="submit">Actualizar</button>
+            </form>
+
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>

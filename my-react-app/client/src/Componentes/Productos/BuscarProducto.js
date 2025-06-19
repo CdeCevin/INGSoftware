@@ -1,131 +1,156 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
+import authenticatedFetch from '../../utils/api';
 
-Modal.setAppElement('#root'); // Asegúrate de reemplazar '#root' con tu selector de raíz
+Modal.setAppElement('#root');
 
 const BuscarProducto = () => {
     const [nombre, setNombre] = useState('');
     const [color, setColor] = useState('');
     const [productos, setProductos] = useState([]);
-
     const [imageModalIsOpen, setImageModalIsOpen] = useState(false);
     const [messageModalIsOpen, setMessageModalIsOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState(null);  // Aquí va la imagen seleccionada
-    const [modalMessage, setModalMessage] = useState("");      
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [modalMessage, setModalMessage] = useState("");
+    const navigate = useNavigate();
+    const userRole = localStorage.getItem('userRole');
 
+    useEffect(() => {
+        document.title = 'Buscar Producto';
+        const allowedRoles = ['Administrador', 'Vendedor'];
+
+        if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+            navigate('/login');
+        }
+    }, [userRole, navigate]);
 
     const buscarProductos = async (event) => {
         event.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:3001/api/buscarProducto', {
+            const response = await authenticatedFetch('/buscarProducto', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 body: JSON.stringify({
                     'input-nombre': nombre,
                     'input-color': color,
                 }),
             });
 
+            if (response.status === 401 || response.status === 403) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userRut');
+                navigate('/login');
+                return;
+            }
+
             if (!response.ok) {
-                throw new Error('Error en la solicitud');
+                const errorData = await response.json();
+                setModalMessage(errorData.message || 'Error al buscar producto.');
+                setMessageModalIsOpen(true);
+                setProductos([]);
+                return;
             }
 
             const data = await response.json();
 
             if (data.data && data.data.length > 0) {
-                setProductos(data.data); // Si hay productos, actualiza el estado pero NO abre el modal
+                setProductos(data.data);
+                setModalMessage('');
             } else {
-                setModalMessage('Error al buscar producto.');
+                setProductos([]);
+                setModalMessage('No se encontraron productos con los criterios de búsqueda.');
                 setMessageModalIsOpen(true);
             }
         } catch (error) {
-            console.error('Error al buscar productos:', error);
-            setMessageModalIsOpen(true); // Abre el modal si ocurre un error
+            setProductos([]);
+            setModalMessage('Error al buscar productos. Inténtalo de nuevo.');
+            setMessageModalIsOpen(true);
         }
     };
 
-    // Función para manejar la visualización de la imagen
     const mostrarImagen = (codigo_producto) => {
-        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`; // Ruta relativa de la imagen
-        setSelectedImage(imageUrl);  // Establecer la URL de la imagen seleccionada
-        setImageModalIsOpen(true);   // Abrir el modal de imagen
-        console.log("Imagen mostrada:", imageUrl); // Para asegurarte de que se está estableciendo la imagen
+        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`;
+        setSelectedImage(imageUrl);
+        setImageModalIsOpen(true);
     };
-    
+
     const closeModal = () => {
-        setImageModalIsOpen(false);   // Cerrar solo el modal de la imagen
-        setMessageModalIsOpen(false); // Cerrar solo el modal de mensaje
+        setImageModalIsOpen(false);
+        setMessageModalIsOpen(false);
+        setSelectedImage(null);
     };
 
-
-    useEffect(() => {
-        document.title = 'Buscar Producto';
-    }, []);
+    const allowedRoles = ['Administrador', 'Vendedor'];
+    if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+        return (
+            <div className="main-block">
+                <h1>Redirigiendo...</h1>
+            </div>
+        );
+    }
 
     return (
-            <div className="main-block">
-                <form onSubmit={buscarProductos} encType="multipart/form-data">
-                    <h1>Buscar Producto</h1>
-                    <fieldset>
-                            <h3>Búsqueda</h3>
-                        <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
-                            <div>
-                                <label>Nombre*</label>
-                                <input
-                                    type="text"
-                                    name="input-nombre"
-                                    maxLength="50"
-                                    required
-                                    value={nombre}
-                                    onChange={(e) => setNombre(e.target.value)}
-                                    placeholder="Nombre del producto"
-                                />
-                            </div>
-                            <div>
-                                <label>Color</label>
-                                <input
-                                    type="text"
-                                    name="input-color"
-                                    maxLength="15"
-                                    pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
-                                    value={color}
-                                    onChange={(e) => setColor(e.target.value)}
-                                    placeholder="Color del producto"
-                                />
-                            </div>
+        <div className="main-block">
+            <form onSubmit={buscarProductos} encType="multipart/form-data">
+                <h1>Buscar Producto</h1>
+                <fieldset>
+                    <h3>Búsqueda</h3>
+                    <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <div>
+                            <label>Nombre*</label>
+                            <input
+                                type="text"
+                                name="input-nombre"
+                                maxLength="50"
+                                required
+                                value={nombre}
+                                onChange={(e) => setNombre(e.target.value)}
+                                placeholder="Nombre del producto"
+                            />
                         </div>
-                    </fieldset>
-                    <button type="submit">Buscar</button>
-                </form>
+                        <div>
+                            <label>Color</label>
+                            <input
+                                type="text"
+                                name="input-color"
+                                maxLength="15"
+                                pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
+                                value={color}
+                                onChange={(e) => setColor(e.target.value)}
+                                placeholder="Color del producto"
+                            />
+                        </div>
+                    </div>
+                </fieldset>
+                <button type="submit">Buscar</button>
+            </form>
 
-                {/* Modal para mostrar la imagen seleccionada */}
-                <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto"className={"custom-modal"}>
-                    <h2>Imagen del Producto</h2>
-                    {selectedImage ? (
-                      <img
+            <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto" className={"custom-modal"}>
+                <h2>Imagen del Producto</h2>
+                {selectedImage ? (
+                    <img
                         src={selectedImage}
                         alt="Imagen del producto"
                         style={{
-                          display: 'block',
-                          margin: '0 auto',
-                          maxWidth: '80%',
-                          height: 'auto',
-                          maxHeight: '400px'
+                            display: 'block',
+                            margin: '0 auto',
+                            maxWidth: '80%',
+                            height: 'auto',
+                            maxHeight: '400px'
                         }}
-                      />
-                    ) : (
-                      <p>No se ha seleccionado una imagen.</p>
-                    )}
-                    <button onClick={closeModal}>Cerrar</button>
-                </Modal>
+                    />
+                ) : (
+                    <p>No se ha seleccionado una imagen.</p>
+                )}
+                <button onClick={closeModal}>Cerrar</button>
+            </Modal>
 
-                {productos.length > 0 ? (
-                    <fieldset>
+            {productos.length > 0 && (
+                <fieldset>
                     <h3>Resultados</h3>
                     <table className="venta-table">
                         <thead>
@@ -149,8 +174,7 @@ const BuscarProducto = () => {
                                     <td>{producto.nombre_producto}</td>
                                     <td>{producto.color_producto}</td>
                                     <td>
-                                        {/* Botón para ver la imagen */}
-                                        <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)}  className={"btn btn-primary"}>
+                                        <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)} className={"btn btn-primary"}>
                                             <i className="fa fa-eye"></i>
                                         </button>
                                     </td>
@@ -158,11 +182,9 @@ const BuscarProducto = () => {
                             ))}
                         </tbody>
                     </table>
-                    </fieldset>
-                ) : (
-                    <p></p>
-                )}
-           
+                </fieldset>
+            )}
+
             <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
