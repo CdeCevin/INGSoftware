@@ -205,7 +205,7 @@ function VentaClienteEx() {
             )}
 
             {paginaActual === 'buscarProducto' && (
-                <div className="main-block">
+                <>
                     <h1>Buscar Producto</h1>
                     <form onSubmit={buscarProductos}>
                         <fieldset>
@@ -326,13 +326,13 @@ function VentaClienteEx() {
                                     </li>
                                 ))}
                             </ul></div>)}*/}
-                </div>
+                </>
             )}
 
             {paginaActual === 'VentasPendientes' && (
-                <div className="main-block">
+                <>
                 <VentasPendientes />
-                </div>
+                </>
             )}
 
             <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>
