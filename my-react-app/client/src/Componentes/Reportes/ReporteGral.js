@@ -154,9 +154,6 @@ function ReporteGral() {
                     </table>
                 </div>
             </fieldset>
-
-            <hr/>
-
             <fieldset>
                 <h3>Productos Menos Vendidos</h3>
                 <div>
