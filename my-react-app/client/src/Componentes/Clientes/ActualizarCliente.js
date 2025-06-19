@@ -129,6 +129,7 @@ function ActualizarCliente() {
                                     value={telefono} 
                                     placeholder='No considere el +56'
                                     onChange={(e) => setTelefono(e.target.value)} 
+                                    onInput={this.value.replace(/\D/g, '')}
                                 />
                             </div>
                             <div>
