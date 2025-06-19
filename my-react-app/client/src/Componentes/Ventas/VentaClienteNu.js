@@ -209,10 +209,9 @@ function VentaClienteNu() {
     
 
     return (
-        <div>
+        <div className="main-block">
           {paginaActual === 'insertCabecera' && (
-            <div style={{ marginLeft: '12%' }}>
-              <div className="main-block">
+              <>
                 <form onSubmit={handleSubmit}>
                   <h1>Cabecera Venta</h1>
                   <fieldset>
@@ -298,16 +297,13 @@ function VentaClienteNu() {
                   </fieldset>
                   <button type="submit">Añadir cliente</button>
                 </form>
-              </div>
-            </div>
+              </>
           )}
       
           {paginaActual === 'buscarProducto' && (
             <>
-              <div style={{ marginLeft: '12%' }}>
-                <div className="main-block">
-                  <h1 style={{ padding: 20, paddingBottom: 0 }}>Buscar Producto</h1>
-                  <form onSubmit={buscarProductos} style={{ paddingTop: 0 }}>
+                <h1>Buscar Producto</h1>
+                  <form onSubmit={buscarProductos}>
                     <fieldset>
                       <legend>
                         <h3>Búsqueda</h3>
@@ -390,7 +386,7 @@ function VentaClienteNu() {
                           ))}
                         </tbody>
                       </table>
-                      <button style={{marginLeft: '-12%',width:'110%'}} onClick={finalizarVenta}>Finalizar Venta</button>
+                      <button onClick={finalizarVenta}>Finalizar Venta</button>
                       </div>
                     </fieldset>
                   )}
@@ -418,8 +414,6 @@ function VentaClienteNu() {
                     )}
                     <button onClick={closeModal}>Cerrar</button>
                   </Modal>
-                </div>
-              </div>
       
               {/* Modal para mostrar un mensaje */}
               <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>
@@ -429,12 +423,10 @@ function VentaClienteNu() {
               </Modal>
             </>
           )}
-            {paginaActual === 'VentasPendientes' && (
-                <div style={{marginLeft: '12%'}}>
-                 <div className="main-block">
+          {paginaActual === 'VentasPendientes' && (
+                 <>
                     <VentasPendientes />
-                 </div>
-                </div>
+                 </>
             )}
         </div>
         
