@@ -1,10 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path'); // <-- Añade esta línea para importar el módulo 'path'
-
+const projectRoot = '/c/Users/Koliv/INGSoftware/my-react-app';
 // --- MODIFICACIÓN AQUÍ ---
 require('dotenv').config({ 
-    path: path.resolve(__dirname, '../../.env') // Sube 2 niveles para llegar a my-react-app/
+    path: path.jpin(projectRoot, '.env') // Sube 2 niveles para llegar a my-react-app/
 });
 // -------------------------
 
