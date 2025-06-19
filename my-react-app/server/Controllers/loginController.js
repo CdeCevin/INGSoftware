@@ -3,7 +3,6 @@ const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken'); // <-- Agrega esta línea para importar jsonwebtoken
-require('dotenv').config(); // <-- Agrega esta línea para cargar las variables de entorno (como JWT_SECRET)
 
 async function login(req, res) {
   const { rut, password } = req.body;
