@@ -97,7 +97,6 @@ function ActualizarCliente() {
                                     name="input-cod" 
                                     pattern="[0-9]+" 
                                     maxLength="9" 
-                                    minLength="[8-9]"
                                     required 
                                     value={cod} 
                                     onChange={(e) => setCod( e.target.value)} 
@@ -124,10 +123,12 @@ function ActualizarCliente() {
                             <div>
                                 <label>Teléfono</label>
                                 <input 
-                                    type="text" 
+                                    type="number" 
                                     name="input-teléfono" 
                                     maxLength="9" 
+                                    minLength="9"
                                     value={telefono} 
+                                    placeholder='No considere el +56'
                                     onChange={(e) => setTelefono(e.target.value)} 
                                 />
                             </div>
