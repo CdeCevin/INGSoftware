@@ -125,7 +125,7 @@ function ReporteGral() {
                     </div>
                 </fieldset>
             </form>
-            <fieldset style={{alignItems:'center'}}>
+            <fieldset>
                 <h3>Top Productos</h3>
                 <div>
                     <table className="tabla-productos">
@@ -141,7 +141,7 @@ function ReporteGral() {
                                 topProductos.map((producto, index) => (
                                     <tr key={index}>
                                         <td>{producto[0]}</td>
-                                        <td>{producto[1]}</td>
+                                        <td style={{alignItems='center'}}>{producto[1]}</td>
                                         <td>${producto[2]}</td>
                                     </tr>
                                 ))
