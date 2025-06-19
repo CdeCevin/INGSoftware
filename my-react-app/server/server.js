@@ -1,8 +1,14 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
-console.log('Valor de JWT_SECRET en server.js:', process.env.JWT_SECRET);
-const { verifyToken, authorizeRole } = require('../middleware/authMiddleware');
+require('dotenv').config(); // Esto intenta cargar las variables de .env
+
+// --- ¡Añade esta línea aquí! ---
+console.log('DEBUG: Valor de process.env.JWT_SECRET cargado en server.js:', process.env.JWT_SECRET);
+// -----------------------------
+
+// Importar los middlewares de autenticación y autorización
+const { verifyToken, authorizeRole } = require('./middleware/authMiddleware');
+
 
 // Clientes
 const buscarClienteRoutes = require('./Routes/buscarCliente');
