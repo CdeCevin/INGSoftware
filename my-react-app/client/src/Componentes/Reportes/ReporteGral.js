@@ -142,7 +142,7 @@ function ReporteGral() {
                                     <tr key={index}>
                                         <td>{producto[0]}</td>
                                         <td style={{textAlign:'center'}}>{producto[1]}</td>
-                                        <td>${producto[2]}</td>
+                                        <td style={{textAlign:'center'}}>${producto[2]}</td>
                                     </tr>
                                 ))
                             ) : (
