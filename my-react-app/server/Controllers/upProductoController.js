@@ -27,7 +27,7 @@ const updateProducto = async (req, res) => {
                 stock_minimo,
             }
         );
-
+        console.log('Resultado de la actualización:', result);
         res.status(200).json({ message: 'Producto actualizado con éxito.' });
     } catch (error) {
         console.error('Error al actualizar el producto:', error);
