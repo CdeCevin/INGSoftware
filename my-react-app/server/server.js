@@ -1,26 +1,26 @@
+// CdeCevin/INGSoftware/my-react-app/server/server.js
+
 const express = require('express');
 const cors = require('cors');
-// const path = require('path'); // Comentar o eliminar esta línea
+const path = require('path');
 
-// Comentar o eliminar esta sección:
-// const projectRoot = '/c/Users/Koliv/INGSoftware/my-react-app'; 
-// require('dotenv').config({ 
-//     path: path.join(projectRoot, '.env') 
-// });
+// --- ¡NUEVA CONFIGURACIÓN DE DOTENV MÁS ROBUSTA AQUÍ! ---
+// Determina la ruta absoluta al directorio raíz de 'my-react-app'
+// __dirname es 'CdeCevin/INGSoftware/my-react-app/server'
+// path.resolve(__dirname, '..') te lleva a 'CdeCevin/INGSoftware/my-react-app'
+const projectRootPath = path.resolve(__dirname, '..'); 
 
-// --- ¡SOLUCIÓN DE PRUEBA: Define la variable directamente aquí! ---
-process.env.JWT_SECRET = 'MI_CLAVE_SECRETA_SIMPLE_PARA_PROBAR_123'; 
-// Asegúrate de que esta clave sea EXACTAMENTE la misma que en tu .env real.
-// Una vez que esto funcione, la reemplazaremos por un método de carga adecuado.
-// ------------------------------------------------------------------
+// Carga las variables de entorno desde el .env en la raíz del proyecto
+require('dotenv').config({ path: path.join(projectRootPath, '.env') });
+// -------------------------------------------------------------
 
-// Mantén la línea de depuración
+// Deja esta línea para la verificación final. Luego puedes quitarla.
 console.log('DEBUG: Valor de process.env.JWT_SECRET cargado en server.js:', process.env.JWT_SECRET);
 
 // Importar los middlewares de autenticación y autorización
-const { verifyToken, authorizeRole } = require('../middleware/authMiddleware');
+const { verifyToken, authorizeRole } = require('../middleware/authMiddleware'); 
 
-
+// ... el resto de tu server.js
 // Clientes
 const buscarClienteRoutes = require('./Routes/buscarCliente');
 const eliminarClienteRoutes = require('./Routes/eliminarCliente');
