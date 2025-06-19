@@ -1,4 +1,4 @@
-// src/middleware/authMiddleware.js (o donde decidas ubicarlo)
+// my-react-app/middleware/authMiddleware.js (
 const jwt = require('jsonwebtoken');
 require('dotenv').config(); // Necesario para acceder a process.env.JWT_SECRET
 
