@@ -480,12 +480,17 @@ button:active {
 
 .tabla-productos{
     table-layout: auto;
+    align-self: center;
 }
 
 .tabla-productos th, .tabla-productos td {
     width: auto; /* If these are for a specific table, adjust as needed */
     padding: 0 15px;
     text-align: left;
+}
+
+.tabla-productos th {
+text-align: center;
 }
 
 .btn {
