@@ -245,7 +245,7 @@ function VentaClienteNu() {
                       <h3>Dirección de despacho</h3>
                     <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                       <div>
-                        <label>Región</label>
+                        <label>Región*</label>
                         <select value={region} required onChange={handleRegionChange}>
                           <option value="">Selecciona una región</option>
                           {Object.keys(optionSets).map((regionName) => (
@@ -254,7 +254,7 @@ function VentaClienteNu() {
                         </select>
                       </div>
                       <div>
-                        <label>Comuna</label>
+                        <label>Comuna*</label>
                         <select
                           value={ciudad}
                           required
@@ -268,7 +268,7 @@ function VentaClienteNu() {
                         </select>
                       </div>
                       <div>
-                        <label>Calle</label>
+                        <label>Calle*</label>
                         <input
                           type="text"
                           name="input-calle"
@@ -279,7 +279,7 @@ function VentaClienteNu() {
                         />
                       </div>
                       <div>
-                        <label>Número</label>
+                        <label>Número*</label>
                         <input
                           type="text"
                           name="input-numero"
