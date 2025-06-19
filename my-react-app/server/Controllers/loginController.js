@@ -33,6 +33,9 @@ async function login(req, res) {
     const storedHash = result.rows[0][0];
     const role = result.rows[0][1];
     console.log('DEBUG (Login): Rol obtenido de la DB antes de firmar JWT:', role);
+    console.log(storedHash);
+    console.log(password);
+
     const passwordMatch = await bcrypt.compare(password, storedHash);
 
     if (!passwordMatch) {
