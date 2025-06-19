@@ -174,7 +174,7 @@ function ActualizarCliente() {
                                 <input 
                                     type="text" 
                                     name="input-numero" 
-                                    maxLength="100" 
+                                    maxLength="4" 
                                     value={numero} 
                                     onChange={(e) => setNumero(e.target.value)} 
                                 />
