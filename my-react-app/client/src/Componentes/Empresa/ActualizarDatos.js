@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
-import optionSets from '../../Estilos/regiones'; // Importa el archivo con regiones y ciudades
+import optionSets from '../../Estilos/regiones';
 import Modal from 'react-modal';
+import authenticatedFetch from '../../utils/api';
 
-Modal.setAppElement('#root'); // Asegúrate de que el selector de raíz sea correcto
+Modal.setAppElement('#root');
 
 function ActualizarDatos() {
     const [nombre, setNombre] = useState('');
@@ -13,13 +15,23 @@ function ActualizarDatos() {
     const [ciudad, setCiudad] = useState('');
     const [calle, setCalle] = useState('');
     const [numero, setNumero] = useState('');
-    const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
-    const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
+    const navigate = useNavigate();
+    const userRole = localStorage.getItem('userRole');
+
+    useEffect(() => {
+        document.title = 'Actualizar Empresa';
+        const allowedRoles = ['Administrador'];
+
+        if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+            navigate('/login');
+        }
+    }, [userRole, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Preparar los datos en formato JSON
         const formData = {
             INnombre: nombre || null,
             INtelefono: telefono || null,
@@ -28,36 +40,39 @@ function ActualizarDatos() {
             INcalle: calle || null,
             INnumero: numero || null,
         };
-        console.log('Datos del formulario:', formData);
 
         try {
-            // Enviar los datos al backend
-            const response = await fetch('http://localhost:3001/api/upEmpresa', {
+            const response = await authenticatedFetch('/upEmpresa', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 body: JSON.stringify(formData),
             });
 
+            if (response.status === 401 || response.status === 403) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userRut');
+                navigate('/login');
+                return;
+            }
+
             if (response.ok) {
                 const data = await response.json();
-                setModalMessage(data.message); // Mostrar mensaje de éxito
+                setModalMessage(data.message);
                 resetForm();
             } else {
                 const errorData = await response.json();
-                setModalMessage(errorData.message); // Mostrar mensaje de error
+                setModalMessage(errorData.message);
             }
         } catch (error) {
-            console.error('Error al enviar el formulario:', error);
-            setModalMessage('Error al enviar el formulario.'); // Mensaje de error genérico
+            setModalMessage('Error al enviar el formulario.');
         } finally {
-            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
+            setModalIsOpen(true);
         }
     };
 
     const resetForm = () => {
         setNombre('');
+        setTelefono('');
         setRegion('');
         setCiudad('');
         setCalle('');
@@ -68,100 +83,100 @@ function ActualizarDatos() {
         setModalIsOpen(false);
     };
 
-    useEffect(() => {
-        document.title = 'Actualizar Empresa';
-    }, []);
-
-    // Manejar cambio en la selección de región
     const handleRegionChange = (e) => {
         setRegion(e.target.value);
-        setCiudad(''); // Reiniciar la ciudad al cambiar de región
+        setCiudad('');
     };
 
-    return (
+    const allowedRoles = ['Administrador'];
+    if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+        return (
             <div className="main-block">
-                <form onSubmit={handleSubmit}>
-                    <h1>Datos Empresa</h1>
-                    <fieldset>   
-                        
-                        <h3>Actualizar Datos</h3>
-                        <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
-                            <div>
-                                <label>Nombre</label>
-                                <input 
-                                    type="text" 
-                                    name="input-nombre" 
-                                    maxLength="50" 
-                                    value={nombre} 
-                                    onChange={(e) => setNombre(e.target.value)} 
-                                />
-                            </div>
-                            <div>
-                                <label>Teléfono</label>
-                                <input 
-                                    type="text" 
-                                    name="input-teléfono"
-                                    pattern="[0-9]+" 
-                                    maxLength="9"
-                                    minLength="9"
-                                    placeholder='No considere el +56' 
-                                    value={telefono} 
-                                    onChange={(e) => setTelefono(e.target.value)} 
-                                />
-                            </div>
-                            <div>
-                                <label>Región</label>
-                                <select 
-                                    value={region} 
-                                    onChange={handleRegionChange}
-                                    
-                                >
-                                    <option value="">Selecciona una región</option>
-                                    {Object.keys(optionSets).map((regionName) => (
-                                        <option key={regionName} value={regionName}>{regionName}</option>
-                                    ))}
-                                </select>
-                            </div>
-                            <div>
-                                <label>Comuna</label>
-                                <select 
-                                    value={ciudad} 
-                                    onChange={(e) => setCiudad(e.target.value)} 
-                                    
-                                    disabled={!region}
-                                >
-                                    <option value="">Selecciona una comuna</option>
-                                    {region && optionSets[region].map((city) => (
-                                        <option key={city} value={city}>{city}</option>
-                                    ))}
-                                </select>
-                            </div>
-                            <div>
-                                <label>Calle</label>
-                                <input 
-                                    type="text" 
-                                    name="input-calle" 
-                                    maxLength="100" 
-                                    value={calle} 
-                                    onChange={(e) => setCalle(e.target.value)} 
-                                />
-                            </div>
-                            <div>
-                                <label>Número</label>
-                                <input 
-                                    type="text" 
-                                    name="input-numero"
-                                    pattern='[0-9]+'
-                                    maxLength="4" 
-                                    value={numero} 
-                                    onChange={(e) => setNumero(e.target.value)} 
-                                />
-                            </div>
+                <h1>Redirigiendo...</h1>
+            </div>
+        );
+    }
+
+    return (
+        <div className="main-block">
+            <form onSubmit={handleSubmit}>
+                <h1>Datos Empresa</h1>
+                <fieldset>
+                    <h3>Actualizar Datos</h3>
+                    <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
+                        <div>
+                            <label>Nombre</label>
+                            <input
+                                type="text"
+                                name="input-nombre"
+                                maxLength="50"
+                                value={nombre}
+                                onChange={(e) => setNombre(e.target.value)}
+                            />
                         </div>
-                    </fieldset>
-                    <button type="submit">Actualizar</button>
-                </form>
-            {/* Modal para mostrar mensajes */}
+                        <div>
+                            <label>Teléfono</label>
+                            <input
+                                type="text"
+                                name="input-teléfono"
+                                pattern="[0-9]+"
+                                maxLength="9"
+                                minLength="9"
+                                placeholder='No considere el +56'
+                                value={telefono}
+                                onChange={(e) => setTelefono(e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <label>Región</label>
+                            <select
+                                value={region}
+                                onChange={handleRegionChange}
+                            >
+                                <option value="">Selecciona una región</option>
+                                {Object.keys(optionSets).map((regionName) => (
+                                    <option key={regionName} value={regionName}>{regionName}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            <label>Comuna</label>
+                            <select
+                                value={ciudad}
+                                onChange={(e) => setCiudad(e.target.value)}
+                                disabled={!region}
+                            >
+                                <option value="">Selecciona una comuna</option>
+                                {region && optionSets[region].map((city) => (
+                                    <option key={city} value={city}>{city}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            <label>Calle</label>
+                            <input
+                                type="text"
+                                name="input-calle"
+                                maxLength="100"
+                                value={calle}
+                                onChange={(e) => setCalle(e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <label>Número</label>
+                            <input
+                                type="text"
+                                name="input-numero"
+                                pattern='[0-9]+'
+                                maxLength="4"
+                                value={numero}
+                                onChange={(e) => setNumero(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                </fieldset>
+                <button type="submit">Actualizar</button>
+            </form>
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
@@ -170,6 +185,5 @@ function ActualizarDatos() {
         </div>
     );
 }
-
 
 export default ActualizarDatos;
