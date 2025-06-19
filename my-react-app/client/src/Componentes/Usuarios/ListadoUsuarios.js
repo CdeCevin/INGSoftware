@@ -80,7 +80,7 @@ const ListadoUsuarios = () => {
                             <tr key={u.RUT}>
                                 <td>{u.RUT}</td>
                                 <td>{u.Telefono}</td>
-                                D           <td>{u.Nombre}</td>
+                                <td>{u.Nombre}</td>
                                 <td>{u.Tipo}</td>
                             </tr>
                         ))}
