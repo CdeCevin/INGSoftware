@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 
-const { verifyToken, authorizeRole } = require('./middleware/authMiddleware'); 
+const { verifyToken, authorizeRole } = require('../middleware/authMiddleware'); 
 
 
 // Clientes
