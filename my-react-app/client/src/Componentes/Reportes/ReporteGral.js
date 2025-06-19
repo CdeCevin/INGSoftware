@@ -96,11 +96,13 @@ function ReporteGral() {
                 <h1>Reporte de Ventas</h1>
                 <fieldset>
                     <h3>Ventas Totales</h3>
-                    <div className="account-details" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <div style={{ flex: '1', display: 'flex', alignItems: 'center', marginLeft: '50px' }}>
+                    {/* Apply the main container class */}
+                    <div className="ventas-totales-container">
+                        {/* Apply the item class to each div */}
+                        <div className="ventas-totales-item">
                             <h2>${ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>
                         </div>
-                        <div style={{ flex: '1', display: 'flex', alignItems: 'center', marginTop: '20px' }}>
+                        <div className="ventas-totales-item">
                             <label>Desde</label>
                             <input
                                 type="date"
@@ -108,7 +110,7 @@ function ReporteGral() {
                                 onChange={(e) => setFechaInicio(e.target.value)}
                             />
                         </div>
-                        <div style={{ flex: '1', display: 'flex', alignItems: 'center', marginTop: '20px' }}>
+                        <div className="ventas-totales-item">
                             <label>Hasta</label>
                             <input
                                 type="date"
@@ -116,9 +118,9 @@ function ReporteGral() {
                                 onChange={(e) => setFechaFin(e.target.value)}
                             />
                         </div>
-
-                        <div style={{ flex: '1', display: 'flex', alignItems: 'center', marginTop: '13px', marginLeft: '10px' }}>
-                            <button type="submit" style={{ width: '50px', padding: '5px 10px', display: 'flex', alignItems: 'center', justifyContent: 'center', alignSelf: 'center', margin: '0px' }} className={"btn mini-boton"}>
+                        <div className="ventas-totales-item">
+                            {/* Apply the button class */}
+                            <button type="submit" className="btn mini-boton">
                                 <i className="fa fa-search"></i>
                             </button>
                         </div>

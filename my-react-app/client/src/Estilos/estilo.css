@@ -838,3 +838,46 @@ button:active {
         max-width: none;
     }
 }
+
+/* Styles for the main container of your "Ventas Totales" section */
+.ventas-totales-container {
+    display: flex;
+    justify-content: space-between; /* Distributes items evenly with space between them */
+    align-items: center; /* Vertically aligns all items in the center */
+    flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
+    gap: 20px; /* Provides consistent spacing between flex items horizontally and vertically */
+    padding: 15px 0; /* Add some padding if needed around the content */
+    /* Remove the inline style margin-left: 50px from the first div in JSX; handle below */
+}
+
+/* Styles for each individual item/group within the container (the four inner divs) */
+.ventas-totales-item {
+    display: flex;
+    align-items: center; /* Aligns content (label, input, h2) vertically within each item */
+    /* Removed flex: 1; from here. Let items size based on content. If you want them to distribute space equally, add flex: 1; back here. */
+}
+
+/* Specific left margin for the first item (adjust as needed) */
+.ventas-totales-item:first-child {
+    margin-left: 50px;
+}
+
+/* Styles for the H2 inside the first item */
+.ventas-totales-item h2 {
+    margin: 0; /* Remove default margin from h2 for better alignment */
+    font-size: 2em; /* Example font size, adjust as needed */
+}
+
+/* Spacing between label and input */
+.ventas-totales-item label {
+    margin-right: 8px; /* Space between label and input */
+    font-weight: bold;
+}
+
+/* Styles for the date input fields */
+.ventas-totales-item input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
