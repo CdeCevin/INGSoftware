@@ -94,7 +94,6 @@ function ReporteGral() {
         <div className="main-block">
             <form onSubmit={handleBuscar}>
                 <h1>Reporte de Ventas</h1>
-                <hr/> {/* Horizontal line for visual separation */}
                 <fieldset>
                     <h3>Ventas Totales</h3>
                     <div className="account-details" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -126,9 +125,6 @@ function ReporteGral() {
                     </div>
                 </fieldset>
             </form>
-
-            <hr/>
-
             <fieldset>
                 <h3>Top Productos</h3>
                 <div>
