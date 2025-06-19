@@ -477,6 +477,8 @@ button:active {
 .venta-table td input[type="number"] {
     width: 100%;    
 }
+
+
 .tabla-productos th, .tabla-productos td {
     width: 100%; /* If these are for a specific table, adjust as needed */
     padding: 0 15px;
@@ -525,6 +527,7 @@ button:active {
 
 .btn.mini-boton{
     width: 50%;
+    min-width: 70%;
 
 }
 

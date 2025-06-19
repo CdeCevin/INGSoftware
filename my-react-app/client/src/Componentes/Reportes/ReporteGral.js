@@ -67,7 +67,7 @@ function ReporteGral() {
               </div>
             
             <div style={{ flex: '1', display: 'flex', alignItems: 'center',marginTop: '13px', marginLeft: '10px' }}>
-            <button onClick={handleBuscar} style={{ width:'50px', padding: '5px 10px', display: 'flex', alignItems: 'center', justifyContent: 'center', alignSelf: 'center', margin:'0px' }}><i className="fa fa-search"></i></button>
+            <button onClick={handleBuscar} style={{ width:'50px', padding: '5px 10px', display: 'flex', alignItems: 'center', justifyContent: 'center', alignSelf: 'center', margin:'0px' }} className={"btn mini-boton"}><i className="fa fa-search"></i></button>
             </div>
             </div>
           </fieldset>
