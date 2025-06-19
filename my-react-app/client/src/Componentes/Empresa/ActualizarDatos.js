@@ -101,9 +101,11 @@ function ActualizarDatos() {
                             <div>
                                 <label>Teléfono</label>
                                 <input 
-                                    type="text" 
+                                    type="number" 
                                     name="input-teléfono" 
-                                    maxLength="50" 
+                                    min="900000000"
+                                    max="999999999"
+                                    placeholder='No considere el +56' 
                                     value={telefono} 
                                     onChange={(e) => setTelefono(e.target.value)} 
                                 />
@@ -148,9 +150,9 @@ function ActualizarDatos() {
                             <div>
                                 <label>Número</label>
                                 <input 
-                                    type="text" 
+                                    type="number" 
                                     name="input-numero" 
-                                    maxLength="100" 
+                                    maxLength="4" 
                                     value={numero} 
                                     onChange={(e) => setNumero(e.target.value)} 
                                 />

@@ -59,6 +59,9 @@ const LoginForm = () => {
                                 name="input-rut"
                                 maxLength="10"
                                 pattern="[0-9]+"
+                                minLength="8"
+                                maxLength="9"
+                                placeholder='No considere puntos ni guión'
                                 required
                                 value={rut}
                                 onChange={(e) => setRut(e.target.value)}
