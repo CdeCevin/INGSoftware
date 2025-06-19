@@ -20,11 +20,13 @@ DROP TABLE OUTLET_Auditoria;
 CREATE TABLE OUTLET_Usuario(
         RUT_Usuario NUMBER,
         Nombre_Usuario VARCHAR2(50),
-        Contrasena_Usuario VARCHAR2(16),
+        Contrasena_Usuario VARCHAR2(60),
         Telefono_Usuario NUMBER,
         ROL_Usuario VARCHAR2(15),
         CONSTRAINT OUTLET_Usuario PRIMARY KEY (RUT_Usuario)
 );
+ALTER TABLE OUTLET_Usuario MODIFY Contrasena_Usuario VARCHAR2(60);
+
 
 CREATE TABLE OUTLET_Auditoria(
         Codigo_Auditoria NUMBER,
