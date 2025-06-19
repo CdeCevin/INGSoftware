@@ -341,7 +341,7 @@ function VentaClienteNu() {
                       <legend>
                         <h3>Resultados</h3>
                       </legend>
-                      <div style={{marginLeft: '12%'}}>
+                     
                       <table className="venta-table">
                         <thead>
                           <tr>
@@ -364,7 +364,7 @@ function VentaClienteNu() {
                               <td>{producto.nombre_producto}</td>
                               <td>{producto.color_producto}</td>
                               <td>
-                                <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)}>
+                                <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)} className={"btn btn-primary"}>
                                   <i className="fa fa-eye"></i>
                                 </button>
                               </td>
@@ -378,7 +378,7 @@ function VentaClienteNu() {
                                 />
                               </td>
                               <td>
-                                <button onClick={() => añadirAlCarrito(producto)}>
+                                <button onClick={() => añadirAlCarrito(producto)} className={"btn btn-primary"}>
                                   <i className="fa fa-shopping-cart"></i>
                                 </button>
                               </td>
@@ -387,7 +387,6 @@ function VentaClienteNu() {
                         </tbody>
                       </table>
                       <button onClick={finalizarVenta}>Finalizar Venta</button>
-                      </div>
                     </fieldset>
                   )}
 

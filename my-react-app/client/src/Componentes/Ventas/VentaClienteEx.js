@@ -304,7 +304,7 @@ function VentaClienteEx() {
                                             />
                                         </td>
                                         <td>
-                                            <button onClick={() => añadirAlCarrito(producto)}>
+                                            <button onClick={() => añadirAlCarrito(producto)} className={"btn btn-primary"}>
                                                 <i className="fa fa-shopping-cart"></i>
                                             </button>
                                         </td>
