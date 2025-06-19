@@ -4,23 +4,18 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
-// --- ¡NUEVA CONFIGURACIÓN DE DOTENV MÁS ROBUSTA AQUÍ! ---
-// Determina la ruta absoluta al directorio raíz de 'my-react-app'
-// __dirname es 'CdeCevin/INGSoftware/my-react-app/server'
-// path.resolve(__dirname, '..') te lleva a 'CdeCevin/INGSoftware/my-react-app'
+
 const projectRootPath = path.resolve(__dirname, '..'); 
 
 // Carga las variables de entorno desde el .env en la raíz del proyecto
 require('dotenv').config({ path: path.join(projectRootPath, '.env') });
 // -------------------------------------------------------------
 
-// Deja esta línea para la verificación final. Luego puedes quitarla.
-console.log('DEBUG: Valor de process.env.JWT_SECRET cargado en server.js:', process.env.JWT_SECRET);
+
 
 // Importar los middlewares de autenticación y autorización
 const { verifyToken, authorizeRole } = require('../middleware/authMiddleware'); 
 
-// ... el resto de tu server.js
 // Clientes
 const buscarClienteRoutes = require('./Routes/buscarCliente');
 const eliminarClienteRoutes = require('./Routes/eliminarCliente');
