@@ -4,9 +4,15 @@ const path = require('path'); // <-- Añade esta línea para importar el módulo
 const projectRoot = '/c/Users/Koliv/INGSoftware/my-react-app';
 // --- MODIFICACIÓN AQUÍ ---
 require('dotenv').config({ 
-    path: path.jpin(projectRoot, '.env') // Sube 2 niveles para llegar a my-react-app/
+    path: path.join(projectRoot, '.env') // Sube 2 niveles para llegar a my-react-app/
 });
 // -------------------------
+
+// Debugging line (puedes dejarla o quitarla una vez que funcione)
+console.log('DEBUG: Valor de process.env.JWT_SECRET cargado en server.js:', process.env.JWT_SECRET);
+
+// Importar los middlewares de autenticación y autorización
+const { verifyToken, authorizeRole } = require('../middleware/authMiddleware'); // Esta ruta es correcta
 
 // Debugging line (puedes dejarla o quitarla una vez que funcione)
 console.log('DEBUG: Valor de process.env.JWT_SECRET cargado en server.js:', process.env.JWT_SECRET);
