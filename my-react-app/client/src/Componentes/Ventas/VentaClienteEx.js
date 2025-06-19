@@ -281,7 +281,7 @@ function VentaClienteEx() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {productos.map((producto) => (
+                                {productos.filter(producto => producto.stock > 0).map((producto) => ( // This line filters out products where stock is 0 or less.
                                     <tr key={producto.codigo_producto}>
                                         <td>{producto.codigo_producto}</td>
                                         <td>{producto.stock}</td>
