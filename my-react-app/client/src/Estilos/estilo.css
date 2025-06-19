@@ -474,23 +474,6 @@ button:active {
     margin: 0;
 }
 
-.venta-table td button {
-    width: 100%; /* Make the button take up 100% of the available width of its parent <td> */
-    box-sizing: border-box; /* Crucial: Ensures padding and border are included in the 100% width, preventing overflow */
-
-    /* Optional: Adjust padding and font size to make them fit better if the column is very narrow */
-    padding: 8px 5px;   /* Example: Reduced vertical and horizontal padding */
-    font-size: 0.9em;   /* Example: Slightly smaller font size */
-
-    /* Optional: Ensure text/icon is centered if it spans the full width */
-    text-align: center;
-
-    /* Important for layout: make it a block element to respect width: 100% */
-    display: block; 
-
-    /* Add transitions for smooth hover effects, if not already on base button styles */
-    transition: background-color 0.3s ease, transform 0.1s ease;
-}
 
 .tabla-productos th, .tabla-productos td {
     width: 100%; /* If these are for a specific table, adjust as needed */
@@ -536,6 +519,11 @@ button:active {
     background: #e53935; /* Slightly darker red on hover */
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn.mini-boton{
+    width: 50%;
+
 }
 
 .btn:hover {

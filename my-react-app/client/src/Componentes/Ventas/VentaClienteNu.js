@@ -356,7 +356,7 @@ function VentaClienteNu() {
                               <td>{producto.nombre_producto}</td>
                               <td>{producto.color_producto}</td>
                               <td>
-                                <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)} className={"btn btn-primary"}>
+                                <button type="button" onClick={() => mostrarImagen(producto.codigo_producto)} className={"btn mini-boton"}>
                                   <i className="fa fa-eye"></i>
                                 </button>
                               </td>
