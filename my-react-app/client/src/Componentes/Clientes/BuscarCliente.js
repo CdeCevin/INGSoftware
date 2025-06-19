@@ -2,95 +2,117 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
+import authenticatedFetch from '../../utils/api';
+import { useNavigate } from 'react-router-dom';
+
+Modal.setAppElement('#root');
 
 function BuscarCliente() {
     const [codigo, setCodigo] = useState('');
     const [clienteData, setClienteData] = useState(null);
     const [modalMessage, setModalMessage] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const navigate = useNavigate();
+    const userRole = localStorage.getItem('userRole');
+
+    useEffect(() => {
+        document.title = 'Buscar Cliente';
+        const allowedRoles = ['Administrador', 'Vendedor'];
+
+        if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+            navigate('/login');
+        }
+    }, [userRole, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log("El código es:", codigo);
-            const response = await fetch(`http://localhost:3001/api/buscarCliente`, {
+            const response = await authenticatedFetch('/buscarCliente', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ codigo }) // Enviar el código en el cuerpo
+                body: JSON.stringify({ codigo }),
             });
-    
+
+            if (response.status === 401 || response.status === 403) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userRut');
+                navigate('/login');
+                return;
+            }
+
             if (response.ok) {
                 const data = await response.json();
                 setClienteData(data);
                 setModalMessage('Cliente encontrado');
-                setModalIsOpen(false); // Mantener el modal cerrado si el cliente se encuentra
+                setModalIsOpen(false);
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
                 setClienteData(null);
-                setModalIsOpen(true); // Abrir el modal si el cliente no se encuentra
+                setModalIsOpen(true);
             }
         } catch (error) {
-            console.error('Error al buscar cliente:', error);
             setModalMessage('Error al buscar cliente.');
-            setModalIsOpen(true); // Abrir el modal en caso de error
+            setModalIsOpen(true);
         }
-    };      
-    
-    useEffect(() => {
-        document.title = 'Buscar Cliente';
-    }, []);
+    };
 
     const closeModal = () => setModalIsOpen(false);
 
-    return (
+    const allowedRoles = ['Administrador', 'Vendedor'];
+    if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+        return (
             <div className="main-block">
-                <form onSubmit={handleSubmit}>
-                    <h1>Buscar Cliente</h1>
-                    <fieldset>
-                        <h3>Búsqueda</h3>
-                        <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
-                            <div>
-                                <label>Código*</label>
-                                <input 
-                                    type="text" 
-                                    name="input-cod" 
-                                    pattern="[0-9]+" 
-                                    maxLength="4" 
-                                    required 
-                                    value={codigo} 
-                                    onChange={(e) => setCodigo(e.target.value)} 
-                                />
-                            </div>
-                        </div>
-                    </fieldset>
-                    <button type="submit">Buscar</button>
-                </form>
+                <h1>Redirigiendo...</h1>
+            </div>
+        );
+    }
 
-                {clienteData && (
-                    
-                    <fieldset>
-                        <h3>  Resultados</h3>
+    return (
+        <div className="main-block">
+            <form onSubmit={handleSubmit}>
+                <h1>Buscar Cliente</h1>
+                <fieldset>
+                    <h3>Búsqueda</h3>
+                    <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <div>
+                            <label>Código*</label>
+                            <input
+                                type="text"
+                                name="input-cod"
+                                pattern="[0-9]+"
+                                maxLength="4"
+                                required
+                                value={codigo}
+                                onChange={(e) => setCodigo(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                </fieldset>
+                <button type="submit">Buscar</button>
+            </form>
+
+            {clienteData && (
+                <fieldset>
+                    <h3>Resultados</h3>
                     <table className="venta-table">
                         <thead>
                             <tr>
-                            <th>NOMBRE</th>
-                            <th>TELÉFONO</th>
-                            <th>DIRECCIÓN</th>
+                                <th>NOMBRE</th>
+                                <th>TELÉFONO</th>
+                                <th>DIRECCIÓN</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                            <td>{clienteData.nombres}</td>
-                            <td>{clienteData.telefono}</td>
-                            <td>{clienteData.direccion}</td>
+                                <td>{clienteData.nombres}</td>
+                                <td>{clienteData.telefono}</td>
+                                <td>{clienteData.direccion}</td>
                             </tr>
                         </tbody>
                     </table>
-                    </fieldset>
-                )}
+                </fieldset>
+            )}
 
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
                 <h2>Mensaje</h2>
@@ -102,4 +124,3 @@ function BuscarCliente() {
 }
 
 export default BuscarCliente;
-
