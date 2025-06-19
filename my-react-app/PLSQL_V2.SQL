@@ -1222,7 +1222,7 @@ END;
 --------------------------------------------------------
 set define off;
 
-  CREATE OR REPLACE NONEDITIONABLE PROCEDURE "CEVIN"."OUTLET_UP_PRODUCTO" (
+create or replace NONEDITIONABLE PROCEDURE OUTLET_Up_Producto(
     codigoP NUMBER,
     stockP NUMBER,
     precio NUMBER,
@@ -1230,24 +1230,30 @@ set define off;
     minm NUMBER
 )
 IS
+    rows_update NUMBER;
 BEGIN
     LOCK TABLE OUTLET_PRODUCTO IN ROW EXCLUSIVE MODE;
 
     UPDATE OUTLET_PRODUCTO
     SET STOCK = stockP, PRECIO_UNITARIO = precio, NOMBRE_PRODUCTO = nombre, STOCK_MINIMO = minm
     WHERE(Codigo_Producto = codigoP);
-
+    
+    rows_update := SQL%ROWCOUNT;
+    
+    IF rows_update = 0 THEN
+        RAISE_APPLICATION_ERROR(-2001, 'El producto con el código '||codigoP||' no existe.');
+    END IF;
     COMMIT;
-EXCEPTION
-    WHEN PROGRAM_ERROR THEN
-        RAISE_APPLICATION_ERROR(-6501,'Error de programa y/o asignación de variables');
-    WHEN STORAGE_ERROR THEN
-        RAISE_APPLICATION_ERROR(-6500,'Se acabó la memoria o está corrupta');
-    WHEN ROWTYPE_MISMATCH THEN
-        RAISE_APPLICATION_ERROR(-6504,'Error de asignación de variables');
-    WHEN OTHERS THEN
-        RAISE_APPLICATION_ERROR(-20010,'Ocurrió un problema inesperado');
-        ROLLBACK;
+    EXCEPTION
+        WHEN PROGRAM_ERROR THEN
+            RAISE_APPLICATION_ERROR(-6501,'Error de programa y/o asignación de variables');
+        WHEN STORAGE_ERROR THEN
+            RAISE_APPLICATION_ERROR(-6500,'Se acabó la memoria o está corrupta');
+        WHEN ROWTYPE_MISMATCH THEN
+            RAISE_APPLICATION_ERROR(-6504,'Error de asignación de variables');
+        WHEN OTHERS THEN
+            RAISE_APPLICATION_ERROR(-20010,'Ocurrió un problema inesperado');
+    ROLLBACK;
 END;
 
 /
@@ -1256,7 +1262,7 @@ END;
 --------------------------------------------------------
 set define off;
 
-  CREATE OR REPLACE NONEDITIONABLE PROCEDURE "CEVIN"."OUTLET_UP_USUARIO" (
+create or replace NONEDITIONABLE PROCEDURE OUTLET_Up_Usuario(
         Rut NUMBER,
         Telefono NUMBER,
         contrasena VARCHAR2,
@@ -1264,12 +1270,17 @@ set define off;
         nombre VARCHAR2
 )
 IS
+        rows_update NUMBER;
 BEGIN
         LOCK TABLE OUTLET_PRODUCTO IN ROW EXCLUSIVE MODE;
         UPDATE OUTLET_USUARIO
         SET Nombre_Usuario = nombre, Contrasena_Usuario = contrasena, Telefono_Usuario = Telefono, ROL_Usuario = tipo
         WHERE(RUT_Usuario = Rut);
 
+        rows_update := SQL%ROWCOUNT;
+        IF rows_update = 0 THEN
+            RAISE_APPLICATION_ERROR(-2001, 'El producto con el código '||Rut||' no existe.');
+        END IF;
         COMMIT;
         EXCEPTION
                 WHEN PROGRAM_ERROR THEN
