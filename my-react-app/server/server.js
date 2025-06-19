@@ -111,7 +111,7 @@ app.use('/api/insertCuerpo', authorizeRole(['Administrador', 'Vendedor']), inser
 app.use('/api/ingresarUsuario', authorizeRole(['Administrador']), ingresarUsuarioRoutes);
 app.use('/api/eliminarUsuario', authorizeRole(['Administrador']), eliminarUsuarioRoutes);
 app.use('/api/userList', authorizeRole(['Administrador']), userListRoutes);
-app.use('/api/upUser', authorizeRole(['Administrador']), upUserRoutes);
+app.use('/api/upUser', authorizeRole(['Administrador', 'Vendedor']), upUserRoutes);
 
 
 const port = 3001;

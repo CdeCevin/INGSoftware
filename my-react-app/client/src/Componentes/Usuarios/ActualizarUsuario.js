@@ -25,7 +25,7 @@ function ActualizarUsuario() {
     // --- MODIFICACIONES CLAVE AQUÍ: Lógica de verificación de rol y redirección ---
     useEffect(() => {
         document.title = 'Actualizar Usuario';
-        const allowedRoles = ['Administrador']; // Solo administradores pueden actualizar usuarios
+        const allowedRoles = ['Administrador','Vendedor']; // Solo administradores pueden actualizar usuarios
 
         if (!userRole || !allowedRoles.includes(userRole)) {
             console.warn("Acceso denegado. Redirigiendo al login.");
