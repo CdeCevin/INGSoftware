@@ -156,7 +156,12 @@ textarea {
     font-size: 16px;
     color: #333;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    appearance: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Removes the default appearance, including arrows */
+    margin: 0; /* Important: Removes any default margin that might remain */
 }
 
 input:focus,
