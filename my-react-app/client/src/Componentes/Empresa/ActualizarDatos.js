@@ -151,8 +151,9 @@ function ActualizarDatos() {
                             <div>
                                 <label>Número</label>
                                 <input 
-                                    type="number" 
-                                    name="input-numero" 
+                                    type="text" 
+                                    name="input-numero"
+                                    pattern='[0-9]+'
                                     maxLength="4" 
                                     value={numero} 
                                     onChange={(e) => setNumero(e.target.value)} 

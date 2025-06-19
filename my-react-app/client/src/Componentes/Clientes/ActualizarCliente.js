@@ -176,6 +176,7 @@ function ActualizarCliente() {
                                     type="text" 
                                     name="input-numero" 
                                     maxLength="4" 
+                                    pattern="[0-9]+"
                                     value={numero} 
                                     onChange={(e) => setNumero(e.target.value)} 
                                 />
