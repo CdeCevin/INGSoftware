@@ -1,4 +1,5 @@
-// src/components/LoginForm.js
+// CdeCevin/INGSoftware/my-react-app/client/src/Componentes/login/login.js
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 //import './estiloide.css';
@@ -28,13 +29,17 @@ const LoginForm = () => {
                 return;
             }
 
-            // Desestructuramos tanto 'role' como 'rut' de la respuesta
-            const { role, rut: loggedInRut } = data; // Renombramos 'rut' a 'loggedInRut' para evitar conflicto con el estado 'rut'
+            // --- ¡MODIFICACIÓN CLAVE AQUÍ! ---
+            // Desestructuramos el 'token', 'role' y 'rut' de la respuesta del backend
+            const { token, role, rut: loggedInRut } = data; 
 
-            // Guardar el rol y el rut en localStorage
+            // Guardar el token, el rol y el RUT en localStorage
+            localStorage.setItem('token', token); // <-- NUEVA LÍNEA para guardar el token
             localStorage.setItem('userRole', role);
-            localStorage.setItem('userRut', loggedInRut); // Guardamos el RUT también
+            localStorage.setItem('userRut', loggedInRut);
+            // ---------------------------------
 
+            console.log('Login exitoso! Token y rol guardados.');
             navigate('/Bienvenido/inicio', { replace: true });
 
         } catch (err) {
@@ -48,14 +53,15 @@ const LoginForm = () => {
             <form onSubmit={handleSubmit}>
                 <h1>Ingresar</h1>
                 <fieldset>
-                        <h3>
-                            Ingrese sus datos a continuación
-                        </h3>
+                    <h3>
+                        Ingrese sus datos a continuación
+                    </h3>
                     <div className="account-details2">
                         <div>
                             <label>RUT*</label>
                             <input
                                 type="text"
+                                id="rut"
                                 name="input-rut"
                                 pattern="[0-9]+"
                                 minLength="8"
@@ -70,6 +76,7 @@ const LoginForm = () => {
                             <label>Contraseña*</label>
                             <input
                                 type="password"
+                                id="password"
                                 name="input-cont"
                                 maxLength="20"
                                 required
