@@ -528,6 +528,7 @@ button:active {
 .btn.mini-boton{
     width: 50%;
     min-width: 70%;
+    margin: 0 !important;
 
 }
 
