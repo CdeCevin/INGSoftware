@@ -125,7 +125,8 @@ function ActualizarCliente() {
                                 <input 
                                     type="number" 
                                     name="input-teléfono" 
-                                    pattern='\d{9}'
+                                    min="900000000"
+                                    max={"999999999"}
                                     value={telefono} 
                                     placeholder='No considere el +56'
                                     onChange={(e) => setTelefono(e.target.value)} 
