@@ -24,7 +24,7 @@ const authenticatedFetch = async (endpoint, options = {}) => {
     };
 
     // Realizar la petición
-    const response = await fetch(`<span class="math-inline">\{BASE\_URL\}</span>{endpoint}`, finalOptions);
+    const response = await fetch(`${BASE_URL}${endpoint}`, finalOptions); // <-- ¡Esta es la línea corregida!
 
     // Si el token es inválido o expiró (Status 401 o 403), puedes manejarlo aquí
     if (response.status === 401 || response.status === 403) {
