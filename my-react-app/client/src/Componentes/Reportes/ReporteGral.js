@@ -141,7 +141,7 @@ function ReporteGral() {
                                 topProductos.map((producto, index) => (
                                     <tr key={index}>
                                         <td>{producto[0]}</td>
-                                        <td style={{alignItems:'center'}}>{producto[1]}</td>
+                                        <td style={{textAlign:'center'}}>{producto[1]}</td>
                                         <td>${producto[2]}</td>
                                     </tr>
                                 ))
