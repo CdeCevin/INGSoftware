@@ -360,7 +360,7 @@ function VentaClienteNu() {
                           </tr>
                         </thead>
                         <tbody>
-                          {productos.map((producto) => (
+                          {productos.filter(producto => producto.stock > 0).map((producto) => ( 
                             <tr key={producto.codigo_producto}>
                               <td>{producto.codigo_producto}</td>
                               <td>{producto.stock}</td>
