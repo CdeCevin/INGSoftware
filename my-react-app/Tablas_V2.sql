@@ -25,7 +25,7 @@ CREATE TABLE OUTLET_Usuario(
         ROL_Usuario VARCHAR2(15),
         CONSTRAINT OUTLET_Usuario PRIMARY KEY (RUT_Usuario)
 );
-ALTER TABLE OUTLET_Usuario MODIFY Contrasena_Usuario VARCHAR2(60);
+
 
 
 CREATE TABLE OUTLET_Auditoria(
