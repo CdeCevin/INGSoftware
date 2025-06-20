@@ -72,10 +72,7 @@ function VentaClienteEx() {
         try {
             const response = await authenticatedFetch('/buscarProducto', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
+                body: ({
                     'input-nombre': nombre,
                     'input-color': color,
                 }),
@@ -162,10 +159,7 @@ function VentaClienteEx() {
         try {
             const response = await authenticatedFetch('/insertCuerpo', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ productos: productosVenta }),
+                body: ({ productos: productosVenta }),
             });
 
             if (response.status === 401 || response.status === 403) {
