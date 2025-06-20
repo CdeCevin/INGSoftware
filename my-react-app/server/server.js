@@ -53,17 +53,27 @@ const loginRoutes = require('./Routes/login');
 const app = express();
 
 app.use(cors());
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ limit: '10mb', extended: true }));
-
 
 // Configurar Express para servir archivos estáticos
 app.use('/images/Outlet', express.static(path.join(__dirname, 'public', 'images', 'outlet')));
 
-// Rutas Públicas
+// Rutas Públicas (sin protección JWT)
 app.use('/api/login', loginRoutes);
 
-app.use(verifyToken);
+// --- Rutas que requieren Multer (deben ir ANTES de express.json/urlencoded) ---
+// La ruta de ingresar productos maneja 'multipart/form-data'
+app.use('/api/ingresar_productos', authorizeRole(['Administrador']), ingresarProductosRoutes);
+
+
+// --- Middlewares de Body Parser Globales (Para JSON y URL-encoded) ---
+// Estos se aplicarán a todas las rutas que NO sean 'ingresar_productos' y que vienen DESPUÉS de esta línea.
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
+
+
+app.use(verifyToken); // Todas las rutas que siguen a esta línea requerirán un token válido
+
+// --- Mapeo de Rutas y Roles (para las rutas protegidas) ---
 
 // Clientes
 app.use('/api/anCliente', authorizeRole(['Administrador', 'Vendedor']), anClienteRoutes);
@@ -72,30 +82,29 @@ app.use('/api/buscarCliente', authorizeRole(['Administrador', 'Vendedor']), busc
 app.use('/api/upCliente', authorizeRole(['Administrador', 'Vendedor']), upClientesRoutes);
 app.use('/api/eliminarCliente', authorizeRole(['Administrador']), eliminarClienteRoutes);
 
-// Empresa
+// Empresa (Solo Administrador)
 app.use('/api/datosEmpresa', authorizeRole(['Administrador']), datosEmpresaRoutes);
 app.use('/api/upEmpresa', authorizeRole(['Administrador']), upEmpresaRoutes);
 
-// Pendientes
+// Pendientes (Administrador y Vendedor)
 app.use('/api/ventasPendientes', authorizeRole(['Administrador', 'Vendedor']), pendientesRoutes);
 
-// Productos
+// Productos (otras rutas de productos que NO suben archivos)
 app.use('/api/products', authorizeRole(['Administrador', 'Vendedor']), productListRoutes);
 app.use('/api/buscarProducto', authorizeRole(['Administrador', 'Vendedor']), buscarProductoRoutes);
-app.use('/api/ingresar_productos', authorizeRole(['Administrador']), ingresarProductosRoutes);
 app.use('/api/up_producto', authorizeRole(['Administrador']), upProductoRoutes);
 app.use('/api/eliminarProducto', authorizeRole(['Administrador']), eliminarProductoRoutes);
 app.use('/api/stockCritico', authorizeRole(['Administrador', 'Vendedor']), stockCriticoRoutes);
 
-// Reportes
+// Reportes (Solo Administrador)
 app.use('/api/reportes', authorizeRole(['Administrador']), reportesRoutes);
 
-// Ventas
+// Ventas (Administrador y Vendedor)
 app.use('/api/historialVentas', authorizeRole(['Administrador', 'Vendedor']), historialVentasRoutes);
 app.use('/api/insertCabecera', authorizeRole(['Administrador', 'Vendedor']), insertCabeceraRoutes);
 app.use('/api/insertCuerpo', authorizeRole(['Administrador', 'Vendedor']), insertCuerpoRoutes);
 
-// Usuarios
+// Usuarios (Solo Administrador)
 app.use('/api/ingresarUsuario', authorizeRole(['Administrador']), ingresarUsuarioRoutes);
 app.use('/api/eliminarUsuario', authorizeRole(['Administrador']), eliminarUsuarioRoutes);
 app.use('/api/userList', authorizeRole(['Administrador']), userListRoutes);
