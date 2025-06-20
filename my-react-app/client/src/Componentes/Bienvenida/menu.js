@@ -110,11 +110,7 @@ export default function Menu() {
         </div>
       )}
 
-      <a
-        onClick={handleLogout}
-        replace className="Cerrar-button" >
-        <i className="fa fa-sign-out"></i> Cerrar Sesión
-      </a>
+      <a onClick={handleLogout} className="Cerrar-button" ><i className="fa fa-sign-out"></i> Cerrar Sesión</a>
     </div>
   );
 }
