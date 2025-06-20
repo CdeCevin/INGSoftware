@@ -7,7 +7,7 @@ function Inicio() {
 
 
     const navigate = useNavigate(); 
-    const [isLoading, setIsLoading] = useState(true); // Nuevo estado para controlar la carga/verificación
+    const [isLoading, setIsLoading] = useState(false); // Nuevo estado para controlar la carga/verificación
     useEffect(() => {
         const userRole = localStorage.getItem('userRole'); 
         const allowedRoles = ['Administrador', 'Vendedor']; 
@@ -17,7 +17,7 @@ function Inicio() {
             navigate('/login'); // Redirige a la página de login si no cumple los requisitos
         } else {
             // Si todo está bien, indica que la verificación ha terminado
-            setIsLoading(false); 
+            setIsLoading(true); 
         }
     }, [navigate]); 
  
@@ -26,9 +26,6 @@ function Inicio() {
     }, []);
 
     if (isLoading) {
-
- 
-
         return (
             <div>
                 <div class="main-block">
