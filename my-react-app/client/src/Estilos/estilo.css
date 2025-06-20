@@ -337,6 +337,7 @@ button:active {
 
 .sidebar .Cerrar-button:hover {
     background-color: #d8d8d8;
+    cursor: pointer;
 }
 
 .Cerrar-button::before {
