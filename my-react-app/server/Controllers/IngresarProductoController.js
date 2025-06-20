@@ -84,4 +84,4 @@ router.post('/insertar', upload.single('input-imagen'), async (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports = { upload, ingresarProducto };
