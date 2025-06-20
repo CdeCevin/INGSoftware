@@ -102,7 +102,7 @@ const ListadoPendientes = () => {
         try {
             const response = await authenticatedFetch('/ventasPendientes/cancelar', {
                 method: 'POST',
-                body: JSON.stringify({ idVenta }),
+                body: ({ idVenta }),
             });
 
             if (response.status === 401 || response.status === 403) {
