@@ -1,4 +1,4 @@
-import React,{ useEffect } from 'react';
+import React,{ useEffect,useState } from 'react';
 import '../../Estilos/style_menu.css';
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 import '../../Estilos/estilo.css';
