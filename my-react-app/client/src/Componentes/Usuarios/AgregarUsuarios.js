@@ -154,9 +154,12 @@ function IngresoUsuario() {
                         <div> 
                             <label>Contraseña*</label>
                             <input 
-                                type="password" // Cambiado a type="password" para seguridad
+                                type="password" 
                                 name="INpassword" 
-                                maxLength="50" // Aumentado a 50 para contraseñas, no 9 (como el rut)
+                                maxLength="16" 
+                                minLength="8"
+                                pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
+                                placeholder='Utilice una contraseña de 8 a 16 caracteres'
                                 required 
                                 value={password} 
                                 onChange={(e) => setpassword(e.target.value)} 
