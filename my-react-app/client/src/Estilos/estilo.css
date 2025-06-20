@@ -590,24 +590,21 @@ button:active {
 }
 
 .custom-modal {
-    width: 400px;
     margin-left: 200px;
-    height: auto;
-    margin: auto;
     padding: 30px;
     font-size: 1em;
     border: 1px solid #6b9787;
     border-radius: 10px;
     background-color: #e7e7e7;
-    margin-top: 50px;
+    margin-top: auto;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     position: fixed; /**/
     z-index: 1000;
     top: 50%;
-    left: 65%;
+    left: 45%;
     transform: translate(-50%, -50%);
     max-width: 500px;
-    width: 90%;
+    width: auto;
     display: flex;
     flex-direction: column; /* Force children (like .main-block) to stack vertically */
     align-items: center; 
