@@ -20,12 +20,15 @@ function Inicio() {
             setIsLoading(false); 
         }
     }, [navigate]); 
+
+
+    
+    if (isLoading) {
+
     useEffect(() => {
         document.title = 'Menú';
     }, []);
 
-    
-    if (isLoading) {
         return (
             <div>
                 <div class="main-block">
