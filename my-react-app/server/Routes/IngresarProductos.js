@@ -1,8 +1,8 @@
 // my-react-app/server/Routes/IngresarProductos.js
 const express = require('express');
 const router = express.Router();
-const ingresarProductoController = require('../Controllers/IngresarProductoController');
+const { upload, ingresarProducto } = require('../Controllers/IngresarProductoController');
 
-router.use('/', ingresarProductoController); // Usar el controlador
+router.post('/insertar', upload.single('input-imagen'), ingresarProducto);
 
 module.exports = router;
