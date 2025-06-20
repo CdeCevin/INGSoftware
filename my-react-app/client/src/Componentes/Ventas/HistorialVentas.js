@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import '../../Estilos/estilo.css';
 import authenticatedFetch from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
+import ComprobanteModal from './ComprobanteModal'; // Adjust the path as needed
 
 function HistorialVentas() {
     const [ventas, setVentas] = useState([]);
     const [visibleTables, setVisibleTables] = useState({});
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedComprobante, setSelectedComprobante] = useState(null);
+
     const navigate = useNavigate();
     const userRole = localStorage.getItem('userRole');
 
@@ -40,7 +44,6 @@ function HistorialVentas() {
                 setVentas(sortedData);
             } catch (error) {
                 console.error('Error al obtener ventas:', error);
-                // Aquí podrías establecer un estado de error para mostrar un mensaje al usuario
             }
         }
 
@@ -55,8 +58,8 @@ function HistorialVentas() {
     };
 
     const handleVerBoleta = (codigoComprobante) => {
-        const comprobanteUrl = `${window.location.origin}/comprobante/${codigoComprobante}`;
-        window.open(comprobanteUrl, '_blank', 'noopener,noreferrer');
+        setSelectedComprobante(codigoComprobante);
+        setModalOpen(true);
     };
 
     const allowedRoles = ['Administrador', 'Vendedor'];
@@ -77,7 +80,7 @@ function HistorialVentas() {
                         <table className="venta-table">
                             <thead>
                                 <tr>
-                                    <th>CÓDIGO DE <br></br> VENTA</th>
+                                    <th>CÓDIGO DE <br /> VENTA</th>
                                     <th>FECHA</th>
                                     <th>CLIENTE</th>
                                     <th>DIRECCIÓN</th>
@@ -93,23 +96,22 @@ function HistorialVentas() {
                                     <td className='venta-cell'>{venta.nombreCliente}</td>
                                     <td className='venta-cell'>{`${venta.direccionCalle} ${venta.numeroDireccion}, ${venta.ciudad}, ${venta.region}`}</td>
                                     <td className='venta-cell'>
-                                        <button className='btn_Pendientes' onClick={() => handleButtonClick(venta.codigoComprobante)}>
+                                        <button
+                                            className='btn_Pendientes'
+                                            onClick={() => handleButtonClick(venta.codigoComprobante)}
+                                        >
                                             {visibleTables[venta.codigoComprobante] ? "Cerrar Productos" : "Ver Productos"}
                                         </button>
                                         {visibleTables[venta.codigoComprobante] && (
-                                            <table style={{ borderCollapse: 'collapse' }}>
-                                                <tbody>
-                                                    {venta.productos && venta.productos.length > 0 ? (
-                                                        venta.productos.map((producto, prodIndex) => (
-                                                            <li key={prodIndex}>{producto}</li>
-                                                        ))
-                                                    ) : (
-                                                        <tr>
-                                                            <td colSpan="3" style={{ border: 'none' }}>No hay productos disponibles</td>
-                                                        </tr>
-                                                    )}
-                                                </tbody>
-                                            </table>
+                                            <ul style={{ marginTop: '0.5rem' }}>
+                                                {venta.productos && venta.productos.length > 0 ? (
+                                                    venta.productos.map((producto, idx) => (
+                                                        <li key={idx}>{producto}</li>
+                                                    ))
+                                                ) : (
+                                                    <li>No hay productos disponibles</li>
+                                                )}
+                                            </ul>
                                         )}
                                     </td>
                                     <td className='venta-cell'>${venta.precioTotal}</td>
@@ -117,7 +119,8 @@ function HistorialVentas() {
                                         <button
                                             type="button"
                                             onClick={() => handleVerBoleta(venta.codigoComprobante)}
-                                            className="btn btn-primary">
+                                            className="btn btn-primary"
+                                        >
                                             <i className="fa fa-eye"></i>
                                         </button>
                                     </td>
@@ -129,6 +132,13 @@ function HistorialVentas() {
             ) : (
                 <p>No hay ventas disponibles</p>
             )}
+
+            {/* Comprobante Modal */}
+            <ComprobanteModal
+                isOpen={modalOpen}
+                onClose={() => setModalOpen(false)}
+                codigoComprobante={selectedComprobante}
+            />
         </div>
     );
 }
