@@ -54,6 +54,7 @@ const ListadoProductos = () => {
                     Categoria: producto[5],
                     Color_Producto: producto[6],
                     Fecha: producto[7],
+                    ImagenExtension: producto[8], // Asumiendo que tu backend devuelve la extensión de la imagen en esta posición
                 }));
                 setProductos(productosFormateados);
             } catch (error) {
@@ -84,8 +85,9 @@ const ListadoProductos = () => {
         );
     }
 
-    const mostrarImagen = (codigo_producto) => {
-        const imageUrl = `/images/Outlet/${codigo_producto}.jpg`;
+    const mostrarImagen = (producto) => {
+        // Se cambió para usar la extensión de la imagen obtenida del backend.
+        const imageUrl = `/images/Outlet/${producto.Codigo_Producto}${producto.ImagenExtension}`;
         setSelectedImage(imageUrl);
         setModalIsOpen(true);
     };
@@ -152,7 +154,8 @@ const ListadoProductos = () => {
                                 <td>{producto.Nombre_Producto}</td>
                                 <td>{producto.Color_Producto}</td>
                                 <td>
-                                    <button type="button" onClick={() => mostrarImagen(producto.Codigo_Producto)} className={"btn mini-boton"}>
+                                    {/* Se cambió para pasar el objeto 'producto' completo a la función 'mostrarImagen' */}
+                                    <button type="button" onClick={() => mostrarImagen(producto)} className={"btn mini-boton"}>
                                         <i className="fa fa-eye"></i>
                                     </button>
                                 </td>
