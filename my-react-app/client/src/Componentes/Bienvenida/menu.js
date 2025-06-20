@@ -14,6 +14,7 @@ export default function Menu() {
     localStorage.removeItem('token');
     localStorage.removeItem('userRole');
     localStorage.removeItem('userRut'); 
+    document.title = 'Outlet A Tu Hogar';
     navigate('/login', { replace: true });
   };
 
