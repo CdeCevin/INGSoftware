@@ -915,6 +915,8 @@ button:active {
     font-weight: bold;
     cursor: pointer;
     transition: color 0.2s ease;
+    width: 36px;
+    height: 36px;
 }
 
 .close-buttonModal:hover {
