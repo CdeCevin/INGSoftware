@@ -21,11 +21,13 @@ function Inicio() {
         }
     }, [navigate]); 
  
-    if (isLoading) {
-
-    useEffect(() => {
+   useEffect(() => {
         document.title = 'Menú';
     }, []);
+
+    if (isLoading) {
+
+ 
 
         return (
             <div>
