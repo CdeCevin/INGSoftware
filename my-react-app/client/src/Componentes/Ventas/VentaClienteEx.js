@@ -195,14 +195,14 @@ function VentaClienteEx() {
         }));
     };
 
-   const mostrarImagen = (codigo_producto) => {
+   const mostrarImagen = (codigoProducto) => {
         // Se cambió para forzar la extensión a .jpg, ya que el backend la guarda así.
-        const imageUrl = `/images/Outlet/${producto.codigo_producto}.jpg`; 
+        const imageUrl = `/images/Outlet/${codigoProducto}.jpg`; 
         console.log('En front, URL de la imagen:', imageUrl);
         setSelectedImage(imageUrl);
         setImageModalIsOpen(true);
     };
-    
+
     const closeModal = () => {
         setImageModalIsOpen(false);
         setMessageModalIsOpen(false);
