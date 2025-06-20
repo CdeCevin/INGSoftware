@@ -78,7 +78,8 @@ const LoginForm = () => {
                                 type="password"
                                 id="password"
                                 name="input-cont"
-                                maxLength="20"
+                                minLength="8"
+                                maxLength="16"
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}

@@ -160,7 +160,6 @@ function ActualizarUsuario() {
                                 minLength="8"
                                 maxLength="16"
                                 placeholder='Utilice una contraseña de 8 a 16 caracteres'
-                                pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
                                 value={password}
                                 onChange={(e) => setpassword(e.target.value)}
                             />

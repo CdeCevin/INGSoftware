@@ -158,7 +158,6 @@ function IngresoUsuario() {
                                 name="INpassword" 
                                 maxLength="16" 
                                 minLength="8"
-                                pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s0-9]+$"
                                 placeholder='Utilice una contraseña de 8 a 16 caracteres'
                                 required 
                                 value={password} 
