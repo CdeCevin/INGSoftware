@@ -29,7 +29,7 @@ function BuscarCliente() {
         try {
             const response = await authenticatedFetch('/buscarCliente', {
                 method: 'POST',
-                body: JSON.stringify({ codigo }),
+                body: {codigo},
             });
 
             if (response.status === 401 || response.status === 403) {
