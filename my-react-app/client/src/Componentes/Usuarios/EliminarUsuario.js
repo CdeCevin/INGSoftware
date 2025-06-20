@@ -29,28 +29,30 @@ function EliminarUsuario() {
         
         try {
             // Enviar los datos al backend como JSON
-            const response = await fetch('http://localhost:3001/api/eliminarUsuario', {
+            const response = await authenticatedFetch('/eliminarUsuario', {
                 method: 'POST',
                 body: ({ Rut_Usuario }) // Enviar el código del Usuario como JSON
             });
             
-            console.log("Código enviado al backend:", Rut_Usuario); // Verifica qué valor estás enviando al backend
-        
+            if (response.status === 401 || response.status === 403) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userRole');
+                localStorage.removeItem('userRut');
+                navigate('/login');
+                return;
+            }
+
             if (response.ok) {
                 const data = await response.json();
-                console.log("Respuesta exitosa del backend:", data); // Verifica la respuesta del backend
-                setModalMessage(data.message); // Mostrar mensaje de éxito
-                resetForm();
+                setModalMessage(data.message);
             } else {
                 const errorData = await response.json();
-                console.error("Error al eliminar el Usuario:", errorData); // Muestra detalles del error
-                setModalMessage(errorData.message); // Mostrar mensaje de error
+                setModalMessage(errorData.message);
             }
         } catch (error) {
-            console.error('Error al enviar el formulario:', error);
-            setModalMessage('Error al enviar el formulario.');
+            setModalMessage('El cliente no existe o ha ocurrido un error interno.');
         } finally {
-            setModalIsOpen(true); // Abrir el modal después de intentar enviar el formulario
+            setModalIsOpen(true);
         }
     };
     
