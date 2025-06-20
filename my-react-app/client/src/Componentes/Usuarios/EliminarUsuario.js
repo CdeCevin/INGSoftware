@@ -33,7 +33,7 @@ function EliminarUsuario() {
                 method: 'POST',
                 body: ({ Rut_Usuario }) // Enviar el código del Usuario como JSON
             });
-            
+
             if (response.status === 401 || response.status === 403) {
                 localStorage.removeItem('token');
                 localStorage.removeItem('userRole');
@@ -50,7 +50,7 @@ function EliminarUsuario() {
                 setModalMessage(errorData.message);
             }
         } catch (error) {
-            setModalMessage('El cliente no existe o ha ocurrido un error interno.');
+            setModalMessage('El usuario no existe o ha ocurrido un error interno.');
         } finally {
             setModalIsOpen(true);
         }
