@@ -14,7 +14,7 @@ export default function Menu() {
     localStorage.removeItem('token');
     localStorage.removeItem('userRole');
     localStorage.removeItem('userRut'); 
-    navigate('/login'); 
+    navigate('/login', { replace: true });
   };
 
   return (
