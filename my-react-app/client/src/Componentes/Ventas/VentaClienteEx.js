@@ -38,10 +38,7 @@ function VentaClienteEx() {
         try {
             const response = await authenticatedFetch('/insertCabecera', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ codigo, currentUserRut })
+                body: {codigo, currentUserRut }
             });
 
             if (response.status === 401 || response.status === 403) {

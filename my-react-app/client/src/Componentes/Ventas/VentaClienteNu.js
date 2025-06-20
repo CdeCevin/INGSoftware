@@ -56,10 +56,7 @@ function VentaClienteNu() {
         try {
             const response = await authenticatedFetch('/anCliente', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
+                body: (formData)
             });
 
             if (response.status === 401 || response.status === 403) {
