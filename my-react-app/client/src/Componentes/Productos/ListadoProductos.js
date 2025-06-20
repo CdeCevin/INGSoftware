@@ -117,6 +117,7 @@ const ListadoProductos = () => {
                         <img
                             src={selectedImage}
                             alt="Imagen del producto"
+                            key={selectedImage}
                             style={{
                                 display: 'block',
                                 margin: '0 auto',
