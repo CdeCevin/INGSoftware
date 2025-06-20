@@ -54,7 +54,7 @@ const ListadoProductos = () => {
                     Categoria: producto[5],
                     Color_Producto: producto[6],
                     Fecha: producto[7],
-                    ImagenExtension: producto[8], // Asumiendo que tu backend devuelve la extensión de la imagen en esta posición
+                    // Eliminada: La línea para 'ImagenExtension' ya no es necesaria si siempre es '.jpg'.
                 }));
                 setProductos(productosFormateados);
             } catch (error) {
@@ -86,8 +86,8 @@ const ListadoProductos = () => {
     }
 
     const mostrarImagen = (producto) => {
-        // Se cambió para usar la extensión de la imagen obtenida del backend.
-        const imageUrl = `/images/Outlet/${producto.Codigo_Producto}${producto.ImagenExtension}`;
+        // Se cambió para forzar la extensión a .jpg, ya que el backend la guarda así.
+        const imageUrl = `/images/Outlet/${producto.Codigo_Producto}.jpg`; 
         setSelectedImage(imageUrl);
         setModalIsOpen(true);
     };

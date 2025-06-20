@@ -7,19 +7,18 @@ const { getConnection } = require('../db/connection');
 // Configuración de Multer para subir imágenes
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        // Usa path.join para construir la ruta relativa a la carpeta 'server/public/images/outlet'
-        // __dirname es el directorio actual (my-react-app/server/Controllers)
-        // '../..' sube dos niveles (a my-react-app/server)
-        // Luego, 'public', 'images', 'outlet' te lleva a la carpeta de destino
         cb(null, path.join(__dirname, '..', 'public', 'images', 'outlet'));
     },
     filename: (req, file, cb) => {
-        const ext = path.extname(file.originalname);
+        // const ext = path.extname(file.originalname); // Línea original
+        const ext = '.jpg'; // <-- CAMBIO IMPORTANTE: Forzamos la extensión a .jpg
         const codigo = req.body['input-cod'];
         // Asegúrate de que el código del producto sea válido para un nombre de archivo
         if (!codigo) {
             return cb(new Error('Product code is required for filename.'), null);
         }
+        // Guarda la extensión en req.body para que esté disponible en ingresarProducto
+        req.body.imagenExtension = ext; // La extensión siempre será '.jpg' aquí
         cb(null, `${codigo}${ext}`);
     },
 });
@@ -35,7 +34,8 @@ async function ingresarProducto(req, res) {
         'input-precio': precio,
         'input-color': color,
         'input-tipo': tipo,
-        'input-stockmin': stockmin
+        'input-stockmin': stockmin,
+        imagenExtension // Se seguirá recuperando, que ahora siempre será '.jpg'
     } = req.body;
 
     let connection;
@@ -45,7 +45,7 @@ async function ingresarProducto(req, res) {
 
         const query = `
             BEGIN
-                OUTLET_Insert_Producto(:codigo, :stock, :precio, :nombre, :color, :tipo, :stockmin);
+                OUTLET_Insert_Producto(:codigo, :stock, :precio, :nombre, :color, :tipo, :stockmin, :imagenExtension);
             END;
         `;
 
@@ -56,7 +56,8 @@ async function ingresarProducto(req, res) {
             nombre: nombre,
             color: color,
             tipo: tipo,
-            stockmin: Number(stockmin)
+            stockmin: Number(stockmin),
+            imagenExtension: imagenExtension // Se insertará '.jpg' en la DB
         });
 
         await connection.commit();
@@ -65,8 +66,7 @@ async function ingresarProducto(req, res) {
         console.error('Error al insertar el producto:', error);
 
         let errorMessage = 'Ocurrió un error al insertar el producto. Por favor, intenta de nuevo más tarde.';
-        // Ejemplo de manejo de errores específico para Oracle, ajusta según tus códigos de error
-        if (error.errorNum === 1 || error.message.includes('unique constraint')) { // ORA-00001 for unique constraint violation
+        if (error.errorNum === 1 || error.message.includes('unique constraint')) {
              errorMessage = 'El código del producto ya existe.';
         }
 
