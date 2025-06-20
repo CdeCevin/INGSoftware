@@ -6,7 +6,7 @@ import Inicio from './inicio';
 
 function Home() {
     const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false); // Nuevo estado para controlar la carga/verificación
+    const [isLoading, setIsLoading] = useState(true); // Nuevo estado para controlar la carga/verificación
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -17,7 +17,7 @@ function Home() {
             navigate('/login');
         } else {
             // Si todo está bien, indica que la verificación ha terminado
-            setIsLoading(true); 
+            setIsLoading(false); 
         }
     }, [navigate]);
 
