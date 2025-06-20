@@ -289,6 +289,7 @@ function VentaClienteNu() {
                                 </div>
                             </div>
                         </fieldset>
+                        <br></br>
                         <fieldset>
                             <h3>Dirección de despacho</h3>
                             <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>

@@ -109,6 +109,7 @@ function ActualizarProducto() {
                         </div>
                     </div>
                 </fieldset>
+                <br></br>
                 <fieldset>
                     <h3>Detalles del Producto</h3>
                     <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
