@@ -440,7 +440,7 @@ function VentaClienteNu() {
                         ) : (
                             <p>No se ha seleccionado una imagen.</p>
                         )}
-                        <button onClick={closeModal}>Cerrar</button>
+                        <button onClick={closeModal} className="close-buttonImagen">&times;</button>
                     </Modal>
 
                     <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>

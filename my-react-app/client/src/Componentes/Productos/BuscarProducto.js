@@ -147,7 +147,7 @@ const BuscarProducto = () => {
                 ) : (
                     <p>No se ha seleccionado una imagen.</p>
                 )}
-                <button onClick={closeModal}>Cerrar</button>
+                <button onClick={closeModal} className="close-buttonImagen">&times;</button>
             </Modal>
 
             {productos.length > 0 && (

@@ -106,7 +106,7 @@ function StockCritico() {
                     ) : (
                         <p>No se ha seleccionado una imagen.</p>
                     )}
-                    <button onClick={closeModal}>Cerrar</button>
+                    <button onClick={closeModal} className="close-buttonImagen">&times;</button>
                 </Modal>
                 {productosBajoStock.length > 0 ? (
                     <table className="venta-table">
