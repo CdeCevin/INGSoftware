@@ -926,6 +926,7 @@ button:active {
 
 .close-buttonImagen {
     position: absolute;
+    margin: 10px auto 10px auto;
     top: 1px;
     right: 12px;
     background: #F44336;
