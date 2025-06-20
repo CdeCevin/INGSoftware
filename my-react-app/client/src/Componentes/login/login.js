@@ -19,7 +19,7 @@ const LoginForm = () => {
             const response = await fetch('http://localhost:3001/api/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ rut, password })
+                body: JSON.stringify({ rut, password }) //aqui si tiene q estar xd
             });
 
             const data = await response.json();
