@@ -129,7 +129,7 @@ const ListadoProductos = () => {
                     ) : (
                         <p>No se ha seleccionado una imagen.</p>
                     )}
-                    <button onClick={closeModal}>Cerrar</button>
+                    <button onClick={closeModal} className="close-buttonModal">&times;</button>
                 </Modal>
                 <table className="venta-table">
                     <thead>
