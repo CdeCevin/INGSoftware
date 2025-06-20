@@ -87,6 +87,7 @@ const ListadoProductos = () => {
     const mostrarImagen = (producto) => {
         // Se cambió para forzar la extensión a .jpg, ya que el backend la guarda así.
         const imageUrl = `/images/Outlet/${producto.Codigo_Producto}.jpg`; 
+        console.log('En front, URL de la imagen:', imageUrl);
         setSelectedImage(imageUrl);
         setModalIsOpen(true);
     };
