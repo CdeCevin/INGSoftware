@@ -62,6 +62,8 @@ app.use('/api/login', loginRoutes);
 
 // --- Rutas que requieren Multer (deben ir ANTES de express.json/urlencoded) ---
 // La ruta de ingresar productos maneja 'multipart/form-data'
+
+app.use(verifyToken); // Todas las rutas que siguen a esta línea requerirán un token válido
 app.use('/api/ingresar_productos', authorizeRole(['Administrador']), ingresarProductosRoutes);
 
 
@@ -69,9 +71,6 @@ app.use('/api/ingresar_productos', authorizeRole(['Administrador']), ingresarPro
 // Estos se aplicarán a todas las rutas que NO sean 'ingresar_productos' y que vienen DESPUÉS de esta línea.
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
-
-
-app.use(verifyToken); // Todas las rutas que siguen a esta línea requerirán un token válido
 
 // --- Mapeo de Rutas y Roles (para las rutas protegidas) ---
 
