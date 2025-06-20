@@ -70,7 +70,7 @@ const ListadoUsuarios = () => {
                     <thead>
                         <tr>
                             <th>RUT</th>
-                            <th>TÉLEFONO</th>
+                            <th>TELÉFONO</th>
                             <th>NOMBRE</th>
                             <th>TIPO DE USUARIO</th>
                         </tr>
