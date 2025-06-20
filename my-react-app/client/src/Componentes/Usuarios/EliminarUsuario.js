@@ -31,9 +31,6 @@ function EliminarUsuario() {
             // Enviar los datos al backend como JSON
             const response = await fetch('http://localhost:3001/api/eliminarUsuario', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json', // Asegúrate de enviar JSON
-                },
                 body: ({ Rut_Usuario }) // Enviar el código del Usuario como JSON
             });
             
