@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Importa useNavigate
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 
@@ -7,6 +8,19 @@ export default function Menu() {
   const role = localStorage.getItem('userRole');
   const isAdmin  = role === 'Administrador';
   const isVendor = role === 'Vendedor';
+  const navigate = useNavigate(); // Inicializa useNavigate aquí
+
+  // Nueva función para manejar el cierre de sesión
+  const handleLogout = () => {
+    // 1. Eliminar los datos de la sesión del localStorage
+    localStorage.removeItem('token');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('userRut'); // Asegúrate de limpiar todos los ítems relevantes
+
+    // 2. Redirigir al usuario a la página de login
+    // Usamos `Maps('/login')` en lugar de `replace` en Link para tener control programático
+    navigate('/login'); 
+  };
 
   return (
     <div className="sidebar">
@@ -102,9 +116,12 @@ export default function Menu() {
       )}
 
       {/* CERRAR SESIÓN: ambos */}
-      <Link to="/login" replace className="Cerrar-button">
+      <button
+        onClick={handleLogout}
+        className="Cerrar-button" // Mantén la clase CSS para que se vea igual
+      >
         <i className="fa fa-sign-out"></i> Cerrar Sesión
-      </Link>
+      </button>
     </div>
   );
 }
