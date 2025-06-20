@@ -14,7 +14,7 @@ function Inicio() {
 
       
         if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
-            navigate('/login'); // Redirige a la página de login si no cumple los requisitos
+            navigate('/login', { replace: true }); // Redirige a la página de login si no cumple los requisitos
         } else {
             // Si todo está bien, indica que la verificación ha terminado
             setIsLoading(true); 
