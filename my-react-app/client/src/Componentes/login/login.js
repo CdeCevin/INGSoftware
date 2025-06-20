@@ -11,6 +11,10 @@ const LoginForm = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
+    useEffect(() => {
+        document.title = 'Iniciar Sesión'; // O 'Login', o 'Ingresar'
+    }, []);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
