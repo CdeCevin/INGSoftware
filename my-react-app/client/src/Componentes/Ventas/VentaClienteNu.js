@@ -232,7 +232,7 @@ function VentaClienteNu() {
         const imageUrl = `/images/Outlet/${producto.Codigo_Producto}.jpg`; 
         console.log('En front, URL de la imagen:', imageUrl);
         setSelectedImage(imageUrl);
-        setModalIsOpen(true);
+        setImageModalIsOpen(true);
     };
 
     const closeModal = () => {
