@@ -28,7 +28,7 @@ CREATE TABLE OUTLET_Usuario(
         CONSTRAINT OUTLET_Usuario PRIMARY KEY (RUT_Usuario)
 );
 
-
+ALTER TABLE OUTLET_Usuario 
 
 CREATE TABLE OUTLET_Auditoria(
         Codigo_Auditoria NUMBER,
@@ -74,8 +74,13 @@ CREATE TABLE OUTLET_Producto(
         CONSTRAINT OUTLET_Producto PRIMARY KEY(Codigo_Producto)
 );
 
-ALTER TABLE OUTLET_Producto
-ADD Stock_Minimo NUMBER;
+ALTER TABLE OUTLET_Usuario
+ADD Activo NUMBER DEFAULT 1;
+
+UPDATE OUTLET_Usuario
+SET Activo = 1
+WHERE Activo IS NULL;
+
 
 ALTER TABLE OUTLET_Producto
 ADD Fecha_Registro DATE;
