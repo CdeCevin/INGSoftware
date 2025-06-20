@@ -73,7 +73,7 @@ const ComprobanteModal = ({ isOpen, onClose, codigoComprobante }) => {
             overlayClassName="modal-overlay"
         >
             <div className="invoice-page-container">
-                
+                <button onClick={onClose} className="close-button">&times;</button>
                 {loading ? (
                     <p>Cargando comprobante...</p>
                 ) : error ? (
@@ -144,7 +144,6 @@ const ComprobanteModal = ({ isOpen, onClose, codigoComprobante }) => {
                         <button onClick={downloadPdf} className="download-pdf-button">
                             Descargar Comprobante PDF
                         </button>
-                        <button onClick={onClose} className="close-button">Cerrar</button>
                     </>
                 )}
             </div>
