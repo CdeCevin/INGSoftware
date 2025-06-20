@@ -923,3 +923,26 @@ button:active {
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.close-buttonImagen {
+    position: absolute;
+    top: 1px;
+    right: 12px;
+    background: #F44336;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    width: fit-content;
+    height: fit-content;
+    min-width: 7%;
+    padding: 0;
+}
+
+.close-buttonImagen:hover {
+    background-color: #e53935;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
