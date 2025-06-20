@@ -73,7 +73,7 @@ const ComprobanteModal = ({ isOpen, onClose, codigoComprobante }) => {
             overlayClassName="modal-overlay"
         >
             <div className="invoice-page-container">
-                <button onClick={onClose} className="close-button">&times;</button>
+                <button onClick={onClose} className="close-button" style={{width: "100%"}}>&times;</button>
                 {loading ? (
                     <p>Cargando comprobante...</p>
                 ) : error ? (
