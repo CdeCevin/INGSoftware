@@ -117,7 +117,7 @@ export default function Menu() {
       {/* CERRAR SESIÓN: ambos */}
       <button
         onClick={handleLogout}
-        className="Cerrar-button" // Mantén la clase CSS para que se vea igual
+        replace className="Cerrar-button" // Mantén la clase CSS para que se vea igual
       >
         <i className="fa fa-sign-out"></i> Cerrar Sesión
       </button>
