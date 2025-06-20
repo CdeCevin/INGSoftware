@@ -917,7 +917,8 @@ button:active {
     transition: color 0.2s ease;
     width: fit-content;
     height: fit-content;
-    min-width: 10%;
+    min-width: 5%;
+    padding: 0;
 }
 
 .close-buttonModal:hover {
