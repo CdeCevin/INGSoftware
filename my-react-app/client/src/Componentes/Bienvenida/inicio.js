@@ -20,9 +20,7 @@ function Inicio() {
             setIsLoading(false); 
         }
     }, [navigate]); 
-
-
-    
+ 
     if (isLoading) {
 
     useEffect(() => {
