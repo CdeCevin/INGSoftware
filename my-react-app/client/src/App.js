@@ -38,10 +38,19 @@ import EliminarUsuario from './Componentes/Usuarios/EliminarUsuario';
 import ActualizarUsuario from './Componentes/Usuarios/ActualizarUsuario';
 import ListadoUsuarios from './Componentes/Usuarios/ListadoUsuarios';
 
+//Autenticación
+import ProtectedRoute from './Componentes/Auth/ProtectedRoute'; // Importa el ProtectedRoute
+
+
 function LayoutWithMenu({ children }) {
   const { pathname } = useLocation();
-  const hideMenuOn = ['/', '/login','/comprobante',/^\/comprobante\/\d+$/]; // rutas sin menú
-  const shouldHideMenu = hideMenuOn.includes(pathname);
+  // Asegúrate de que `/comprobante/:codigoComprobante` se evalúe correctamente con una expresión regular
+  // const hideMenuOn = ['/', '/login', '/comprobante', /^\/comprobante\/\d+$/]; // Esta línea era casi correcta
+  const hideMenuOn = ['/', '/login']; // Rutas base sin menú
+  const isComprobanteRoute = pathname.startsWith('/comprobante'); // Cualquier ruta que empiece con /comprobante
+
+  // El menú se oculta si la ruta es una de las "hideMenuOn" O si es una ruta de comprobante
+  const shouldHideMenu = hideMenuOn.includes(pathname) || isComprobanteRoute;
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', width: '100vw' }}>
@@ -54,9 +63,7 @@ function LayoutWithMenu({ children }) {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            width: '100vw', // Ensures it spans full viewport width when sidebar is hidden
-            // Optional: If your login page needs a specific background color when centered, add it here.
-            // backgroundColor: '#f0f2f5'
+            width: '100vw',
         } : { flexGrow: 1 }}
       >
         {children}
@@ -68,50 +75,57 @@ function LayoutWithMenu({ children }) {
 function App() {
   return (
     <LayoutWithMenu>
-      <Routes>
-        {/* Rutas sin menú */}
+      <Routes> {/* <Routes> es el contenedor principal de todas las rutas */}
+        
+        {/* Rutas sin protección (no necesitan token/rol) */}
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/comprobante/:codigoComprobante" element={<PaginaComprobante />} />
 
-        {/* Rutas con menú */}
-        <Route path="/home" element={<Home />} />
-        <Route path="/Bienvenido/inicio" element={<Inicio />} />
+        {/* Ruta padre que usa ProtectedRoute como su 'element'. 
+          Todas las rutas anidadas dentro de esta <Route> serán protegidas
+          por el componente ProtectedRoute.
+        */}
+        <Route element={<ProtectedRoute allowedRoles={['Administrador', 'Vendedor']} />}>
+            {/* Rutas con menú (y ahora protegidas) */}
+            <Route path="/home" element={<Home />} />
+            <Route path="/Bienvenido/inicio" element={<Inicio />} />
 
-        {/* Clientes */}
-        <Route path="/ActualizarCliente" element={<ActualizarCliente />} />
-        <Route path="/BuscarCliente" element={<BuscarCliente />} />
-        <Route path="/EliminarCliente" element={<EliminarCliente />} />
-        <Route path="/ListadoClientes" element={<ListadoClientes />} />
+            {/* Clientes */}
+            <Route path="/ActualizarCliente" element={<ActualizarCliente />} />
+            <Route path="/BuscarCliente" element={<BuscarCliente />} />
+            <Route path="/EliminarCliente" element={<EliminarCliente />} />
+            <Route path="/ListadoClientes" element={<ListadoClientes />} />
 
-        {/* Empresa */}
-        <Route path="/ActualizarDatos" element={<ActualizarDatos />} />
-        <Route path="/VisualizarDatos" element={<VisualizarDatos />} />
+            {/* Empresa */}
+            <Route path="/ActualizarDatos" element={<ActualizarDatos />} />
+            <Route path="/VisualizarDatos" element={<VisualizarDatos />} />
 
-        {/* Pendientes */}
-        <Route path="/VentasPendientes" element={<VentasPendientes />} />
+            {/* Pendientes */}
+            <Route path="/VentasPendientes" element={<VentasPendientes />} />
 
-        {/* Productos */}
-        <Route path="/IngresoProducto" element={<IngresoProducto />} />
-        <Route path="/BuscarProducto" element={<BuscarProducto />} />
-        <Route path="/ActualizarProducto" element={<ActualizarProducto />} />
-        <Route path="/EliminarProducto" element={<EliminarProducto />} />
-        <Route path="/ListadoProducto" element={<ListadoProductos />} />
-        <Route path="/StockCritico" element={<StockCritico />} />
+            {/* Productos */}
+            <Route path="/IngresoProducto" element={<IngresoProducto />} />
+            <Route path="/BuscarProducto" element={<BuscarProducto />} />
+            <Route path="/ActualizarProducto" element={<ActualizarProducto />} />
+            <Route path="/EliminarProducto" element={<EliminarProducto />} />
+            <Route path="/ListadoProducto" element={<ListadoProductos />} />
+            <Route path="/StockCritico" element={<StockCritico />} />
 
-        {/* Reportes */}
-        <Route path="/ReporteGral" element={<ReporteGral />} />
+            {/* Reportes */}
+            <Route path="/ReporteGral" element={<ReporteGral />} />
 
-        {/* Ventas */}
-        <Route path="/HistorialVentas" element={<HistorialVentas />} />
-        <Route path="/VentaClienteEx" element={<VentaClienteEx />} />
-        <Route path="/VentaClienteNu" element={<VentaClienteNu />} />
+            {/* Ventas */}
+            <Route path="/HistorialVentas" element={<HistorialVentas />} />
+            <Route path="/VentaClienteEx" element={<VentaClienteEx />} />
+            <Route path="/VentaClienteNu" element={<VentaClienteNu />} />
 
-        {/* Usuarios */}
-        <Route path="/AgregarUsuarios" element={<AgregarUsuarios />} />
-        <Route path="/EliminarUsuario" element={<EliminarUsuario />} />
-        <Route path="/ActualizarUsuario" element={<ActualizarUsuario />} />
-        <Route path="/ListadoUsuarios" element={<ListadoUsuarios />} />
+            {/* Usuarios */}
+            <Route path="/AgregarUsuarios" element={<AgregarUsuarios />} />
+            <Route path="/EliminarUsuario" element={<EliminarUsuario />} />
+            <Route path="/ActualizarUsuario" element={<ActualizarUsuario />} />
+            <Route path="/ListadoUsuarios" element={<ListadoUsuarios />} />
+        </Route> {/* Cierre de la ruta padre protegida */}
 
       </Routes>
     </LayoutWithMenu>
