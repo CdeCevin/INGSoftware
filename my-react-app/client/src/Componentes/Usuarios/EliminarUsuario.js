@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
+import authenticatedFetch from '../../utils/api';
 import { useNavigate } from 'react-router-dom'; 
 
 Modal.setAppElement('#root'); // Reemplaza '#root' con tu selector de raíz
