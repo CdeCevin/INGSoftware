@@ -1,9 +1,10 @@
-const express = require('express');
-const router = express.Router();
+// my-react-app/server/Controllers/IngresarProductoController.js
+
 const multer = require('multer');
 const path = require('path');
 const { getConnection } = require('../db/connection');
 
+// Configuración de Multer para subir imágenes
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         // Usa path.join para construir la ruta relativa a la carpeta 'server/public/images/outlet'
@@ -25,7 +26,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post('/insertar', upload.single('input-imagen'), async (req, res) => {
+// Define la función del controlador por separado para poder exportarla
+async function ingresarProducto(req, res) {
     const {
         'input-nombre': nombre,
         'input-cod': codigo,
@@ -35,10 +37,6 @@ router.post('/insertar', upload.single('input-imagen'), async (req, res) => {
         'input-tipo': tipo,
         'input-stockmin': stockmin
     } = req.body;
-
-    // console.log('Datos recibidos en el backend:', {
-    //     codigo, stock, precio, stockmin
-    // });
 
     let connection;
 
@@ -82,6 +80,7 @@ router.post('/insertar', upload.single('input-imagen'), async (req, res) => {
             }
         }
     }
-});
+}
 
+// Exporta tanto `upload` como `ingresarProducto`
 module.exports = { upload, ingresarProducto };
