@@ -11,13 +11,9 @@ export default function Menu() {
 
   // Nueva función para manejar el cierre de sesión
   const handleLogout = () => {
-    // 1. Eliminar los datos de la sesión del localStorage
     localStorage.removeItem('token');
     localStorage.removeItem('userRole');
-    localStorage.removeItem('userRut'); // Asegúrate de limpiar todos los ítems relevantes
-
-    // 2. Redirigir al usuario a la página de login
-    // Usamos `Maps('/login')` en lugar de `replace` en Link para tener control programático
+    localStorage.removeItem('userRut'); 
     navigate('/login'); 
   };
 
@@ -114,11 +110,9 @@ export default function Menu() {
         </div>
       )}
 
-      {/* CERRAR SESIÓN: ambos */}
       <button
         onClick={handleLogout}
-        replace className="Cerrar-button" // Mantén la clase CSS para que se vea igual
-      >
+        replace className="Cerrar-button" 
         <i className="fa fa-sign-out"></i> Cerrar Sesión
       </button>
     </div>
