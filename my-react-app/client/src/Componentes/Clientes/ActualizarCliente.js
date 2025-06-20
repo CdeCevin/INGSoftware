@@ -120,6 +120,7 @@ function ActualizarCliente() {
                         </div>
                     </div>
                 </fieldset>
+                <br></br>
                 <fieldset> 
                     <h3>Datos a editar</h3>
                     <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
