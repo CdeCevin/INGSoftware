@@ -4,6 +4,9 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
+
 const projectRootPath = path.resolve(__dirname, '..');
 
 require('dotenv').config({ path: path.join(projectRootPath, '.env') });
