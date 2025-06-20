@@ -50,7 +50,7 @@ function ActualizarUsuario() {
         try {
             const response = await authenticatedFetch('/upUser', {
                 method: 'POST',
-                body: JSON.stringify(formData),
+                body: (formData),
             });
 
             // --- MODIFICACIONES AQUÍ: Redirección inmediata para 401/403 ---

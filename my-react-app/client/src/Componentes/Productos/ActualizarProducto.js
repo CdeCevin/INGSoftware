@@ -41,7 +41,7 @@ function ActualizarProducto() {
         try {
             const response = await authenticatedFetch('/up_producto', {
                 method: 'POST',
-                body: JSON.stringify(formData),
+                body: (formData),
             });
 
             if (response.status === 401 || response.status === 403) {

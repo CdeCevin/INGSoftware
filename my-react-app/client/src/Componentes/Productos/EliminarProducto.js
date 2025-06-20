@@ -29,7 +29,7 @@ function EliminarProducto() {
         try {
             const response = await authenticatedFetch('/eliminarProducto', {
                 method: 'POST',
-                body: JSON.stringify({ codigo })
+                body: ({ codigo })
             });
 
             if (response.status === 401 || response.status === 403) {

@@ -33,7 +33,7 @@ const BuscarProducto = () => {
         try {
             const response = await authenticatedFetch('/buscarProducto', {
                 method: 'POST',
-                body: JSON.stringify({
+                body: ({
                     'input-nombre': nombre,
                     'input-color': color,
                 }),

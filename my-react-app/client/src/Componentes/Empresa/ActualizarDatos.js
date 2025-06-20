@@ -44,7 +44,7 @@ function ActualizarDatos() {
         try {
             const response = await authenticatedFetch('/upEmpresa', {
                 method: 'POST',
-                body: JSON.stringify(formData),
+                body: (formData),
             });
 
             if (response.status === 401 || response.status === 403) {

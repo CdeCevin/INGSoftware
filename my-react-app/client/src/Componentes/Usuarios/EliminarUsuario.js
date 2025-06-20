@@ -23,7 +23,7 @@ function EliminarUsuario() {
                 headers: {
                     'Content-Type': 'application/json', // Asegúrate de enviar JSON
                 },
-                body: JSON.stringify({ Rut_Usuario }) // Enviar el código del Usuario como JSON
+                body: ({ Rut_Usuario }) // Enviar el código del Usuario como JSON
             });
             
             console.log("Código enviado al backend:", Rut_Usuario); // Verifica qué valor estás enviando al backend
