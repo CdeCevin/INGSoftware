@@ -11,7 +11,7 @@ async function obtenerReporteVentas(req, res) {
                    CL.Nombre_Cliente, CL.Codigo_Direccion
             FROM Outlet_Cabecera_Comprobante_Pago OC
             JOIN Outlet_Cliente CL ON OC.CODIGO_CLIENTE = CL.CODIGO_CLIENTE
-            WHERE OC.Codigo_Comprobante_Pago = 1`;
+            WHERE OC.ESTADO = 1`;
             
 
         const resultCabecera = await connection.execute(queryCabecera);
