@@ -1,6 +1,6 @@
 // CdeCevin/INGSoftware/my-react-app/client/src/Componentes/login/login.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 //import './estiloide.css';
 
