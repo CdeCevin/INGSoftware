@@ -1,31 +1,23 @@
-// my-react-app/server/Controllers/IngresarProductoController.js
-
 const multer = require('multer');
 const path = require('path');
 const { getConnection } = require('../db/connection');
 
-// Configuración de Multer para subir imágenes
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, path.join(__dirname, '..', 'public', 'images', 'outlet'));
     },
     filename: (req, file, cb) => {
-        // const ext = path.extname(file.originalname); // Línea original
-        const ext = '.jpg'; // <-- CAMBIO IMPORTANTE: Forzamos la extensión a .jpg
+        const ext = '.jpg';
         const codigo = req.body['input-cod'];
-        // Asegúrate de que el código del producto sea válido para un nombre de archivo
         if (!codigo) {
             return cb(new Error('Product code is required for filename.'), null);
         }
-        // Guarda la extensión en req.body para que esté disponible en ingresarProducto
-        req.body.imagenExtension = ext; // La extensión siempre será '.jpg' aquí
         cb(null, `${codigo}${ext}`);
     },
 });
 
 const upload = multer({ storage: storage });
 
-// Define la función del controlador por separado para poder exportarla
 async function ingresarProducto(req, res) {
     const {
         'input-nombre': nombre,
@@ -35,7 +27,6 @@ async function ingresarProducto(req, res) {
         'input-color': color,
         'input-tipo': tipo,
         'input-stockmin': stockmin,
-        imagenExtension // Se seguirá recuperando, que ahora siempre será '.jpg'
     } = req.body;
 
     let connection;
@@ -45,7 +36,7 @@ async function ingresarProducto(req, res) {
 
         const query = `
             BEGIN
-                OUTLET_Insert_Producto(:codigo, :stock, :precio, :nombre, :color, :tipo, :stockmin, :imagenExtension);
+                OUTLET_Insert_Producto(:codigo, :stock, :precio, :nombre, :color, :tipo, :stockmin);
             END;
         `;
 
@@ -57,7 +48,6 @@ async function ingresarProducto(req, res) {
             color: color,
             tipo: tipo,
             stockmin: Number(stockmin),
-            imagenExtension: imagenExtension // Se insertará '.jpg' en la DB
         });
 
         await connection.commit();
@@ -82,5 +72,4 @@ async function ingresarProducto(req, res) {
     }
 }
 
-// Exporta tanto `upload` como `ingresarProducto`
 module.exports = { upload, ingresarProducto };
