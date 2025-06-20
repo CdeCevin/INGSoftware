@@ -2,14 +2,25 @@ import React, { useState, useEffect } from 'react';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
+import { useNavigate } from 'react-router-dom'; 
 
 Modal.setAppElement('#root'); // Reemplaza '#root' con tu selector de raíz
 
 function EliminarUsuario() {
-    
+    const navigate = useNavigate(); 
+    const userRole = localStorage.getItem('userRole'); 
     const [Rut_Usuario, setRut_Usuario] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
     const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
+
+    useEffect(() => {
+        document.title = 'Agregar Usuario';
+        const allowedRoles = ['Administrador'];
+
+        if (!localStorage.getItem('token') || !userRole || !allowedRoles.includes(userRole)) {
+            navigate('/login');
+        }
+    }, [userRole, navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
