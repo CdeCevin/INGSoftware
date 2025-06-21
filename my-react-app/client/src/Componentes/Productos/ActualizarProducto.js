@@ -38,7 +38,6 @@ function ActualizarProducto() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // ****** CAMBIO CRÍTICO AQUÍ: Usar FormData para el envío de archivos ******
         const formData = new FormData();
 
         // Anexar todos los campos de texto
