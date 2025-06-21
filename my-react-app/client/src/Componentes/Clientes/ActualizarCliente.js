@@ -135,9 +135,9 @@ function ActualizarCliente() {
                                 onChange={(e) => setNombre(e.target.value)} 
                             />
                         </div>
-                        <div className='telefono-wrapper'>
+                        <div className='input-wrapper'>
                             <label>Teléfono</label>
-                            <span className='cod-area'>+56</span>
+                            <span className='valor'>+56</span>
                             <input 
                                 type="text" 
                                 name="input-teléfono" 

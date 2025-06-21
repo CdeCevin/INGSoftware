@@ -158,12 +158,12 @@ textarea {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.telefono-wrapper {
+.input-wrapper {
   position: relative;
   width: 100%;
 }
 
-.telefono-wrapper .cod-area {
+.input-wrapper .valor {
   position: absolute;
   top: 70%;
   left: 10px;
@@ -177,7 +177,7 @@ textarea {
   z-index: 2;
 }
 
-.telefono-wrapper input[type="text"] {
+.input-wrapper input[type="text"] input[type="number"] {
   padding-left: 60px; /* extra space for area code bubble */
 }
 

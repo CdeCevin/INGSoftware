@@ -124,9 +124,9 @@ function IngresoUsuario() {
                                 onChange={(e) => setRut(e.target.value)} 
                             />
                         </div>
-                        <div className='telefono-wrapper'>
+                        <div className='input-wrapper'>
                             <label>Telefono*</label>
-                            <span className='cod-area'>+56</span>
+                            <span className='valor'>+56</span>
                             <input 
                                 type="text" 
                                 name="INtelefono" 
