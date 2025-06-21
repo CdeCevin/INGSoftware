@@ -13,6 +13,7 @@ DROP TABLE OUTLET_Direccion;
 DROP TABLE OUTLET_Ciudad;
 DROP TABLE OUTLET_Region;
 DROP TABLE OUTLET_Auditoria;
+DROP TABLE OUTLET_Usuario;
 --------------------------------------------------------------
 ------------------ CREATE TABLES------------------------------
 --------------------------------------------------------------
@@ -25,8 +26,6 @@ CREATE TABLE OUTLET_Usuario(
         ROL_Usuario VARCHAR2(15),
         CONSTRAINT OUTLET_Usuario PRIMARY KEY (RUT_Usuario)
 );
-
-
 
 CREATE TABLE OUTLET_Auditoria(
         Codigo_Auditoria NUMBER,

@@ -1,641 +1,641 @@
 -- Hecho por Renato Izquierdo, Kevin Olivares y Dominique Teillier.
 
 ----------------------------Inserts-----------------------------------
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(1, 'Faldon', 'Faldon Palermo 2Plazas Blanco', 9, 12000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(2, 'Cortina', 'Cortina Doral 140 x 220 England Preston', 1, 14000, 'Verde Oscuro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(3, 'Cortina ', 'Cortina Doral 140 x 220 England Newcastle', 1, 14000, 'Gris Azulado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(4, 'Cortina ', 'Cortina Doral 140 x 220 England Newcastle', 1, 14000, 'Gris Oscuro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(5, 'Cortina', 'Cortina Doral 140 x 220 England Preston', 1, 14000, 'Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(6, 'Cortina', 'Cortina Doral 140 x 220 England Newcastle', 2, 14000, 'Verde Palta', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(7, 'Sabanas', 'Juego de sabanas ninos Mickey Mouse 1.5plaza', 19, 16000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(8, 'Sabanas', 'Juego de sabanas ninos Avengers 1.5plaza', 1, 16000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(9, 'Sabanas', 'Juego de sabanas ninos Spider-Man 1.5plaza', 4, 16000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(10, 'Sabanas', 'Juego de sabanas ninos Dragon Ball Super 1.5plaza', 1, 16000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(11, 'Sabanas', 'Juego de sabanas ninos Colo Colo 1.5plaza', 3, 16000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(12, 'Sabanas', 'Juego de sabanas ninos PJMASKS 1.5plaza', 1, 16000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(13, 'Visillo', 'Cortina Velo Palermo 140x225', 5, 12000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(14, 'Visillo', 'Cortina Top Lucky 140x230', 4, 12000, 'Rosado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(15, 'Cortina ', 'Cortina Doral Aradi 140x220 Aradi Siddharta', 1, 14000, 'Rosado Oscuro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(16, 'Cortina', 'Cortina Doral 140x220 Aradi Siddharta ', 1, 14000, 'Cafe Oscuro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(17, 'Cortina', 'Cortina Doral 140x220 Victoria ', 1, 14000, 'Chocolate', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(18, 'Cortina', 'Cortina Jovial 140x220 ', 4, 16000, 'Celeste', 1, SYSDATE, 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(19, 'Cortina ', 'Cortina Doral 140x220 Presilla', 6, 16000, 'Fucsia', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(20, 'Cortina ', 'Cortina Mashini 145x220 Diana 4 panos Presilla', 1, 16000, 'Beige', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(21, 'Cortina ', 'Cortina Doral 140x220 Singapur Siddharta ', 1, 16000, 'Cafe Claro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(22, 'Cortina ', 'Cortina Mashini 140x220 Ébano Presillas', 1, 16000, 'Verde Palta', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(23, 'Cortina ', 'Cortina Doral 140x220 Argolla & Velos 4 panos ', 1, 16000, 'Verde Claro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(24, 'Cortina ', 'Cortina Doral 140x220 Agatha 4 panos', 1, 16000, 'Verde Claro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(25, 'Cortina ', 'Cortina Doral 140x220 Argolla & Velos 4 panos ', 1, 16000, 'Fucsia', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(26, 'Cortina ', 'Cortina Sin Marca 2 Panos', 2, 16000, 'Morado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(27, 'Cortina ', 'Cortina Sin Marca 2 Panos', 1, 16000, 'Lila', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(28, 'Cortina', 'Cortina Jovial 140x220 ', 2, 16000, 'Rojo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(29, 'Cortina ', 'Cortina Doral 140 x 220 Tubo y Velos 4 Panos', 1, 16000, 'Naranja', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(30, 'Cortina ', 'Cortina Doral 140x220 Tubo y Velos 2 punos', 1, 12000, 'Naranja', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(31, 'Cortina ', 'Cortina Sin Marca 2 Panos', 1, 16000, 'Mostaza', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(32, 'Cortina ', 'Cortina Chantilly 140x220 ', 1, 16000, 'Mostaza', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(33, 'Cortina', 'Cortina Doral 140x220 Victoria 4 Panos', 4, 24000, 'Rojo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(34, 'Cortina ', 'Cortina Doral 140x220 Isidora 4 Panos', 7, 24000, 'Terracota', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(35, 'Cortina', 'Cortina Doral 140x220 Victoria', 2, 18000, 'Celeste', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(36, 'Cortina ', 'Cortina Doral 140x220 Isidora 4 panos ', 1, 24000, 'Mostaza', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(37, 'Cortina', 'Cortina Doral 140x220 Victoria ', 1, 18000, 'Verde', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(38, 'Cortina ', 'Cortina Doral 140x220 Victoria', 1, 18000, 'Morado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(39, 'Cortina', 'Cortina Palermo 140x225 Sun Out 1 Pano', 1, 16000, 'Burdeo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(40, 'Cortina', 'Cortina Doral 140x220 Rustico 4 Panos', 2, 22000, 'Morado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(41, 'Cortina ', 'Cortina Doral 140x220 Rustico 4 Panos', 3, 22000, 'Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(42, 'Cortina', 'Cortina Doral 140x220 Rustico 4 Panos', 1, 22000, 'Cafe', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(43, 'Cortina', 'Cortina Doral 140x220 Rustico 4 Panos', 1, 22000, 'Verde Limon', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(44, 'Cortina ', 'Cortina Doral 140x220 Emilia 4 Panos', 1, 22000, 'Morado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(45, 'Cortina', 'Cortina Doral 140x220 Emilia 4 Panos', 1, 22000, 'Chocolate', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(46, 'Cortina', 'Cortina Doral 140x220 Camila 4 panos', 1, 22000, 'Morado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(47, 'Cortina', 'Cortina Doral 140x220 Camila 4 panos', 1, 22000, 'Mostaza', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(48, 'Cortina ', 'Cortina Mashini 145x220 Letizia 5 Panos', 2, 20000, 'Rojo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(49, 'Cortina', 'Cortina Mashini 140x200 Sun Out ', 1, 16000, 'Verde', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(50, 'Cortina ', 'Cortina Doral 140x220 Aurora 4 panos', 1, 16000, 'Verde', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(51, 'Cortina', 'Cortina Doral 140x220 Tabatha 4 Panos', 4, 18000, 'Fucsia', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(52, 'Cortina', 'Cortina Doran 140x220 Romantico 5 Panos', 1, 16000, 'Crema', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(53, 'Visillo', 'Visillo Bordado', 4, 14000, 'Calipso', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(54, 'Visillo', 'Visillo Bordado', 1, 14000, 'Verde Palta', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(55, 'Visillo', 'Visillo Bordado', 1, 14000, 'Turquesa', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(56, 'Visillo', 'Visillo Bordado', 2, 14000, 'Verde', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(57, 'Visillo', 'Visillo Bordado', 1, 14000, 'Rosado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(58, 'Visillo', 'Visillo Bordado', 1, 14000, 'Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(59, 'Visillo', 'Visillo Romantico', 1, 10000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(60, 'Sabanas', 'Juego de Sabanas ninos Trolls 1.5Plaza', 4, 16000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(61, 'Sabanas', 'Juego de Sabanas Ninos Vampirina 1.5Plaza', 2, 16000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(62, 'Sabanas', 'Juego de Sabanas Ninos Superman 1.5Plaza', 1, 14000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(63, 'Sabanas', 'Juego de Sabanas Hora de Aventura 1.5Plaza', 1, 14000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(64, 'Sabanas', 'Juego de Sabanas Minnie Mouse 1.5Plaza', 3, 16000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(65, 'Sabanas', 'Juego de Sabanas Paw  Patrol Rosado 1.5Plaza ', 1, 16000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(66, 'Sabanas', 'Juego de Sabanas Ultimate SpiderMan 1.5Plaza', 1, 16000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(67, 'Sabanas', 'Juego de Sabanas O11CE 1.5Plaza', 1, 16000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(68, 'Sabanas', 'Juego de Sabanas Frozen 1.5Plaza', 1, 16000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(69, 'Set Desayuno', 'Set Desayuno Minnie Mouse ', 1, 7000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(70, 'Set Playa', 'Set Playa Ninos ', 1, 7000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(71, 'Plumon', 'Plumon Ninos Avengers 1.5Plaza', 1, 24000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(72, 'Plumon', 'Plumon Ninos Mickey Mouse 1.5Plaza', 3, 24000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(73, 'Plumon', 'Plumon Ninos Avengers Infinity War 1.5Plaza', 1, 24000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(74, 'Plumon', 'Plumon Ninos Batman 1.5Plaza', 1, 24000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(75, 'Plumon', 'Plumon Ninos Cars 1.5Plaza', 1, 24000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(76, 'Plumon', 'Plumon Ninos Paw Patrol Rosado 1.5Plaza', 2, 24000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(77, 'Plumon', 'Plumon Ninos Paw Patrol Azul 1.5Plaza', 3, 24000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(78, 'Plumon', 'Plumon Ninos Mickey Blanco Mouse 1.5Plaza', 2, 24000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(79, 'Sabanas', 'Juego de Sabanas Ninos Star Wars 1.5Plaza', 1, 16000, 'Diseno', 1, SYSDATE, 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(80, 'Plumon', 'Plumon Ninos TsumTsum 1.5Plaza', 1, 24000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(81, 'Plumon', 'Plumon Ninos Universidad De Chile 1.5Plaza', 1, 24000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(82, 'Plumon', 'Plumon Ninos Frozen 1.5Plaza', 1, 24000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(83, 'Plumon', 'Plumon Ninos Winnie Pooh', 1, 24000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(84, 'Plumon Sherpa', 'Plumon Sherpa Ninos Mickey Mouse 1.5Plaza', 1, 25000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(85, 'Plumon Sherpa', 'Plumon Sherpa Ninos Paw Patrol 1.5Plaza', 1, 25000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(86, 'Sabanas', 'Juego de Sabanas Royal Azul 144Hilos King', 2, 20000, 'Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(87, 'Sabanas', 'Juego de Sabanas Royal Azul y Blango  144Hilos King', 2, 20000, 'Azul y Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(88, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily  144Hilos King', 1, 22000, 'Azul y blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(89, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily  144Hilos King', 2, 22000, 'Negro y Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(90, 'Sabanas', 'Juego de Sabanas Mashini 144Hilos King', 1, 22000, 'Crema', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(91, 'Sabanas', 'Juego de Sabanas Mashini 144Hilos King', 2, 22000, 'Verde Pastel', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(92, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos King', 1, 36000, 'Negro y Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(93, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos King', 2, 36000, 'Blanco y Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(94, 'Sabanas', 'Juego de Sabanas Mashini 144Hilos 1.5Plaza', 2, 18000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(95, 'Sabanas', 'Juego de Sabanas Mashini 144Hilos 1.5Plaza', 3, 18000, 'Crema', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(96, 'Sabanas', 'Juego de Sabanas Mashini 144Hilos 1.5Plaza', 3, 18000, 'Verde Pastel', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(97, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily  144Hilos 1.5Plaza', 1, 18000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(98, 'Sabanas', 'Juego de Sabanas Doral  144Hilos 1.5Plaza', 1, 18000, 'Blanco y diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(99, 'Sabanas', 'Juego de Sabanas Doral  144Hilos 1.5Plaza', 1, 18000, 'Blanco y gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(100, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily Broderie 1.5Plaza', 1, 20000, 'Morado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(101, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos  1.5Plaza', 1, 30000, 'Rosado y diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(102, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos 1.5Plaza', 1, 30000, 'Rosado y diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(103, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos 1.5laza', 1, 30000, 'Blanco y Negro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(104, 'Sabanas', 'Juego de Sabanas Cannon Elements  200Hilos SuperKing', 1, 46000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(105, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily 144Hilos 1Plaza', 1, 16000, 'Morado y Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(106, 'Sabanas', 'Juego de Sabanas Doral  144Hilos 2Plaza', 1, 20000, 'Blanco y Rojo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(107, 'Sabanas', 'Juego de Sabanas Doral 144Hilos 2Plaza', 1, 20000, 'Blanco y Rojo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(108, 'Sabanas', 'Juego de Sabanas Doral 144Hilos 2Plaza', 2, 20000, 'Blanco y Damasco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(109, 'Sabanas', 'Juego de Sabanas Ninos Cannon Family Toy Story 2Plaza', 1, 20000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(110, 'Sabanas', 'Juego de Sabanas Doral Romantica 144Hilos 2Plaza', 1, 20000, 'Damasco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(111, 'Set Ensalada', 'Set Ensaladera de 7 piezas Allegra', 2, 7000, 'Transparente', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(112, 'Sabanas', 'Juego de Sabanas Ninos 1.5Plaza', 1, 12000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(113, 'Toalla', 'Toallas Cannon AmericanFamily 2 Piezas', 1, 10000, 'Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(114, 'Toalla', 'Toallas Eripau Bordada 2 Piezas', 1, 7000, 'Blanco y Verde', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(115, 'Toalla ', 'Toallas Eripau Bordada 2 Piezas', 1, 7000, 'Blanco y Amarillo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(116, 'Toalla ', 'Toallas Andes 2 Piezas', 1, 7000, 'Rosado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(117, 'Toalla', 'Toalla de Playa Ninos', 1, 6000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(118, 'Toalla ', 'Toalla de Playa Ninos', 1, 6000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(119, 'Faldon', 'Faldon Mashini 144Hilos 2Plazas', 1, 12000, 'Blanco y Verde', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(120, 'Fundas', 'Fundas Doral Broderie 50x75', 2, 7000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(121, 'Mantel', 'Mantel Antimanchas HomeSeven 140x240', 1, 8000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(122, 'Cobertor ', 'Diseno+[@Nombre]', 5, 14000, 'Rosado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(123, 'Cobertor ', 'Cobertor Cannon AmericanFamily 1.5Plaza', 2, 20000, 'Morado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(124, 'Cobertor ', 'Cobertor Cannon AmericanFamily 1.5Plaza', 1, 20000, 'Rosa y Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(125, 'Cobertor ', 'Cobertor Cannon AmericanFamily 1.5Plaza', 1, 20000, 'Lila', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(126, 'Cobertor ', 'Cobertor Doral Hotpress 1.5Plaza', 1, 14000, 'Beige y diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(127, 'Cobertor ', 'Cobertor Favhogar 1.5Plaza', 1, 16000, 'Morado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(128, 'Cobertor ', 'Cobertor Doral Hotpress 2Plazas', 1, 16000, 'Blanco y Celeste', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(129, 'Cobertor ', 'Cobertor Doral Hotpress 2Plazas', 1, 16000, 'Blanco y diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(130, 'Cobertor ', 'Cobertor Doral Hotpress King', 10, 18000, 'Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(131, 'Cobertor ', 'Cobertor Cannon AmericanFamily King', 1, 25000, 'Morado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(132, 'Cobertor', 'Cobertor Doral Hotpress King', 3, 18000, 'Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(133, 'Cobertor ', 'Cobertor Reversible Ambienta 2Plazas', 3, 10000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(134, 'Frazada', 'Frazada Alles 1.5Plaza', 3, 14000, 'Burdeo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(135, 'Frazada', 'Frazada Alles 1.5Plaza', 1, 14000, 'Cafe claro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(136, 'Frazada', 'Frazada Alles 2Plazas', 1, 16000, 'Cafe', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(137, 'Frazada', 'Frazada Alles 2Plazas', 1, 16000, 'Rojo Oscuro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(138, 'Frazada', 'Frazada Alles 2Plazas', 1, 16000, 'Verde', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(139, 'Frazada', 'Frazada Alles 2Plazas', 2, 16000, 'Rojo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(140, 'Frazada', 'Frazada Alles King', 2, 18000, 'Rojo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(141, 'Frazada', 'Frazada Alles King', 2, 18000, 'Burdeo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(142, 'Frazada', 'Frazada Escocesa 1Plaza', 3, 10000, 'Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(143, 'Plumon', 'Plumon reversible Cannon AmericanFamily 1.5Plaza', 1, 25000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(144, 'Plumon', 'Plumon reversible Cannon AmericanFamily 1.5Plaza', 1, 25000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(145, 'Plumon', 'Plumon Estampado Cannon  1.5Plaza', 1, 32000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(146, 'Bajada de Cama', 'Bajada de cama  Shaggy 60x100', 7, 10000, 'Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(147, 'Bajada de Cama', 'Bajada de cama  Shaggy 60x100', 1, 10000, 'Naranjo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(148, 'Bajada de Cama', 'Bajada de cama ninos Los Hechiceros de Waverly Place 57x90', 2, 10000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(149, 'Almohadas', 'Pack de 2 Almohadas Masel 50x75 ', 6, 10000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(150, 'Bandera', 'Bendera Chilena 200x300', 36, 12000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(151, 'Bandera', 'Bandera Chilena 90x135', 25, 6000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(152, 'Bandera', 'Bandera Chilena 140x210', 18, 8000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(153, 'Bandera', 'Bandera Mapuche 90x150', 80, 3000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(154, 'Bandera', 'Bandera para espejos retrovisores ', 35, 2000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(155, 'Bandera ', 'Bandera Chilena 290x450', 2, 25000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(156, 'Perifericos', 'Mouse Gamer AOAS V01 RGB 1200DPI', 2, 4000, 'Negro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(157, 'Perifericos', 'Mouse Gamer JIEXIN 1600DPI', 1, 6000, 'Negro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(158, 'Perifericos', 'Set Gamer K33 Teclado y Mouse ', 2, 9000, 'Negro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(159, 'Perifericos', 'Set Gamer Weibo WB-550 RGB', 1, 9000, 'Plateado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(160, 'Sabanas ', 'Juego de Sabanas Ninos Universidad de Chile 1.5Plazas', 2, 16000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(161, 'Sabanas ', 'Juego de Sabanas Ninos Universidad de Chile 2Plazas', 1, 16000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(162, 'Sabanas Polar', 'Juego de Sabanas Polar Doral Lisa Compose King', 3, 18000, 'Rojo y Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(163, 'Sabanas Polar', 'Juego de Sabanas Polar Doral Lisa Compose King', 4, 18000, 'Cafe Claro y Burdeo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(164, 'Sabanas Polar', 'Juego de Sabanas Polar Doral Lisa Compose King', 2, 18000, 'Gris y Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(165, 'Sabanas Polar', 'Juego de Sabanas Polar Doral Lisa Compose King', 1, 18000, 'Crema y Cafe', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(166, 'Frazada', 'Frazadas para ninos Paw Patrol Azul 1.5Plazas', 1, 18000, 'Diseno Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(167, 'Frazada', 'Frazada para ninos Universidad de Chile 1.5Plazas', 1, 18000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(168, 'Sabanas Polar', 'Juego de Sabanas Polar Ninos Paw Patrol Azul 1.5Plazas', 1, 20000, 'Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(169, 'Sabanas Polar', 'Juego de Sabanas Polar Ninos Spider-Man  1.5Plazas', 1, 20000, 'Gris y diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(170, 'Cobertor', 'Cobertor Doral Sherpa Liso Da Vinci King', 2, 20000, 'Burdeo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(171, 'Cobertor', 'Cobertor Doral Chiporro Liso HiperTermico 2Plazas', 1, 34000, 'Gris Azulado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(172, 'Frazada', 'Frazada Sherpa para ninos Spider-man 1.5Plazas ', 1, 20000, 'Celeste y Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(173, 'Frazada', 'Frazada Sherpa para ninos Princesas Disney 1.5Plazas', 1, 20000, 'Rosado y Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(174, 'Plumon', 'Plumon Sherpa Doral Hiper termico 1.5Plazas', 1, 28000, 'Blanco y Diseno ', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(175, 'Cobertor', 'Cobertor Doral Sherpa Liso Da Vinci 1.5Plazas', 1, 18000, 'Blanco y Diseno ', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(176, 'Sabanas Polar', 'Juego de Sabanas Polar Doral Estampada Compose 1.5Plazas', 1, 14000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(177, 'Sabanas Polar', 'Juego de Sabanas Polar para ninos Frozen ', 1, 20000, 'Diseno Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(178, 'Alfombra Cocina', 'Alfombras para cocina 40x120 y 40x60', 1, 7000, 'Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(179, 'Piso de Bano', 'Piso de Bano para ninos Winnie The Poo 50x80', 3, 5000, 'Celeste y Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(180, 'Plumon', 'Plumon Estampado Super Soft Cannon  1.5Plazas', 1, 32000, 'Diseno Floreado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(181, 'Plumon', 'Plumon Estampado Super Soft Cannon  1.5Plazas', 1, 32000, 'Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(182, 'Plumon', 'Plumon Estampado Super Soft Cannon  1.5Plazas', 1, 32000, 'Diseno Blanco ', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(183, 'Plumon', 'Plumon Estampado Super Soft Cannon  1.5Plazas', 1, 32000, 'Diseno Verde ', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(184, 'Plumon', 'Plumon Estampado Super Soft Cannon  2Plazas', 1, 35000, 'Diseno floreado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(185, 'Plumon', 'Plumon Estampado Super Soft Cannon  King', 1, 38000, 'Cafe y Celeste', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(186, 'Plumon', 'Plumon Estampado Super Soft Cannon  SuperKing', 1, 40000, 'Cafe y Celeste', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(187, 'Plumon', 'Plumon Estampado Super Soft Cannon  SuperKing', 1, 40000, 'Verde y Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(188, 'Cobertor', 'Cobertor Doral QuiltBubbly 2Plazas', 1, 18000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(189, 'Cobertor', 'Cobertor Doral  QuiltVelvety 2Plazas', 1, 18000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(190, 'Cobertor', 'Cobertor Doral QuiltVelvelty King', 3, 20000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(191, 'Cobertor', 'Cobertor Doral QuiltVelvetyKing', 1, 20000, 'Verde', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(192, 'Cobertor', 'Cobertor Doral QuiltVelvety King', 1, 20000, 'Palo Rosa', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(193, 'Cobertor', 'Cobertor Doral QuiltBubbly King', 1, 20000, 'Negro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(194, 'Cobertor', 'Cobertor Doral QuiltVelvety King', 1, 20000, 'Burdeo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(195, 'Cobertor', 'Cobertor Doral QuiltVelvety King ', 1, 20000, 'Verde agua', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(196, 'Plumon', 'Plumon Ninos Spider-Man 1.5Plazas', 2, 24000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(197, 'Plumon', 'Plumon Ninis Dragon Ball Super 1.5Plazas', 1, 24000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(198, 'Plumon', 'Plumon Ninos Avengers 1.5Plazas', 2, 24000, 'Diseno Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(199, 'Plumon', 'Plumon Ninos Minnie Mouse 1.5Plazas', 1, 24000, 'Diseno Rosa', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(200, 'Plumon', 'Plumon Ninos Frozen 1.5Plazas', 1, 24000, 'Diseno Lila', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(201, 'Sabanas ', 'Juego de Sabanas Ninos Avengers 1.5Plazas', 1, 15000, 'Diseno Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(202, 'Sabanas ', 'Juego de Sabanas Ninos Minnie Mouse 1.5Plazas', 1, 15000, 'Diseno Rosa', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(203, 'Sabanas ', 'Juego de Sabanas Ninos Minnie Mouse 1.5Plazas', 1, 15000, 'Diseno Lila', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(204, 'Sabanas ', 'Juego de Sabanas Ninos Cars 1.5Plazas', 2, 15000, 'Diseno Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(205, 'Sabanas ', 'Juego de Sabanas Ninos PawPatrol  1.5Plazas', 1, 15000, 'Diseno Lila', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(206, 'Sabanas', 'Juego de Sabanas Ninos Wish 1.5Plaza', 1, 15000, 'Diseno Morado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(207, 'Sabanas', 'Juego de Sabanas Ninos PawPatrol 1.5Plazas', 2, 15000, 'Diseno Verde Claro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(208, 'Sabanas', 'Juego de Sabanas Ninos Spider-Man 1.5Plazas', 2, 15000, 'Diseno Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(209, 'Mantas', 'Manta Doral HiperTermica Softy 127x152', 2, 6000, 'Rosa', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(210, 'Mantas', 'Manta Mashini PopCorn 127x152', 2, 7000, 'Rosado Oscuro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(211, 'Mantas', 'Manta Mashini PopCorn 127x152', 2, 7000, 'Coral', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(212, 'Mantas', 'Manta Mashini PopCorn 127x152', 2, 7000, 'Menta', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(213, 'Mantas', 'Manta Mashini PopCorn 127x152', 2, 7000, 'Amarillo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha) 
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro) 
     VALUES(214, 'Mantas', 'Manta Mashini PopCorn 127x152', 2, 7000, 'Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(215, 'Sabanas', 'Juego de Sabanas Mashini Bordado 144Hilos 2Plazas', 3, 20000, 'Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(216, 'Sabanas', 'Juego de Sabanas Mashini Bordado 144Hilos 2Plazas', 1, 20000, 'Blanco y Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(217, 'Sabanas ', 'Juego de Sabanas Mashini Bordado 144Hilos 2Plazas', 1, 20000, 'Blanco y Diseno Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(218, 'Sabanas', 'Juego de Sabanas Mashini Bordado 144Hilos 2Plazas', 1, 20000, 'Beige', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(219, 'Sabanas', 'Juego de Sabanas Mashini Bordado 144Hilos 2Plazas', 1, 20000, 'Blanco y Coral', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(220, 'Sabanas ', 'Juego de Sabanas Doral 144Hilos 2Plazas', 2, 20000, 'Verde y Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(221, 'Sabanas', 'Juego de Sabanas Doral 144Hilos 2Plazas', 2, 20000, 'Blanco y Celeste', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(222, 'Sabanas ', 'Juego de Sabanas Doral 144Hilos 2Plazas', 2, 20000, 'Blanco y Cafe', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(223, 'Sabanas', 'Juego de Sabanas Doral 144Hilos 2Plazas', 1, 20000, 'Blanco y Amarillo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(224, 'Sabanas', 'Juego de Sabanas Doral 144Hilos 2Plazas', 1, 20000, 'Crema ', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(225, 'Sabanas', 'Juego de Sabanas Doral 144Hilos 2Plazas', 1, 20000, 'Blanco y Burdeo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(226, 'Sabanas ', 'Juego de Sabanas Doral 144Hilos 2Plazas', 1, 20000, 'Blanco y Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(227, 'Sabanas ', 'Juego de Sabanas Cannon AmericanFamily 144Hilos 2Plazas', 1, 20000, 'Azul Y Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(228, 'Sabanas ', 'Juego de Sabanas Cannon AmericanFamily 144Hilos 2Plazas', 2, 20000, 'Gris Claro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(229, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily 144Hilos 2Plazas', 2, 20000, 'Blanco y Celeste', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(230, 'Sabanas ', 'Juego de Sabanas Cannon AmericanFamily 144Hilos 2Plazas', 2, 20000, 'Gris ', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(231, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily 144Hilos 1.5Plazas', 2, 18000, 'Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(232, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily 144Hilos 1.5Plazas', 1, 18000, 'Celeste Claro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(233, 'Sabanas ', 'Juego de Sabanas Cannon AmericanFamily 144Hilos 1.5Plazas', 1, 18000, 'Verde', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(234, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily 144Hilos 1.5Plazas', 1, 18000, 'Celeste', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(235, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily 144Hilos 1.5Plazas', 1, 18000, 'Blanco y Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(236, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily 144Hilos King', 1, 22000, 'Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(237, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily 144Hilos King', 1, 22000, 'Blanco y Celeste', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(238, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily 144Hilos King', 1, 22000, 'Beige y Diseno ', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(239, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily 144Hilos King', 1, 22000, 'Diseno de Hojas', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(240, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily 144Hilos King', 1, 22000, 'Azul y Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(241, 'Sabanas', 'Juego de Sabanas Cannon AmericanFamily 144Hilos King', 1, 22000, 'Blanco ', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(242, 'Sabanas ', 'Juego de Sabanas Cannon AmericanFamily 144Hilos King', 1, 22000, 'Azul y Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(243, 'Sabanas ', 'Juego de Sabanas Cannon 200Hilos 1.5Plazas', 3, 30000, 'Azul y Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(244, 'Sabanas ', 'Juego de Sabanas Cannon 200Hilos 1.5Plazas', 2, 30000, 'Blanco y Negro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(245, 'Sabanas ', 'Juego de Sabanas Cannon  200Hilos 1.5Plazas', 1, 30000, 'Verde ', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(246, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos 1.5Plazas', 1, 30000, 'Diseno 1', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(247, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos 1.5Plazas', 1, 30000, 'Diseno 2', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(248, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos 1.5Plazas', 1, 30000, 'Diseno 3', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(249, 'Sabanas ', 'Juego de Sabanas Cannon 200Hilos 1.5Plazas', 1, 30000, 'Diseno 4', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(250, 'Sabanas ', 'Juego de Sabanas Cannon 200Hilos 2Plazas', 1, 32000, 'Cafe Claro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(251, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos 2Plazas', 2, 32000, 'Blanco y Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(252, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos 2Plazas', 1, 32000, 'Blanco y Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(253, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos 2Plazas', 1, 32000, 'Diseno 1', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(254, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos 2Plazas', 1, 32000, 'Diseno 2', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(255, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos 2Plazas', 1, 32000, 'Blanco y Negro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(256, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos 2Plazas', 1, 32000, 'Gris y Cafe', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(257, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos 2Plazas', 1, 32000, 'Azul y Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(258, 'Sabanas ', 'Juego de Sabanas Cannon Elements 180Hilos 2Plazas', 1, 32000, 'Gris Oscura', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(259, 'Sabanas ', 'Juego de Sabanas Cannon 200Hilos King', 1, 36000, 'Gris y Negro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(260, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos King', 1, 36000, 'Gris Claro y Oscuro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(261, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos King', 1, 36000, 'Blanco Floreado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(262, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos King', 1, 36000, 'Blanco y Verde', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(263, 'Sabanas', 'Juego de Sabanas Cannon 200Hilos King', 1, 36000, 'Blanco y Rosado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(264, 'Mantas', 'Mantas Mashini Emboos 130x160', 2, 10000, 'Mostaza', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(265, 'Mantas', 'Mantas Mashini Emboos 130x160', 3, 10000, 'Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(266, 'Visillos ', 'Visillo Bordado Velutti 140x220', 4, 15000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(267, 'Visillos ', 'Visillo Rustico Linelook 140x220', 20, 8000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(268, 'Cubrecolchon', 'Cubrecolchon Cannon AmericanFamily  2Plazas ', 4, 14000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(269, 'Cubrecolchon', 'Cubrecolchon Cannon AmericanFamily  1.5Plazas ', 3, 12000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(270, 'Toallas ', 'Set toallas Cannon AmericanFamily 4 Piezas', 2, 16000, 'Verde', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(271, 'Toallas ', 'Set toallas Cannon AmericanFamily 4 Piezas', 1, 16000, 'Celeste Claro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(272, 'Toallas ', 'Set toallas Cannon AmericanFamily 2 Piezas', 3, 10000, 'Calipso', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(273, 'Toallas ', 'Set toallas Cannon AmericanFamily 2 Piezas', 2, 10000, 'Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(274, 'Toallas ', 'Set toallas Cannon AmericanFamily 2 Piezas', 2, 10000, 'Celeste', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(275, 'Toallas ', 'Set toallas Cannon AmericanFamily 2 Piezas', 3, 10000, 'Rosado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(276, 'Cortinas ', 'Cortina Doral 140x220 Isidora ', 3, 24000, 'Morado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(277, 'Cortinas ', 'Cortina Doral 140x220 Isidora', 2, 24000, 'Cafe', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(278, 'Cortinas', 'Cortina Doral 140x220 Camila', 2, 18000, 'Verde', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(279, 'Cortinas', 'Cortina Doral 140x220 Camila', 2, 18000, 'Mostaza', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(280, 'Cortinas', 'Cortina Doral 140x220 Camila', 6, 18000, 'Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(281, 'Cortinas', 'Cortina Doral 140x220 Camila', 2, 18000, 'Burdeo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(282, 'Cortinas', 'Cortina Doral 140x220 Camila', 2, 18000, 'Cafe', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(283, 'Cortinas', 'Cortina Doral 140x220 Camila', 1, 18000, 'Verde Claro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(284, 'Cortinas', 'Cortina Doral 140x220 Isidora', 1, 24000, 'Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(285, 'Cortinas', 'Cortina Doral Victoria BlackOut 8 Piezas', 6, 22000, 'Hueso', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(286, 'Cortinas', 'Cortina Doral Victoria BlackOut 8 Piezas', 1, 22000, 'Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(287, 'Cortinas', 'Cortina Doral Victoria BlackOut 8 Piezas', 1, 22000, 'Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(288, 'Cortinas ', 'Cortina Granulado 140x220 ', 2, 14000, 'Beige', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(289, 'Cortinas ', 'Cortina Oxford 140x220', 4, 14000, 'Beige', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(290, 'Cortinas', 'Cortina Crepe 140x220', 1, 14000, 'Beige', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(291, 'Cortinas', 'Cortina Crepe 140x220', 1, 14000, 'Cafe', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(292, 'Toallas ', 'Toallas Mashini Aqua 2 Piezas', 1, 12000, 'Amarillo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(293, 'Toallas ', 'Toallas Mashini Aqua 2 Piezas', 3, 12000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(294, 'Toallas ', 'Toalla de playa Ninos Elsa Frozen ', 1, 6000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(295, 'Toallas ', 'Toalla de playa Ninos Frozen', 1, 6000, 'Diseno', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(296, 'Toallas', 'Toalla de playa Ninos Paw Patrol con bolsa rosa', 3, 8000, 'Rosado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(297, 'Toallas ', 'Toalla de playa ninos StarWars con bolsa azul', 2, 8000, 'Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(298, 'Toallas', 'Toalla de playa Ninos Paw Patrol con bolsa azul', 3, 8000, 'Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(299, 'Toallas', 'Toalla de playa Ninos Mickey Mouse con bola verde', 2, 8000, 'Verde', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(300, 'Toallas', 'Toalla de playa Ninos Mickey Mouse con bola Negra', 2, 8000, 'Negro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(301, 'Mantas', 'Manta Ninos Frozen 115x130', 3, 6000, 'Celeste', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(302, 'Mantas', 'Manta Ninos Paw Patrol 115x130', 3, 6000, 'Rosado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(303, 'Sabanas Polar', 'Juego de Sabanas Polar Mashini 2Plazas', 1, 16000, 'Rosado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(304, 'Sabanas Polar', 'Juego de Sabanas Polar Mashini 2Plazas', 1, 16000, 'Rosado Claro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(305, 'Sabanas Polar', 'Juego de Sabanas Polar Mashini 2Plazas', 1, 16000, 'Amarillo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(306, 'Sabanas Polar', 'Juego de Sabanas Polar Mashini 2Plazas', 1, 16000, 'Verde', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(307, 'Sabanas Polar', 'Juego de Sabanas Polar Mashini 2Plazas', 1, 16000, 'Gris Oscuro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(308, 'Almohadas', 'Almohada Cannon DownAlernative King 50x90', 5, 18000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(309, 'Almohadas', 'Almohada Cannon DownAlernative 50x70', 8, 16000, 'Blanco', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(310, 'Set de Bano', 'Set Cortina de Banos ONA', 2, 18000, 'Azul', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(311, 'Set de Bano', 'Set Cortina de Banos ONA', 2, 18000, 'Morado', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(312, 'Set de Bano', 'Set Cortina de Banos ONA', 2, 18000, 'Verde', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(313, 'Set de Bano', 'Set Cortina de Banos ONA', 2, 18000, 'Rojo', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(314, 'Set de Bano', 'Set Cortina de Banos Doral', 1, 18000, 'Calipso', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(315, 'Set de Bano', 'Set Cortina de Banos Doral', 1, 18000, 'Gris Claro', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(316, 'Set de Bano', 'Set Cortina de Banos Doral', 1, 18000, 'Gris', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(317, 'Set de Bano', 'Set Cortina de Banos Doral', 1, 18000, 'Cafe', 1, SYSDATE);
-INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha)
+INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(318, 'Almohadas', 'Almohadas Doral 50x70', 40, 10000, 'Blanco', 1, SYSDATE);
 
 --Regiones de Chiles
@@ -1404,4 +1404,4 @@ INSERT INTO OUTLET_Direccion(CODIGO_DIRECCION,NOMBRE_CALLE,NUMERO_DIRECCION,CODI
 INSERT INTO OUTLET_CLIENTE(CODIGO_CLIENTE,TELEFONO_CLIENTE,NOMBRE_CLIENTE,CODIGO_DIRECCION)
         VALUES(0,0,'OUTLET A TU HOGAR',0);
 INSERT INTO OUTLET_USUARIO(RUT_USUARIO, NOMBRE_USUARIO, CONTRASENA_USUARIO, TELEFONO_USUARIO, ROL_USUARIO)
-         VALUES ('213233963', 'Kevin Olivares', '12345678', '12121212', 'Administrador');
+        VALUES ('213233963', 'Kevin Olivares', '12345678', '12121212', 'Administrador');
