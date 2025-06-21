@@ -1,3 +1,5 @@
+// CdeCevin/INGSoftware/my-react-app/client/src/Componentes/Productos/ActualizarProducto.js
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../Estilos/style_menu.css';
@@ -13,7 +15,7 @@ function ActualizarProducto() {
     const [stock, setStock] = useState('');
     const [precio, setPrecio] = useState('');
     const [stockmin, setStockmin] = useState('');
-    const [imagen, setImagen] = useState(null);
+    const [imagen, setImagen] = useState(null); // Almacena el archivo File
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
     const navigate = useNavigate();
@@ -28,22 +30,31 @@ function ActualizarProducto() {
         }
     }, [userRole, navigate]);
 
+    // Función para manejar el cambio en el input de tipo 'file'
+    const handleImageChange = (e) => {
+        setImagen(e.target.files[0]); // Captura el archivo seleccionado
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const formData = {
-            inputNombre: nombre || null,
-            inputCod: codigo,
-            inputStock: stock || null,
-            inputPrecio: precio || null,
-            inputStockmin: stockmin || null,
-            inputImagen: imagen || null,
-        };
+        const formData = new FormData();
+
+        // Anexar todos los campos de texto
+        formData.append('inputNombre', nombre || ''); // Envía cadena vacía si es null/undefined
+        formData.append('inputCod', codigo);
+        formData.append('inputStock', stock || '');
+        formData.append('inputPrecio', precio || '');
+        formData.append('inputStockmin', stockmin || '');
+        
+        if (imagen) {
+            formData.append('input-imagen', imagen); 
+        }
 
         try {
-            const response = await authenticatedFetch('/up_producto', {
-                method: 'POST',
-                body: (formData),
+            const response = await authenticatedFetch(`/up_producto/${codigo}`, {
+                method: 'PUT', // PUT EN VEZ DE POST, no se si debemos cambiarlo en los demás pero para probar
+                body: formData,
             });
 
             if (response.status === 401 || response.status === 403) {
@@ -60,10 +71,11 @@ function ActualizarProducto() {
                 resetForm();
             } else {
                 const errorData = await response.json();
-                setModalMessage(errorData.message);
+                setModalMessage(errorData.message || 'Error desconocido al actualizar el producto.');
             }
         } catch (error) {
-            setModalMessage('Error al enviar el formulario.');
+            console.error('Error al enviar el formulario:', error);
+            setModalMessage('Error de conexión al servidor.');
         } finally {
             setModalIsOpen(true);
         }
@@ -75,6 +87,11 @@ function ActualizarProducto() {
         setStock('');
         setPrecio('');
         setStockmin('');
+        setImagen(null);
+        const fileInput = document.querySelector('input[type="file"][name="input-imagen"]');
+        if (fileInput) {
+            fileInput.value = '';
+        }
     };
 
     const closeModal = () => {
@@ -165,10 +182,9 @@ function ActualizarProducto() {
                             <label>Imagen del Producto</label>
                             <input
                                 type="file"
-                                name="input-imagen"
+                                name="input-imagen" 
                                 accept="image/*"
-                                required
-                                onChange={(e) => setImagen(e.target.files[0])}
+                                onChange={handleImageChange} 
                             />
                         </div>
                     </div>
