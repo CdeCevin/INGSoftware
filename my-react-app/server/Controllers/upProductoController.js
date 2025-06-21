@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         const ext = '.jpg';
-        const codigo = req.body[inputCod];
+        const codigo = req.body['inputCod'];
         if (!codigo) {
             return cb(new Error('Product code is required for filename.'), null);
         }
