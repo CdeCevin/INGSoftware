@@ -165,8 +165,8 @@ textarea {
 
 .telefono-wrapper .cod-area {
   position: absolute;
-  top: 80%;
-  left: 15px;
+  top: 70%;
+  left: 10px;
   transform: translateY(-50%);
   background-color: #eee;
   padding: 6px 10px;
