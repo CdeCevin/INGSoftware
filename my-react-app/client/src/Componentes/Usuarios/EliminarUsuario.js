@@ -79,7 +79,7 @@ function EliminarUsuario() {
                             <h3>Eliminar</h3>
                         <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                             <div>
-                                <label>Rut*</label>
+                                <label>RUT*</label>
                                 <input 
                                     type="text" 
                                     name="Rut_Usuario" 
