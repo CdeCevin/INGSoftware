@@ -158,6 +158,28 @@ textarea {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.telefono-input {
+    position: relative;
+    display: inline-block;
+}
+
+.cod-area {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #eee;
+    padding: 5px 8px;
+    border-radius: 10px;
+    font-size: 0.9em;
+    pointer-events: none;
+    color: #555;
+}
+
+.number-input {
+    padding-left: 60px; /* enough space for the area code bubble */
+}
+
 input:focus,
 select:focus,
 textarea:focus {

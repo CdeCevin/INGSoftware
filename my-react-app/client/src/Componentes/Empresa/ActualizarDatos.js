@@ -114,8 +114,9 @@ function ActualizarDatos() {
                                 onChange={(e) => setNombre(e.target.value)}
                             />
                         </div>
-                        <div>
+                        <div className='telefono-input'>
                             <label>Teléfono</label>
+                            <span className='cod-area'>+56</span>
                             <input
                                 type="text"
                                 name="input-teléfono"
