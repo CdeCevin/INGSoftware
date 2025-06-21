@@ -13,6 +13,7 @@ function ActualizarProducto() {
     const [stock, setStock] = useState('');
     const [precio, setPrecio] = useState('');
     const [stockmin, setStockmin] = useState('');
+    const [imagen, setImagen] = useState(null);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
     const navigate = useNavigate();
@@ -36,6 +37,7 @@ function ActualizarProducto() {
             inputStock: stock || null,
             inputPrecio: precio || null,
             inputStockmin: stockmin || null,
+            inputImagen: imagen || null,
         };
 
         try {
@@ -155,6 +157,16 @@ function ActualizarProducto() {
                                 pattern="[0-9]+"
                                 value={stockmin}
                                 onChange={(e) => setStockmin(e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <label>Imagen del Producto*</label>
+                            <input
+                                type="file"
+                                name="input-imagen"
+                                accept="image/*"
+                                required
+                                onChange={(e) => setImagen(e.target.files[0])}
                             />
                         </div>
                     </div>
