@@ -133,7 +133,6 @@ function IngresoUsuario() {
                                 minLength="9"
                                 maxLength="9"
                                 pattern="[0-9]+"
-                                placeholder='No considere el +56'
                                 required 
                                 value={telefono} 
                                 onChange={(e) => settelefono(e.target.value)} 

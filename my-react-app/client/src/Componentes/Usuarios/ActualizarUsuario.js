@@ -137,7 +137,6 @@ function ActualizarUsuario() {
                                 maxLength="9"
                                 pattern="[0-9]+"
                                 value={telefono}
-                                placeholder='No considere el +56'
                                 onChange={(e) => setTelefono(e.target.value)}
                             />
                         </div>

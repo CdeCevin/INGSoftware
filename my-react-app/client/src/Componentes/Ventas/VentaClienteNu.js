@@ -278,7 +278,6 @@ function VentaClienteNu() {
                                         minLength="9"
                                         maxLength="9"
                                         pattern="[0-9]+"
-                                        placeholder='No considere el +56'
                                         value={telefono}
                                         required
                                         onChange={(e) => setTelefono(e.target.value)}
