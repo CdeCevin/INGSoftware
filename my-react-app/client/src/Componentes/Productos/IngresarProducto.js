@@ -143,8 +143,9 @@ function IngresoProducto() {
                                 onChange={(e) => setStock(e.target.value)}
                             />
                         </div>
-                        <div>
+                        <div className='input-wrapper'>
                             <label>Precio*</label>
+                            <span className='valor'>$</span>
                             <input
                                 type="text"
                                 name="input-precio"
