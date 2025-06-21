@@ -17,7 +17,7 @@ function ActualizarCliente() {
     const [calle, setCalle] = useState('');
     const [numero, setNumero] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [modalMessage, setModalMessage] = useState('');
+    const [modalMessage, setModalMessage,modalType,setModalType] = useState('');
     const navigate = useNavigate();
     const userRole = localStorage.getItem('userRole');
 
@@ -60,13 +60,16 @@ function ActualizarCliente() {
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message);
+                setModalType('exito');
                 resetForm();
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
+                setModalType('error')
             }
         } catch (error) {
             setModalMessage('El cliente no existe o ha ocurrido un error interno.');
+            setModalType('error');
         } finally {
             setModalIsOpen(true);
         }
@@ -198,7 +201,7 @@ function ActualizarCliente() {
                 </fieldset>
                 <button type="submit">Actualizar</button>
             </form>
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-success'}"}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
                 <button onClick={closeModal}>Cerrar</button>
