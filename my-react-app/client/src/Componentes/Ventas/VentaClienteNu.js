@@ -249,6 +249,8 @@ function VentaClienteNu() {
     }
 
     return (
+        <>
+        {paginaActual !== 'VentasPendientes' && (
         <div className="main-block">
             {paginaActual === 'insertCabecera' && (
                 <>
@@ -429,6 +431,7 @@ function VentaClienteNu() {
                             <button onClick={finalizarVenta}>Finalizar Venta</button>
                         </fieldset>
                     )}
+                   
 
                     <Modal isOpen={imageModalIsOpen} onRequestClose={closeModal} contentLabel="Imagen del Producto" className={"custom-modal"}>
                         <h2>Imagen del Producto</h2>
@@ -450,19 +453,23 @@ function VentaClienteNu() {
                         <button onClick={closeModal} className="close-buttonImagen">&times;</button>
                     </Modal>
 
-                    <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>
-                        <h2>Mensaje</h2>
-                        <p>{modalMessage}</p>
-                        <button onClick={closeModal}>Cerrar</button>
-                    </Modal>
+                  
                 </>
-            )}
+                )}
+                </div>
+                )}
             {paginaActual === 'VentasPendientes' && (
                 <>
                     <VentasPendientes />
                 </>
             )}
-        </div>
+            <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>
+                <h2>Mensaje</h2>
+                <p>{modalMessage}</p>
+                <button onClick={closeModal}>Cerrar</button>
+            </Modal>
+            </>
+    
     );
 }
 export default VentaClienteNu;
