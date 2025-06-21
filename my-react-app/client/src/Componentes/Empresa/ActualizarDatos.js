@@ -123,7 +123,6 @@ function ActualizarDatos() {
                                 pattern="[0-9]+"
                                 maxLength="9"
                                 minLength="9"
-                                placeholder='No considere el +56'
                                 value={telefono}
                                 onChange={(e) => setTelefono(e.target.value)}
                             />

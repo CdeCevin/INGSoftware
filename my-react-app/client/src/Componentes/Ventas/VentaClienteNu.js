@@ -269,8 +269,9 @@ function VentaClienteNu() {
                                         onChange={(e) => setNombreC(e.target.value)}
                                     />
                                 </div>
-                                <div>
+                                <div className='telefono-wrapper'>
                                     <label>Teléfono*</label>
+                                    <span className='cod-area'>+56</span>
                                     <input
                                         type="text"
                                         name="input-teléfono"
