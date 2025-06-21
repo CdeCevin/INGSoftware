@@ -60,4 +60,4 @@ const updateProducto = async (req, res) => {
     }
 };
 
-module.exports = { updateProducto };
+module.exports = {upload,  updateProducto };
