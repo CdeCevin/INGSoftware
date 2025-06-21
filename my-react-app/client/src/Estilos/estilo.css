@@ -637,7 +637,7 @@ button:active {
     align-items: center; 
 }
 
-.modal-exito {
+.modal-success {
     border-left: 6px solid #4caf50;
     background-color: #e8f5e9;
     color: #2e7d32;
@@ -648,6 +648,25 @@ button:active {
     background-color: #fdecea;
     color: #c62828;
 }
+
+.btn-error {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-error:hover {
+  background-color: #c62828;
+}
+
+.btn-exito {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-exito:hover {
+  background-color: #388e3c;
+}
+
 
 /* --- Media Queries --- */
 @media screen and (max-width: 700px) {

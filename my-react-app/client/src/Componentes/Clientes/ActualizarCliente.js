@@ -205,7 +205,7 @@ function ActualizarCliente() {
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-success'}`}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
+                <button onClick={closeModal} className={`modal-button ${modalType === 'error' ? 'btn-error' : 'btn-exito'}`}>Cerrar</button>
             </Modal>
         </div>
     );
