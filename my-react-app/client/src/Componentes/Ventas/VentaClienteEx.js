@@ -218,6 +218,7 @@ function VentaClienteEx() {
     }
 
     return (
+        <>
         <div className="main-block">
             {paginaActual === 'insertCabecera' && (
                 <>
@@ -353,7 +354,7 @@ function VentaClienteEx() {
                     )}
                 </>
             )}
-
+            </div>
             {paginaActual === 'VentasPendientes' && (
                 <>
                     <VentasPendientes />
@@ -365,7 +366,8 @@ function VentaClienteEx() {
                 <p>{modalMessage}</p>
                 <button onClick={closeModal}>Cerrar</button>
             </Modal>
-        </div>
+            </>
+        
     );
 }
 
