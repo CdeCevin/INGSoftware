@@ -17,7 +17,8 @@ function ActualizarCliente() {
     const [calle, setCalle] = useState('');
     const [numero, setNumero] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [modalMessage, setModalMessage,modalType,setModalType] = useState('');
+    const [modalMessage, setModalMessage] = useState('');
+    const [modalType, setModalType] = useState('');
     const navigate = useNavigate();
     const userRole = localStorage.getItem('userRole');
 
