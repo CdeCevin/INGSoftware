@@ -97,7 +97,7 @@ function ActualizarUsuario() {
                     <h3>Usuario a Editar</h3>
                     <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                         <div>
-                            <label>Rut*</label>
+                            <label>RUT*</label>
                             <input
                                 type="text"
                                 name="input-rut"
