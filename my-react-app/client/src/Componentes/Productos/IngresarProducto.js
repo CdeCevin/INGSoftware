@@ -152,6 +152,7 @@ function IngresoProducto() {
                                 maxLength="10"
                                 required
                                 value={precio}
+                                placeholder='No considere puntos ni signos'
                                 onChange={(e) => setPrecio(e.target.value)}
                             />
                         </div>
@@ -183,7 +184,7 @@ function IngresoProducto() {
                             <input
                                 type="text"
                                 name="input-stockmin"
-                                maxLength="9"
+                                maxLength="4"
                                 pattern="[0-9]+"
                                 required
                                 value={stockmin}

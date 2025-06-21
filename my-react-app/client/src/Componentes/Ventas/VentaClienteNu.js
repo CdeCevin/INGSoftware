@@ -263,6 +263,7 @@ function VentaClienteNu() {
                                         type="text"
                                         name="input-nombreC"
                                         maxLength="50"
+                                        pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
                                         value={nombreC}
                                         required
                                         onChange={(e) => setNombreC(e.target.value)}
@@ -273,7 +274,10 @@ function VentaClienteNu() {
                                     <input
                                         type="text"
                                         name="input-teléfono"
+                                        minLength="9"
                                         maxLength="9"
+                                        pattern="[0-9]+"
+                                        placeholder='No considere el +56'
                                         value={telefono}
                                         required
                                         onChange={(e) => setTelefono(e.target.value)}
@@ -324,7 +328,8 @@ function VentaClienteNu() {
                                     <input
                                         type="text"
                                         name="input-numero"
-                                        maxLength="100"
+                                        maxLength="4"
+                                        pattern="[0-9]+"
                                         required
                                         value={numero}
                                         onChange={(e) => setNumero(e.target.value)}
@@ -361,6 +366,8 @@ function VentaClienteNu() {
                                     <input
                                         type="text"
                                         name="input-color"
+                                        maxLength="15"
+                                        pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
                                         value={color}
                                         onChange={(e) => setColor(e.target.value)}
                                         placeholder="Color del producto"

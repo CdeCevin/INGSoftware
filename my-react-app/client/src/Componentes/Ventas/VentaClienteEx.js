@@ -232,7 +232,7 @@ function VentaClienteEx() {
                                         type="text"
                                         name="input-cod"
                                         pattern="[0-9]+"
-                                        maxLength="4"
+                                        maxLength="5"
                                         required
                                         value={codigo}
                                         onChange={(e) => setCodigo(e.target.value)}
@@ -270,6 +270,8 @@ function VentaClienteEx() {
                                         type="text"
                                         name="input-color"
                                         value={color}
+                                        maxLength="15"
+                                        pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
                                         onChange={(e) => setColor(e.target.value)}
                                         placeholder="Color del producto"
                                     />

@@ -130,6 +130,7 @@ function ActualizarProducto() {
                                 name="input-precio"
                                 pattern="[0-9]+"
                                 maxLength="10"
+                                placeholder='No considere puntos ni signos'
                                 value={precio}
                                 onChange={(e) => setPrecio(e.target.value)}
                             />
@@ -150,7 +151,7 @@ function ActualizarProducto() {
                             <input
                                 type="text"
                                 name="input-stockmin"
-                                maxLength="9"
+                                maxLength="4"
                                 pattern="[0-9]+"
                                 value={stockmin}
                                 onChange={(e) => setStockmin(e.target.value)}
