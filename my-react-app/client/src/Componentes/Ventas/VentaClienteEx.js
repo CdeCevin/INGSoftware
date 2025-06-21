@@ -219,6 +219,7 @@ function VentaClienteEx() {
 
     return (
         <>
+        {paginaActual !== 'VentasPendientes' && (
         <div className="main-block">
             {paginaActual === 'insertCabecera' && (
                 <>
@@ -355,6 +356,7 @@ function VentaClienteEx() {
                 </>
             )}
             </div>
+            )}
             {paginaActual === 'VentasPendientes' && (
                 <>
                     <VentasPendientes />
