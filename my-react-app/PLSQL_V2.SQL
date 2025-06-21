@@ -747,8 +747,10 @@ set define off;
 )
 IS
 BEGIN
-        DELETE FROM OUTLET_USUARIO
-        WHERE (Rut = Rut_Usuario);
+
+        UPDATE OUTLET_USUARIO
+        SET Activo = 0
+        WHERE (Rut = Rut_Usuario AND Activo = 1);
         EXCEPTION
                 WHEN PROGRAM_ERROR THEN
                       RAISE_APPLICATION_ERROR(-6501,'Error de programa y/o asignación de variables');
@@ -891,7 +893,8 @@ BEGIN
       Telefono_Usuario,
       Nombre_Usuario,
       ROL_Usuario
-    FROM OUTLET_Usuario;
+    FROM OUTLET_Usuario
+    WHERE Activo = 1; 
 END;
 
 /
@@ -1275,7 +1278,7 @@ BEGIN
         LOCK TABLE OUTLET_PRODUCTO IN ROW EXCLUSIVE MODE;
         UPDATE OUTLET_USUARIO
         SET Nombre_Usuario = nombre, Contrasena_Usuario = contrasena, Telefono_Usuario = Telefono, ROL_Usuario = tipo
-        WHERE(RUT_Usuario = Rut);
+        WHERE(RUT_Usuario = Rut and Activo = 1);
 
         rows_update := SQL%ROWCOUNT;
         IF rows_update = 0 THEN

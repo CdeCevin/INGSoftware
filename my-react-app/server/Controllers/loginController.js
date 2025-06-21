@@ -14,7 +14,7 @@ async function login(req, res) {
     const result = await conn.execute(
       `SELECT Contrasena_Usuario, ROL_Usuario
        FROM OUTLET_USUARIO
-       WHERE RUT_Usuario = :p_rut`,
+       WHERE RUT_Usuario = :p_rut and ACTIVO = 1`,
       {
         p_rut: { val: Number(rut), dir: oracledb.BIND_IN, type: oracledb.NUMBER }
       },
