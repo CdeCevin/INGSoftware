@@ -177,7 +177,7 @@ textarea {
   z-index: 2;
 }
 
-.input-wrapper input[type="text"], input[type="number"] {
+.input-wrapper input[type="text"] {
   padding-left: 60px; /* extra space for area code bubble */
 }
 
