@@ -125,7 +125,7 @@ function ActualizarProducto() {
                                 onChange={(e) => setNombre(e.target.value)}
                             />
                         </div>
-                        <div className='input-wrapper'>
+                        <div className='input-wrapper' style={{paddingLeft: "40px"}}>
                             <label>Precio</label>
                             <span className='valor'>$</span>
                             <input
