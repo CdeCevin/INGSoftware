@@ -155,6 +155,7 @@ function IngresoProducto() {
                                 value={precio}
                                 placeholder='No considere puntos ni signos'
                                 onChange={(e) => setPrecio(e.target.value)}
+                                style={{paddingLeft: "40px"}}
                             />
                         </div>
                         <div>
