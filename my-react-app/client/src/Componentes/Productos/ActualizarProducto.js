@@ -160,7 +160,7 @@ function ActualizarProducto() {
                             />
                         </div>
                         <div>
-                            <label>Imagen del Producto*</label>
+                            <label>Imagen del Producto</label>
                             <input
                                 type="file"
                                 name="input-imagen"

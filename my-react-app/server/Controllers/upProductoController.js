@@ -1,6 +1,22 @@
 const oracledb = require('oracledb');
 const { getConnection } = require('../db/connection');
 
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, '..', 'public', 'images', 'outlet'));
+    },
+    filename: (req, file, cb) => {
+        const ext = '.jpg';
+        const codigo = req.body['input-cod'];
+        if (!codigo) {
+            return cb(new Error('Product code is required for filename.'), null);
+        }
+        cb(null, `${codigo}${ext}`);
+    },
+});
+
+const upload = multer({ storage: storage });
+
 const updateProducto = async (req, res) => {
     const { inputNombre, inputCod, inputStock, inputPrecio, inputStockmin } = req.body;
     console.log(inputNombre, inputCod, inputStock, inputPrecio, inputStockmin);
