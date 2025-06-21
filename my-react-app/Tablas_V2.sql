@@ -24,8 +24,10 @@ CREATE TABLE OUTLET_Usuario(
         Contrasena_Usuario VARCHAR2(60),
         Telefono_Usuario NUMBER,
         ROL_Usuario VARCHAR2(15),
+        Activo NUMBER DEFAULT 1,
         CONSTRAINT OUTLET_Usuario PRIMARY KEY (RUT_Usuario)
 );
+
 
 CREATE TABLE OUTLET_Auditoria(
         Codigo_Auditoria NUMBER,
@@ -119,3 +121,7 @@ WHERE Stock_Minimo IS NULL;
 UPDATE OUTLET_Cliente
 SET Telefono_Cliente = 974330900
 WHERE Codigo_Cliente = 0;
+
+UPDATE OUTLET_Usuario
+SET Activo = 1
+WHERE Activo IS NULL;

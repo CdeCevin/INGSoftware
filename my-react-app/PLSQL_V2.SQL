@@ -535,45 +535,45 @@ END;
 --------------------------------------------------------
 --  DDL for Procedure OBTENERTOPPRODUCTOS
 --------------------------------------------------------
-set define off;
+        set define off;
 
-  CREATE OR REPLACE NONEDITIONABLE PROCEDURE "CEVIN"."OBTENERTOPPRODUCTOS" (
-    p_FechaInicio IN DATE DEFAULT NULL,
-    p_FechaFin IN DATE DEFAULT NULL,
-    cursor_resultado OUT SYS_REFCURSOR
-)
-IS
-    v_FechaInicio DATE;
-    v_FechaFin DATE;
-BEGIN
-    -- Si no se proporciona fecha de inicio, usamos hace 1 mes por defecto
-    IF p_FechaInicio IS NULL THEN
-        v_FechaInicio := TO_DATE('2021-01-01', 'YYYY-MM-DD');
-    ELSE
-        v_FechaInicio := p_FechaInicio;
-    END IF;
+        CREATE OR REPLACE NONEDITIONABLE PROCEDURE "CEVIN"."OBTENERTOPPRODUCTOS" (
+        p_FechaInicio IN DATE DEFAULT NULL,
+        p_FechaFin IN DATE DEFAULT NULL,
+        cursor_resultado OUT SYS_REFCURSOR
+        )
+        IS
+        v_FechaInicio DATE;
+        v_FechaFin DATE;
+        BEGIN
+        -- Si no se proporciona fecha de inicio, usamos hace 1 mes por defecto
+        IF p_FechaInicio IS NULL THEN
+                v_FechaInicio := TO_DATE('2021-01-01', 'YYYY-MM-DD');
+        ELSE
+                v_FechaInicio := p_FechaInicio;
+        END IF;
 
-    -- Si no se proporciona fecha de fin, usamos SYSDATE (hoy)
-    IF p_FechaFin IS NULL THEN
-        v_FechaFin := SYSDATE;
-    ELSE
-        v_FechaFin := p_FechaFin;
-    END IF;
+        -- Si no se proporciona fecha de fin, usamos SYSDATE (hoy)
+        IF p_FechaFin IS NULL THEN
+                v_FechaFin := SYSDATE;
+        ELSE
+                v_FechaFin := p_FechaFin;
+        END IF;
 
-    OPEN cursor_resultado FOR
-        SELECT M.Nombre_Producto,
-               SUM(C.Cantidad) AS Total_Cantidad,
-               SUM(C.Precio_Total) AS Total_Ventas
-        FROM OUTLET_Cuerpo_Comprobante_Pago C
-        JOIN OUTLET_PRODUCTO M ON C.Codigo_Producto = M.Codigo_Producto
-        JOIN OUTLET_Cabecera_Comprobante_Pago CP ON C.Codigo_Comprobante_Pago = CP.Codigo_Comprobante_Pago
-        WHERE CP.Fecha BETWEEN v_FechaInicio AND v_FechaFin
-        AND CP.Estado = 1
-        GROUP BY M.Nombre_Producto
-        ORDER BY Total_Cantidad DESC, Total_Ventas DESC;
-END;
+        OPEN cursor_resultado FOR
+                SELECT M.Nombre_Producto,
+                SUM(C.Cantidad) AS Total_Cantidad,
+                SUM(C.Precio_Total) AS Total_Ventas
+                FROM OUTLET_Cuerpo_Comprobante_Pago C
+                JOIN OUTLET_PRODUCTO M ON C.Codigo_Producto = M.Codigo_Producto
+                JOIN OUTLET_Cabecera_Comprobante_Pago CP ON C.Codigo_Comprobante_Pago = CP.Codigo_Comprobante_Pago
+                WHERE CP.Fecha BETWEEN v_FechaInicio AND v_FechaFin
+                AND CP.Estado = 1
+                GROUP BY M.Nombre_Producto
+                ORDER BY Total_Cantidad DESC, Total_Ventas DESC;
+        END;
 
-/
+        /
 --------------------------------------------------------
 --  DDL for Procedure OBTENERVENTASMENSUALES
 --------------------------------------------------------

@@ -20,7 +20,7 @@ Cypress.Commands.add('login', (usuario, contraseña) => {
 Cypress.Commands.add('loginApi', () => {
   cy.request('POST', '/api/login', {
     usuario: '213233963',
-    password: '1234'
+    password: '12345678'
   }).then((resp) => {
     window.localStorage.setItem('token', resp.body.token);
   });
