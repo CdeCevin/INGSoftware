@@ -7,7 +7,7 @@ const router = express.Router();
 const storage = multer.memoryStorage();
 const upload  = multer({ storage });
 
-const { insertUsuario } = require('../../Controllers/anUserController');
+const { insertUsuario } = require('../../Controllers/Usuarios/anUserController');
 
 // Ahora sí importamos upload.none()
 router.post('/', upload.none(), insertUsuario);
