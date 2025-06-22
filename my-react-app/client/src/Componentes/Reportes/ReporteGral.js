@@ -102,7 +102,7 @@ function ReporteGral() {
                         <div className="ventas-totales-item">
                             <h2>${ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>
                         </div>
-                        <div className="ventas-totales-item" style={{alignSelf:'center'}}>
+                        <div className="ventas-totales-item">
                             <label>Desde</label>
                             <input
                                 type="date"
