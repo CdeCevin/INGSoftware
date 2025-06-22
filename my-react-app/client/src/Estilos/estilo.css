@@ -637,21 +637,20 @@ button:active {
     align-items: center; 
 }
 
-.modal-pequeno {
-  width: 25% !important;
-  height: 35% !important;
-}
-
 .modal-exito {
     border-left: 6px solid #4CAF50  ;
     background-color: #e8f5e9;
     color: #2e7d32;
+    width: 25% !important;
+    height: 35% !important;
 }
 
 .modal-error {
     border-left: 6px solid #F44336;
     background-color: #fdecea;
     color: #c62828;
+    width: 25% !important;
+    height: 35% !important;
 }
 
 .btn-error {
