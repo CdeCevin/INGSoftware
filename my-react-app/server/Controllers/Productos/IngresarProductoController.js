@@ -4,7 +4,7 @@ const { getConnection } = require('../../db/connection');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, '..', 'public', 'images', 'outlet'));
+        cb(null, path.join(__dirname, '../../', 'public', 'images', 'outlet'));
     },
     filename: (req, file, cb) => {
         const ext = '.jpg';
