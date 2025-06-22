@@ -1,9 +1,12 @@
 describe('Listado de Productos - Verificación de la tabla y datos del backend', () => {
+  beforeEach(() => {
+    cy.loginApi();
+  })
   it('Debería cargar y mostrar la lista de productos obtenida del backend', () => {
     cy.intercept('GET', '/api/products').as('listadoProductos');
 
     //Visitar la página del listado de productos
-    cy.visit('http://localhost:3000/ListadoProductos'); 
+    cy.visit('http://localhost:3000/ListadoProducto'); 
 
     //Esperar que la petición de obtener productos se complete.
     cy.wait('@listadoProductos').then((interception) => {

@@ -1,6 +1,9 @@
 //modificar, debido a que no lo puedo modificar sin ser admin, ni siquiera pude entrar bien
 
 describe('Eliminar Producto - Verificación de petición', () => {
+  beforeEach(() => {
+    cy.loginApi();
+  })
   it('Envía la petición correctamente al backend', () => {
 
     cy.intercept('POST', '/api/eliminarUsuario').as('eliminarUsuario');
@@ -15,7 +18,7 @@ describe('Eliminar Producto - Verificación de petición', () => {
     cy.wait('@eliminarUsuario').then((intercept) => {
       expect(intercept.response.statusCode).to.eq(200);
       expect(intercept.request.body).to.include({
-      INRut: '111112223', 
+      Rut_Usuario: '111112223', 
       });
     });
     cy.contains('Usuario eliminado').should('be.visible');

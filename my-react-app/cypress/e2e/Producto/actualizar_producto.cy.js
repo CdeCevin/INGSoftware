@@ -1,4 +1,7 @@
 describe('Actualizar Producto - Verificación de petición', () => {
+  beforeEach(() => {
+    cy.loginApi();
+  })
   it('Envía la petición correctamente al backend', () => {
 
     cy.intercept('POST', '/api/up_producto/').as('actualizarProducto');

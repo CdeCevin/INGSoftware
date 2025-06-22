@@ -18,10 +18,12 @@ Cypress.Commands.add('login', (usuario, contraseña) => {
 });
 
 Cypress.Commands.add('loginApi', () => {
-  cy.request('POST', '/api/login', {
-    usuario: '213233963',
+  cy.request('POST', 'http://localhost:3001/api/login', {
+    rut: 213233963,
     password: '12345678'
   }).then((resp) => {
     window.localStorage.setItem('token', resp.body.token);
+    window.localStorage.setItem('userRole', resp.body.userRole || 'Administrador');
+    window.localStorage.setItem('userRut', resp.body.userRut || '213233963');
   });
 });

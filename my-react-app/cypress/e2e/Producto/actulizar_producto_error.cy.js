@@ -1,4 +1,7 @@
 describe('Actualizar producto - producto no encontrado', () => {
+  beforeEach(() => {
+    cy.loginApi();
+  })
   it('muestra un error si el código no existe', () => {
     cy.intercept('POST', '/api/up_producto/', {
       statusCode: 404,
