@@ -1,5 +1,5 @@
 const oracledb = require('oracledb');
-const { getConnection } = require('../db/connection');
+const { getConnection } = require('../../db/connection');
  
 const insertCliente = async (req, res) => {
     const { INnombre, INtelefono, INregion, INciudad, INcalle, INnumero, currentUserRut} = req.body;
