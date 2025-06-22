@@ -899,38 +899,50 @@ button:active {
     }
 }
 
-/* Styles for the main container of your "Ventas Totales" section */
 .ventas-totales-container {
     display: flex;
-    justify-content: space-between; /* Distributes items evenly with space between them */
+    /* Changed justify-content to flex-start or a more controlled distribution */
+    /* Based on your screenshot, items are not "space-between" across the whole width.
+       They are closer together, possibly with a leading margin and then consistent gaps. */
+    justify-content: flex-start; /* Aligns items to the start of the container */
     align-items: center; /* Vertically aligns all items in the center */
     flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
-    gap: 40px; /* Provides consistent spacing between flex items horizontally and vertically */
-    padding: 15px 0; /* Add some padding if needed around the content */
-    /* Remove the inline style margin-left: 50px from the first div in JSX; handle below */
+    gap: 30px; /* Adjust this value for consistent horizontal spacing between the main items */
+    padding: 15px 20px; /* Add padding to the container itself for overall spacing from edges */
+    background-color: #fff; /* Assuming a white background as per image */
+    border-radius: 8px; /* Slightly rounded corners for the container */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-/* Specific left margin for the first item (adjust as needed) */
-.ventas-totales-item.input-group { /* Assuming you added 'input-group' class to the divs wrapping label/input */
-    display: flex; /* Make this a flex container */
-    flex-direction: column; /* Stack label and input vertically */
-    align-items: center; /* Horizontally center the label and input within their group */
+/* Styles for each individual item/group within the container (the four inner divs) */
+.ventas-totales-item {
+    display: flex; /* Make each item a flex container */
+    align-items: center; /* Vertically centers content (label, input, h2, button) within each item */
+    /* Remove any individual margin-left or fixed widths if you want flexbox to handle distribution */
+}
+
+/* Specific left margin for the first item (the $316000 value) */
+/* This is likely what's creating the initial left spacing in your screenshot */
+.ventas-totales-item:first-child {
+    /* If justify-content is flex-start, this margin will push it from the left.
+       If you want more control, you could use padding on the container or a larger gap. */
+    margin-left: 0; /* Let padding on container handle this, or remove if you want items closer to edge */
 }
 
 /* Styles for the H2 inside the first item */
 .ventas-totales-item h2 {
     margin: 0; /* Remove default margin from h2 for better alignment */
     font-size: 2em; /* Example font size, adjust as needed */
+    color: #4CAF50; /* Example color, adjust to match your design */
+    font-weight: normal; /* Often h2 has bold, if you want lighter as in screenshot */
 }
 
 /* Spacing between label and input */
-.ventas-totales-item.input-group label { /* Target label within the new input-group */
-    margin-right: 0; /* Remove the horizontal margin */
-    margin-bottom: 5px; /* Add some vertical space between label and input */
-    font-weight: bold;
-    text-align: center; /* Ensure label text is centered */
+.ventas-totales-item label {
+    margin-right: 8px; /* Space between label and input */
+    font-weight: normal; /* Based on screenshot, label text isn't bold */
+    color: #555; /* A slightly darker gray for readability */
 }
-
 
 /* Styles for the date input fields */
 .ventas-totales-item input[type="date"] {
@@ -938,6 +950,7 @@ button:active {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1em;
+    /* min-width: 120px; /* Optional: give inputs a minimum width to keep them consistent */
 }
 
 .ventas-totales-item button {
