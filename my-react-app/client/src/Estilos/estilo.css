@@ -913,7 +913,7 @@ button:active {
     /* Card-like styling to match your screenshot */
     background-color: #fff; /* White background */
     border-radius: 8px; /* Slightly rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    align-self: center;
 }
 /* Styles for the H2 element (e.g., "$316000") */
 .ventas-totales-item h2 {
@@ -928,28 +928,20 @@ button:active {
 /* This targets the <div> that wraps your <label> and <input> */
 /* ------------------------------------------------------------------ */
 .ventas-totales-item.input-group {
-    display: flex; /* Makes this wrapper a flex container */
-    flex-direction: column; /* Stacks the label above the input */
-    align-items: flex-start; /* Aligns label and input to the left within their column */
-
-    /* ***** THE KEY ADJUSTMENT FOR VERTICAL ALIGNMENT ***** */
-    /* This negative margin pulls the entire input-group DIV upwards.
-       The value (-10px) is an approximation of half the label's height + its bottom margin.
-       You might need to fine-tune this value slightly (e.g., -8px, -12px)
-       based on the exact computed font-size/line-height of your label for pixel-perfect alignment.
-       If your label's font-size is 16px and margin-bottom is 5px, (16+5)/2 = 10.5px. So -10.5px is ideal.
-    */
-    margin-top: -10px; /* Adjust this value! */
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    margin-top: -25px; 
 }
 
-/* Styling for the label itself within the input-group */
+
 .ventas-totales-item.input-group label {
-    margin-bottom: 5px; /* Space between the label and the input below it */
-    margin-right: 0; /* Ensure no horizontal margin remains */
-    font-weight: normal; /* Normal font weight for labels */
-    color: #555; /* Dark gray color for readability */
-    text-align: left; /* Aligns the label text itself to the left */
-    width: 100%; /* Ensures the label text can take full width within its column */
+    margin-bottom: 5px; 
+    margin-right: 0; 
+    font-weight: normal; 
+    color: #555; 
+    text-align: left; 
+    width: 100%; 
 }
 
 /* Styling for the date input fields */
