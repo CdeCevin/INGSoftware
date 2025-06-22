@@ -643,6 +643,7 @@ button:active {
     color: #2e7d32;
     width: 25% !important;
     height: 35% !important;
+    min-height: fit-content;
 }
 
 .modal-error {
@@ -651,6 +652,7 @@ button:active {
     color: #c62828;
     width: 25% !important;
     height: 35% !important;
+    min-height: fit-content;
 }
 
 .btn-error {
