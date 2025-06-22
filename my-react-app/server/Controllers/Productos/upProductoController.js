@@ -9,7 +9,7 @@ const multer = require('multer');
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         // La ruta de destino es server/public/images/outlet
-        cb(null, path.join(__dirname, '..', 'public', 'images', 'outlet'));
+        cb(null, path.join(__dirname, '../../', 'public', 'images', 'outlet'));
     },
     filename: (req, file, cb) => {
         const ext = '.jpg'; // Forzando a JPG
