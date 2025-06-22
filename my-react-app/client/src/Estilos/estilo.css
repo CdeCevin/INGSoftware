@@ -359,6 +359,7 @@ button:active {
 
 .sidebar .Cerrar-button:hover {
     background-color: #d8d8d8;
+    color: #333;
     cursor: pointer;
 }
 
