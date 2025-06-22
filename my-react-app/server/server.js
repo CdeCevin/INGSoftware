@@ -42,10 +42,10 @@ const insertCabeceraRoutes = require('./Routes/insertCabecera');
 const insertCuerpoRoutes = require('./Routes/insertCuerpo');
 
 // Usuarios
-const ingresarUsuarioRoutes = require('./Routes/IngresarUsuario');
-const eliminarUsuarioRoutes = require('./Routes/eliminarUsuario');
-const userListRoutes = require('./Routes/userList');
-const upUserRoutes = require('./Routes/upUser');
+const ingresarUsuarioRoutes = require('./Routes/Usuarios/IngresarUsuario');
+const eliminarUsuarioRoutes = require('./Routes/Usuarios/eliminarUsuario');
+const userListRoutes = require('./Routes/Usuarios/userList');
+const upUserRoutes = require('./Routes/Usuarios/upUser');
 
 // Login
 const loginRoutes = require('./Routes/login');

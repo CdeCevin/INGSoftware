@@ -1,6 +1,6 @@
 // controllers/userController.js
 const oracledb = require('oracledb');
-const { getConnection } = require('../db/connection');
+const { getConnection } = require('../../db/connection');
 
 async function getUsuarios(req, res) {
   let conn;

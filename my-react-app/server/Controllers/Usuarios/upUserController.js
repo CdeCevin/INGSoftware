@@ -1,6 +1,6 @@
 // controllers/upUserController.js
 const oracledb = require('oracledb');
-const { getConnection } = require('../db/connection');
+const { getConnection } = require('../../db/connection');
 const bcrypt = require('bcrypt');
 
 const saltRounds = 12;

@@ -1,5 +1,5 @@
 // Controllers/anUserController.js
-const { getConnection } = require('../db/connection');
+const { getConnection } = require('../../db/connection');
 const bcrypt = require('bcrypt'); // Importar bcrypt
 
 const saltRounds = 12; // Número de rondas de sal para bcrypt (un valor seguro es 10-12)
