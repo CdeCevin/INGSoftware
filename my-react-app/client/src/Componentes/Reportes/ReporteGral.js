@@ -101,7 +101,7 @@ function ReporteGral() {
                         <div className="ventas-totales-item">
                             <h2>${ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>
                         </div>
-                        <div className="ventas-totales-item"> {/* No more input-group class here */}
+                        <div className="ventas-totales-item input-group"> {/* This div acts as a vertical stack */}
                             <label>Desde</label>
                             <input
                                 type="date"
@@ -109,7 +109,7 @@ function ReporteGral() {
                                 onChange={(e) => setFechaInicio(e.target.value)}
                             />
                         </div>
-                        <div className="ventas-totales-item"> {/* No more input-group class here */}
+                        <div className="ventas-totales-item input-group"> {/* This div acts as a vertical stack */}
                             <label>Hasta</label>
                             <input
                                 type="date"
@@ -122,8 +122,7 @@ function ReporteGral() {
                                 <i className="fa fa-search"></i>
                             </button>
                         </div>
-                    </div>
-                </fieldset>
+                    </div>           </fieldset>
             </form>
             <fieldset>
                 <h3>Top Productos</h3>
