@@ -12,11 +12,11 @@ require('dotenv').config({ path: path.join(projectRootPath, '.env') });
 const { verifyToken, authorizeRole } = require('../middleware/authMiddleware');
 
 // Clientes
-const buscarClienteRoutes = require('./Routes/buscarCliente');
-const eliminarClienteRoutes = require('./Routes/eliminarCliente');
-const clientListRoutes = require('./Routes/clientList');
-const upClientesRoutes = require('./Routes/upCliente');
-const anClienteRoutes = require('./Routes/anCliente');
+const buscarClienteRoutes = require('./Routes/Clientes/buscarCliente');
+const eliminarClienteRoutes = require('./Routes/Clientes/eliminarCliente');
+const clientListRoutes = require('./Routes/Clientes/clientList');
+const upClientesRoutes = require('./Routes/Clientes/upCliente');
+const anClienteRoutes = require('./Routes/Clientes/anCliente');
 
 // Empresa
 const datosEmpresaRoutes = require('./Routes/datosEmpresa');

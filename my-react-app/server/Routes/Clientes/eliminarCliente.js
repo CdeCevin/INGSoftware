@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { buscarCliente } = require('../Controllers/buscarClienteController');
+const { eliminarCliente } = require('../Controllers/Clientes/eliminarClienteController');
  
 // Ruta para obtener las ventas pendientes
-router.post('/', buscarCliente);
+router.post('/', eliminarCliente);
 
 
 
