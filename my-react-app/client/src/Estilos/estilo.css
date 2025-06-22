@@ -358,8 +358,8 @@ button:active {
 }
 
 .sidebar .Cerrar-button:hover {
-    background-color: #d8d8d8;
-    color: #333;
+    background-color: #d8d8d8 !important;
+    color: #333 !important;
     cursor: pointer;
 }
 
