@@ -1,5 +1,5 @@
 const oracledb = require('oracledb');
-const connection = require('../db/connection'); // Importa tu conexión
+const connection = require('../../db/connection'); // Importa tu conexión
 
 // Función para obtener la lista de clientes con dirección completa
 const getClients = async (req, res) => {
