@@ -161,7 +161,6 @@ textarea {
 .input-wrapper {
   position: relative;
   width: 100%;
-  z-index: 500;
 }
 
 .input-wrapper .valor {
@@ -180,7 +179,6 @@ textarea {
 
 .input-wrapper input[type="text"] {
   padding-left: 60px; /* extra space for area code bubble */
-  z-index: 2;
 }
 
 input:focus,
