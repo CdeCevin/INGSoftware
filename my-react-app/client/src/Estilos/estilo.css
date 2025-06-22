@@ -899,64 +899,66 @@ button:active {
     }
 }
 
-.ventas-totales-container {
-    display: flex; /* Enables Flexbox for horizontal layout */
-    justify-content: flex-start; /* Aligns items to the start of the container */
-    align-items: center; /* Vertically aligns all direct children (h2, input-groups, button) to the center */
-    flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
-    gap: 30px; /* Provides consistent spacing between the main flex items horizontally and vertically */
-    padding: 15px 20px; /* Padding inside the container, giving space from its edges */
+/*REPORTE*/
 
-    /* Card-like styling from your screenshot */
+.ventas-totales-container {
+    display: flex; /* Enables Flexbox for horizontal alignment */
+    justify-content: flex-start; /* Aligns items to the beginning of the container */
+    align-items: center; /* This vertically centers ALL direct children of this container.
+                            We will adjust the input-group specifically to align its input. */
+    flex-wrap: wrap; /* Allows items to wrap onto the next line if space is limited */
+    gap: 30px; /* Provides consistent spacing between the main items */
+    padding: 15px 20px; /* Internal padding for the container (space from its edges) */
+
+    /* Card-like styling to match your screenshot */
     background-color: #fff; /* White background */
     border-radius: 8px; /* Slightly rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
 }
-
-/* Specific left margin for the first item (e.g., the $ value) */
-/* Use this if you need an explicit offset for the first element that isn't handled by container padding */
-/* .ventas-totales-item:first-child {
-    margin-left: 0; /* Keep this at 0 if padding on container is sufficient for left spacing */
-/* } */
-
-/* Styles for the H2 inside the first item (e.g., "$316000") */
+/* Styles for the H2 element (e.g., "$316000") */
 .ventas-totales-item h2 {
-    margin: 0; /* Remove default margin from h2 for better alignment within flex container */
+    margin: 0; /* Removes default browser margin for better alignment */
     font-size: 2em; /* Adjust font size as needed */
-    color: #4CAF50; /* Green color from screenshot */
+    color: #4CAF50; /* Green color from your screenshot */
     font-weight: normal; /* Lighter font weight as seen in screenshot */
 }
 
-/* ---------------------------------------------------- */
-/* Styles for the label-input groups (e.g., "Desde" and "Hasta" date pickers) */
-/* Apply this to the .ventas-totales-item that also has the .input-group class */
-/* ---------------------------------------------------- */
+/* ------------------------------------------------------------------ */
+/* IMPORTANT: Styles for the label-input groups (e.g., "Desde" and "Hasta" date pickers) */
+/* This targets the <div> that wraps your <label> and <input> */
+/* ------------------------------------------------------------------ */
 .ventas-totales-item.input-group {
-    display: flex; /* Make this div a flex container */
-    flex-direction: column; /* Stack label above input */
-    /* Align label and input horizontally within their own column */
-    align-items: flex-start; /* Aligns them to the left */
-    /* Alternatively, for horizontal centering of label/input within their group: */
-    /* align-items: center; */
+    display: flex; /* Makes this wrapper a flex container */
+    flex-direction: column; /* Stacks the label above the input */
+    align-items: flex-start; /* Aligns label and input to the left within their column */
+
+    /* ***** THE KEY ADJUSTMENT FOR VERTICAL ALIGNMENT ***** */
+    /* This negative margin pulls the entire input-group DIV upwards.
+       The value (-10px) is an approximation of half the label's height + its bottom margin.
+       You might need to fine-tune this value slightly (e.g., -8px, -12px)
+       based on the exact computed font-size/line-height of your label for pixel-perfect alignment.
+       If your label's font-size is 16px and margin-bottom is 5px, (16+5)/2 = 10.5px. So -10.5px is ideal.
+    */
+    margin-top: -10px; /* Adjust this value! */
 }
 
-/* Spacing and styling for the label within the input-group */
+/* Styling for the label itself within the input-group */
 .ventas-totales-item.input-group label {
-    margin-bottom: 5px; /* Adds vertical space between the label and the input below it */
-    margin-right: 0; /* Ensures no horizontal margin if label wraps */
+    margin-bottom: 5px; /* Space between the label and the input below it */
+    margin-right: 0; /* Ensure no horizontal margin remains */
     font-weight: normal; /* Normal font weight for labels */
     color: #555; /* Dark gray color for readability */
     text-align: left; /* Aligns the label text itself to the left */
-    width: 100%; /* Ensures label takes full available width within its column */
+    width: 100%; /* Ensures the label text can take full width within its column */
 }
 
-/* Styles for the date input fields */
+/* Styling for the date input fields */
 .ventas-totales-item input[type="date"] {
     padding: 8px; /* Internal padding for the input field */
     border: 1px solid #ccc; /* Light gray border */
     border-radius: 4px; /* Slightly rounded corners */
     font-size: 1em; /* Standard font size */
-    /* min-width: 120px; /* Optional: ensures consistent width for date inputs */
+    /* min-width: 120px; /* Optional: ensures consistent width for date inputs if they vary */
 }
 
 /*Modal comprobante*/
