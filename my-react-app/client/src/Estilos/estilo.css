@@ -905,21 +905,16 @@ button:active {
     justify-content: space-between; /* Distributes items evenly with space between them */
     align-items: center; /* Vertically aligns all items in the center */
     flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
-    gap: 20px; /* Provides consistent spacing between flex items horizontally and vertically */
+    gap: 40px; /* Provides consistent spacing between flex items horizontally and vertically */
     padding: 15px 0; /* Add some padding if needed around the content */
     /* Remove the inline style margin-left: 50px from the first div in JSX; handle below */
 }
 
-/* Styles for each individual item/group within the container (the four inner divs) */
-.ventas-totales-item {
-    display: flex;
-    align-items: center; /* Aligns content (label, input, h2) vertically within each item */
-    /* Removed flex: 1; from here. Let items size based on content. If you want them to distribute space equally, add flex: 1; back here. */
-}
-
 /* Specific left margin for the first item (adjust as needed) */
-.ventas-totales-item:first-child {
-    margin-left: 50px;
+.ventas-totales-item.input-group { /* Assuming you added 'input-group' class to the divs wrapping label/input */
+    display: flex; /* Make this a flex container */
+    flex-direction: column; /* Stack label and input vertically */
+    align-items: center; /* Horizontally center the label and input within their group */
 }
 
 /* Styles for the H2 inside the first item */
@@ -929,10 +924,13 @@ button:active {
 }
 
 /* Spacing between label and input */
-.ventas-totales-item label {
-    margin-right: 8px; /* Space between label and input */
+.ventas-totales-item.input-group label { /* Target label within the new input-group */
+    margin-right: 0; /* Remove the horizontal margin */
+    margin-bottom: 5px; /* Add some vertical space between label and input */
     font-weight: bold;
+    text-align: center; /* Ensure label text is centered */
 }
+
 
 /* Styles for the date input fields */
 .ventas-totales-item input[type="date"] {
@@ -942,6 +940,9 @@ button:active {
     font-size: 1em;
 }
 
+.ventas-totales-item button {
+    align-self: center; /* Ensures the button is centered if it's the only item in its flex container */
+}
 
 /*Modal comprobante*/
 .modal-overlay {

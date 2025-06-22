@@ -102,7 +102,7 @@ function ReporteGral() {
                         <div className="ventas-totales-item">
                             <h2>${ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>
                         </div>
-                        <div className="ventas-totales-item">
+                        <div className="ventas-totales-item input-group">
                             <label>Desde</label>
                             <input
                                 type="date"
@@ -110,7 +110,7 @@ function ReporteGral() {
                                 onChange={(e) => setFechaInicio(e.target.value)}
                             />
                         </div>
-                        <div className="ventas-totales-item">
+                        <div className="ventas-totales-item input-group">
                             <label>Hasta</label>
                             <input
                                 type="date"
