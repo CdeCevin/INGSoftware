@@ -20,6 +20,7 @@ function VentaClienteEx() {
     const [messageModalIsOpen, setMessageModalIsOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const [modalMessage, setModalMessage] = useState("");
+    const [modalType, setModalType] = useState('');
     const currentUserRut = localStorage.getItem('userRut');
     const navigate = useNavigate();
     const userRole = localStorage.getItem('userRole');
@@ -56,12 +57,14 @@ function VentaClienteEx() {
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
+                setModalType('error');
                 setClienteData(null);
                 setMessageModalIsOpen(true);
             }
         } catch (error) {
             console.error('Error al ingresar datos:', error);
             setModalMessage('Error al ingresar datos.');
+            setModalType('error');
             setMessageModalIsOpen(true);
         }
     };
@@ -97,12 +100,14 @@ function VentaClienteEx() {
                 setProductos(data.data);
             } else {
                 setModalMessage('No se encontraron productos con los criterios de búsqueda.');
+                setModalType('error');
                 setMessageModalIsOpen(true);
                 setProductos([]);
             }
         } catch (error) {
             console.error('Error al buscar productos:', error);
             setModalMessage(error.message || 'Error al buscar productos.');
+            setModalType('error');
             setMessageModalIsOpen(true);
             setProductos([]);
         }
@@ -113,12 +118,14 @@ function VentaClienteEx() {
 
         if (cantidadSeleccionada <= 0) {
             setModalMessage("La cantidad debe ser mayor que cero.");
+            setModalType('error');
             setMessageModalIsOpen(true);
             return;
         }
 
         if (cantidadSeleccionada > producto.stock) {
             setModalMessage("Stock insuficiente.");
+            setModalType('error');
             setMessageModalIsOpen(true);
             return;
         }
@@ -129,6 +136,7 @@ function VentaClienteEx() {
                 const nuevaCantidad = existente.cantidad + cantidadSeleccionada;
                 if (nuevaCantidad > producto.stock) {
                     setModalMessage("La cantidad total en el carrito excede el stock disponible.");
+                    setModalType('error');
                     setMessageModalIsOpen(true);
                     return prevCarrito;
                 }
@@ -147,6 +155,7 @@ function VentaClienteEx() {
     const finalizarVenta = async () => {
         if (carrito.length === 0) {
             setModalMessage("El carrito está vacío. Agregue productos antes de finalizar la venta.");
+            setModalType('error');
             setMessageModalIsOpen(true);
             return;
         }
@@ -173,17 +182,20 @@ function VentaClienteEx() {
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage("Venta finalizada exitosamente.");
+                setModalType('exito');
                 setMessageModalIsOpen(true);
                 setCarrito([]);
                 setPaginaActual('VentasPendientes');
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
+                setModalType('error');
                 setMessageModalIsOpen(true);
             }
         } catch (error) {
             console.error('Error al finalizar la venta:', error);
             setModalMessage('Error al finalizar la venta.');
+            setModalType('error');
             setMessageModalIsOpen(true);
         }
     };
@@ -363,10 +375,10 @@ function VentaClienteEx() {
                 </>
             )}
 
-            <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>
+            <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-exito'}`}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
+                <button onClick={closeModal} className={`modal-button ${modalType === 'error' ? 'btn-error' : 'btn-exito'}`}>Cerrar</button>
             </Modal>
             </>
         
