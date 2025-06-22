@@ -117,7 +117,7 @@ function BuscarCliente() {
                 </fieldset>
             )}
 
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-exito'}`}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={`custom-modal .modal-pequeno ${modalType === 'error' ? 'modal-error' : 'modal-exito'}`}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
                 <button onClick={closeModal} className={`modal-button ${modalType === 'error' ? 'btn-error' : 'btn-exito'}`}>Cerrar</button>
