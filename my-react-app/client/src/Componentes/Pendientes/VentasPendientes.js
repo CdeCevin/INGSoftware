@@ -11,6 +11,7 @@ const ListadoPendientes = () => {
     const [visibleTables, setVisibleTables] = useState({});
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [modalType, setModalType] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -86,13 +87,16 @@ const ListadoPendientes = () => {
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message);
+                setModalType('exito');
                 setPendientes((prevPendientes) => prevPendientes.filter(venta => venta.idVenta !== idVenta));
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
+                setModalType('error');
             }
         } catch (err) {
             setModalMessage('Error al realizar la venta.');
+            setModalType('error');
         } finally {
             setModalIsOpen(true);
         }
@@ -117,12 +121,15 @@ const ListadoPendientes = () => {
                 const data = await response.json();
                 setModalMessage(data.message);
                 setPendientes((prevPendientes) => prevPendientes.filter(venta => venta.idVenta !== idVenta));
+                setModalType('exito');
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
+                setModalType('error');
             }
         } catch (err) {
             setModalMessage('Error al cancelar la venta.');
+            setModalType('error');
         } finally {
             setModalIsOpen(true);
         }
@@ -225,10 +232,10 @@ const ListadoPendientes = () => {
                 <p>No hay ventas pendientes.</p>
             )}
 
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={"custom-modal"}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-exito'}`}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
+                <button onClick={closeModal} className={`modal-button ${modalType === 'error' ? 'btn-error' : 'btn-exito'}`}>Cerrar</button>
             </Modal>
         </div>
     );

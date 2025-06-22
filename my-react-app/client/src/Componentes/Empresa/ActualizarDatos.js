@@ -17,6 +17,7 @@ function ActualizarDatos() {
     const [numero, setNumero] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [modalType, setModalType] = useState('');
     const navigate = useNavigate();
     const userRole = localStorage.getItem('userRole');
 
@@ -58,13 +59,16 @@ function ActualizarDatos() {
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message);
+                setModalType('exito');
                 resetForm();
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
+                setModalType('error');
             }
         } catch (error) {
             setModalMessage('Error al enviar el formulario.');
+            setModalType('error');
         } finally {
             setModalIsOpen(true);
         }
@@ -177,10 +181,10 @@ function ActualizarDatos() {
                 </fieldset>
                 <button type="submit">Actualizar</button>
             </form>
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-exito'}`}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
+                <button onClick={closeModal} className={`modal-button ${modalType === 'error' ? 'btn-error' : 'btn-exito'}`}>Cerrar</button>
             </Modal>
         </div>
     );
