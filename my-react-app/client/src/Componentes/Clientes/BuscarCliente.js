@@ -12,6 +12,7 @@ function BuscarCliente() {
     const [clienteData, setClienteData] = useState(null);
     const [modalMessage, setModalMessage] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalType, setModalType] = useState('');
     const navigate = useNavigate();
     const userRole = localStorage.getItem('userRole');
 
@@ -45,15 +46,18 @@ function BuscarCliente() {
                 setClienteData(data);
                 setModalMessage('Cliente encontrado');
                 setModalIsOpen(false);
+                setModalType('exito');
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
                 setClienteData(null);
                 setModalIsOpen(true);
+                setModalType('error');
             }
         } catch (error) {
             setModalMessage('Error al buscar cliente.');
             setModalIsOpen(true);
+            setModalType('error');
         }
     };
 
@@ -114,10 +118,10 @@ function BuscarCliente() {
                 </fieldset>
             )}
 
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-success'}`}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
+                <button onClick={closeModal} className={`modal-button ${modalType === 'error' ? 'btn-error' : 'btn-exito'}`}>Cerrar</button>
             </Modal>
         </div>
     );

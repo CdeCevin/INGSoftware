@@ -11,6 +11,7 @@ function EliminarCliente() {
     const [codigo, setCodigo] = useState('');
     const [modalMessage, setModalMessage] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalType, setModalType] = useState('');
     const navigate = useNavigate();
     const userRole = localStorage.getItem('userRole');
 
@@ -42,12 +43,15 @@ function EliminarCliente() {
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message);
+                setModalType('exito');
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
+                setModalType('error');
             }
         } catch (error) {
             setModalMessage('El cliente no existe o ha ocurrido un error interno.');
+            setModalType('error');
         } finally {
             setModalIsOpen(true);
         }
@@ -87,10 +91,10 @@ function EliminarCliente() {
                 </fieldset>
                 <button type="submit">Eliminar</button>
             </form>
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-success'}`}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
+                <button onClick={closeModal} className={`modal-button ${modalType === 'error' ? 'btn-error' : 'btn-exito'}`}>Cerrar</button>
             </Modal>
         </div>
     );

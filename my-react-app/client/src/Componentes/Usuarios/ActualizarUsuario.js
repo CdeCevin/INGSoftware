@@ -21,6 +21,7 @@ function ActualizarUsuario() {
     const [tipo, setTipo] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false); 
     const [modalMessage, setModalMessage] = useState(''); 
+    const [modalType, setModalType] = useState('');
 
     // --- MODIFICACIONES CLAVE AQUÍ: Lógica de verificación de rol y redirección ---
     useEffect(() => {
@@ -64,14 +65,17 @@ function ActualizarUsuario() {
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message); 
+                setModalType('exito');
                 resetForm();
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message || 'Error al actualizar el usuario.'); 
+                setModalType('error');
             }
         } catch (error) {
             console.error('Error al enviar el formulario:', error);
             setModalMessage('No se pudo conectar al servidor o un error inesperado ocurrió.'); 
+            setModalType('error');
         } finally {
             setModalIsOpen(true); // El modal se sigue usando para los mensajes de éxito/fracaso de la operación (no de la autenticación)
         }
@@ -169,10 +173,10 @@ function ActualizarUsuario() {
                 <button type="submit">Actualizar</button>
             </form>
             {/* El modal se usa solo para mensajes de éxito/error de la operación de actualización */}
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-success'}`}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
+                <button onClick={closeModal} className={`modal-button ${modalType === 'error' ? 'btn-error' : 'btn-exito'}`}>Cerrar</button>
             </Modal>
         </div>
     );

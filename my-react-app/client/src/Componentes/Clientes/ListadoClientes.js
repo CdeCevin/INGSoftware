@@ -10,7 +10,7 @@ const ListadoClientes = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     const userRole = localStorage.getItem('userRole');
-
+    
     useEffect(() => {
         document.title = 'Listado Clientes';
         const allowedRoles = ['Administrador', 'Vendedor'];
