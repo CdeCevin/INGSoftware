@@ -637,25 +637,25 @@ button:active {
     align-items: center; 
 }
 
-.modal-success {
-    border-left: 6px solid #4caf50;
+.modal-exito {
+    border-left: 6px solid #4CAF50  ;
     background-color: #e8f5e9;
     color: #2e7d32;
 }
 
 .modal-error {
-    border-left: 6px solid #f44336;
+    border-left: 6px solid #F44336;
     background-color: #fdecea;
     color: #c62828;
 }
 
 .btn-error {
-  background-color: #f44336;
+  background-color: #F44336;
   color: white;
 }
 
 .btn-error:hover {
-  background-color: #c62828;
+  background-color: #e53935;
 }
 
 .btn-exito {
@@ -664,7 +664,7 @@ button:active {
 }
 
 .btn-exito:hover {
-  background-color: #388e3c;
+  background-color: #45a049 ;
 }
 
 

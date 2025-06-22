@@ -173,7 +173,7 @@ function ActualizarUsuario() {
                 <button type="submit">Actualizar</button>
             </form>
             {/* El modal se usa solo para mensajes de éxito/error de la operación de actualización */}
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-success'}`}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-exito'}`}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
                 <button onClick={closeModal} className={`modal-button ${modalType === 'error' ? 'btn-error' : 'btn-exito'}`}>Cerrar</button>
