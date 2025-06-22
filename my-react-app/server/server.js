@@ -34,7 +34,7 @@ const eliminarProductoRoutes = require('./Routes/Productos/eliminarProducto');
 const buscarProductoRoutes = require('./Routes/Productos/buscarProducto');
 
 // Reportes
-const reportesRoutes = require('./Routes/reportes');
+const reportesRoutes = require('./Routes/Reportes/reportes');
 
 // Ventas
 const historialVentasRoutes = require('./Routes/Ventas/historialVentas');
