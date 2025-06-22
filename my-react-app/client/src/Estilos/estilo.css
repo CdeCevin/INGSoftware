@@ -175,7 +175,7 @@ textarea {
   font-size: 14px;
   color: #555;
   pointer-events: none;
-  z-index: 2;
+  z-index: 500;
 }
 
 .input-wrapper input[type="text"] {
