@@ -319,7 +319,7 @@ function VentaClienteNu() {
                                     <input
                                         type="text"
                                         name="input-calle"
-                                        maxLength="100"
+                                        maxLength="60"
                                         required
                                         value={calle}
                                         onChange={(e) => setCalle(e.target.value)}

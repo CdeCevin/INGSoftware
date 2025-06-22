@@ -161,7 +161,7 @@ function ActualizarDatos() {
                             <input
                                 type="text"
                                 name="input-calle"
-                                maxLength="100"
+                                maxLength="60"
                                 value={calle}
                                 onChange={(e) => setCalle(e.target.value)}
                             />
