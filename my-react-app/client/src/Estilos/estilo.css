@@ -903,7 +903,7 @@ button:active {
 
 .ventas-totales-container {
     display: flex; /* Enables Flexbox for horizontal alignment */
-    justify-content: flex-start; /* Aligns items to the beginning of the container */
+    justify-content: center; /* Aligns items to the beginning of the container */
     align-items: center; /* This vertically centers ALL direct children of this container.
                             We will adjust the input-group specifically to align its input. */
     flex-wrap: wrap; /* Allows items to wrap onto the next line if space is limited */
@@ -913,7 +913,6 @@ button:active {
     /* Card-like styling to match your screenshot */
     background-color: #fff; /* White background */
     border-radius: 8px; /* Slightly rounded corners */
-    align-self: center;
 }
 /* Styles for the H2 element (e.g., "$316000") */
 .ventas-totales-item h2 {
