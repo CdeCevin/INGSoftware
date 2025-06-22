@@ -622,7 +622,7 @@ button:active {
     margin-top: auto;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     position: fixed; /**/
-    z-index: 1000;
+    z-index: 5000;
     top: 50%;
     left: 45%;
     transform: translate(-50%, -50%);
@@ -640,6 +640,7 @@ button:active {
     width: 25% !important;
     height: 35% !important;
     min-height: fit-content;
+    z-index: 5000;
 }
 
 .modal-error {
@@ -649,6 +650,7 @@ button:active {
     width: 25% !important;
     height: 35% !important;
     min-height: fit-content;
+    z-index: 5000;
 }
 
 .btn-error {
