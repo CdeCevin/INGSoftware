@@ -10,9 +10,7 @@ const eliminarProducto = async (req, res) => {
   try {
     const { codigo } = req.body; 
 
-    console.log('Código recibido desde el frontend para eliminación:', codigo);
-    
-
+  
     if (isNaN(Number(codigo))) {
         return res.status(400).json({ message: 'El código del producto debe ser un número válido.' });
     }
@@ -23,7 +21,6 @@ const eliminarProducto = async (req, res) => {
 
     try {
         await fs.unlink(imagePath); // Intenta eliminar el archivo
-        console.log(`Imagen ${imageFileName} eliminada con éxito del servidor.`);
     } catch (err) {
 
         if (err.code === 'ENOENT') {
@@ -46,9 +43,9 @@ const eliminarProducto = async (req, res) => {
       { autoCommit: true } // Confirmar la transacción
     );
 
-    res.status(200).json({ message: 'Producto y su imagen asociados eliminados correctamente.' });
+    res.status(200).json({ message: 'Producto eliminado correctamente.' });
   } catch (err) {
-    console.error('Error al eliminar producto o su imagen:', err);
+    console.error('Error al eliminar producto:', err);
     // Un mensaje de error más genérico si no queremos revelar detalles internos
     res.status(500).json({ message: 'Error al eliminar el producto.' });
   } finally {
