@@ -15,6 +15,7 @@ function IngresoUsuario() {
     const [password, setpassword] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [modalType, setModalType] = useState('');
     const navigate = useNavigate(); 
     const userRole = localStorage.getItem('userRole'); 
     
@@ -58,13 +59,16 @@ function IngresoUsuario() {
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message);
+                setModalType('exito');
                 resetForm();
             } else {
                 const errorData = await response.json();
+                setModalType('error');
                 setModalMessage(errorData.message);
             }
         } catch (error) {
             setModalMessage('Error al enviar el formulario o problema de conexión.');
+            setModalType('error');
         } finally {
             setModalIsOpen(true);
         }
@@ -168,10 +172,10 @@ function IngresoUsuario() {
                 </fieldset>
                 <button type="submit">Añadir Usuario</button>
             </form>
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-exito'}`}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
+                <button onClick={closeModal} className={`modal-button ${modalType === 'error' ? 'btn-error' : 'btn-exito'}`}>Cerrar</button>
             </Modal>
         </div>
     );

@@ -13,6 +13,7 @@ function EliminarUsuario() {
     const [Rut_Usuario, setRut_Usuario] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
     const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
+    const [modalType, setModalType] = useState('');
 
     useEffect(() => {
         document.title = 'Agregar Usuario';
@@ -46,12 +47,15 @@ function EliminarUsuario() {
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message);
+                setModalType('exito');
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
+                setModalType('error');
             }
         } catch (error) {
             setModalMessage('El usuario no existe o ha ocurrido un error interno.');
+            setModalType('error');
         } finally {
             setModalIsOpen(true);
         }
@@ -97,10 +101,10 @@ function EliminarUsuario() {
                     <button type="submit">Eliminar</button>
                 </form>
             {/* Modal para mostrar mensajes */}
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-exito'}`}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
+                <button onClick={closeModal} className={`modal-button ${modalType === 'error' ? 'btn-error' : 'btn-exito'}`}>Cerrar</button>
             </Modal>
         </div>
     );

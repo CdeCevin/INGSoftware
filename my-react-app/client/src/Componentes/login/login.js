@@ -70,7 +70,7 @@ const LoginForm = () => {
                                 pattern="[0-9]+"
                                 minLength="8"
                                 maxLength="9"
-                                placeholder='No considere puntos ni guión'
+                                placeholder='Ej: 272062078'
                                 required
                                 value={rut}
                                 onChange={(e) => setRut(e.target.value)}
