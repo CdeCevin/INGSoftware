@@ -12,6 +12,7 @@ function EliminarProducto() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
     const navigate = useNavigate();
+    const [modalType, setModalType] = useState('');
     const userRole = localStorage.getItem('userRole');
 
     useEffect(() => {
@@ -39,17 +40,19 @@ function EliminarProducto() {
                 navigate('/login');
                 return;
             }
-
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message);
+                setModalType('exito');
                 resetForm();
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
+                setModalType('error');
             }
         } catch (error) {
             setModalMessage('Error al enviar el formulario.');
+            setModalType('error');
         } finally {
             setModalIsOpen(true);
         }
@@ -96,10 +99,10 @@ function EliminarProducto() {
                 <button type="submit">Eliminar</button>
             </form>
 
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-exito'}`}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
+                <button onClick={closeModal} className={`modal-button ${modalType === 'error' ? 'btn-error' : 'btn-exito'}`}>Cerrar</button>
             </Modal>
         </div>
     );

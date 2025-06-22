@@ -40,7 +40,6 @@ function BuscarCliente() {
                 navigate('/login');
                 return;
             }
-
             if (response.ok) {
                 const data = await response.json();
                 setClienteData(data);

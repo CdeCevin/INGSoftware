@@ -15,6 +15,7 @@ const BuscarProducto = () => {
     const [messageModalIsOpen, setMessageModalIsOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const [modalMessage, setModalMessage] = useState("");
+    const [modalType, setModalType] = useState('');
     const navigate = useNavigate();
     const userRole = localStorage.getItem('userRole');
 
@@ -51,6 +52,7 @@ const BuscarProducto = () => {
                 const errorData = await response.json();
                 setModalMessage(errorData.message || 'Error al buscar producto.');
                 setMessageModalIsOpen(true);
+                setModalType('error');
                 setProductos([]);
                 return;
             }
@@ -63,11 +65,14 @@ const BuscarProducto = () => {
             } else {
                 setProductos([]);
                 setModalMessage('No se encontraron productos con los criterios de búsqueda.');
+                setModalType('error');
                 setMessageModalIsOpen(true);
+
             }
         } catch (error) {
             setProductos([]);
             setModalMessage('Error al buscar productos. Inténtalo de nuevo.');
+            setModalType('error');
             setMessageModalIsOpen(true);
         }
     };
@@ -186,10 +191,10 @@ const BuscarProducto = () => {
                 </fieldset>
             )}
 
-            <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={"custom-modal"}>
+            <Modal isOpen={messageModalIsOpen} onRequestClose={closeModal} ariaHideApp={false} className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-exito'}`}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
+                <button onClick={closeModal} className={`modal-button ${modalType === 'error' ? 'btn-error' : 'btn-exito'}`}>Cerrar</button>
             </Modal>
         </div>
     );

@@ -18,6 +18,7 @@ function ActualizarProducto() {
     const [imagen, setImagen] = useState(null); // Almacena el archivo File
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [modalType, setModalType] = useState('');
     const navigate = useNavigate();
     const userRole = localStorage.getItem('userRole');
 
@@ -68,14 +69,17 @@ function ActualizarProducto() {
             if (response.ok) {
                 const data = await response.json();
                 setModalMessage(data.message);
+                setModalType('exito');
                 resetForm();
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message || 'Error desconocido al actualizar el producto.');
+                setModalType('error');
             }
         } catch (error) {
             console.error('Error al enviar el formulario:', error);
             setModalMessage('Error de conexión al servidor.');
+            setModalType('error');
         } finally {
             setModalIsOpen(true);
         }
@@ -192,10 +196,10 @@ function ActualizarProducto() {
                 <button type="submit">Actualizar</button>
             </form>
 
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={"custom-modal"}>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-exito'}`}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>
-                <button onClick={closeModal}>Cerrar</button>
+                <button onClick={closeModal} className={`modal-button ${modalType === 'error' ? 'btn-error' : 'btn-exito'}`}>Cerrar</button>
             </Modal>
         </div>
     );
