@@ -102,7 +102,7 @@ function ReporteGral() {
                         <div className="ventas-totales-item">
                             <h2>${ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>
                         </div>
-                        <div className="ventas-totales-item">
+                        <div className="ventas-totales-item" style={{alignSelf:'center'}}>
                             <label>Desde</label>
                             <input
                                 type="date"
@@ -120,7 +120,7 @@ function ReporteGral() {
                         </div>
                         <div className="ventas-totales-item">
                             {/* Apply the button class */}
-                            <button type="submit" className="btn">
+                            <button type="submit" className="btn mini-boton">
                                 <i className="fa fa-search"></i>
                             </button>
                         </div>
