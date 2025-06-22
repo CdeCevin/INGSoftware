@@ -1,5 +1,5 @@
 const oracledb = require('oracledb');
-const { getConnection } = require('../db/connection');
+const { getConnection } = require('../../db/connection');
 
 const insertCabecera = async (req, res) => {
     

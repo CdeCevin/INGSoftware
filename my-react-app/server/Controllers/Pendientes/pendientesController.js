@@ -1,5 +1,5 @@
 const oracledb = require('oracledb');
-const { getConnection } = require('../db/connection');
+const { getConnection } = require('../../db/connection');
 const { Console } = require('console');
 
 const obtenerPendientes = async (req, res) => {

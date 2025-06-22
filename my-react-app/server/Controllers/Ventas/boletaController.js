@@ -1,7 +1,7 @@
 //Tengo este codigo en ./controllers/boletaController.js
 
 const oracledb = require('oracledb');
-const { getConnection } = require('../db/connection');
+const { getConnection } = require('../../db/connection');
 
 async function boleta(req, res) {
     let connection;

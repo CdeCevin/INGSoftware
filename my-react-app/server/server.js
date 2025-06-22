@@ -19,11 +19,11 @@ const upClientesRoutes = require('./Routes/Clientes/upCliente');
 const anClienteRoutes = require('./Routes/Clientes/anCliente');
 
 // Empresa
-const datosEmpresaRoutes = require('./Routes/datosEmpresa');
-const upEmpresaRoutes = require('./Routes/upEmpresa');
+const datosEmpresaRoutes = require('./Routes/Empresa/datosEmpresa');
+const upEmpresaRoutes = require('./Routes/Empresa/upEmpresa');
 
 // Pendientes
-const pendientesRoutes = require('./Routes/pendientes');
+const pendientesRoutes = require('./Routes/Pendientes/pendientes');
 
 // Productos
 const ingresarProductosRoutes = require('./Routes/Productos/IngresarProductos');
@@ -37,9 +37,9 @@ const buscarProductoRoutes = require('./Routes/Productos/buscarProducto');
 const reportesRoutes = require('./Routes/reportes');
 
 // Ventas
-const historialVentasRoutes = require('./Routes/historialVentas');
-const insertCabeceraRoutes = require('./Routes/insertCabecera');
-const insertCuerpoRoutes = require('./Routes/insertCuerpo');
+const historialVentasRoutes = require('./Routes/Ventas/historialVentas');
+const insertCabeceraRoutes = require('./Routes/Ventas/insertCabecera');
+const insertCuerpoRoutes = require('./Routes/Ventas/insertCuerpo');
 
 // Usuarios
 const ingresarUsuarioRoutes = require('./Routes/Usuarios/IngresarUsuario');

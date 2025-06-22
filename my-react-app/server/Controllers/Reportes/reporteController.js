@@ -1,5 +1,5 @@
 const oracledb = require('oracledb');
-const { getConnection } = require('../db/connection');
+const { getConnection } = require('../../db/connection');
 
 // Función para obtener las ventas mensuales
 const obtenerVentasMensuales = async (req, res) => {

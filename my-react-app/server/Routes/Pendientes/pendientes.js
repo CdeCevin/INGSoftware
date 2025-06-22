@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { obtenerPendientes, cancelarPendiente, realizarPendiente } = require('../Controllers/pendientesController');
+const { obtenerPendientes, cancelarPendiente, realizarPendiente } = require('../../Controllers/Pendientes/pendientesController');
 
 // Ruta para obtener las ventas pendientes
 router.get('/', obtenerPendientes);

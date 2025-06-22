@@ -3,7 +3,7 @@ const {
   obtenerVentasMensuales,
   obtenerTopProductos,
   obtenerProductosMenosVendidos,
-} = require('../Controllers/reporteController'); // Asegúrate de importar todas las funciones
+} = require('../../Controllers/Reportes/reporteController'); // Asegúrate de importar todas las funciones
 
 const router = express.Router();
 
