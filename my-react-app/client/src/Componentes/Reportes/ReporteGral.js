@@ -120,7 +120,7 @@ function ReporteGral() {
                         </div>
                         <div className="ventas-totales-item">
                             {/* Apply the button class */}
-                            <button type="submit" className="btn mini-boton">
+                            <button type="submit" className="btn">
                                 <i className="fa fa-search"></i>
                             </button>
                         </div>
