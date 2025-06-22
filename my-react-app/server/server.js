@@ -48,7 +48,7 @@ const userListRoutes = require('./Routes/Usuarios/userList');
 const upUserRoutes = require('./Routes/Usuarios/upUser');
 
 // Login
-const loginRoutes = require('./Routes/login');
+const loginRoutes = require('./Routes/login/login');
 
 const app = express();
 

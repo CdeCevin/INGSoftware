@@ -1,6 +1,6 @@
 // controllers/loginController.js
 const oracledb = require('oracledb');
-const { getConnection } = require('../db/connection');
+const { getConnection } = require('../../db/connection');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken'); // <-- Agrega esta línea para importar jsonwebtoken
 
