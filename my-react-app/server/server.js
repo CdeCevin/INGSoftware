@@ -26,12 +26,12 @@ const upEmpresaRoutes = require('./Routes/upEmpresa');
 const pendientesRoutes = require('./Routes/pendientes');
 
 // Productos
-const ingresarProductosRoutes = require('./Routes/IngresarProductos');
-const productListRoutes = require('./Routes/productList');
-const upProductoRoutes = require('./Routes/upProducto');
-const stockCriticoRoutes = require('./Routes/stockCritico');
-const eliminarProductoRoutes = require('./Routes/eliminarProducto');
-const buscarProductoRoutes = require('./Routes/buscarProducto');
+const ingresarProductosRoutes = require('./Routes/Productos/IngresarProductos');
+const productListRoutes = require('./Routes/Productos/productList');
+const upProductoRoutes = require('./Routes/Productos/upProducto');
+const stockCriticoRoutes = require('./Routes/Productos/stockCritico');
+const eliminarProductoRoutes = require('./Routes/Productos/eliminarProducto');
+const buscarProductoRoutes = require('./Routes/Productos/buscarProducto');
 
 // Reportes
 const reportesRoutes = require('./Routes/reportes');

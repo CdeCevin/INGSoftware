@@ -3,7 +3,7 @@
 const express = require('express');
 // Asegúrate de que 'path' esté importado si no lo está, ya que se usa en el controlador para Multer
 const path = require('path'); 
-const { upload, updateProducto } = require('../Controllers/upProductoController');
+const { upload, updateProducto } = require('../../Controllers/Productos/upProductoController');
 
 const router = express.Router();
 // La ruta ahora espera el código del producto en la URL

@@ -1,5 +1,5 @@
 const oracledb = require('oracledb');
-const { getConnection } = require('../db/connection');
+const { getConnection } = require('../../db/connection');
 
 const buscarProducto = async (req, res) => {
     const { 'input-nombre': nombre, 'input-color': color } = req.body;

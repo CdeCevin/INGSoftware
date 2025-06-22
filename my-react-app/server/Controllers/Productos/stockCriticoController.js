@@ -1,6 +1,6 @@
 
 const oracledb = require('oracledb');
-const { getConnection } = require('../db/connection');
+const { getConnection } = require('../../db/connection');
 
 const obtenerProductosBajoStock = async (req, res) => {
     let connection;

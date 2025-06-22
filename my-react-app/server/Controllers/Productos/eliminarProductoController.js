@@ -1,5 +1,5 @@
 const oracledb = require('oracledb');
-const { getConnection } = require('../db/connection'); // Importa correctamente
+const { getConnection } = require('../../db/connection'); // Importa correctamente
 
 const eliminarProducto = async (req, res) => {
   let connection;

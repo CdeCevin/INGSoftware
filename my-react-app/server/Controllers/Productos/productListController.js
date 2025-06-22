@@ -1,5 +1,5 @@
 const oracledb = require('oracledb');
-const connection = require('../db/connection'); // Importa tu conexión
+const connection = require('../../db/connection'); // Importa tu conexión
 
 // Función para obtener la lista de productos activos
 const getProducts = async (req, res) => {

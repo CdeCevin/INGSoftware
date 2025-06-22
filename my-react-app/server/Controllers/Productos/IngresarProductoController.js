@@ -1,6 +1,6 @@
 const multer = require('multer');
 const path = require('path');
-const { getConnection } = require('../db/connection');
+const { getConnection } = require('../../db/connection');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

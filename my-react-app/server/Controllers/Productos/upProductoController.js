@@ -2,7 +2,7 @@
 
 const oracledb = require('oracledb');
 const path = require('path'); // Asegúrate de que 'path' está importado
-const { getConnection } = require('../db/connection');
+const { getConnection } = require('../../db/connection');
 const multer = require('multer');
 
 // Configuración de Multer
