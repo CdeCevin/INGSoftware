@@ -98,11 +98,10 @@ function ReporteGral() {
                     <h3>Ventas Totales</h3>
                     {/* Apply the main container class */}
                     <div className="ventas-totales-container">
-                        {/* Apply the item class to each div */}
                         <div className="ventas-totales-item">
                             <h2>${ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>
                         </div>
-                        <div className="ventas-totales-item input-group">
+                        <div className="ventas-totales-item"> {/* No more input-group class here */}
                             <label>Desde</label>
                             <input
                                 type="date"
@@ -110,7 +109,7 @@ function ReporteGral() {
                                 onChange={(e) => setFechaInicio(e.target.value)}
                             />
                         </div>
-                        <div className="ventas-totales-item input-group">
+                        <div className="ventas-totales-item"> {/* No more input-group class here */}
                             <label>Hasta</label>
                             <input
                                 type="date"
@@ -119,7 +118,6 @@ function ReporteGral() {
                             />
                         </div>
                         <div className="ventas-totales-item">
-                            {/* Apply the button class */}
                             <button type="submit" className="btn mini-boton">
                                 <i className="fa fa-search"></i>
                             </button>
