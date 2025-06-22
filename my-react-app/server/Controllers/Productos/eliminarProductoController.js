@@ -1,34 +1,63 @@
+// CdeCevin/INGSoftware/my-react-app/server/Controllers/Productos/eliminarProductoController.js
+
 const oracledb = require('oracledb');
+const path = require('path'); // ¡Necesitamos 'path' para construir la ruta del archivo!
+const fs = require('fs').promises; // Usamos la versión de promesas de 'fs' para operaciones asíncronas
 const { getConnection } = require('../../db/connection'); // Importa correctamente
 
 const eliminarProducto = async (req, res) => {
   let connection;
   try {
-    const { codigo } = req.body;
+    const { codigo } = req.body; 
 
-    // Verifica que el código no sea indefinido
-    console.log('Código recibido desde el frontend:', codigo);
+    console.log('Código recibido desde el frontend para eliminación:', codigo);
     
+
+    if (isNaN(Number(codigo))) {
+        return res.status(400).json({ message: 'El código del producto debe ser un número válido.' });
+    }
+
+    const imageFileName = `${codigo}.jpg`; 
+
+    const imagePath = path.join(__dirname, '../../', 'public', 'images', 'outlet', imageFileName);
+
+    try {
+        await fs.unlink(imagePath); // Intenta eliminar el archivo
+        console.log(`Imagen ${imageFileName} eliminada con éxito del servidor.`);
+    } catch (err) {
+
+        if (err.code === 'ENOENT') {
+      
+            console.warn(`Advertencia: La imagen ${imageFileName} no se encontró en el servidor.`);
+        } else {
+            console.error(`Error al eliminar la imagen ${imageFileName}:`, err);
+        }
+    }
+
     // Establece la conexión
     connection = await getConnection(); // Llama a la función de conexión
 
-    // Ejecuta el procedimiento almacenado
+    // Ejecuta el procedimiento almacenado para eliminar el producto de la DB
     await connection.execute(
       `BEGIN OUTLET_Elim_Producto(:p_codigo); END;`,
       {
         p_codigo: parseInt(codigo) // Asegúrate de que el código sea un número
-      }
+      },
+      { autoCommit: true } // Confirmar la transacción
     );
 
-    await connection.commit();
-
-    res.status(200).json({ message: 'Producto eliminado correctamente.' });
+    res.status(200).json({ message: 'Producto y su imagen asociados eliminados correctamente.' });
   } catch (err) {
-    console.error('Error al eliminar producto:', err);
+    console.error('Error al eliminar producto o su imagen:', err);
+    // Un mensaje de error más genérico si no queremos revelar detalles internos
     res.status(500).json({ message: 'Error al eliminar el producto.' });
   } finally {
     if (connection) {
-      await connection.close();
+      try {
+        await connection.close();
+      } catch (err) {
+        console.error('Error cerrando la conexión:', err);
+      }
     }
   }
 };
