@@ -637,6 +637,11 @@ button:active {
     align-items: center; 
 }
 
+.modal-pequeno {
+  width: 25% !important;
+  height: 35% !important;
+}
+
 .modal-exito {
     border-left: 6px solid #4CAF50  ;
     background-color: #e8f5e9;
