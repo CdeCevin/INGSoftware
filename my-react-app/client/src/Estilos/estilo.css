@@ -505,6 +505,7 @@ button:active {
 .tabla-productos{
     table-layout: auto;
     align-self: center;
+    
 }
 
 .tabla-productos th, .tabla-productos td {
