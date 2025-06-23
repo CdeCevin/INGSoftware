@@ -519,6 +519,7 @@ BEGIN
     END IF;
 
     OPEN cursor_resultado FOR
+        SELECT * FROM (
         SELECT M.Nombre_Producto,
                SUM(C.Cantidad) AS Total_Cantidad,
                SUM(C.Precio_Total) AS Total_Ventas
@@ -529,7 +530,7 @@ BEGIN
         AND CP.Estado = 1
         GROUP BY M.Nombre_Producto
         ORDER BY Total_Cantidad ASC, Total_Ventas ASC;
-        FETCH FIRST 10 ROWS ONLY;
+        ) WHERE ROWNUM <= 10;
 END;
 
 /
@@ -562,6 +563,7 @@ END;
         END IF;
 
         OPEN cursor_resultado FOR
+        SELECT * FROM(
                 SELECT M.Nombre_Producto,
                 SUM(C.Cantidad) AS Total_Cantidad,
                 SUM(C.Precio_Total) AS Total_Ventas
@@ -572,7 +574,7 @@ END;
                 AND CP.Estado = 1
                 GROUP BY M.Nombre_Producto
                 ORDER BY Total_Cantidad DESC, Total_Ventas DESC;
-                FETCH FIRST 10 ROWS ONLY;
+                )WHERE ROWNUM <= 10; 
         END;
 
         /
