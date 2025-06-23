@@ -150,7 +150,10 @@ function VentaClienteEx() {
         });
 
         setCantidad(prevState => ({ ...prevState, [producto.codigo_producto]: 0 }));
-    };
+        setModalMessage("Producto añadido al carrito exitosamente.");
+        setModalType('exito');
+        setMessageModalIsOpen(true);
+    };  
 
     const finalizarVenta = async () => {
         if (carrito.length === 0) {
