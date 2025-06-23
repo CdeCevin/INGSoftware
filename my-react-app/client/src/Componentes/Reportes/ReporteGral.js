@@ -136,7 +136,7 @@ function ReporteGral() {
                             </tr>
                         </thead>
                         <tbody>
-                            {topProductos.length > 0 && topProductos.length < 10? (
+                            {topProductos.length > 0 ? (
                                 topProductos.map((producto, index) => (
                                     <tr key={index}>
                                         <td>{producto[0]}</td>
