@@ -529,6 +529,7 @@ BEGIN
         AND CP.Estado = 1
         GROUP BY M.Nombre_Producto
         ORDER BY Total_Cantidad ASC, Total_Ventas ASC;
+        FETCH FIRST 10 ROWS ONLY;
 END;
 
 /
@@ -571,6 +572,7 @@ END;
                 AND CP.Estado = 1
                 GROUP BY M.Nombre_Producto
                 ORDER BY Total_Cantidad DESC, Total_Ventas DESC;
+                FETCH FIRST 10 ROWS ONLY;
         END;
 
         /
