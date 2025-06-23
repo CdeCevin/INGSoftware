@@ -119,7 +119,7 @@ function ReporteGral() {
                         </div>
                         <div className="ventas-totales-item">
                             <button type="submit"  className="btn mini-boton">
-                                Filtrar
+                                Filtrar 
                                 <i className="fa fa-search"></i>
                             </button>
                         </div>
