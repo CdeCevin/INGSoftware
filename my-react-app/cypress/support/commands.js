@@ -7,6 +7,8 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
+import 'cypress-file-upload';
+
 Cypress.Commands.add('login', (usuario, contraseña) => {
     cy.visit('http://localhost:3000'); // cambia según tu ruta
 

@@ -11,8 +11,8 @@ describe('Actualizar producto - producto no encontrado', () => {
     cy.visit('http://localhost:3000/ActualizarProducto');
 
     // Ingresar un código inexistente
-    cy.get('input').eq(0).type('9999');
-    cy.get('input').eq(1).clear().type('Cualquiera');
+    cy.get('input').eq(0).type('1000');
+    cy.get('input').eq(1).clear().type('ProductodePrueba');
     cy.get('input').eq(2).clear().type('1000');
     cy.get('input').eq(3).clear().type('10');
     cy.get('input').eq(4).clear().type('2');
