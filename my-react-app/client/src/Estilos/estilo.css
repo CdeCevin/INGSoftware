@@ -555,7 +555,7 @@ button:active {
 }
 
 .btn.mini-boton{
-    width: 50%;
+    width: 100%;
     min-width: 70%;
     margin: 0 !important;
 
@@ -921,7 +921,6 @@ button:active {
     font-size: 2em; /* Adjust font size as needed */
     color: #4CAF50; /* Green color from your screenshot */
     font-weight: normal; /* Lighter font weight as seen in screenshot */
-    display: flex; /* Enables Flexbox for horizontal alignment */
 }
 
 /* ------------------------------------------------------------------ */
