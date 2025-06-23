@@ -918,9 +918,10 @@ button:active {
 /* Styles for the H2 element (e.g., "$316000") */
 .ventas-totales-item h2 {
     margin: 0; /* Removes default browser margin for better alignment */
-    font-size: 3em; /* Adjust font size as needed */
+    font-size: 2em; /* Adjust font size as needed */
     color: #4CAF50; /* Green color from your screenshot */
     font-weight: normal; /* Lighter font weight as seen in screenshot */
+    display: flex; /* Enables Flexbox for horizontal alignment */
 }
 
 /* ------------------------------------------------------------------ */
