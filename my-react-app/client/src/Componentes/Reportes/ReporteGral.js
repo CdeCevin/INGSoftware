@@ -119,8 +119,9 @@ function ReporteGral() {
                         </div>
                         <div className="ventas-totales-item">
                             <button type="submit"  className="btn mini-boton">
-                                Filtrar 
-                                <i className="fa fa-search"></i>
+                                
+                                <i className="fa fa-search"> </i>
+                                  Filtrar  
                             </button>
                         </div>
                     </div>           </fieldset>
