@@ -8,8 +8,10 @@ import { useNavigate } from 'react-router-dom';
 Modal.setAppElement('#root');
 
 function BuscarCliente() {
-    const [codigo, setCodigo] = useState('');
-    const [clienteData, setClienteData] = useState(null);
+    // 1. Cambiamos 'codigo' a 'valorBusqueda'
+    const [valorBusqueda, setValorBusqueda] = useState('');
+    // Adaptamos para manejar un array de clientes
+    const [clientesEncontrados, setClientesEncontrados] = useState([]);
     const [modalMessage, setModalMessage] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalType, setModalType] = useState('');
@@ -27,10 +29,12 @@ function BuscarCliente() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setClientesEncontrados([]); // Limpiar resultados anteriores
         try {
             const response = await authenticatedFetch('/buscarCliente', {
                 method: 'POST',
-                body: {codigo},
+                // 3. Enviamos 'valorBusqueda'
+                body: { valorBusqueda },
             });
 
             if (response.status === 401 || response.status === 403) {
@@ -40,21 +44,41 @@ function BuscarCliente() {
                 navigate('/login');
                 return;
             }
+
             if (response.ok) {
                 const data = await response.json();
-                setClienteData(data);
-                setModalMessage('Cliente encontrado');
-                setModalIsOpen(false);
-                setModalType('exito');
+
+                // 4. Adaptamos la visualización de los resultados
+                // Si la respuesta es un array (múltiples clientes por nombre)
+                // o un objeto único (un cliente por código)
+                if (Array.isArray(data)) {
+                    setClientesEncontrados(data);
+                } else {
+                    // Si es un objeto único, lo ponemos en un array para la tabla
+                    setClientesEncontrados([data]);
+                }
+
+                if (clientesEncontrados.length > 0) { // Verifica si se encontraron clientes
+                    setModalMessage('Cliente(s) encontrado(s).');
+                    setModalType('exito');
+                } else {
+                    setModalMessage('No se encontraron clientes.');
+                    setModalType('error');
+                }
+                setModalIsOpen(false); // O podrías mantener el modal abierto si prefieres
+                                       // para mostrar el mensaje de éxito directamente.
+
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
-                setClienteData(null);
+                setClientesEncontrados([]); // No hay resultados si hay error
                 setModalIsOpen(true);
                 setModalType('error');
             }
         } catch (error) {
+            console.error('Error en la solicitud:', error);
             setModalMessage('Error al buscar cliente.');
+            setClientesEncontrados([]);
             setModalIsOpen(true);
             setModalType('error');
         }
@@ -79,15 +103,15 @@ function BuscarCliente() {
                     <h3>Búsqueda</h3>
                     <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                         <div>
-                            <label>Código*</label>
+                            {/* 2. Cambiamos el label y el input para 'valorBusqueda' */}
+                            <label>Código o Nombre*</label>
                             <input
                                 type="text"
-                                name="input-cod"
-                                pattern="[0-9]+"
-                                maxLength="4"
+                                name="input-busqueda" // Nuevo nombre para el input
+                                // pattern y maxLength eliminados para permitir texto
                                 required
-                                value={codigo}
-                                onChange={(e) => setCodigo(e.target.value)}
+                                value={valorBusqueda}
+                                onChange={(e) => setValorBusqueda(e.target.value)}
                             />
                         </div>
                     </div>
@@ -95,7 +119,8 @@ function BuscarCliente() {
                 <button type="submit">Buscar</button>
             </form>
 
-            {clienteData && (
+            {/* Renderizar la tabla solo si hay clientes encontrados */}
+            {clientesEncontrados.length > 0 && (
                 <fieldset>
                     <h3>Resultados</h3>
                     <table className="venta-table">
@@ -104,14 +129,19 @@ function BuscarCliente() {
                                 <th>NOMBRE</th>
                                 <th>TELÉFONO</th>
                                 <th>DIRECCIÓN</th>
+                                <th>ACTIVO</th> {/* Mostrar si el cliente está activo */}
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>{clienteData.nombres}</td>
-                                <td>{clienteData.telefono}</td>
-                                <td>{clienteData.direccion}</td>
-                            </tr>
+                            {/* Iterar sobre el array de clientes para mostrar cada uno */}
+                            {clientesEncontrados.map((cliente, index) => (
+                                <tr key={index}> {/* Usar un 'key' único, idealmente un ID de cliente */}
+                                    <td>{cliente.nombres}</td>
+                                    <td>{cliente.telefono}</td>
+                                    <td>{cliente.direccion}</td>
+                                    <td>{cliente.activo === 1 ? 'Sí' : 'No'}</td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </fieldset>

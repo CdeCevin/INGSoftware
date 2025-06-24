@@ -445,6 +445,93 @@ BEGIN
 END;
 
 /
+
+
+set define off;
+
+CREATE OR REPLACE NONEDITIONABLE PROCEDURE "CEVIN"."OBTENERINFORMACIONCLIENTE" (
+    p_cod IN NUMBER DEFAULT NULL,
+    p_nombre IN VARCHAR2 DEFAULT NULL,
+    p_clientes_cursor OUT SYS_REFCURSOR
+)
+IS
+BEGIN
+    IF p_cod IS NOT NULL THEN
+        -- Si se proporciona un código, buscar un cliente específico
+        OPEN p_clientes_cursor FOR
+        SELECT
+            cli.ACTIVO,
+            cli.Telefono_Cliente AS Telefono,
+            cli.Nombre_Cliente AS Nombres,
+            dir.Nombre_Calle AS NombreCalle,
+            dir.Numero_Direccion AS NumeroDireccion,
+            ciu.Nombre_Ciudad AS NombreCiudad,
+            reg.Nombre_Region AS NombreRegion
+        FROM
+            OUTLET_Cliente cli
+        LEFT JOIN
+            OUTLET_Direccion dir ON cli.Codigo_Direccion = dir.Codigo_Direccion
+        LEFT JOIN
+            OUTLET_Ciudad ciu ON dir.Codigo_Ciudad = ciu.Codigo_Ciudad
+        LEFT JOIN
+            OUTLET_Region reg ON ciu.Codigo_Region = reg.Codigo_Region
+        WHERE
+            cli.Codigo_Cliente = p_cod;
+    ELSIF p_nombre IS NOT NULL THEN
+        -- Si se proporciona un nombre, buscar clientes por nombre (búsqueda parcial)
+        OPEN p_clientes_cursor FOR
+        SELECT
+            cli.ACTIVO,
+            cli.Telefono_Cliente AS Telefono,
+            cli.Nombre_Cliente AS Nombres,
+            dir.Nombre_Calle AS NombreCalle,
+            dir.Numero_Direccion AS NumeroDireccion,
+            ciu.Nombre_Ciudad AS NombreCiudad,
+            reg.Nombre_Region AS NombreRegion
+        FROM
+            OUTLET_Cliente cli
+        LEFT JOIN
+            OUTLET_Direccion dir ON cli.Codigo_Direccion = dir.Codigo_Direccion
+        LEFT JOIN
+            OUTLET_Ciudad ciu ON dir.Codigo_Ciudad = ciu.Codigo_Ciudad
+        LEFT JOIN
+            OUTLET_Region reg ON ciu.Codigo_Region = reg.Codigo_Region
+        WHERE
+            UPPER(cli.Nombre_Cliente) LIKE UPPER('%' || p_nombre || '%');
+    ELSE
+        -- Si no se proporciona ni código ni nombre, devolver un cursor vacío o todos los clientes (opcional)
+        -- En este caso, devolveremos un cursor vacío.
+        OPEN p_clientes_cursor FOR
+        SELECT
+            NULL AS ACTIVO,
+            NULL AS Telefono,
+            NULL AS Nombres,
+            NULL AS NombreCalle,
+            NULL AS NumeroDireccion,
+            NULL AS NombreCiudad,
+            NULL AS NombreRegion
+        FROM DUAL WHERE 1=0; -- Esto asegura un cursor vacío
+    END IF;
+
+EXCEPTION
+    WHEN OTHERS THEN
+        -- Manejo de errores: Si ocurre alguna excepción, se puede abrir un cursor vacío
+        -- o registrar el error. Para simplicidad, abrimos un cursor vacío aquí.
+        OPEN p_clientes_cursor FOR
+        SELECT
+            NULL AS ACTIVO,
+            NULL AS Telefono,
+            NULL AS Nombres,
+            NULL AS NombreCalle,
+            NULL AS NumeroDireccion,
+            NULL AS NombreCiudad,
+            NULL AS NombreRegion
+        FROM DUAL WHERE 1=0;
+END;
+/
+
+
+
 --------------------------------------------------------
 --  DDL for Procedure OBTENERPEORMUEBLE
 --------------------------------------------------------
