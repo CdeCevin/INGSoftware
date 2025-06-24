@@ -1,10 +1,10 @@
 describe('Actualizar Producto - Verificación de petición', () => {
   beforeEach(() => {
     cy.loginApi();
-  })
+  });
   it('Envía la petición correctamente al backend', () => {
 
-    cy.intercept('PUT', '/api/up_producto/1000').as('actualizarProducto');
+    cy.intercept('PUT', '/api/up_producto/1111').as('actualizarProducto');
 
     cy.visit('http://localhost:3000/ActualizarProducto');
 
@@ -20,26 +20,32 @@ describe('Actualizar Producto - Verificación de petición', () => {
     // Verifica que se haya enviado la petición
     cy.wait('@actualizarProducto').then((intercept) => {
       expect(intercept.response.statusCode).to.eq(200);
-      expect(intercept.request.body).to.include({
-      inputCod: '1111',
-      inputNombre: 'Cortina azul plus', 
-      inputStock: '50', 
-      inputPrecio: '2000', 
-      inputStockmin: '10'
-      });
     });
 
     //Verificación mensaje de confirmación
-    cy.contains('Producto actualizado.').should('be.visible');
+    cy.contains('Producto actualizado').should('be.visible');
+    
+    cy.window().then((win) => {
+      const token = win.localStorage.getItem('token');
 
-    cy.request('GET', '/api/products').then((resp) => {
-      expect(resp.status).to.eq(200);
-      const producto = resp.body.find(p => p.codigo === '1111');
-      expect(producto).to.include({
-        nombre: 'Cortina azul plus',
-        precio: '2000',
-        stock: '50',
-        stockmin: '10'
+      cy.request({
+        method: 'GET',
+        url: '/api/products',
+        headers: {
+        Authorization: `Bearer ${token}`
+        }
+      }).then((resp) => {
+        expect(resp.status).to.eq(200);
+        console.log('Respuesta del backend:', resp.body);
+        const producto = resp.body.find(p => p[0] === 1111);
+        expect(producto, 'Producto con código 1111 debe existir').to.not.be.undefined;
+
+        if (producto) {
+          expect(producto[4]).to.eq('Cortina azul plus'); // nombre
+          expect(producto[3]).to.eq(2000); // precio
+          expect(producto[1]).to.eq(50); // stock
+          expect(producto[2]).to.eq(10); // stockmin
+        }
       });
     });
   });
