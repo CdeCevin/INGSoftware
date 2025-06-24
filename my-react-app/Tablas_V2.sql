@@ -110,18 +110,3 @@ CREATE TABLE OUTLET_Ventas_Pendientes (
     CONSTRAINT PK_Ventas_Pendientes PRIMARY KEY(ID_Venta_Pendiente)
 );
 ALTER TABLE OUTLET_Ventas_Pendientes ADD CONSTRAINT FK_Ventas_Pendientes_Cabecera_Comprobante_Pago FOREIGN KEY (Codigo_Comprobante_Pago) REFERENCES OUTLET_Cabecera_Comprobante_Pago (Codigo_Comprobante_Pago);
-
----------------------------------------------------------------------
---------------------UPDATE DE VALORES--------------------------------
----------------------------------------------------------------------
-UPDATE OUTLET_Producto
-SET Stock_Minimo = 1
-WHERE Stock_Minimo IS NULL;
-
-UPDATE OUTLET_Cliente
-SET Telefono_Cliente = 974330900
-WHERE Codigo_Cliente = 0;
-
-UPDATE OUTLET_Usuario
-SET Activo = 1
-WHERE Activo IS NULL;

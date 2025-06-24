@@ -15,9 +15,9 @@ describe('Listado de Productos - Verificación de la tabla y datos del backend',
     });
 
     //Verificar que el título de la página "Listado de Productos" sea visible
-    cy.contains('h1', 'Listado de Productos').should('be.visible'); // Asumiendo que es un h1
+    cy.contains('h1', 'Listado de Productos').should('be.visible'); 
 
-    //Verificar que la tabla esté visible. (La imagen no muestra clase/ID, así que usamos `table`)
+    //Verificar que la tabla esté visible.
     cy.get('table.venta-table').should('be.visible');
 
     //Verificar los encabezados de la tabla

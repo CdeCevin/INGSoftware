@@ -10,26 +10,26 @@ describe('Ingresar Usuario nuevo- Verificación de petición', () => {
 
     cy.visit('http://localhost:3000/AgregarUsuarios');
 
-    cy.get('input').eq(0).clear().type('UsuarioDePrueba'); //nombre
-    cy.get('input').eq(1).clear().type('210176651'); //rut
+    cy.get('input').eq(0).clear().type('Juan Perez'); //nombre
+    cy.get('input').eq(1).clear().type('210176653'); //rut
     cy.get('input').eq(2).clear().type('912345678'); //telefono
-    cy.contains('label', 'Tipo de Usuario').next('select').select('Administrador');
+    cy.contains('label', 'Tipo de Usuario').next('select').select('Administrador'); // selección de tipo usuario
     cy.get('input').eq(3).clear().type('11112222'); //contraseña
 
-    cy.get('button').contains('Añadir').click(); //precionar boton actualizar
+    cy.get('button').contains('Añadir').click(); //presionar boton actualizar
 
     // Verifica que se haya enviado la petición
     cy.wait('@ingresarUsuario').then((intercept) => {
       expect(intercept.response.statusCode).to.eq(200);
       expect(intercept.request.body).to.include({
-      INnombre: 'UsuarioDePrueba',
-      INRut: '210176651', 
+      INnombre: 'Juan Perez',
+      INRut: '210176653', 
       INtelefono: '912345678', 
       INRol: 'Administrador', 
       INpassword: '11112222'
       });
     });
-
+    // Verificación de mensaje de confirmación
     cy.contains('Usuario añadido').should('be.visible');
 
   });
