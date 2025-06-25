@@ -46,8 +46,12 @@ const eliminarProducto = async (req, res) => {
     res.status(200).json({ message: 'Producto eliminado correctamente.' });
   } catch (err) {
     console.error('Error al eliminar producto:', err);
-    // Un mensaje de error más genérico si no queremos revelar detalles internos
-    res.status(500).json({ message: 'Error al eliminar el producto.' });
+    if(err.errorNum === 20002) {
+      return res.status(400).json({ message: 'Usuario ya eliminado.' });
+    }
+    else{
+    res.status(500).json({ message: 'Error interno del servidor al eliminar el Usuario.' });
+    }
   } finally {
     if (connection) {
       try {
