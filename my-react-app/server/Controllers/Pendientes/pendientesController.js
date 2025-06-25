@@ -114,10 +114,10 @@ const cancelarPendiente2 = async (req, res) => {
         const query = `BEGIN OUTLET_Cancel_Pendiente(:idVenta); END;`;
         await connection.execute(query, { idVenta: { val: Number(idVenta), dir: oracledb.BIND_IN } });
         
-        res.status(200).send('Venta pendiente cancelada con éxito');
+        res.status(200).send('Venta pendiente anulada con éxito');
     } catch (error) {
-        console.error('Error al cancelar la venta pendiente:', error);
-        res.status(500).send('Error al cancelar la venta pendiente');
+        console.error('Error al anular la venta pendiente:', error);
+        res.status(500).send('Error al anular la venta pendiente');
     } finally {
         if (connection) {
             try {
@@ -151,10 +151,10 @@ const cancelarPendiente = async (req, res) => {
   
       await connection.commit();
   
-      res.status(200).json({ message: 'Venta cancelada correctamente.' });
+      res.status(200).json({ message: 'Venta anulada correctamente.' });
     } catch (err) {
       console.error('Error al eliminar producto:', err);
-      res.status(500).json({ message: 'Error al cancelar venta' });
+      res.status(500).json({ message: 'Error al anular venta' });
     } finally {
       if (connection) {
         await connection.close();
@@ -186,10 +186,10 @@ const realizarPendiente = async (req, res) => {
   
       await connection.commit();
   
-      res.status(200).json({ message: 'Venta realizada correctamente.' });
+      res.status(200).json({ message: 'Venta completada correctamente.' });
     } catch (err) {
-      console.error('Error al realizar venta:', err);
-      res.status(500).json({ message: 'Error al cancelar venta' });
+      console.error('Error al completar venta:', err);
+      res.status(500).json({ message: 'Error al anular venta' });
     } finally {
       if (connection) {
         await connection.close();

@@ -128,7 +128,7 @@ const ListadoPendientes = () => {
                 setModalType('error');
             }
         } catch (err) {
-            setModalMessage('Error al cancelar la venta.');
+            setModalMessage('Error al anular la venta.');
             setModalType('error');
         } finally {
             setModalIsOpen(true);
