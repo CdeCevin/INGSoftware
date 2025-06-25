@@ -37,7 +37,7 @@ const insertCabecera = async (req, res) => {
         if (connection) {
 
         if(err.errorNum === 20002) {
-            return res.status(400).json({ message: 'El cliente no existe.' });
+            return res.status(400).json({ message: 'Error al procesar la solicitud, el codigo de cliente no se encuentra.' });
         }
             try {
                 await connection.rollback();
@@ -45,7 +45,7 @@ const insertCabecera = async (req, res) => {
                 console.error('Error al intentar hacer rollback:', rollbackErr);
             }
         }
-        res.status(500).json({ message: 'Error al procesar la solicitud.' });
+        res.status(500).json({ message: 'Error al procesar la solicitud, el codigo de cliente no se encuentra..' });
     } finally {
         if (connection) {
             try {
