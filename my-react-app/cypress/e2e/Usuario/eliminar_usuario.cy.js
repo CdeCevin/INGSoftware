@@ -8,7 +8,7 @@ describe('Eliminar Producto - Verificación de petición', () => {
 
     cy.visit('http://localhost:3000/EliminarUsuario');
 
-    cy.get('input').eq(0).clear().type('210176653'); //rut
+    cy.get('input').eq(0).clear().type('210176654'); //rut
 
     cy.get('button').contains('Eliminar').click(); //presionar boton actualizar
 
@@ -16,7 +16,7 @@ describe('Eliminar Producto - Verificación de petición', () => {
     cy.wait('@eliminarUsuario').then((intercept) => {
       expect(intercept.response.statusCode).to.eq(200);
       expect(intercept.request.body).to.include({
-      Rut_Usuario: '210176653', 
+      Rut_Usuario: '210176654', 
       });
     });
     //Verificación de mensaje de confirmación

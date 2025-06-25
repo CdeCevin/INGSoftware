@@ -8,7 +8,7 @@ describe('Actualizar Usuario - Verificación de petición', () => {
 
     cy.visit('http://localhost:3000/ActualizarUsuario');
 
-    cy.get('input').eq(0).clear().type('210176653'); //RUT
+    cy.get('input').eq(0).clear().type('210176654'); //RUT
     cy.get('input').eq(1).clear().type('Juan Lopez'); //nombre
     cy.get('input').eq(2).clear().type('912345678'); //telefono
     cy.contains('label', 'Tipo de Usuario').next('select').select('Administrador'); //Selección tipo usuario
@@ -20,7 +20,7 @@ describe('Actualizar Usuario - Verificación de petición', () => {
     cy.wait('@actualizarUsuario').then((intercept) => {
       expect(intercept.response.statusCode).to.eq(200);
       expect(intercept.request.body).to.include({
-      rut: '210176653', 
+      rut: '210176654', 
       INnombre: 'Juan Lopez', 
       INtelefono: '912345678', 
       INtipo: 'Administrador', 

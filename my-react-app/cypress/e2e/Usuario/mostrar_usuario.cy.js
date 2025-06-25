@@ -13,7 +13,7 @@ describe('Listado de Usuarios - Verificación de la tabla', () => {
       if (interception.response.statusCode === 200){
         expect(interception.response.body).to.be.an('array').and.not.to.be.empty;
 
-        const usuario = usuarios.find(u => u.RUT === 210176653);
+        const usuario = usuarios.find(u => u.RUT === 210176654);
         expect(usuario, 'Usuario con RUT 210176653 debe existir').to.not.be.undefined;
 
         if (usuario) {
@@ -41,10 +41,10 @@ describe('Listado de Usuarios - Verificación de la tabla', () => {
     cy.get('table.venta-table tbody tr').each(($row) => {
       const text = $row.text();
 
-      if (text.includes('210176653') && text.includes('Juan Lopez')) {
+      if (text.includes('210176654') && text.includes('Juan Lopez')) {
         // Verifica dentro de esa fila los datos específicos
         cy.wrap($row).within(() => {
-          cy.get('td').eq(0).should('contain.text', 210176653); // RUT
+          cy.get('td').eq(0).should('contain.text', 210176654); // RUT
           cy.get('td').eq(1).should('contain.text', 912345678); // TELÉFONO
           cy.get('td').eq(2).should('contain.text', 'Juan Lopez'); // NOMBRE
           cy.get('td').eq(3).should('contain.text', 'Administrador'); // TIPO DE USUARIO
