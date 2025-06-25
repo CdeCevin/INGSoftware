@@ -102,7 +102,6 @@ function ReporteGral() {
                         </div>
                         
                         {/* ***** NEW WRAPPER DIV FOR RIGHT-ALIGNED ITEMS ***** */}
-                        <div className="ventas-totales-right-group">
                             <div className="ventas-totales-item input-group">
                                 <label>Desde</label>
                                 <input
@@ -124,8 +123,7 @@ function ReporteGral() {
                                     <i className="fa fa-search"> Filtrar</i>
                                 </button>
                             </div>
-                        </div>
-                    </div>          
+                        </div>         
                 </fieldset>
             </form>
             <fieldset>
