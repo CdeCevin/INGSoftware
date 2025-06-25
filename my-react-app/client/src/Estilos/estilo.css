@@ -871,28 +871,20 @@ button:active {
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    flex-wrap: wrap; 
-    /*gap: 30px;*/ 
+    flex-wrap: wrap;
     padding: 15px 20px; 
-
-    /* Card-like styling to match your screenshot */
-    background-color: #fff; /* White background */
-    border-radius: 8px; /* Slightly rounded corners */
+    background-color: #fff; 
+    border-radius: 8px; 
 }
 
-/* Styles for the H2 element (e.g., "$316000") */
 .ventas-totales-item h2 {
-    margin: 0; /* Removes default browser margin for better alignment */
-    font-size: 2em; /* Adjust font size as needed */
-    color: #6b9787; /* Green color from your screenshot */
-    font-weight: bold; /* Lighter font weight as seen in screenshot */
+    margin: 0; 
+    font-size: 2em; 
+    color: #6b9787; 
+    font-weight: bold; 
 
 }
 
-/* ------------------------------------------------------------------ */
-/* IMPORTANT: Styles for the label-input groups (e.g., "Desde" and "Hasta" date pickers) */
-/* This targets the <div> that wraps your <label> and <input> */
-/* ------------------------------------------------------------------ */
 .ventas-totales-item.input-group {
     display: flex; 
     flex-direction: column; 
@@ -910,13 +902,11 @@ button:active {
     width: 100%; 
 }
 
-/* Styling for the date input fields */
 .ventas-totales-item input[type="date"] {
-    padding: 8px; /* Internal padding for the input field */
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 4px; /* Slightly rounded corners */
-    font-size: 1em; /* Standard font size */
-    /* min-width: 120px; /* Optional: ensures consistent width for date inputs if they vary */
+    padding: 8px; 
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+    font-size: 1em; 
 }
 
 .btn-reporte{
@@ -933,7 +923,7 @@ button:active {
   gap: 15px;
 }
 
-/* Centrado vertical específico para la izquierda */
+/* Centrado horizontal específico para la izquierda */
 .ventas-columna.izquierda {
   justify-content: center;
   width: 40%;
