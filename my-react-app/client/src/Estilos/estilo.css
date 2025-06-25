@@ -918,6 +918,10 @@ button:active {
     /* min-width: 120px; /* Optional: ensures consistent width for date inputs if they vary */
 }
 
+.btn-reporte{
+    min-width: fit-content;
+}
+
 /*Modal comprobante*/
 .modal-overlay {
     position: fixed;

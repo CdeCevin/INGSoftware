@@ -100,13 +100,30 @@ function ReporteGral() {
                         <div className="ventas-totales-item">
                             <h2>${ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>
                         </div>
-                        <div className="ventas-totales-item input-group"> 
-                            <label>Desde</label>
-                            <input
-                                type="date"
-                                value={fechaInicio}
-                                onChange={(e) => setFechaInicio(e.target.value)}
-                            />
+                        
+                        {/* ***** NEW WRAPPER DIV FOR RIGHT-ALIGNED ITEMS ***** */}
+                        <div className="ventas-totales-right-group">
+                            <div className="ventas-totales-item input-group">
+                                <label>Desde</label>
+                                <input
+                                    type="date"
+                                    value={fechaInicio}
+                                    onChange={(e) => setFechaInicio(e.target.value)}
+                                />
+                            </div>
+                            <div className="ventas-totales-item input-group">
+                                <label>Hasta</label>
+                                <input
+                                    type="date"
+                                    value={fechaFin}
+                                    onChange={(e) => setFechaFin(e.target.value)}
+                                />
+                            </div>
+                            <div className="ventas-totales-item">
+                                <button type="submit" className="btn mini-boton btn-reporte">
+                                    <i className="fa fa-search"> Filtrar</i>
+                                </button>
+                            </div>
                         </div>
                         <div className="ventas-totales-item input-group"> 
                             <label>Hasta</label>
