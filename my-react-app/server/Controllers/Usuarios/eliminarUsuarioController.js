@@ -13,7 +13,7 @@ const eliminarUsuario = async (req, res) => {
 
         if (String(Rut_Usuario) === RUT_SUPER_ADMIN_INAMOVIBLE) {
             console.warn(`Intento de eliminar el RUT del Super Admin: ${Rut_Usuario}`);
-            return res.status(403).json({ message: 'Este usuario administrador principal no puede ser eliminado.' });
+            return res.status(409).json({ message: 'Este usuario administrador principal no puede ser eliminado.' });
         }
 
         console.log('RUT de usuario recibido desde el frontend para eliminación:', Rut_Usuario);
