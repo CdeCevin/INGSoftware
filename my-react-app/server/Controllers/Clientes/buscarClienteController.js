@@ -39,7 +39,7 @@ const buscarCliente = async (req, res) => {
 
         // Ejecutar el procedimiento almacenado
         const result = await connection.execute(
-            `BEGIN CEVIN.OBTENERINFORMACIONCLIENTE(:p_cod, :p_nombre, :p_clientes_cursor); END;`,
+            `BEGIN CEVIN.BUSCARCLIENTE(:p_cod, :p_nombre, :p_clientes_cursor); END;`,
             bindVars
         );
 
