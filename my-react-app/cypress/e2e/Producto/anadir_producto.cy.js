@@ -9,7 +9,7 @@ describe('Ingresar producto nuevo- Verificación de petición', () => {
     cy.visit('http://localhost:3000/IngresoProducto');
 
     cy.get('input').eq(0).clear().type('cortina azul'); //nombre
-    cy.get('input').eq(1).clear().type('1111'); //codigo
+    cy.get('input').eq(1).clear().type('1120'); //codigo
     cy.get('input').eq(2).clear().type('10'); //stock
     cy.get('input').eq(3).clear().type('1000'); //precio
     cy.get('input').eq(4).clear().type('azul'); //color producto
@@ -26,26 +26,26 @@ describe('Ingresar producto nuevo- Verificación de petición', () => {
     // Verificar mensaje de confirmación
     cy.contains('Producto añadido').should('be.visible');
 
-        cy.window().then((win) => {
-      const token = win.localStorage.getItem('token');
+    cy.window().then((win) => {
+    const token = win.localStorage.getItem('token');
 
-      cy.request({
-        method: 'GET',
-        url: '/api/products',
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }).then((resp) => {
-        expect(resp.status).to.eq(200);
-        console.log('Respuesta del backend:', resp.body);
-        const producto = resp.body.find(p => p[0] === 1111);
-        expect(producto, 'Producto con código 1111 debe existir').to.not.be.undefined;
-        if (producto) {
-          expect(producto[4]).to.eq('Cortina azul'); // nombre
-          expect(producto[3]).to.eq(1000); // precio
-          expect(producto[1]).to.eq(50); // stock
-          expect(producto[2]).to.eq(10); // stockmin
-        }
+    cy.request({
+      method: 'GET',
+      url: '/api/products',
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then((resp) => {
+      expect(resp.status).to.eq(200);
+      console.log('Respuesta del backend:', resp.body);
+      const producto = resp.body.find(p => p[0] === 1120);
+      expect(producto, 'Producto con código 1111 debe existir').to.not.be.undefined;
+      if (producto) {
+        expect(producto[4]).to.eq('cortina azul'); // nombre
+        expect(producto[3]).to.eq(1000); // precio
+        expect(producto[1]).to.eq(10); // stock
+        expect(producto[2]).to.eq(5); // stockmin        
+      }
       });
     });
   });

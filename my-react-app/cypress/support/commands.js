@@ -11,11 +11,11 @@ import 'cypress-file-upload';
 
 Cypress.Commands.add('loginApi', () => {
   cy.request('POST', 'http://localhost:3001/api/login', {
-    rut: 111111111,
-    password: '1111111111111111'
+    rut: 210165541,
+    password: '11112222'
   }).then((resp) => {
     window.localStorage.setItem('token', resp.body.token);
     window.localStorage.setItem('userRole', resp.body.userRole || 'Administrador');
-    window.localStorage.setItem('userRut', resp.body.userRut || '111111111');
+    window.localStorage.setItem('userRut', resp.body.userRut || '210165541');
   });
 });

@@ -4,11 +4,11 @@ describe('Actualizar Producto - Verificación de petición', () => {
   });
   it('Envía la petición correctamente al backend', () => {
 
-    cy.intercept('PUT', '/api/up_producto/1111').as('actualizarProducto');
+    cy.intercept('PUT', '/api/up_producto/1120').as('actualizarProducto');
 
     cy.visit('http://localhost:3000/ActualizarProducto');
 
-    cy.get('input').eq(0).type('1111'); //codigo producto
+    cy.get('input').eq(0).type('1120'); //codigo producto
     cy.get('input').eq(1).clear().type('Cortina azul plus'); //nombre producto
     cy.get('input').eq(2).clear().type('2000'); //precio
     cy.get('input').eq(3).clear().type('50'); //stock
@@ -37,7 +37,7 @@ describe('Actualizar Producto - Verificación de petición', () => {
       }).then((resp) => {
         expect(resp.status).to.eq(200);
         console.log('Respuesta del backend:', resp.body);
-        const producto = resp.body.find(p => p[0] === 1111);
+        const producto = resp.body.find(p => p[0] === 1120);
         expect(producto, 'Producto con código 1111 debe existir').to.not.be.undefined;
 
         if (producto) {
