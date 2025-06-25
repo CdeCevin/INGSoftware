@@ -936,12 +936,14 @@ button:active {
 /* Centrado vertical específico para la izquierda */
 .ventas-columna.izquierda {
   justify-content: center;
+  width: 40%;
 }
 
 /* Alineación horizontal para los inputs y botón */
 .ventas-columna.derecha {
   justify-content: center;
   gap: 15px;
+  width: 60%;
 }
 
 
