@@ -37,7 +37,7 @@ const insertCabecera = async (req, res) => {
         if (connection) {
 
         if(err.errorNum === 20002) {
-            return res.status(400).json({ message: 'Usuario ya eliminado.' });
+            return res.status(400).json({ message: 'El cliente no existe.' });
         }
             try {
                 await connection.rollback();
