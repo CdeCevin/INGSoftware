@@ -1,5 +1,3 @@
-// CdeCevin/INGSoftware/my-react-app/server/server.js
-
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
