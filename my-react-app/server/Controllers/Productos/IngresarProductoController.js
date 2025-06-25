@@ -51,11 +51,11 @@ async function ingresarProducto(req, res) {
         });
 
         await connection.commit();
-        res.status(200).json({ message: 'Producto añadido correctamente' });
+        res.status(200).json({ message: 'Producto añadido correctamente.' });
     } catch (error) {
         console.error('Error al insertar el producto:', error);
 
-        let errorMessage = 'Ocurrió un error al insertar el producto. Por favor, intenta de nuevo más tarde.';
+        let errorMessage = 'Ocurrió un error al insertar el producto. Por favor, intente de nuevo más tarde.';
         if (error.errorNum === 20003 || error.message.includes('unique constraint')) {
              errorMessage = 'El código del producto ya está siendo utilizado.';
         }

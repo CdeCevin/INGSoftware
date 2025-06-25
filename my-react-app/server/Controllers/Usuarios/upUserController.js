@@ -43,7 +43,7 @@ const updateUser = async (req, res) => {
     res.status(200).json({ message: 'Usuario actualizado correctamente.' });
 
   } catch (error) {
-    console.error('Error al actualizar el Usuario:', error);
+    console.error('Error al actualizar el usuario:', error);
       if(error.errorNum === 20002) {
           return res.status(400).json({ message: 'Error interno del servidor, el usuario no existe.' });
       }

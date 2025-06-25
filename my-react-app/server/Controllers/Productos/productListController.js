@@ -32,7 +32,7 @@ const getProducts = async (req, res) => {
         res.json(products);
     } catch (err) {
         console.error('Error al obtener la lista de productos:', err);
-        res.status(500).send('Error al obtener la lista de productos');
+        res.status(500).send('Error al obtener la lista de productos.');
     } finally {
         if (conn) {
             try {

@@ -5,7 +5,7 @@ const insertCuerpo = async (req, res) => {
     let connection;
     try {
         const { productos } = req.body; // Suponiendo que productos es un array de objetos
-        console.log("ALOOOOOOOOOOOOOOO");
+        //console.log("ALOOOOOOOOOOOOOOO");
         // Verifica que haya productos en el carrito
         if (!productos || productos.length === 0) {
             return res.status(400).json({ message: 'No se han proporcionado productos.' });
