@@ -869,17 +869,27 @@ button:active {
 
 .ventas-totales-container {
     display: flex; /* Enables Flexbox for horizontal alignment */
-    justify-content: center; /* Aligns items to the beginning of the container */
-    align-items: center; /* This vertically centers ALL direct children of this container.
-                            We will adjust the input-group specifically to align its input. */
+    justify-content: space-between; /* ***** KEY CHANGE: Pushes first child to left, second child (our new group) to right ***** */
+    align-items: center; /* Vertically centers ALL direct children (h2 div and the new right-group div) */
     flex-wrap: wrap; /* Allows items to wrap onto the next line if space is limited */
-    gap: 30px; /* Provides consistent spacing between the main items */
+    /* REMOVED GAP HERE - space-between handles the primary distribution.
+       Gap will be applied within the right-group instead. */
     padding: 15px 20px; /* Internal padding for the container (space from its edges) */
 
-    /* Card-like styling to match your screenshot */
-    background-color: #fff; /* White background */
-    border-radius: 8px; /* Slightly rounded corners */
+    /* Card-like styling */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    /* Centers the container itself within its parent */
+    margin: 0 auto;
 }
+
+/* Styles for each individual item/group within the main container */
+.ventas-totales-item {
+    /* No changes needed here */
+}
+
 /* Styles for the H2 element (e.g., "$316000") */
 .ventas-totales-item h2 {
     margin: 0; /* Removes default browser margin for better alignment */
@@ -888,25 +898,35 @@ button:active {
     font-weight: normal; /* Lighter font weight as seen in screenshot */
 }
 
-/* ------------------------------------------------------------------ */
-/* IMPORTANT: Styles for the label-input groups (e.g., "Desde" and "Hasta" date pickers) */
-/* This targets the <div> that wraps your <label> and <input> */
-/* ------------------------------------------------------------------ */
-.ventas-totales-item.input-group {
-    display: flex; 
-    flex-direction: column; 
-    align-items: flex-start; 
-    margin-top: -25px; 
+/* ---------------------------------------------------- */
+/* ***** NEW CSS RULE: For the wrapper around the right-aligned items ***** */
+/* ---------------------------------------------------- */
+.ventas-totales-right-group {
+    display: flex; /* Makes this new div a flex container */
+    align-items: center; /* Vertically centers its children (date inputs and button) */
+    gap: 30px; /* ***** Re-introduces spacing BETWEEN the date inputs and the button ***** */
+    flex-wrap: wrap; /* Allow these items to wrap if needed on smaller screens */
 }
 
+/* Styles for the label-input groups (e.g., "Desde" and "Hasta" date pickers) */
+/* This targets the <div> that wraps your <label> and <input> */
+.ventas-totales-item.input-group {
+    display: flex; /* Makes this wrapper a flex container */
+    flex-direction: column; /* Stacks the label above the input */
+    align-items: flex-start; /* Aligns label and input to the left within their column */
 
+    /* Adjusts vertical position to align input field with other centered elements */
+    margin-top: -10px; /* Fine-tune this value if needed for perfect alignment */
+}
+
+/* Styling for the label itself within the input-group */
 .ventas-totales-item.input-group label {
-    margin-bottom: 5px; 
-    margin-right: 0; 
-    font-weight: normal; 
-    color: #555; 
-    text-align: left; 
-    width: 100%; 
+    margin-bottom: 5px; /* Space between the label and the input below it */
+    margin-right: 0; /* Ensure no horizontal margin remains */
+    font-weight: normal; /* Normal font weight for labels */
+    color: #555; /* Dark gray color for readability */
+    text-align: left; /* Aligns the label text itself to the left */
+    width: 100%; /* Ensures the label text can take full width within its column */
 }
 
 /* Styling for the date input fields */
@@ -915,7 +935,6 @@ button:active {
     border: 1px solid #ccc; /* Light gray border */
     border-radius: 4px; /* Slightly rounded corners */
     font-size: 1em; /* Standard font size */
-    /* min-width: 120px; /* Optional: ensures consistent width for date inputs if they vary */
 }
 
 /*Modal comprobante*/
