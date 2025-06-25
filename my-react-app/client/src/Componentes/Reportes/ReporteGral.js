@@ -97,33 +97,38 @@ function ReporteGral() {
                 <fieldset>
                     <h3>Ventas Totales</h3>
                     <div className="ventas-totales-container">
-                        <div className="ventas-totales-item">
+                        {/* MITAD IZQUIERDA */}
+                        <div className="ventas-columna izquierda">
+                            <div className="ventas-totales-item">
                             <h2>${ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>
+                            </div>
                         </div>
-                        
-                        {/* ***** NEW WRAPPER DIV FOR RIGHT-ALIGNED ITEMS ***** */}
+
+                        {/* MITAD DERECHA */}
+                        <div className="ventas-columna derecha">
                             <div className="ventas-totales-item input-group">
-                                <label>Desde</label>
-                                <input
-                                    type="date"
-                                    value={fechaInicio}
-                                    onChange={(e) => setFechaInicio(e.target.value)}
-                                />
+                            <label>Desde</label>
+                            <input
+                                type="date"
+                                value={fechaInicio}
+                                onChange={(e) => setFechaInicio(e.target.value)}
+                            />
                             </div>
                             <div className="ventas-totales-item input-group">
-                                <label>Hasta</label>
-                                <input
-                                    type="date"
-                                    value={fechaFin}
-                                    onChange={(e) => setFechaFin(e.target.value)}
-                                />
+                            <label>Hasta</label>
+                            <input
+                                type="date"
+                                value={fechaFin}
+                                onChange={(e) => setFechaFin(e.target.value)}
+                            />
                             </div>
                             <div className="ventas-totales-item">
-                                <button type="submit" className="btn mini-boton btn-reporte">
-                                    <i className="fa fa-search"> Filtrar</i>
-                                </button>
+                            <button type="submit" className="btn mini-boton btn-reporte">
+                                <i className="fa fa-search"> Filtrar</i>
+                            </button>
                             </div>
-                        </div>         
+                        </div>
+                        </div>
                 </fieldset>
             </form>
             <fieldset>

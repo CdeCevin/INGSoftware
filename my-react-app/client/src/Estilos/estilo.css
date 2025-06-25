@@ -868,24 +868,25 @@ button:active {
 /* Reporte */
 
 .ventas-totales-container {
-    display: flex; /* Enables Flexbox for horizontal alignment */
-    justify-content: center; /* Aligns items to the beginning of the container */
-    align-items: center; /* This vertically centers ALL direct children of this container.
-                            We will adjust the input-group specifically to align its input. */
-    flex-wrap: wrap; /* Allows items to wrap onto the next line if space is limited */
-    gap: 30px; /* Provides consistent spacing between the main items */
-    padding: 15px 20px; /* Internal padding for the container (space from its edges) */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    /*gap: 30px;*/ 
+    padding: 15px 20px; 
 
     /* Card-like styling to match your screenshot */
     background-color: #fff; /* White background */
     border-radius: 8px; /* Slightly rounded corners */
 }
+
 /* Styles for the H2 element (e.g., "$316000") */
 .ventas-totales-item h2 {
     margin: 0; /* Removes default browser margin for better alignment */
     font-size: 2em; /* Adjust font size as needed */
-    color: #4CAF50; /* Green color from your screenshot */
-    font-weight: normal; /* Lighter font weight as seen in screenshot */
+    color: #6b9787; /* Green color from your screenshot */
+    font-weight: bold; /* Lighter font weight as seen in screenshot */
+
 }
 
 /* ------------------------------------------------------------------ */
@@ -919,8 +920,32 @@ button:active {
 }
 
 .btn-reporte{
-    min-width: fit-content;
+    min-width: fit-content !important;
 }
+
+
+
+/* Divide el contenedor en dos columnas */
+.ventas-columna {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Centrado vertical específico para la izquierda */
+.ventas-columna.izquierda {
+  justify-content: center;
+}
+
+/* Alineación horizontal para los inputs y botón */
+.ventas-columna.derecha {
+  justify-content: center;
+  gap: 15px;
+}
+
 
 /*Modal comprobante*/
 .modal-overlay {
