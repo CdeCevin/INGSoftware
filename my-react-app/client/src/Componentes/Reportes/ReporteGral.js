@@ -125,22 +125,8 @@ function ReporteGral() {
                                 </button>
                             </div>
                         </div>
-                        <div className="ventas-totales-item input-group"> 
-                            <label>Hasta</label>
-                            <input
-                                type="date"
-                                value={fechaFin}
-                                onChange={(e) => setFechaFin(e.target.value)}
-                            />
-                        </div>
-                        <div className="ventas-totales-item">
-                            <button type="submit"  className="btn mini-boton">
-                                
-                                <i className="fa fa-search"> </i>
-                                  Filtrar  
-                            </button>
-                        </div>
-                    </div>           </fieldset>
+                    </div>          
+                </fieldset>
             </form>
             <fieldset>
                 <h3>Top Productos</h3>
