@@ -56,7 +56,7 @@ async function ingresarProducto(req, res) {
         console.error('Error al insertar el producto:', error);
 
         let errorMessage = 'Ocurrió un error al insertar el producto. Por favor, intenta de nuevo más tarde.';
-        if (error.errorNum === 1 || error.message.includes('unique constraint')) {
+        if (error.errorNum === 20003 || error.message.includes('unique constraint')) {
              errorMessage = 'El código del producto ya existe.';
         }
 
