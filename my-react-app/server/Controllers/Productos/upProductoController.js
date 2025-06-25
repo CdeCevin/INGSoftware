@@ -79,7 +79,7 @@ const updateProducto = async (req, res) => {
     } catch (error) {
         console.error('Error al actualizar el producto:', error);
         if(error.errorNum === 20002){
-            return res.status(400).json({ message: 'El producto no existe .' });
+            return res.status(400).json({ message: 'Error interno del servidor, el producto no existe.' });
         }else{
         res.status(500).json({ message: 'Error interno del servidor al actualizar el producto.' });
         }

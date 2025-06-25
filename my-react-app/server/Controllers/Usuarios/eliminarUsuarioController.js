@@ -32,10 +32,10 @@ const eliminarUsuario = async (req, res) => {
     } catch (err) {
         console.error('Error al eliminar Usuario:', err);
         if(err.errorNum === 20002) {
-            return res.status(400).json({ message: 'Usuario ya eliminado.' });
+            return res.status(400).json({ message: 'Error al procesar la solicitud, usuario no encontrado.' });
         }
         else{
-        res.status(500).json({ message: 'Error interno del servidor al eliminar el Usuario.' });
+        res.status(500).json({ message: 'Error interno del servidor al eliminar el usuario.' });
         }
   } finally {
         if (connection) {

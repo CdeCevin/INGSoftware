@@ -27,7 +27,7 @@ const eliminarCliente = async (req, res) => {
     console.error('Error al eliminar producto:', err);
     if(err.errorNum === 20002) {
       // Error de restricción de clave foránea
-      return res.status(400).json({ message: 'Cliente ya eliminado.' });
+      return res.status(400).json({ message: 'Error interno del servidor, el cliente no existe.' });
     }else{
     res.status(500).json({ message: 'Error al eliminar el cliente.' });
     }

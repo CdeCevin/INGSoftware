@@ -47,7 +47,7 @@ const eliminarProducto = async (req, res) => {
   } catch (err) {
     console.error('Error al eliminar producto:', err);
     if(err.errorNum === 20002) {
-      return res.status(400).json({ message: 'Producto  ya eliminado.' });
+      return res.status(400).json({ message: 'Error interno del servidor, producto no encontrado.' });
     }
     else{
     res.status(500).json({ message: 'Error interno del servidor al eliminar el Producto.' });
