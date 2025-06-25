@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-//import './estiloide.css';
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -12,7 +11,7 @@ const LoginForm = () => {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        document.title = 'Iniciar Sesión'; // O 'Login', o 'Ingresar'
+        document.title = 'Iniciar Sesión'; 
     }, []);
 
     const handleSubmit = async (e) => {
@@ -23,7 +22,7 @@ const LoginForm = () => {
             const response = await fetch('http://localhost:3001/api/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ rut, password }) //aqui si tiene q estar xd
+                body: JSON.stringify({ rut, password })
             });
 
             const data = await response.json();
@@ -33,15 +32,12 @@ const LoginForm = () => {
                 return;
             }
 
-            // --- ¡MODIFICACIÓN CLAVE AQUÍ! ---
-            // Desestructuramos el 'token', 'role' y 'rut' de la respuesta del backend
             const { token, role, rut: loggedInRut } = data; 
 
             // Guardar el token, el rol y el RUT en localStorage
-            localStorage.setItem('token', token); // <-- NUEVA LÍNEA para guardar el token
+            localStorage.setItem('token', token); 
             localStorage.setItem('userRole', role);
             localStorage.setItem('userRut', loggedInRut);
-            // ---------------------------------
 
             console.log('Login exitoso! Token y rol guardados.');
             navigate('/Bienvenido/inicio', { replace: true });

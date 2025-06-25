@@ -5,14 +5,14 @@ import Modal from 'react-modal';
 import authenticatedFetch from '../../utils/api';
 import { useNavigate } from 'react-router-dom'; 
 
-Modal.setAppElement('#root'); // Reemplaza '#root' con tu selector de raíz
+Modal.setAppElement('#root');
 
 function EliminarUsuario() {
     const navigate = useNavigate(); 
     const userRole = localStorage.getItem('userRole'); 
     const [Rut_Usuario, setRut_Usuario] = useState('');
-    const [modalIsOpen, setModalIsOpen] = useState(false); // Estado para abrir/cerrar el modal
-    const [modalMessage, setModalMessage] = useState(''); // Mensaje para el modal
+    const [modalIsOpen, setModalIsOpen] = useState(false); 
+    const [modalMessage, setModalMessage] = useState(''); 
     const [modalType, setModalType] = useState('');
 
     useEffect(() => {
@@ -100,7 +100,7 @@ function EliminarUsuario() {
                     </fieldset>
                     <button type="submit">Eliminar</button>
                 </form>
-            {/* Modal para mostrar mensajes */}
+
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Mensaje" className={`custom-modal ${modalType === 'error' ? 'modal-error' : 'modal-exito'}`}>
                 <h2>Mensaje</h2>
                 <p>{modalMessage}</p>

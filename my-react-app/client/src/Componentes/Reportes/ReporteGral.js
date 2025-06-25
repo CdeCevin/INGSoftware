@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
+import { useNavigate } from 'react-router-dom'; 
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
-import authenticatedFetch from '../../utils/api'; // Assuming you have this utility
+import authenticatedFetch from '../../utils/api';
 
 function ReporteGral() {
     const [ventasMensuales, setVentasMensuales] = useState(null);
@@ -96,12 +96,11 @@ function ReporteGral() {
                 <h1>Reporte de Ventas</h1>
                 <fieldset>
                     <h3>Ventas Totales</h3>
-                    {/* Apply the main container class */}
                     <div className="ventas-totales-container">
                         <div className="ventas-totales-item">
                             <h2>${ventasMensuales !== null ? ventasMensuales : 'Cargando...'}</h2>
                         </div>
-                        <div className="ventas-totales-item input-group"> {/* This div acts as a vertical stack */}
+                        <div className="ventas-totales-item input-group"> 
                             <label>Desde</label>
                             <input
                                 type="date"
@@ -109,7 +108,7 @@ function ReporteGral() {
                                 onChange={(e) => setFechaInicio(e.target.value)}
                             />
                         </div>
-                        <div className="ventas-totales-item input-group"> {/* This div acts as a vertical stack */}
+                        <div className="ventas-totales-item input-group"> 
                             <label>Hasta</label>
                             <input
                                 type="date"

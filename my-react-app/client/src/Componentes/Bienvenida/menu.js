@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { Link, useNavigate } from 'react-router-dom';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 
@@ -7,9 +7,9 @@ export default function Menu() {
   const role = localStorage.getItem('userRole');
   const isAdmin  = role === 'Administrador';
   const isVendor = role === 'Vendedor';
-  const navigate = useNavigate(); // Inicializa useNavigate aquí
+  const navigate = useNavigate();
 
-  // Nueva función para manejar el cierre de sesión
+  // Función para manejar el cierre de sesión
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userRole');
@@ -38,7 +38,7 @@ export default function Menu() {
         </div>
       </div>
 
-      {/* PENDIENTES: ambos */}
+      {/* PENDIENTES: ambos roles */}
       <Link to="/VentasPendientes" className="w3-button">
         <i className="fa fa-clock-o"></i> Ventas Pendientes
       </Link>
@@ -77,7 +77,7 @@ export default function Menu() {
         </div>
       </div>
 
-      {/* REPORTE: ambos */}
+      {/* REPORTE: ambos roles */}
       {isAdmin && (
       <Link to="/ReporteGral" className="w3-button">
         <i className="fa fa-bar-chart"></i> Reporte

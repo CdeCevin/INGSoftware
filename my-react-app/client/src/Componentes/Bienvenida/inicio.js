@@ -1,6 +1,6 @@
 import React,{ useEffect,useState } from 'react';
 import '../../Estilos/style_menu.css';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import '../../Estilos/estilo.css';
 
 function Inicio() {

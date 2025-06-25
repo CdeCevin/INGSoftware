@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../Estilos/estilo.css';
 import authenticatedFetch from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
-import ComprobanteModal from './ComprobanteModal'; // Adjust the path as needed
+import ComprobanteModal from './ComprobanteModal';
 
 function HistorialVentas() {
     const [ventas, setVentas] = useState([]);
@@ -133,7 +133,6 @@ function HistorialVentas() {
                 <p>No hay ventas disponibles</p>
             )}
 
-            {/* Comprobante Modal */}
             <ComprobanteModal
                 isOpen={modalOpen}
                 onClose={() => setModalOpen(false)}

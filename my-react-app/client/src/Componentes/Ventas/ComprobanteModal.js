@@ -4,7 +4,7 @@ import { jsPDF } from 'jspdf';
 import Modal from 'react-modal';
 import authenticatedFetch from '../../utils/api';
 
-Modal.setAppElement('#root'); // Prevents screen readers warning
+Modal.setAppElement('#root'); 
 
 const ComprobanteModal = ({ isOpen, onClose, codigoComprobante }) => {
     const invoiceRef = useRef(null);

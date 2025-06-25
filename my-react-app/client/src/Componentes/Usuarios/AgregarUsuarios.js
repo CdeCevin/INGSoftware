@@ -44,7 +44,6 @@ function IngresoUsuario() {
         try {
             const response = await authenticatedFetch('/ingresarUsuario', {
                 method: 'POST',
-                // No es necesario 'Content-Type': 'application/json' aquí, authenticatedFetch ya lo maneja
                 body: (formData), // Enviamos el objeto como JSON
             });
 

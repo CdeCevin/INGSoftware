@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../../Estilos/style_menu.css';
 import '../../Estilos/estilo.css';
 import Modal from 'react-modal';
-import authenticatedFetch from '../../utils/api'; // Importa la función authenticatedFetch
+import authenticatedFetch from '../../utils/api';
 
 Modal.setAppElement('#root');
 
@@ -11,7 +11,7 @@ function StockCritico() {
     const [productosBajoStock, setProductosBajoStock] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
-    const [modalMessage, setModalMessage] = useState(''); // eslint-disable-line no-unused-vars
+    const [modalMessage, setModalMessage] = useState(''); 
     const navigate = useNavigate();
     const userRole = localStorage.getItem('userRole');
 
@@ -53,7 +53,6 @@ function StockCritico() {
             setProductosBajoStock(productosFormateados);
         } catch (error) {
             console.error('Error al obtener productos:', error);
-            // Puedes establecer un mensaje de error en el estado si lo deseas
         }
     };
 

@@ -31,9 +31,9 @@ function ActualizarProducto() {
         }
     }, [userRole, navigate]);
 
-    // Función para manejar el cambio en el input de tipo 'file'
+    
     const handleImageChange = (e) => {
-        setImagen(e.target.files[0]); // Captura el archivo seleccionado
+        setImagen(e.target.files[0]);
     };
 
     const handleSubmit = async (e) => {
@@ -41,7 +41,6 @@ function ActualizarProducto() {
 
         const formData = new FormData();
 
-        // Anexar todos los campos de texto
         formData.append('inputNombre', nombre || ''); // Envía cadena vacía si es null/undefined
         formData.append('inputCod', codigo);
         formData.append('inputStock', stock || '');
@@ -54,7 +53,7 @@ function ActualizarProducto() {
 
         try {
             const response = await authenticatedFetch(`/up_producto/${codigo}`, {
-                method: 'PUT', // PUT EN VEZ DE POST, no se si debemos cambiarlo en los demás pero para probar
+                method: 'PUT',
                 body: formData,
             });
 

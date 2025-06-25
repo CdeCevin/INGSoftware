@@ -21,11 +21,11 @@ function Home() {
         }
     }, [navigate]);
 
-    // Si isLoading es true, no renderices el contenido de Inicio aún
+    // Si isLoading es true, no renderza el contenido de Inicio aún
     if (isLoading) {
         return (
-            <div className="main-block"> {/* O cualquier estilo que uses para centrar un spinner */}
-                <h1>Cargando...</h1> {/* Podrías poner un spinner aquí */}
+            <div className="main-block">
+                <h1>Cargando...</h1>
             </div>
         );
     }

@@ -8,9 +8,7 @@ import { useNavigate } from 'react-router-dom';
 Modal.setAppElement('#root');
 
 function BuscarCliente() {
-    // 1. Cambiamos 'codigo' a 'valorBusqueda'
     const [valorBusqueda, setValorBusqueda] = useState('');
-    // Adaptamos para manejar un array de clientes
     const [clientesEncontrados, setClientesEncontrados] = useState([]);
     const [modalMessage, setModalMessage] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -33,7 +31,7 @@ function BuscarCliente() {
         try {
             const response = await authenticatedFetch('/buscarCliente', {
                 method: 'POST',
-                // 3. Enviamos 'valorBusqueda'
+                // Enviamos 'valorBusqueda'
                 body: { valorBusqueda },
             });
 
@@ -48,13 +46,13 @@ function BuscarCliente() {
             if (response.ok) {
                 const data = await response.json();
 
-                // 4. Adaptamos la visualización de los resultados
+                // Adapta la visualización de los resultados
                 // Si la respuesta es un array (múltiples clientes por nombre)
                 // o un objeto único (un cliente por código)
                 if (Array.isArray(data)) {
                     setClientesEncontrados(data);
                 } else {
-                    // Si es un objeto único, lo ponemos en un array para la tabla
+                    // Si es un objeto único, se pone en un array para la tabla
                     setClientesEncontrados([data]);
                 }
 
@@ -65,13 +63,13 @@ function BuscarCliente() {
                     setModalMessage('No se encontraron clientes.');
                     setModalType('error');
                 }
-                setModalIsOpen(false); // O podrías mantener el modal abierto si prefieres
-                                       // para mostrar el mensaje de éxito directamente.
+                setModalIsOpen(false);
+
 
             } else {
                 const errorData = await response.json();
                 setModalMessage(errorData.message);
-                setClientesEncontrados([]); // No hay resultados si hay error
+                setClientesEncontrados([]);
                 setModalIsOpen(true);
                 setModalType('error');
             }
@@ -103,12 +101,10 @@ function BuscarCliente() {
                     <h3>Búsqueda</h3>
                     <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                         <div>
-                            {/* 2. Cambiamos el label y el input para 'valorBusqueda' */}
                             <label>Código o Nombre*</label>
                             <input
                                 type="text"
-                                name="input-busqueda" // Nuevo nombre para el input
-                                // pattern y maxLength eliminados para permitir texto
+                                name="input-busqueda"
                                 required
                                 value={valorBusqueda}
                                 onChange={(e) => setValorBusqueda(e.target.value)}
@@ -119,7 +115,6 @@ function BuscarCliente() {
                 <button type="submit">Buscar</button>
             </form>
 
-            {/* Renderizar la tabla solo si hay clientes encontrados */}
             {clientesEncontrados.length > 0 && (
                 <fieldset>
                     <h3>Resultados</h3>
@@ -129,13 +124,12 @@ function BuscarCliente() {
                                 <th>NOMBRE</th>
                                 <th>TELÉFONO</th>
                                 <th>DIRECCIÓN</th>
-                                <th>ACTIVO</th> {/* Mostrar si el cliente está activo */}
+                                <th>ACTIVO</th> 
                             </tr>
                         </thead>
                         <tbody>
-                            {/* Iterar sobre el array de clientes para mostrar cada uno */}
                             {clientesEncontrados.map((cliente, index) => (
-                                <tr key={index}> {/* Usar un 'key' único, idealmente un ID de cliente */}
+                                <tr key={index}>
                                     <td>{cliente.nombres}</td>
                                     <td>{cliente.telefono}</td>
                                     <td>{cliente.direccion}</td>
