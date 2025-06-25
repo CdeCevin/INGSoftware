@@ -866,75 +866,47 @@ button:active {
 }
 
 /* Reporte */
-/* Main container for all horizontal elements (the white card) */
+
 .ventas-totales-container {
     display: flex; /* Enables Flexbox for horizontal alignment */
-    justify-content: space-between; /* Pushes the first direct child (h2 div) to the left,
-                                      and the second direct child (the right-group div) to the right. */
-    align-items: center; /* Vertically centers ALL direct children of this container.
-                            We adjust the input-group specifically below to align its input. */
+    justify-content: center; /* Aligns items to the beginning of the container */
+    align-items: center; /* This vertically centers ALL direct children of this container.
+                            We will adjust the input-group specifically to align its input. */
     flex-wrap: wrap; /* Allows items to wrap onto the next line if space is limited */
-    /* Removed 'gap' from here as 'space-between' handles the primary horizontal distribution.
-       Gap is now applied within the 'ventas-totales-right-group'. */
-    
+    gap: 30px; /* Provides consistent spacing between the main items */
     padding: 15px 20px; /* Internal padding for the container (space from its edges) */
 
-    /* Card-like styling */
+    /* Card-like styling to match your screenshot */
     background-color: #fff; /* White background */
     border-radius: 8px; /* Slightly rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-
-    /* Centers the entire '.ventas-totales-container' horizontally within its parent */
-    margin: 0 auto;
 }
-
-/* Styles for individual items/groups within the main container */
-/* This class is applied to all direct children of .ventas-totales-container,
-   and also to the date input divs and button within the right-group. */
-
 /* Styles for the H2 element (e.g., "$316000") */
 .ventas-totales-item h2 {
     margin: 0; /* Removes default browser margin for better alignment */
     font-size: 2em; /* Adjust font size as needed */
-    color: #4CAF50; /* Green color from your screenshots */
-    font-weight: normal; /* Lighter font weight as seen in screenshots */
+    color: #4CAF50; /* Green color from your screenshot */
+    font-weight: normal; /* Lighter font weight as seen in screenshot */
 }
 
-/* ---------------------------------------------------- */
-/* NEW CSS RULE: For the wrapper around the right-aligned items */
-/* This targets the <div className="ventas-totales-right-group"> */
-/* ---------------------------------------------------- */
-.ventas-totales-right-group {
-    display: flex; /* Makes this new div a flex container */
-    align-items: center; /* Vertically centers its children (date input groups and the button) */
-    gap: 30px; /* Provides consistent spacing BETWEEN the date inputs and the button */
-    flex-wrap: wrap; /* Allows these grouped items to wrap if needed on smaller screens */
-}
-
-/* ---------------------------------------------------- */
-/* Styles for the label-input groups (e.g., "Desde" and "Hasta" date pickers) */
-/* This targets the <div className="ventas-totales-item input-group"> */
-/* ---------------------------------------------------- */
+/* ------------------------------------------------------------------ */
+/* IMPORTANT: Styles for the label-input groups (e.g., "Desde" and "Hasta" date pickers) */
+/* This targets the <div> that wraps your <label> and <input> */
+/* ------------------------------------------------------------------ */
 .ventas-totales-item.input-group {
-    display: flex; /* Makes this wrapper a flex container */
-    flex-direction: column; /* Stacks the label above the input */
-    align-items: flex-start; /* Aligns label and input to the left within their column */
-
-    /* Adjusts vertical position of the entire input-group to align the input field
-       with the center of other elements (like the H2 and button).
-       You might need to fine-tune this value slightly (e.g., -8px, -12px)
-       based on the exact computed font-size/line-height of your label. */
-    margin-top: -10px; /* Adjust this value! */
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    margin-top: -25px; 
 }
 
-/* Styling for the label itself within the input-group */
+
 .ventas-totales-item.input-group label {
-    margin-bottom: 5px; /* Space between the label and the input below it */
-    margin-right: 0; /* Ensures no horizontal margin remains */
-    font-weight: normal; /* Normal font weight for labels */
-    color: #555; /* Dark gray color for readability */
-    text-align: left; /* Aligns the label text itself to the left */
-    width: 100%; /* Ensures the label text can take full width within its column */
+    margin-bottom: 5px; 
+    margin-right: 0; 
+    font-weight: normal; 
+    color: #555; 
+    text-align: left; 
+    width: 100%; 
 }
 
 /* Styling for the date input fields */
