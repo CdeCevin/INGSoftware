@@ -39,8 +39,12 @@ const insertUsuario = async (req, res) => {
     res.status(200).json({ message: 'Usuario añadido correctamente' });
   } catch (err) {
     console.error('Error al insertar el Usuario:', err);
-    res.status(500).json({ message: 'Ocurrió un error al insertar el Usuario.' });
-  } finally {
+           if(err.errorNum === 20002) {
+            return res.status(400).json({ message: 'Usuario ya existe en la base de datos' });
+        }
+        else{
+        res.status(500).json({ message: 'Error interno del servidor al crear el Usuario.' });
+        }
     if (conn) await conn.close();
   }
 };
