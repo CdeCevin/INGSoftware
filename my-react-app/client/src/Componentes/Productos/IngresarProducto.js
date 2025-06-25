@@ -108,7 +108,7 @@ function IngresoProducto() {
     return (
         <div className="main-block">
             <form onSubmit={handleSubmit} encType="multipart/form-data">
-                <h1>Añadir Producto</h1>
+                <h1>Ingresar Producto</h1>
                 <fieldset>
                     <h3>Detalles del Producto</h3>
                     <div className="account-details">

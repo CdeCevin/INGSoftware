@@ -104,9 +104,9 @@ function ActualizarDatos() {
     return (
         <div className="main-block">
             <form onSubmit={handleSubmit}>
-                <h1>Datos Empresa</h1>
+                <h1>Actualizar Datos Empresa</h1>
                 <fieldset>
-                    <h3>Actualizar Datos</h3>
+                    <h3>Datos a Editar</h3>
                     <div className="account-details" style={{ display: 'flex', flexWrap: 'wrap' }}>
                         <div>
                             <label>Nombre</label>

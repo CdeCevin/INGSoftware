@@ -118,7 +118,7 @@ function ActualizarUsuario() {
                 </fieldset>
                 <br></br>
                 <fieldset>
-                    <h3>Datos a editar</h3>
+                    <h3>Datos a Editar</h3>
                     <div className="account-details" style={{ display: 'flex', flexDirection: 'column' }}>
                         <div>
                             <label>Nombre</label>

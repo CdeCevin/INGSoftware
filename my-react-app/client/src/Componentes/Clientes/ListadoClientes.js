@@ -76,7 +76,7 @@ const ListadoClientes = () => {
 
     return (
         <div className="main-block">
-            <h1>Registro Clientes</h1>
+            <h1>Listado de Clientes</h1>
 
             <table className="venta-table">
                 <thead>
