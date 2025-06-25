@@ -44,16 +44,12 @@ const updateUser = async (req, res) => {
 
   } catch (error) {
     console.error('Error al actualizar el Usuario:', error);
-    if (error.errorNum) {
       if(error.errorNum === 20002) {
-                return res.status(400).json({ message: 'El usuario no existe.' });
-            }
-        if (error.errorNum >= 20000 && error.errorNum <= 20999) { // Otros errores personalizados de PL/SQL
-            return res.status(400).json({ message: error.message });
-        }
-    }
-    res.status(500).json({ message: 'Ocurrió un error interno al actualizar el Usuario.' });
-
+          return res.status(400).json({ message: 'Usuario no existe.' });
+      }
+      else{
+      res.status(500).json({ message: 'Error interno del servidor.' });
+      }
   } finally {
     if (connection) {
       try {
