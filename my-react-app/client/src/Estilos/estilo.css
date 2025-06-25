@@ -1,11 +1,10 @@
-/* Universal Box Sizing - Moved to the very top for global consistency */
+/* Tamaño universal */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
 html, body {
     min-height: 100vh;
-    /* Changed background-color to match div.content for seamless appearance */
     background-color: #ffffff;
     margin: 0;
     padding: 0;
@@ -14,20 +13,18 @@ html, body {
     color: #666;
     width: 100%;
     height: 100%;
-    overflow-x: hidden; /* Prevent horizontal scrollbar on the body */
+    overflow-x: hidden; /* Previene el scroll horizontal */
 }
 
 body, div, form, input, select, p, h1, h3, fieldset, label, button, output, textarea {
     padding: 0;
     margin: 0;
     outline: none;
-    /* box-sizing: border-box; - Already handled by the universal selector above */
 }
 
 h1 {
     margin: 0;
     font-weight: 400;
-    /* font-size: 30; */
 }
 
 h3 {
@@ -35,58 +32,49 @@ h3 {
     color: #6b9787;
 }
 
-/* --- div.content: The main content area wrapper --- */
+/* Wrapper del contenido principal */
 div.content {
-    margin-left: 200px; /* Offset for the fixed sidebar */
+    margin-left: 200px; /* Se mueve respecto al sidebar */
     padding: 20px;
     min-height: 100vh;
     background-color: #ffffff;
     box-sizing: border-box;
     position: relative;
-    /* CRITICAL FLEXBOX PROPERTIES FOR CENTERING */
     display: flex;
-    flex-direction: column; /* Force children (like .main-block) to stack vertically */
-    align-items: center; /* This will center children horizontally when flex-direction is column */
-    /* Removed: justify-content: center; (as it would now control vertical alignment for column direction) */
-
-    /* CRITICAL: Explicitly set width to take the full remaining viewport space */
-    width: calc(100vw - 200px);
-    overflow-x: hidden; /* Prevent div.content itself from causing horizontal scroll */
+    flex-direction: column; 
+    align-items: center; 
+    width: calc(100vw - 200px); /* Se setea el ancho para que ocupe todo el restante luego del sidebar */
+    overflow-x: hidden; /* Previene el scroll horizontal */
 }
 
-/* --- .main-block: The white content block (e.g., Historial de Ventas) --- */
+/* Contenido en el bloque principal */
 .main-block {
     display: flex;
     flex-direction: column;
     gap: 25px;
-    /* Using a percentage width, allowing margin: auto to work effectively */
     width: 90%;
-    /* Max-width to prevent it from becoming too wide on large screens */
     max-width: 1200px;
-    /* CRITICAL: Centers horizontally using auto margins */
     margin: 40px auto;
     padding: 30px;
     background-color: #f2f2f2;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    /* Aligns content within .main-block itself (e.g., tables if they're not 100% width) */
     align-items: center;
     margin-bottom: 30px;
 }
 
-/* --- .main-block2: For other content blocks (e.g., login form) --- */
+/* Para otros usos del bloque principal (ej: login) --- */
 .main-block2 {
     display: flex;
     flex-direction: column;
     width: 90%;
     max-width: 500px;
-    margin: auto; /* This correctly centers this block */
+    margin: auto; 
     border-radius: 12px;
     background-color: #f2f2f2;
     padding: 30px;
     box-shadow: 0 6px 12px rgba(0,0,0,0.3);
     align-items: center;
-    /*margin-top: 10%;*/
 }
 
 form {
@@ -158,6 +146,7 @@ textarea {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Permite la burbuja dentro del input (ej: +56, $)*/
 .input-wrapper {
   position: relative;
   width: 100%;
@@ -177,7 +166,7 @@ textarea {
 }
 
 .input-wrapper input[type="text"] {
-  padding-left: 60px; /* extra space for area code bubble */
+  padding-left: 60px; 
 }
 
 input:focus,
@@ -196,7 +185,7 @@ button {
     width: auto;
     min-width: 180px;
     padding: 14px 30px;
-    margin: 25px auto 10px auto; /* Centers button horizontally within its flex parent */
+    margin: 25px auto 10px auto;
     border-radius: 8px;
     border: none;
     background: #6b9787;
@@ -207,7 +196,7 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    align-self: center; /* Aligns this item if its parent is a flex container */
+    align-self: center;
 }
 
 button:hover {
@@ -248,7 +237,7 @@ button:active {
     background-color: #637e74;
 }
 
-/* --- Sidebar styles --- */
+/* Estilo del sidebar (menu) */
 .sidebar {
     margin: 0;
     padding: 0;
@@ -299,7 +288,7 @@ button:active {
     box-sizing: border-box;
     text-align: left;
     transition: background-color 0.3s ease, color 0.3s ease;
-    width: 100%; /* Ensures these elements take full width of sidebar */
+    width: 100%;
 }
 
 .sidebar .w3copia,
@@ -350,7 +339,7 @@ button:active {
     text-align: center;
     position: absolute;
     bottom: 0px;
-    padding: 10px 20px; /* Consider if this fixed padding is always desired */
+    padding: 10px 20px; 
     width: 100%;
     box-sizing: border-box;
     transition: background-color 0.3s ease;
@@ -364,16 +353,16 @@ button:active {
 }
 
 .Cerrar-button::before {
-    content: ''; /* Required for pseudo-elements */
-    position: absolute; /* Positions the line relative to the button */
-    top: -3px; /* Adjust this value to control how far above the button the line appears. A negative value moves it up. */
-    left: 50%; /* Start the line at the horizontal center of the button */
-    transform: translateX(-50%); /* Move the line back by half its own width to truly center it */
-    width: 60%; /* This controls the length of the line. 60% means 60% of the button's width. Adjust as desired (e.g., 70%, 100px). */
-    height: 2px; /* This controls the thickness of the line. Adjust as desired (e.g., 1px, 3px). */
-    background-color: #666; /* Initial color of the line (e.g., red) */
-    z-index: 1; /* Ensures the line is above other button content if there are any stacking issues */
-    transition: background-color 0.3s ease, top 0.3s ease; /* Smooth transition for color and position change on hover */
+    content: ''; 
+    position: absolute; 
+    top: -3px; 
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 60%; 
+    height: 2px; 
+    background-color: #666; 
+    z-index: 1;
+    transition: background-color 0.3s ease, top 0.3s ease; 
 }
 
 .sidebar .w3-button:hover {
@@ -394,7 +383,7 @@ button:active {
 .w3-dropdown-content {
   position: absolute;
   top: 100%;
-  left: 100%; /* fly out to the right */
+  left: 100%; 
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -402,14 +391,14 @@ button:active {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   pointer-events: none;
-  z-index: 9999 !important; /* ensures it overlaps everything else */
+  z-index: 9999 !important; /* Permite que el menu tenga las subpestanas hacia el lado*/
   min-width: 160px;
 }
 
 .w3-dropdown-hover .w3-dropdown-content {
   display: none;
   position: absolute;
-  left: 100%; /* Position submenu to the right */
+  left: 100%; 
   top: 0;
   background-color: #e7e7e7;
   color: #333;
@@ -454,7 +443,7 @@ button:active {
 
 .venta-table {
     border-collapse: collapse;
-    width: 100%; /* Ensures table takes full width of .main-block's content area */
+    width: 100%; 
     table-layout: fixed;
     margin-bottom: 20px;
     background-color: #ffffff;
@@ -471,7 +460,7 @@ button:active {
 }
 
 .venta-table th {
-    width: 100%; /* This sets a fixed width for the header cells, adjust if needed */
+    width: 100%; 
     background-color: #6b9787;
     color: white;
     font-weight: 600;
@@ -481,18 +470,18 @@ button:active {
     background-color: #f2f2f2;
     cursor: pointer;
 }
-.venta-table td table { /* Selects tables directly inside a venta-table td */
-    width: 100%; /* Make sure nested tables also fill their cell's width */
-    border-collapse: collapse; /* Ensure consistent styling */
+.venta-table td table { 
+    width: 100%; 
+    border-collapse: collapse; 
 }
 .venta-table td table td,
-.venta-table td table th { /* Apply consistent padding to nested table cells */
-    padding: 5px; /* Adjust as needed */
-    text-align: left; /* Adjust alignment */
-    border: none; /* Usually, nested tables don't need borders */
+.venta-table td table th { 
+    padding: 5px; 
+    text-align: left;
+    border: none; 
 }
-.venta-table td table li { /* If products are lists, style them */
-    list-style: none; /* Remove bullet points */
+.venta-table td table li { 
+    list-style: none; 
     padding: 2px 0;
     margin: 0;
 }
@@ -509,14 +498,14 @@ button:active {
 }
 
 .tabla-productos th, .tabla-productos td {
-    width: auto; /* If these are for a specific table, adjust as needed */
+    width: auto; 
     padding: 0 15px;
     text-align: left;
 }
 
 .btn {
-    padding: 8px; /* Adjust if needed */
-    font-size: 1.1em; /* Adjust icon size */
+    padding: 8px;
+    font-size: 1.1em; 
     min-width: 100px;
     height: 30px;
     display: inline-flex;
@@ -524,32 +513,28 @@ button:active {
     align-items: center;
     border-radius: 5px;
     border: none;
-    /* Remove a specific background color here if you want it to be inherited or always overridden */
-    /* Example: background: #ccc; or remove completely if complete-btn/cancel-btn always define it */
-    color: #fff; /* White icon color */
+    color: #fff; 
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Specific colors for complete and cancel buttons --- */
 .btn.complete-btn {
-    background: #4CAF50; /* A nice green for "Complete" */
+    background: #4CAF50; 
 }
 
 .btn.cancel-btn {
-    background: #F44336; /* A clear red for "Cancel" */
+    background: #F44336; 
 }
 
-/* --- Hover effects (apply to both specific buttons) --- */
 .btn.complete-btn:hover {
-    background: #45a049; /* Slightly darker green on hover */
+    background: #45a049; 
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn.cancel-btn:hover {
-    background: #e53935; /* Slightly darker red on hover */
+    background: #e53935; 
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -558,7 +543,6 @@ button:active {
     width: 50%;
     min-width: 70%;
     margin: 0 !important;
-
 }
 
 .btn:hover {
@@ -573,8 +557,8 @@ button:active {
     border: none;
     transition: color 0.3s ease;
 
-    padding: 8px; /* Adjust if needed */
-    font-size: 1.1em; /* Adjust icon size */
+    padding: 8px; 
+    font-size: 1.1em; 
     min-width: 100px;
     height: 50px;
 
@@ -630,7 +614,7 @@ button:active {
     max-width: 500px;
     width: auto;
     display: flex;
-    flex-direction: column; /* Force children (like .main-block) to stack vertically */
+    flex-direction: column; 
     align-items: center; 
 }
 
@@ -673,30 +657,27 @@ button:active {
 }
 
 
-/* --- Media Queries --- */
+/* Cambios para distintos tamaños de pantalla */
 @media screen and (max-width: 700px) {
     .sidebar {
         width: 100%;
         height: auto;
-        position: relative; /* Sidebar becomes part of normal flow on small screens */
+        position: relative; 
         overflow: hidden;
     }
     .sidebar a {
-        float: left; /* Keep if you want horizontal nav on small screens */
+        float: left;
     }
     div.content {
-        margin-left: 0; /* No sidebar offset on mobile */
+        margin-left: 0; 
         padding: 15px;
-        /* div.content should already be display: flex; flex-direction: column; align-items: center;
-           from its global styles. No need to redefine unless changing behavior. */
-        width: 100%; /* CRITICAL: Takes full width on mobile */
+        width: 100%; 
     }
     .main-block {
-        /* CRITICAL CHANGE: Ensure horizontal auto margin on mobile too */
         margin: 20px auto;
         padding: 20px;
-        max-width: 95%; /* Adjust max-width for smaller screens if needed */
-        width: 90%; /* Keep percentage width for responsiveness */
+        max-width: 95%;
+        width: 90%;
     }
     .venta-table {
         width: 100%;
@@ -720,35 +701,19 @@ button:active {
     }
 }
 
-/* Old, commented-out media query. Remove if not used. */
-/*
-@media (min-width: 568px) {
-    label {
-
-    }
-    input {
-
-    }
-    select, .children, .gender, .bdate-block {
-
-    }
-}*/
-/* src/components/InvoicePage.css */
-
-
-/*estilos comprobante*/
+/* Estilos comprobante */
 .invoice-page-container {
     padding: 20px;
-    background-color: #f0f2f5; /* Light background for the whole page */
+    background-color: #f0f2f5; 
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Arial', sans-serif; /* A professional-looking font */
+    font-family: 'Arial', sans-serif; 
 }
 
 .download-pdf-button {
-    background-color: #6b9787; /* Your brand color */
+    background-color: #6b9787; 
     color: white;
     padding: 10px 20px;
     border: none;
@@ -765,13 +730,13 @@ button:active {
 
 .invoice-wrapper {
     width: 100%;
-    max-width: 800px; /* Standard invoice width */
+    max-width: 800px; 
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 40px;
     border-radius: 8px;
-    box-sizing: border-box; /* Important for padding/width */
+    box-sizing: border-box; 
 }
 
 .invoice-header {
@@ -851,7 +816,7 @@ button:active {
 
 .invoice-totals span {
     display: inline-block;
-    width: 120px; /* Align total amounts */
+    width: 120px; 
     text-align: right;
     font-weight: bold;
     color: #333;
@@ -873,12 +838,12 @@ button:active {
     font-size: 0.85em;
 }
 
-/* Print Styles for cleaner PDF generation */
+/* Estilos de impresion para la generacion del PDF */
 @media print {
     body {
         margin: 0;
         padding: 0;
-        background-color: #ffffff; /* Ensure white background for print */
+        background-color: #ffffff;
     }
     .invoice-page-container {
         padding: 0;
@@ -888,19 +853,19 @@ button:active {
         max-width: none;
     }
     .download-pdf-button {
-        display: none; /* Hide the download button when printing */
+        display: none; /* Esconde el boton de descarga al imprimir */
     }
     .invoice-wrapper {
         box-shadow: none;
         border: none;
         border-radius: 0;
-        padding: 20mm; /* Use print units */
+        padding: 20mm;
         width: 100%;
         max-width: none;
     }
 }
 
-/*REPORTE*/
+/* Reporte */
 
 .ventas-totales-container {
     display: flex; /* Enables Flexbox for horizontal alignment */
