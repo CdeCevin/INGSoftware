@@ -924,6 +924,11 @@ button:active {
     font: inherit;
 }
 
+.busq {
+    font-family: 'Roboto'
+
+}
+
 
 
 /* Divide el contenedor en dos columnas */
