@@ -921,7 +921,7 @@ button:active {
 
 .btn-reporte{
     min-width: fit-content !important;
-    font: inherit;
+    font-family: 'Roboto';
 }
 
 .busq {
