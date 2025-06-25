@@ -20,6 +20,5 @@ describe('Actualizar Producto - Verificación de petición', () => {
     });
     // Verificar mensaje de confirmación
     cy.contains('Producto eliminado').should('be.visible');
-
   });
 });

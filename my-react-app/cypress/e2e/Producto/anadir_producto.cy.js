@@ -1,5 +1,3 @@
-//modificar, debido a que no lo puedo modificar sin ser admin, ni siquiera pude entrar bien
-
 describe('Ingresar producto nuevo- Verificación de petición', () => {
   beforeEach(() => {
     cy.loginApi();
@@ -28,5 +26,27 @@ describe('Ingresar producto nuevo- Verificación de petición', () => {
     // Verificar mensaje de confirmación
     cy.contains('Producto añadido').should('be.visible');
 
+        cy.window().then((win) => {
+      const token = win.localStorage.getItem('token');
+
+      cy.request({
+        method: 'GET',
+        url: '/api/products',
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then((resp) => {
+        expect(resp.status).to.eq(200);
+        console.log('Respuesta del backend:', resp.body);
+        const producto = resp.body.find(p => p[0] === 1111);
+        expect(producto, 'Producto con código 1111 debe existir').to.not.be.undefined;
+        if (producto) {
+          expect(producto[4]).to.eq('Cortina azul'); // nombre
+          expect(producto[3]).to.eq(1000); // precio
+          expect(producto[1]).to.eq(50); // stock
+          expect(producto[2]).to.eq(10); // stockmin
+        }
+      });
+    });
   });
 });
