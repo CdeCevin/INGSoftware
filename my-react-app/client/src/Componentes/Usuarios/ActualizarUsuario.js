@@ -69,7 +69,7 @@ function ActualizarUsuario() {
                 resetForm();
             } else {
                 const errorData = await response.json();
-                setModalMessage('Error al actualizar el usuario.'); 
+                setModalMessage(errorData.message); 
                 setModalType('error');
             }
         } catch (error) {
