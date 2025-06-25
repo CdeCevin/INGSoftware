@@ -1,5 +1,3 @@
-//modificar, debido a que no lo puedo modificar sin ser admin, ni siquiera pude entrar bien
-
 describe('Ingresar Usuario nuevo- Verificación de petición', () => {
   beforeEach(() => {
     cy.loginApi();

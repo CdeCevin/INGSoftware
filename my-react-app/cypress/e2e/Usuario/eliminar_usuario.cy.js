@@ -1,5 +1,3 @@
-//modificar, debido a que no lo puedo modificar sin ser admin, ni siquiera pude entrar bien
-
 describe('Eliminar Producto - Verificación de petición', () => {
   beforeEach(() => {
     cy.loginApi();

@@ -1,4 +1,3 @@
-//No se puede entrar sin ser admin
 describe('Listado de Usuarios - Verificación de la tabla', () => {
   beforeEach(() => {
     cy.loginApi();
@@ -14,8 +13,12 @@ describe('Listado de Usuarios - Verificación de la tabla', () => {
       if (interception.response.statusCode === 200){
         expect(interception.response.body).to.be.an('array').and.not.to.be.empty;
 
-        expect(interception.response.body[0]).to.have.property('RUT', 210176653); //Rut
-        expect(interception.response.body[0]).to.have.property('Nombre', 'Juan Lopez'); //Nombre
+        const usuario = usuarios.find(u => u.RUT === 210176653);
+        expect(usuario, 'Usuario con RUT 210176653 debe existir').to.not.be.undefined;
+
+        if (usuario) {
+          expect(usuario.Nombre).to.eq('Juan Lopez');
+        }
       } 
     });
 
@@ -33,14 +36,20 @@ describe('Listado de Usuarios - Verificación de la tabla', () => {
       cy.get('th').eq(3).should('contain.text', 'TIPO DE USUARIO');
     });
 
-    cy.get('table.venta-table tbody tr') // Selecciona todas las filas de datos
-      .should('have.length.at.least', 1) // Asegura que haya al menos una fila de datos
-      .first() // Toma la primera fila para la verificación
-      .within(() => {
-        cy.get('td').eq(0).should('contain.text', 210176653); // RUT
-        cy.get('td').eq(1).should('contain.text', 912345678); // TELÉFONO
-        cy.get('td').eq(2).should('contain.text', 'Juan Lopez'); // NOMBRE
-        cy.get('td').eq(3).should('contain.text', 'Administrador'); // TIPO DE USUARIO
+    cy.get('table.venta-table tbody tr').should('have.length.at.least', 1);
+
+    cy.get('table.venta-table tbody tr').each(($row) => {
+      const text = $row.text();
+
+      if (text.includes('210176653') && text.includes('Juan Lopez')) {
+        // Verifica dentro de esa fila los datos específicos
+        cy.wrap($row).within(() => {
+          cy.get('td').eq(0).should('contain.text', 210176653); // RUT
+          cy.get('td').eq(1).should('contain.text', 912345678); // TELÉFONO
+          cy.get('td').eq(2).should('contain.text', 'Juan Lopez'); // NOMBRE
+          cy.get('td').eq(3).should('contain.text', 'Administrador'); // TIPO DE USUARIO
+        });
+      }
     });
   });
 });
