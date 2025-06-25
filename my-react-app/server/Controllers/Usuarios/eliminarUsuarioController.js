@@ -31,6 +31,9 @@ const eliminarUsuario = async (req, res) => {
 
     } catch (err) {
         console.error('Error al eliminar Usuario:', err);
+        if(err.errorNum === 2002) {
+            return res.status(400).json({ message: 'Usuario ya eliminado.' });
+        }
         res.status(500).json({ message: 'Error interno del servidor al eliminar el Usuario.' });
     } finally {
         if (connection) {
