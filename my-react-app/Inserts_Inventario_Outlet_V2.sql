@@ -638,7 +638,7 @@ INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Sto
 INSERT INTO OUTLET_Producto(Codigo_Producto, Tipo_Producto, Nombre_Producto, Stock, Precio_Unitario, Color_Producto, Stock_Minimo, Fecha_Registro)
     VALUES(318, 'Almohadas', 'Almohadas Doral 50x70', 40, 10000, 'Blanco', 1, SYSDATE);
 
---Regiones de Chiles
+--Regiones de Chile
 INSERT INTO OUTLET_REGION(CODIGO_REGION,NOMBRE_REGION)
         VALUES(1, 'Arica y Parinacota');
 INSERT INTO OUTLET_REGION(CODIGO_REGION,NOMBRE_REGION)
