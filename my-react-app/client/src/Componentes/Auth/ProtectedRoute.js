@@ -9,9 +9,7 @@ const ProtectedRoute = ({ allowedRoles }) => {
 
     if (!token || !userRole || !allowedRoles.includes(userRole)) {
         // Si no está autenticado o no tiene el rol, redirige a /login
-        //return <Navigate to="/login" replace />;
-        console.log('lerolero');
-        return <Outlet />;
+        return <Navigate to="/login" replace />;
     }
 
     // Si está autenticado y tiene el rol, renderiza los componentes hijos de la ruta
