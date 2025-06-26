@@ -39,7 +39,7 @@ describe('Ingresar producto nuevo- Verificación de petición', () => {
       expect(resp.status).to.eq(200);
       console.log('Respuesta del backend:', resp.body);
       const producto = resp.body.find(p => p[0] === 1121);
-      expect(producto, 'Producto con código 1121 debe existir').to.not.be.undefined;
+      expect(producto, 'Producto con código 1111 debe existir').to.not.be.undefined;
       if (producto) {
         expect(producto[4]).to.eq('cortina azul'); // nombre
         expect(producto[3]).to.eq(1000); // precio
