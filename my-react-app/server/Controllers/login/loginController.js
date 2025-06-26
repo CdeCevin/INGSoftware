@@ -2,7 +2,7 @@
 const oracledb = require('oracledb');
 const { getConnection } = require('../../db/connection');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken'); // <-- Agrega esta línea para importar jsonwebtoken
+const jwt = require('jsonwebtoken');
 
 async function login(req, res) {
   const { rut, password } = req.body;
@@ -12,7 +12,7 @@ async function login(req, res) {
     conn = await getConnection();
 
     const result = await conn.execute(
-      `SELECT Contrasena_Usuario, ROL_Usuario
+      `SELECT Contrasena_Usuario, ROL_Usuario, RUT_Usuario -- Agrega RUT_Usuario a la selección
        FROM OUTLET_USUARIO
        WHERE RUT_Usuario = :p_rut and ACTIVO = 1`,
       {
@@ -21,7 +21,8 @@ async function login(req, res) {
       {
         fetchInfo: {
           "CONTRASENA_USUARIO": { type: oracledb.STRING },
-          "ROL_USUARIO": { type: oracledb.STRING }
+          "ROL_USUARIO": { type: oracledb.STRING },
+          "RUT_USUARIO": { type: oracledb.STRING } // Asegúrate de que el RUT también se traiga como string si lo necesitas así
         }
       }
     );
@@ -30,26 +31,36 @@ async function login(req, res) {
       return res.status(401).json({ message: 'Rut o contraseña inválidos' });
     }
 
-    const storedHash = result.rows[0][0];
-    const role = result.rows[0][1];
+    const storedHash = result.rows[0][0]; // Contrasena_Usuario
+    const role = result.rows[0][1];       // ROL_Usuario
+    const userRutFromDB = result.rows[0][2]; // RUT_Usuario, ahora accesible
+
     console.log('DEBUG (Login): Rol obtenido de la DB antes de firmar JWT:', role);
+
+    console.log('--- Debugging Login ---');
+    console.log(`Usuario a logear (desde request): ${rut}`); // Este 'rut' viene del req.body
+    console.log(`Contraseña (texto plano) recibida: "${password}"`);
+    console.log(`Longitud contraseña recibida: ${password.length}`);
+    // CORREGIDO: Usar userRutFromDB y storedHash directamente
+    console.log(`Hash de la DB para ${userRutFromDB}: "${storedHash}"`);
+    console.log(`Longitud del hash de DB: ${storedHash.length}`);
     const passwordMatch = await bcrypt.compare(password, storedHash);
+
+    console.log(`Resultado de bcrypt.compare(): ${passwordMatch}`); // Mover este log aquí para que siempre se vea
+    console.log('-----------------------');
 
     if (!passwordMatch) {
       return res.status(401).json({ message: 'Rut o contraseña inválidos' });
     }
 
-    // --- NUEVO: Generar un JWT al autenticar exitosamente ---
     const token = jwt.sign(
-      { rut: Number(rut), role: role }, // Payload: Información que quieres almacenar en el token
-      process.env.JWT_SECRET,           // Clave secreta para firmar el token (desde .env)
-      { expiresIn: '1h' }               // Opcional: el token expirará en 1 hora
+      { rut: Number(rut), role: role },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
     );
-    // --------------------------------------------------------
 
     console.log('Rol obtenido:', role);
-    // --- MODIFICADO: Envía el token, el rol y el rut al frontend ---
-    res.json({ token, role, rut }); 
+    res.json({ token, role, rut: userRutFromDB }); // Usar userRutFromDB para consistencia si lo trajiste de la DB
 
   } catch (err) {
     console.error('Error durante el proceso de login:', err);
