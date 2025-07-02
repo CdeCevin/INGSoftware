@@ -124,7 +124,6 @@ function BuscarCliente() {
                                 <th>NOMBRE</th>
                                 <th>TELÉFONO</th>
                                 <th>DIRECCIÓN</th>
-                                <th>ACTIVO</th> 
                             </tr>
                         </thead>
                         <tbody>
