@@ -133,7 +133,6 @@ function BuscarCliente() {
                                     <td>{cliente.nombres}</td>
                                     <td>{cliente.telefono}</td>
                                     <td>{cliente.direccion}</td>
-                                    <td>{cliente.activo === 1 ? 'Sí' : 'No'}</td>
                                 </tr>
                             ))}
                         </tbody>
