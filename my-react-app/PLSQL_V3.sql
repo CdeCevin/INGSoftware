@@ -191,6 +191,7 @@ BEGIN
             dir.Numero_Direccion AS NumeroDireccion,
             ciu.Nombre_Ciudad AS NombreCiudad,
             reg.Nombre_Region AS NombreRegion
+            cli.Codigo_Cliente AS CodigoCliente,
         FROM
             OUTLET_Cliente cli
         LEFT JOIN
@@ -212,6 +213,7 @@ BEGIN
             dir.Numero_Direccion AS NumeroDireccion,
             ciu.Nombre_Ciudad AS NombreCiudad,
             reg.Nombre_Region AS NombreRegion
+            cli.Codigo_Cliente AS CodigoCliente,
         FROM
             OUTLET_Cliente cli
         LEFT JOIN
