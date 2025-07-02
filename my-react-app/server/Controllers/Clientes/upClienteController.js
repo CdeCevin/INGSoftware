@@ -39,7 +39,7 @@ const updateCliente = async (req, res) => {
 
         if(error.errorNum === 20005) {
         // Error de restricción de clave foránea
-        return res.status(400).json({ message: 'El cliente no existe.' });
+        return res.status(400).json({ message: 'Error interno del servidor, el cliente no existe' });
         }else{
         res.status(500).json({ message: 'Error interno del servidor.' });
         };
