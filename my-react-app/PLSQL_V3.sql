@@ -190,8 +190,8 @@ BEGIN
             dir.Nombre_Calle AS NombreCalle,
             dir.Numero_Direccion AS NumeroDireccion,
             ciu.Nombre_Ciudad AS NombreCiudad,
-            reg.Nombre_Region AS NombreRegion
-            cli.Codigo_Cliente AS CodigoCliente,
+            reg.Nombre_Region AS NombreRegion,
+            cli.Codigo_Cliente AS CodigoCliente
         FROM
             OUTLET_Cliente cli
         LEFT JOIN
@@ -212,8 +212,8 @@ BEGIN
             dir.Nombre_Calle AS NombreCalle,
             dir.Numero_Direccion AS NumeroDireccion,
             ciu.Nombre_Ciudad AS NombreCiudad,
-            reg.Nombre_Region AS NombreRegion
-            cli.Codigo_Cliente AS CodigoCliente,
+            reg.Nombre_Region AS NombreRegion,
+            cli.Codigo_Cliente AS CodigoCliente
         FROM
             OUTLET_Cliente cli
         LEFT JOIN
