@@ -121,6 +121,7 @@ function BuscarCliente() {
                     <table className="venta-table">
                         <thead>
                             <tr>
+                                <th>CÓDIGO</th>
                                 <th>NOMBRE</th>
                                 <th>TELÉFONO</th>
                                 <th>DIRECCIÓN</th>
@@ -129,6 +130,7 @@ function BuscarCliente() {
                         <tbody>
                             {clientesEncontrados.map((cliente, index) => (
                                 <tr key={index}>
+                                    <td>{cliente.codigo}</td>
                                     <td>{cliente.nombres}</td>
                                     <td>{cliente.telefono}</td>
                                     <td>{cliente.direccion}</td>
