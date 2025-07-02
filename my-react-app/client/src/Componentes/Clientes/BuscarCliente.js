@@ -130,7 +130,7 @@ function BuscarCliente() {
                         <tbody>
                             {clientesEncontrados.map((cliente, index) => (
                                 <tr key={index}>
-                                    <td>{cliente.codigo}</td>
+                                    <td>{cliente.index}</td>
                                     <td>{cliente.nombres}</td>
                                     <td>{cliente.telefono}</td>
                                     <td>{cliente.direccion}</td>
