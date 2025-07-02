@@ -52,7 +52,8 @@ const buscarCliente = async (req, res) => {
                 activo: row[0],
                 telefono: row[1],
                 nombres: row[2],
-                direccion: `${row[3]} #${row[4]}, ${row[5]}, ${row[6]}`
+                direccion: `${row[3]} #${row[4]}, ${row[5]}, ${row[6]}`,
+                codigo: row[7]
             });
         }
 
