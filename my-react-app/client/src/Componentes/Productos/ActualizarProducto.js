@@ -186,7 +186,7 @@ function ActualizarProducto() {
                             <input
                                 type="file"
                                 name="input-imagen" 
-                                accept="image/*"
+                                accept=".jpg"
                                 onChange={handleImageChange} 
                             />
                         </div>

@@ -202,7 +202,7 @@ function IngresoProducto() {
                             <input
                                 type="file"
                                 name="input-imagen"
-                                accept="image/*"
+                                accept=".jpg"
                                 required
                                 onChange={(e) => setImagen(e.target.files[0])}
                             />
