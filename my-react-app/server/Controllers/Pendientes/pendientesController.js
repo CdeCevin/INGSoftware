@@ -8,13 +8,20 @@ const obtenerPendientes = async (req, res) => {
     try {
         connection = await getConnection();
 
-        // Obtener datos de ventas pendientes
+
+
+                // Obtener datos de ventas pendientes que tienen al menos un cuerpo
         const query = `
             SELECT VP.ID_VENTA_PENDIENTE, OC.Fecha, OC.Codigo_Cliente, OC.Codigo_Comprobante_Pago,
                    CL.Nombre_Cliente, CL.Codigo_Direccion
             FROM Outlet_Ventas_Pendientes VP
             JOIN Outlet_Cabecera_Comprobante_Pago OC ON VP.CODIGO_COMPROBANTE_PAGO = OC.CODIGO_COMPROBANTE_PAGO
             JOIN Outlet_Cliente CL ON OC.CODIGO_CLIENTE = CL.CODIGO_CLIENTE
+            WHERE EXISTS (
+                SELECT 1
+                FROM Outlet_Cuerpo_Comprobante_Pago OCCP
+                WHERE OCCP.Codigo_Comprobante_Pago = OC.Codigo_Comprobante_Pago
+            )
         `;
 
         const result = await connection.execute(query);
@@ -59,6 +66,9 @@ const obtenerPendientes = async (req, res) => {
                 JOIN OUTLET_Producto M ON C.Codigo_Producto = M.Codigo_Producto
                 WHERE C.Codigo_Comprobante_Pago = :CodigoComprobante
             `;
+
+            
+
             const productosResult = await connection.execute(productosQuery, {
                 CodigoComprobante: { val: venta[3], type: oracledb.NUMBER, dir: oracledb.BIND_IN },
             });
